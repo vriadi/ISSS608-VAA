@@ -1,11 +1,21 @@
 ---
-title: "ISSS608-VAA"
+title: "Welcome to ISSS608 - Visual Analytics & Applications"
+toc: false
+sidebar: false
 ---
 
-This is a Quarto website.
+This website serves as a digital portfolio for my coursework in the ISSS608 Visual Analytics and Applications module. Whether you're a fellow student, instructor, potential recruiter, or simply curious about data visualization with R, I hope you’ll find this space insightful and engaging.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Here, you will find a collection of my work structured into three main sections:
 
-```{r}
-1 + 1
-```
+-   [Hands-on Exercises](Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html) – Guided tasks completed with practical tutorials that explore key concepts and techniques in visual analytics.
+-   In-class Exercises – Guided tasks completed during class sessions.
+-   Take-home Exercises – More in-depth assignments that demonstrate my understanding and application of visual storytelling and data design principles.
+
+All visualizations are developed using R and RStudio, marking my first experience with the R language—an exciting learning journey and a new set of tools for exploring and communicating data stories.
+
+![](images/spongeR.jpg){fig-align="center" width="447"}
+
+If you’d like to know more about my background, experience, and qualifications, feel free to visit the [**About Me**](about.qmd) page.
+
+Cheers!

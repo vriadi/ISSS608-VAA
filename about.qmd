@@ -1,9 +1,90 @@
 ---
-title: "About"
+title: "Vanessa Riadi"
+about:
+  template: solana
+  image: images/profile.jpg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/vanessariadi/
+      target: _blank
+    - icon: github
+      text: Github
+      href: https://github.com/vriadi
+      target: _blank
 ---
 
-About this site
+I am a Project Manager, Data Analyst, and Automation Specialist with a diverse experience across the automotive, public sector (social transfers), e-commerce, and media industries. Driven, curious, and highly motivated, passionate about continuous learning and development. Excel at adapting in fast-paced environments and delivering under pressure.
 
-```{r}
-1 + 1
-```
+## Education
+
+**Singapore Management University** \| Singapore\
+Aug 2024 - Dec 2025\
+Masters of Information Technology in Business (Data Science & Analytics)\
+Current GPA: 3.5 / 4.0
+
+**Coventry University** \| Distant Learning\
+Oct 2015 - Dec 2018\
+Bachelor of Artrs in Digital Media
+
+## Certifications
+
+**Massachusetts Institute of Technology** \| Distant Learning\
+Jun 2023 - Sep 2023\
+Data Science and Machine Learning: Making Data-Driven Decisions\
+Credential ID: ZOZVYKSV
+
+## Experience
+
+**Porsche** \| Singapore \| Feb 2025 - present\
+**Digital Business Development Intern**\
+• Partner as a business owner with external scrum team including product owner, scrum master, and developers to develop, enhance and deploy Digital Service Hub products, such as internal Sales Funnel Excellence App and Porsche E-commerce Shop.\
+• Identify gaps and propose actions to drive deployment and operational excellence in “Growth Region V5” markets including Singapore, Malaysia, Thailand, Korea, Japan, New Zealand and Australia.\
+• Design and implement Excel-based report templates for Sales Funnel tracking, enabling data-driven decision-making through contact capture analysis and conversion rate monitoring.
+
+**Third i** \| Singapore \| Jan 2025\
+**Data Engineering Intern**\
+• 4-week Data Engineering exploration to build Third i’s data systems for batch/real-time ingestion using Google BigQuery, PostgreSQL Database Management System (DBMS) and Amazon Web Services (AWS).
+
+**Central Provident Fund Board (CPFB)** \| Singapore \| Apr 2024 – Dec 2024\
+**Manager, Business Analytics \|** Agency Governance & Planning Department\
+• Managed automation project and worked with cross-functional teams to develop and implement automation solution using Python.\
+**Award:** **Pinnacle Award at CPFB Excellence Award 2024 (Nov 2024)** for enabling quicker implementation of government transfers through the Citizen Disbursement IT System achieving a 60% e\[iciency in user e\[ort and vendor costs per batch User Acceptance Testing (UAT).\
+• Led and conducted data asnalysis and statistical projects using Python, Excel, and Power BI with cross- functional team members to guide policy principals and improve operational e\[iciency.\
+**Notable Project:** Customer Engagement Team (CET) GovBenefit Portal study where we investigate the spike in enquiry and appeal cases which led to UI/UX overhaul of GovBenefit website (https://www.govbenefits.gov.sg/).
+
+**Lazada Singapore** \| Singapore \| May 2022 - Jan 2024\
+**Senior Data Analyst**, **Platform Operations** \| Commercial Department \| Oct 2023 - Jan 2024\
+• Analysed and delivered business and operational data insights to cross-functional team leaders and senior stakeholders that led to improved business performance measured by a 45.29% YoY GMV increase during the 11.11 campaign in 2023.\
+• Supported cross-functional stakeholders by providing ad-hoc data analysis and build data visualisation dashboards using SQL, Excel, and Power BI.\
+• Performance and vendor management including setting and monitoring key performance indicator (KPIs) such as sales target (GMV and Order Coverage) for commercial team category pillars (business development and account managers).\
+\
+**Senior Data Analyst**, **Lazada Livestream** \| Marketing Department \| May 2022 - Sep 2023\
+• End-to-end project management for livestream content series and mega campaign shows. Including budget-setting and allocation for multiple projects under wing, collaborating and pitching for buy-ins from stakeholders and clients, sourcing for vendors (production houses, digital agencies, independent Key Opinion Leader \[KOL\]), schedule planning and ensuring timely deliverables from project team including vendors and cross-functional teams (in-house designer and motion graphic artist, scriptwriter outsourced to vendor, social media posting drafts from KOL).\
+• Optimized show performance and production cost using data-driven strategies, cross-functional collaboration, brand sponsorship and partnerships.\
+**Notable Result:** Boosted ROI by improving consideration score and sales metrics by 369%, while cutting production costs by 50% compared to the previous sales-driven series. Enhanced stickability by 44.6% in average watch time using engaging mechanics for audience retention.\
+• Developed dashboard using SQL and Power BI to centralize country-specific livestream data, streamlining previously scattered regional-level dashboards.
+
+**SGAG Media** \| Singapore \| Dec 2021 - Apr 2022\
+Senior Creative Executive\
+• End-to-end project and stakeholder management for experimental talent incubation.
+
+**Night Owl Cinematics** \| Singapore \| Jan 2020 - Dec 2021\
+Crew & Livestream Tech Lead\
+• Managed digital media projects and client servicing across NOC’s YouTube, Instagram, and Facebook channels. Scope includes manpower and equipment scheduling, ensuring timely delivery of deliverables, and delivering post-campaign KPI analytics.\
+**Notable Result:** Led livestream project using data to drive campaign performance. Achieved a record- breaking CapitaStar Livestream (Dec 2021) with over 240,000 viewers, 80,000 engagements, 6x daily sales uplift for eCapitaVouchers, and over 4x daily sales uplift for eCapitaMall and Capita3Eats across 2 days campaign.
+
+**Firefly Photography** \| Singapore \| Nov 2018 - Dec 2019\
+Content Creator & Videographer/Editor\
+• End-to-end project management and client servicing for corporate, event, and wedding, including notable projects such as NDP 2019 sponsorship with MINDEF on “NDP 2019 The Exchange Series”.
+
+## Skills
+
+**Soft Skills**\
+Design Thinking, Analytical & Critical Thinking, Project Management, Stakeholder & Client Management, Problem Solving, Decision Making, Adaptability, Multitasking.
+
+**Technical Skills**\
+SQL, Python, Microsoft Excel, Tableau, Power BI, SAS.
+
+**Languages**\
+English, Bahasa Indonesia, Mandarin
