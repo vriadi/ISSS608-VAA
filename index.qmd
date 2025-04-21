@@ -1,5 +1,5 @@
 ---
-title: "Welcome to ISSS608 - Visual Analytics & Applications"
+title: "Visual Analytics & Applications"
 toc: false
 sidebar: false
 ---

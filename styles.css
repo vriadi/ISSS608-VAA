@@ -1,1 +1,21 @@
-/* css styles */
+nav.navbar img {
+    max-height: 60px; /* Set the height of the logo */
+    max-width: auto;  /* Maintain aspect ratio */
+}
+
+/* Customize the announcement bar background color */
+.announcement {
+    background-color: #496977 !important;  
+    color: #ffffff !important;  
+    padding-left: 15px;
+}
+
+a:hover {
+    color: #1900ff;
+    text-decoration: underline;
+}
+
+.sidebar {
+    /* background-color: #f1f4f5;*/
+    padding: 15px;
+}

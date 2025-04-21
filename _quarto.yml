@@ -1,22 +1,53 @@
 project:
   type: website
+  output-dir: _site
 
 website:
-  title: "ISSS608"
+  favicon: images/favicon.png
+  title: ""
   navbar:
+    background: "#0d0054"
+    foreground: "#ffffff"
+    logo: "images/favicon.png"
     left:
       - text: "Hands-on Exercise"
         menu:
           - text: "01 - A Layered Grammar of Graphics: ggplot2 methods"
             href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.qmd
+          - text: "02 - Beyond ggplot2 Fundamentals"
+            href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.qmd
+      - text: "In-class Exercise"
+        menu:
+          - text: "Coming Soon"
+            href: index.qmd
+      - text: "Take-home Exercise"
+        menu:
+          - text: "Coming Soon"
+            href: index.qmd
     right:
-      - text: Home
+      - icon: house-fill
+        text: Home
         href: index.qmd
-      - text: About Me
+      - icon: person-circle
+        text: About Me
         href: about.qmd
+  
+  announcement: 
+    content: "**NEW (21/04)** - [**Hands-on Exercise 2**](https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex02/hands-on_ex02) is published!"
+    position: below-navbar
+    icon: info-circle
+    type: info
+    dismissable: true
 
   page-footer:
+    background: "#0d0054"
+    foreground: "#ffffff"
+    left:
+      - "Made with Quarto in RStudio"
     center:
+      - icon: c-circle
+        text: " Vanessa Riadi 2025"
+    right:
       - icon: linkedin
         aria-label: Linkedin
         href: https://www.linkedin.com/in/vanessariadi/
@@ -27,8 +58,8 @@ website:
         target: _blank
 
   sidebar:
-    - id: handson
-      title: "Hands-On"
+    - # background: "#f1f4f5" 
+      title: "Hands-On Exercise"
       style: "floating"
       collapse-level: 2
       align: left
@@ -37,9 +68,16 @@ website:
           contents:
             - text: "01 - A Layered Grammar of Graphics"
               href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.qmd
+            - text: "02 - Beyond ggplot2 Fundamentals"
+              href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.qmd
 format:
   html:
     theme: cosmo
     css: styles.css
+    logo: images/favicon.png
 
 editor: visual
+
+brand:
+  color:
+    background: "#ebf5fb"

@@ -1,7 +1,7 @@
 ---
-title: "Hands-On Exercise 01 - A Layered Grammar of Graphics: ggplot2 methods"
+title: "A Layered Grammar of Graphics: ggplot2 methods"
 author: "Vanessa Riadi"
-date: "`r format(Sys.time(), '%e %B %Y')`"
+date: "Apr 14, 2025"
 date-modified: "last-modified"
 format:
   html:
