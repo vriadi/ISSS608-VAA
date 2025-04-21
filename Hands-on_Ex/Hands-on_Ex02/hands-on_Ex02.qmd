@@ -1,7 +1,6 @@
 ---
 title: "Beyond ggplot2 Fundamentals"
 author: "Vanessa Riadi"
-date: "Apr 22, 2025"
 date-modified: "last-modified"
 format:
   html:

@@ -1,7 +1,6 @@
 ---
 title: "A Layered Grammar of Graphics: ggplot2 methods"
 author: "Vanessa Riadi"
-date: "Apr 14, 2025"
 date-modified: "last-modified"
 format:
   html:
