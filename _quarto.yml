@@ -19,11 +19,11 @@ website:
       - text: "In-class Exercise"
         menu:
           - text: "Coming Soon"
-            href: index.qmd
+            #href: index.qmd
       - text: "Take-home Exercise"
         menu:
           - text: "Coming Soon"
-            href: index.qmd
+            #href: index.qmd
     right:
       - icon: house-fill
         text: Home
