@@ -6,7 +6,7 @@ website:
   favicon: images/favicon.png
   title: ""
   navbar:
-    background: "#0d0054"
+    background: "#50434f"
     foreground: "#ffffff"
     logo: "images/favicon.png"
     left:
@@ -40,7 +40,7 @@ website:
     dismissable: true
 
   page-footer:
-    background: "#0d0054"
+    background: "#50434f"
     foreground: "#ffffff"
     left:
       - "Made with Quarto in RStudio"

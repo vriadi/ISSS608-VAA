@@ -3,13 +3,6 @@ nav.navbar img {
     max-width: auto;  /* Maintain aspect ratio */
 }
 
-/* Customize the announcement bar background color */
-.announcement {
-    background-color: #496977 !important;  
-    color: #ffffff !important;  
-    padding-left: 15px;
-}
-
 a:hover {
     color: #1900ff;
     text-decoration: underline;
@@ -19,3 +12,13 @@ a:hover {
     /* background-color: #f1f4f5;*/
     padding: 15px;
 }
+
+/* announcement bar color: #f0dcf4 #0d0054 */
+
+/* pallete: #b6a7b5 #d496d4 #9c91de #448edc #0089c8 #0080a3 #007270 #3e4665 */
+
+/* grey friends pallete: #d496d4 #50434f #b6a7b5*/
+
+/* for practice header ## 🎀 [PRACTICE]{style="color:#d496d4"} */
+
+/* for chap no [2.4]{style="color:#d496d4; background:none;"} */
