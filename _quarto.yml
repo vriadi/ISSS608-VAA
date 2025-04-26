@@ -16,10 +16,10 @@ website:
             href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.qmd
           - text: "2 - Beyond ggplot2 Fundamentals"
             href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.qmd
-          - text: "3.1 - Programming Interactive Data Visualisation with R"
-            href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.qmd
-          - text: "3.2 - Programming Animated Statistical Graphics with R"
-            href: Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.qmd
+          #- text: "3.1 - Programming Interactive Data Visualisation with R"
+            #href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.qmd
+          #- text: "3.2 - Programming Animated Statistical Graphics with R"
+            #href: Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.qmd
       - text: "In-class Exercise"
         menu:
           - text: "Coming Soon"
