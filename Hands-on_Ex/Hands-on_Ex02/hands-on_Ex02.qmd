@@ -451,7 +451,7 @@ ggplot(data=exam_data,
                  fill = "grey90",
                  linewidth = 0.3) +
   ggtitle("Distribution of Maths scores") +
-  theme_wsj()
+  theme_wsj() + theme ()
 ```
 
 ```{r}
@@ -464,7 +464,7 @@ ggplot(data=exam_data,
                  fill = "grey90",
                  linewidth = 0.3) +
   ggtitle("Distribution of Maths scores") +
-  theme_wsj()
+  theme_wsj() + theme ()
 ```
 
 ## The Economist
@@ -882,6 +882,15 @@ p3
 
 ### 🎀 [PRACTICE]{style="color:#d496d4"}
 If you want to auto-wrap your title to fit within n numbers characters per line you can use `stringr::str_wrap()` from `stringr` library
+
+::: callout-note
+Install [**stringr**](https://stringr.tidyverse.org/) package by typing below in the Console:
+```{r}
+#| eval: false
+install.packages("stringr")
+```
+:::
+
 ```{r}
 p3 <- ggplot(data=exam_data, 
              aes(x= MATHS, 

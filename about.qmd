@@ -8,10 +8,10 @@ about:
       text: LinkedIn
       href: https://www.linkedin.com/in/vanessariadi/
       target: _blank
-    - icon: github
-      text: Github
-      href: https://github.com/vriadi
-      target: _blank
+    #- icon: github
+      #text: Github
+      #href: https://github.com/vriadi
+      #target: _blank
 ---
 
 I am a Project Manager, Data Analyst, and Automation Specialist with a diverse experience across the automotive, public sector (social transfers), e-commerce, and media industries. Driven, curious, and highly motivated, passionate about continuous learning and development. Excel at adapting in fast-paced environments and delivering under pressure.

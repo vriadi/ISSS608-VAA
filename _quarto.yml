@@ -12,10 +12,14 @@ website:
     left:
       - text: "Hands-on Exercise"
         menu:
-          - text: "01 - A Layered Grammar of Graphics: ggplot2 methods"
+          - text: "1 - A Layered Grammar of Graphics: ggplot2 methods"
             href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.qmd
-          - text: "02 - Beyond ggplot2 Fundamentals"
+          - text: "2 - Beyond ggplot2 Fundamentals"
             href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.qmd
+          - text: "3.1 - Programming Interactive Data Visualisation with R"
+            href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.qmd
+          - text: "3.2 - Programming Animated Statistical Graphics with R"
+            href: Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.qmd
       - text: "In-class Exercise"
         menu:
           - text: "Coming Soon"
@@ -52,10 +56,10 @@ website:
         aria-label: Linkedin
         href: https://www.linkedin.com/in/vanessariadi/
         target: _blank
-      - icon: github
-        aria-label: Github
-        href: https://github.com/vriadi
-        target: _blank
+      #- icon: github
+        #aria-label: Github
+        #href: https://github.com/vriadi
+        #target: _blank
 
   sidebar:
     - # background: "#f1f4f5" 

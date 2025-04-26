@@ -17,9 +17,9 @@ execute:
 
 In this chapter, we learn the basic principles and essential components of ggplot2 through hands-on experience to plot statistical graphics based on the principle of Layered Grammar of Graphics. We will be able to apply the essential graphical elements provided by ggplot2 to create elegant and yet functional statistical graphics.
 
-## [1.2]{style="color:#d496d4; background:none;"}Getting started
+## [1.2]{style="color:#d496d4; background:none;"} Getting started
 
-### [1.2.1]{style="color:#d496d4; background:none;"}Installing and loading the required libraries
+### [1.2.1]{style="color:#d496d4; background:none;"} Installing and loading the required libraries
 
 Before we get started, it is important for us to ensure that the required R packages have been installed.
 
@@ -217,7 +217,9 @@ A good grammar of graphics will allow us to gain insight into the composition of
 
 ggplot2 is an implementation of Leland Wilkinson's Grammar of Graphics. Figure below shows the seven grammars of ggplot2.
 
-![](images/ss2.jpg){width="700"} ::: {style="font-size: 0.8em"} Reference: Hadley Wickham (2010) ["A layered grammar of graphics."](https://vita.had.co.nz/papers/layered-grammar.html) *Journal of Computational and Graphical Statistics*, vol. 19, no. 1, pp. 3--28. :::
+![](images/ss2.jpg){width="700"} 
+
+Reference: Hadley Wickham (2010) ["A layered grammar of graphics."](https://vita.had.co.nz/papers/layered-grammar.html) *Journal of Computational and Graphical Statistics*, vol. 19, no. 1, pp. 3--28.
 
 A short description of each building block are as follows:
 
