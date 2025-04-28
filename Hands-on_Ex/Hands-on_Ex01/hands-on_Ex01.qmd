@@ -217,7 +217,7 @@ A good grammar of graphics will allow us to gain insight into the composition of
 
 ggplot2 is an implementation of Leland Wilkinson's Grammar of Graphics. Figure below shows the seven grammars of ggplot2.
 
-![](images/ss2.jpg){width="700"} 
+![](images/ss2.jpg){width="700"}
 
 Reference: Hadley Wickham (2010) ["A layered grammar of graphics."](https://vita.had.co.nz/papers/layered-grammar.html) *Journal of Computational and Graphical Statistics*, vol. 19, no. 1, pp. 3--28.
 
