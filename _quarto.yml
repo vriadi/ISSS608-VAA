@@ -80,6 +80,8 @@ website:
               href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.html
             - text: "3.1 - Programming Interactive Data Visualisation with R"
               href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.html
+            - text: "3.2 - Programming Interactive Data Visualisation with R"
+              href: Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.html
     - title: "In-Class Exercise"
       style: "floating"
       collapse-level: 2
