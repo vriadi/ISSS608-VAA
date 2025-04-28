@@ -2,6 +2,11 @@
 title: "Visual Analytics & Applications"
 toc: false
 sidebar: false
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
 ---
 
 This website serves as a digital portfolio for my coursework in the ISSS608 Visual Analytics and Applications module. Whether you're a fellow student, instructor, potential recruiter, or simply curious about data visualization with R, I hope you’ll find this space insightful and engaging.
@@ -9,7 +14,7 @@ This website serves as a digital portfolio for my coursework in the ISSS608 Visu
 Here, you will find a collection of my work structured into three main sections:
 
 -   [Hands-on Exercises](Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html) – Guided tasks completed with practical tutorials that explore key concepts and techniques in visual analytics.
--   In-class Exercises – Guided tasks completed during class sessions.
+-   [In-class Exercises](In-class_Ex/In-class_Ex02/In-class_Ex02.html) – Guided tasks completed during class sessions.
 -   Take-home Exercises – More in-depth assignments that demonstrate my understanding and application of visual storytelling and data design principles.
 
 All visualizations are developed using R and RStudio, marking my first experience with the R language—an exciting learning journey and a new set of tools for exploring and communicating data stories.

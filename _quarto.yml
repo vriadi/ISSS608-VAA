@@ -13,14 +13,18 @@ website:
       - text: "Hands-on Exercise"
         menu:
           - text: "1 - A Layered Grammar of Graphics: ggplot2 methods"
-            href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.qmd
+            href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.html
           - text: "2 - Beyond ggplot2 Fundamentals"
-            href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.qmd
+            href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.html
+          - text: "3.1 - Programming Interactive Data Visualisation with R"
+            href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.html
+          - text: "3.2 - Programming Interactive Data Visualisation with R"
+            href: Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.html
 
       - text: "In-class Exercise"
         menu:
-          - text: "Coming Soon"
-            #href: index.qmd
+          - text: "2 - Superstore Sales and Profit Report"
+            href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
       - text: "Take-home Exercise"
         menu:
           - text: "Coming Soon"
@@ -28,10 +32,10 @@ website:
     right:
       - icon: house-fill
         text: Home
-        href: index.qmd
+        href: index.html
       - icon: person-circle
         text: About Me
-        href: about.qmd
+        href: about.html
   
   announcement: 
     content: "**NEW (21/04)** - [**Hands-on Exercise 2**](https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex02/hands-on_ex02) is published!"
@@ -57,6 +61,9 @@ website:
         #aria-label: Github
         #href: https://github.com/vriadi
         #target: _blank
+      - text: "<img src='/images/tableauwhite.png' style='height:19px; vertical-align:top;'>"
+        href: https://public.tableau.com/app/profile/vanessa.riadi/vizzes
+        target: _blank
 
   sidebar:
     - # background: "#f1f4f5" 
@@ -67,10 +74,22 @@ website:
       contents:
         - section: "Hands-On Excercise"
           contents:
-            - text: "01 - A Layered Grammar of Graphics"
-              href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.qmd
-            - text: "02 - Beyond ggplot2 Fundamentals"
-              href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.qmd
+            - text: "1 - A Layered Grammar of Graphics"
+              href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.html
+            - text: "2 - Beyond ggplot2 Fundamentals"
+              href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.html
+            - text: "3.1 - Programming Interactive Data Visualisation with R"
+              href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.html
+    - title: "In-Class Exercise"
+      style: "floating"
+      collapse-level: 2
+      align: left
+      contents:
+        - section: "In-Class Excercise"
+          contents:
+            - text: "2 - Superstore Sales and Profit Report"
+              href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
+
 format:
   html:
     theme: cosmo
