@@ -1,0 +1,684 @@
+---
+title: "Take-home Exercise 1: Demographic structures and distribution of Singapore in 2024"
+author: "Vanessa Riadi"
+date: "April 28, 2025"
+date-modified: "last-modified"
+format:
+  html:
+    toc: true
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+# [1]{style="color:#d496d4; background:none;"} Overview
+
+A local online media company that publishes daily content on digital platforms is planning to release an article on **demographic structures and distribution of Singapore in 2024**.
+
+# [2]{style="color:#d496d4; background:none;"} Objective
+
+Assuming the role of the graphical editor of the media company, you are tasked to prepare at most three data visualisations for the article.
+
+# [3]{style="color:#d496d4; background:none;"} Analytical Toolkit: RStudio
+
+RStudio and Quarto are used as the primary analytical toolkit for this project. The data is processed using appropriate **tidyverse** family of packages and the data visualisation prepared using **ggplot2** and its extensions.
+
+Before we get started, it is important for us to ensure that the required R packages have been installed.
+
+::: callout-note
+# Install [**pacman**](https://cran.r-project.org/web/packages/pacman/index.html) package
+
+If you have yet to install pacman, install itby typing below in the Console:
+
+```{r}
+#| eval: false
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("pacman")
+```
+:::
+
+We then load the following R packages using the `pacman::p_load()` function:
+
+\- [**tidyverse**](https://www.tidyverse.org/), a family of modern R packages specially designed to support data science, analysis and communication task including creating static statistical graphs.\
+- [**patchwork**](https://patchwork.data-imaginist.com/) for combining multiple ggplot2 graphs into one figure.\
+- [**plotly**](https://plotly.com/r/), R library for plotting interactive statistical graphs.\
+- **ggrepel:** a R package provides geoms for ggplot2 to repel overlapping text labels.\
+- **ggthemes:** a R package provides some extra themes, geoms, and scales for ggplot.\
+- **hrbrthemes**: a R package provides typography-centric themes and theme components for ggplot2.\
+- [**qreport**](https://cran.r-project.org/web/packages/qreport/index.html): Provides statistical components, tables, and graphs. - [**ggiraph**](https://davidgohel.github.io/ggiraph/)**:** for making ‘ggplot’ graphics interactive.
+
+```{r}
+pacman::p_load(tidyverse, patchwork,
+               plotly, ggrepel,
+               ggthemes, hrbrthemes, ggiraph, DT, qreport)
+```
+
+# [4]{style="color:#d496d4; background:none;"} Data Preparation
+
+Singapore Residents by Planning Area / Subzone, Single Year of Age and Sex, June 2024 dataset shared by [Department of Statistics, Singapore(DOS)](https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data)
+
+## [4.1]{style="color:#d496d4; background:none;"} Load the Data
+
+First we load the data.
+
+```{r}
+demographic_data <- read_csv("data/respopagesexfa2024.csv")
+```
+
+![](images/datapreview.jpg)
+
+## [4.2]{style="color:#d496d4; background:none;"} Check the Data
+
+```{r}
+#| echo: false
+DT::datatable(demographic_data , options = list(
+  columnDefs = list(list(className = 'dt-center', targets = 5)),
+  pageLength = 5,
+  lengthMenu = c(5, 10, 15, 20)
+))
+```
+
+From the first glance, we notice that there are '0' Pop in the dataset. For this exercise, we will be focusing on the top-level visualization per Planning Areas and granular details like Population per Subzone and Floor Area aren't necessary. We should exclude those rows with zero population values at the Planning Area level. This will help clean up the data and make the visualizations clearer by removing unnecessary zeros. We will do it in [Chapter 4.3](#dataprep)
+
+::: callout-tip
+# Did you know?
+
+There are more R packages that can help you to view or describe data. E.g. [Hmisc](https://cran.r-project.org/web/packages/Hmisc/index.html), [psych](https://cran.r-project.org/web/packages/psych/index.html), [**qreport**](https://cran.r-project.org/web/packages/qreport/index.html) package. I will be using qreport here
+
+If you have yet to install qreport, install it by typing below in the Console:
+
+```{r}
+#| eval: false
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("qreport")
+```
+:::
+
+Here I am using `qreport`package's [dataOverview](https://search.r-project.org/CRAN/refmans/qreport/html/dataOverview.html) that I already pre-load earlier.
+
+```{r}
+dataOverview(demographic_data, plot = c("none"),)
+```
+
+Let's also count what's the total Pop
+
+```{r}
+cntpop <- demographic_data %>%
+  summarise(Pop = sum(Pop, na.rm = TRUE)) 
+cat(cntpop$Pop)
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Observation** {.no-top-padding}
+
+-   The data shows Singapore Residents by Planning Area / Subzone, Single Year of Age and Sex as of June 2024 with total population of 4,187,720.
+
+-   We observe that there are 75,696 rows and 7 columns. No missing values are observed. Refer to the column legend in [Appendix A](#appendixa)
+
+-   There are a total of seven attributes. 5 of them are categorical data type and the other three are in numerical data type.
+
+    -   The categorical attributes are: PA, SZ, AG, Sex, FA.
+    -   The numerical attributes are: Pop, Time.
+
+-   We can also observe how many distinct values for each Variable. This will help us think what to use for our visualization.
+:::
+
+## [4.3]{style="color:#d496d4; background:none;"} Data Preparation {#dataprep}
+
+::: panel-tabset
+## Data Cleaning
+
+```{r}
+#| echo: false
+demographic_data_clean <- demographic_data %>%
+  filter(Pop > 0)
+
+DT::datatable(demographic_data_clean , options = list(
+  columnDefs = list(list(className = 'dt-center', targets = 5)),
+  pageLength = 5,
+  lengthMenu = c(5, 10, 15, 20)))
+```
+
+## Code
+
+```{r}
+#| eval: false
+demographic_data_clean <- demographic_data %>%
+  filter(Pop > 0)
+
+DT::datatable(demographic_data_clean , options = list(
+  columnDefs = list(list(className = 'dt-center', targets = 5)),
+  pageLength = 5,
+  lengthMenu = c(5, 10, 15, 20)))
+```
+:::
+
+# [5]{style="color:#d496d4; background:none;"} Data Visualisation, Observation, and Insights
+
+## [5.1]{style="color:#d496d4; background:none;"} Top 10 Planning Areas (PA) Ranked by Size of Resident Population (Pop)
+
+::: panel-tabset
+# Plot 1
+
+```{r}
+#| echo: false
+top10PA <- demographic_data_clean %>%
+  group_by(PA) %>%
+  summarise(Pop = sum(Pop, na.rm = TRUE)) %>%
+  slice_max(order_by = Pop, n = 10)
+
+top10plot <- ggplot(data = top10PA, 
+       aes(y = reorder(PA, Pop/1000), x = Pop/1000)) +  # reorder PA by Pop
+  geom_col(show.legend = FALSE, fill = "pink4") +
+  geom_text(aes(label = (Pop/1000)),
+            hjust = -0.2, color = "black", size = 3) +
+  ggtitle("Top 10 Planning Areas in 2024\nRanked by Size of Resident Population",
+  subtitle = paste("Total resident population:", 
+                 format(round(cntpop$Pop / 1000, 2), big.mark = ","), 
+                 "thousand")) +
+  labs(
+    y = NULL,
+    x = "Resident Population\nin thousands (‘000)",
+    caption = "Source: singstat.gov.sg"
+  ) +
+  theme_ipsum(base_family = "Arial",
+  plot_title_size = 14,
+  subtitle_size = 10,
+  caption_size = 8,
+  plot_title_face = "bold",
+  caption_face = "italic",
+  grid = "",
+  axis_title_face = "bold",
+  axis_title_size = 11) +
+  theme(axis.text.x = element_blank(),
+        axis.text.y = element_text(size=11, face="bold"),
+        axis.title.x = element_text(hjust = 0.5)
+        )+
+  scale_x_continuous(expand = expansion(mult = c(0, 0.1)))
+
+top10plot
+```
+
+# Code
+
+```{r}
+#| eval: false
+top10PA <- demographic_data_clean %>%
+  group_by(PA) %>%
+  summarise(Pop = sum(Pop, na.rm = TRUE)) %>%
+  slice_max(order_by = Pop, n = 10)
+
+top10plot <- ggplot(data = top10PA, 
+       aes(y = reorder(PA, Pop/1000), x = Pop/1000)) +  # reorder PA by Pop
+  geom_col(show.legend = FALSE, fill = "pink4") +
+  geom_text(aes(label = (Pop/1000)),
+            hjust = -0.2, color = "black", size = 3) +
+  ggtitle("Top 10 Planning Areas in 2024\nRanked by Size of Singapore Resident Population",
+  subtitle = paste("Total resident population:", 
+                 format(round(cntpop$Pop / 1000, 2), big.mark = ","), 
+                 "thousand")) +
+  labs(
+    y = NULL,
+    x = "Resident Population\nin thousands (‘000)",
+    caption = "Source: singstat.gov.sg"
+  ) +
+  theme_ipsum(base_family = "Arial",
+  plot_title_size = 14,
+  subtitle_size = 10,
+  caption_size = 8,
+  plot_title_face = "bold",
+  caption_face = "italic",
+  grid = "",
+  axis_title_face = "bold",
+  axis_title_size = 11) +
+  theme(axis.text.x = element_blank(),
+        axis.text.y = element_text(size=11, face="bold"),
+        axis.title.x = element_text(hjust = 0.5)
+        )+
+  scale_x_continuous(expand = expansion(mult = c(0, 0.1)))
+
+top10plot
+```
+
+# Deepdive for more insights
+
+```{r}
+# Total population of the top 10 Planning Area
+cntpoptop10 <- top10PA %>%
+  summarise(Pop = sum(Pop, na.rm = TRUE)) 
+cat(cntpoptop10$Pop)
+```
+
+```{r}
+# The percentage of the population of the top 10 most populous Planning Area relative to the total population.
+perc_pop_top10 <- (cntpoptop10 / cntpop) * 100
+cat(perc_pop_top10$Pop)
+```
+:::
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Insights Plot 1** {.no-top-padding}
+
+In 2024, slightly over half (56.3%) of the 4,187.72 thousand (\~4.19 million) residents in Singapore stayed in the top 10 planning areas of residence. There were five planning areas with more than 250,000 residents each, namely Tampines, Bedok, Sengkang, Jurong West, and Woodlands. Tampines was the most populated with 284,720 residents.
+:::
+
+## [5.2]{style="color:#d496d4; background:none;"} Age Distribution
+
+::: panel-tabset
+# Plot 2
+
+```{r}
+#| echo: false
+AG_levels <- c(
+  "0_to_4", "5_to_9", "10_to_14", "15_to_19", "20_to_24",
+  "25_to_29", "30_to_34", "35_to_39", "40_to_44", "45_to_49",
+  "50_to_54", "55_to_59", "60_to_64", "65_to_69", "70_to_74",
+  "75_to_79", "80_to_84", "85_to_89", "90_and_over"
+)
+
+AGsum2 <- demographic_data_clean %>%
+  group_by(AG) %>%
+  summarise(Pop = sum(Pop, na.rm = TRUE), .groups = "drop") %>%
+  mutate(AG = factor(AG, levels = AG_levels)) %>%
+  arrange(AG) %>%
+  mutate(
+    Pop_share = Pop / sum(Pop),
+    cum_share = cumsum(Pop_share),
+    percentile = round(cum_share * 100, 1)
+  )
+
+# Get the median group
+median_AGsum2 <- AGsum2 %>%
+  filter(cumsum(Pop) >= sum(Pop) / 2) %>%
+  slice(1) %>%
+  pull(AG)
+
+# Get the third quantile or 75 percentile
+q3_AGsum2 <- AGsum2 %>%
+  filter(cumsum(Pop) >= sum(Pop) * 0.75) %>%
+  slice(1) %>%
+  pull(AG)
+
+AGsumplot2 <- AGsum2 %>%
+  ggplot(
+       aes(y = Pop/1000, x = AG)) +  # reorder AG_recode by Pop
+  geom_col(show.legend = FALSE, fill = "pink4") +
+  geom_text(aes(label = (Pop/1000)),
+            color = "black", size = 3, angle = 90, hjust = -0.2) +
+  ggtitle("Age Distribution of Singapore Resident Population",
+  subtitle = "in thousands (‘000)") +
+  annotate("segment",
+         x = median_AGsum2, xend = median_AGsum2,
+         y = 0, yend = 360,
+         color = "red", 
+         linewidth = 0.7, 
+         linetype = "dotted") +
+  annotate("text",
+         x = median_AGsum2, 
+         y = 370,
+         label = "Median",
+         color = "red",
+         size = 2.8)+
+  annotate("segment",
+         x = q3_AGsum2, xend = q3_AGsum2,
+         y = 0, yend = 360,
+         color = "skyblue", 
+         linewidth = 0.7, 
+         linetype = "dotted") +
+  annotate(
+    geom = "text", 
+    x = q3_AGsum2, 
+    y = 370,
+    label = paste0("Q3"),
+    color="skyblue",
+    size = 2.8)+
+  labs(
+    y = NULL,
+    x = "Age Group",
+    caption = "Source: singstat.gov.sg") +
+  theme_ipsum(base_family = "Arial",
+  plot_title_size = 14,
+  subtitle_size = 10,
+  caption_size = 8,
+  plot_title_face = "bold",
+  caption_face = "italic",
+  grid = "Y",
+  axis_title_face = "bold",
+  axis_title_size = 11) +
+  theme(axis.text.x = element_text(size=8, face="bold", angle = -45, hjust = 0),
+        axis.text.y = element_blank(), #element_text(size=11, face="bold"),
+        axis.title.x = element_text(size=11, face="bold", hjust = 0.5)
+        )+
+  scale_y_continuous(expand = expansion(mult = c(0, 0.02))) + 
+  scale_x_discrete(labels=c("0_to_4" = "0-4",
+      "5_to_9" = "5-9",
+      "10_to_14" = "10-14",
+      "15_to_19" = "15-19",
+      "20_to_24" = "20-24",
+      "25_to_29" = "25-29",
+      "30_to_34" = "30-34",
+      "35_to_39" = "35-39",
+      "40_to_44" = "40-44",
+      "45_to_49" = "45-49",
+      "50_to_54" = "50-54",
+      "55_to_59" = "55-59",
+      "60_to_64" = "60-64",
+      "65_to_69" = "65-69",
+      "70_to_74" = "70-74",
+      "75_to_79" = "75-79",
+      "80_to_84" = "80-84",
+      "85_to_89" = "85-89",
+      "90_and_over" = "> 90"))
+
+AGsumplot2
+```
+
+# Code
+
+```{r}
+#| eval: false
+AG_levels <- c(
+  "0_to_4", "5_to_9", "10_to_14", "15_to_19", "20_to_24",
+  "25_to_29", "30_to_34", "35_to_39", "40_to_44", "45_to_49",
+  "50_to_54", "55_to_59", "60_to_64", "65_to_69", "70_to_74",
+  "75_to_79", "80_to_84", "85_to_89", "90_and_over"
+)
+
+AGsum2 <- demographic_data_clean %>%
+  group_by(AG) %>%
+  summarise(Pop = sum(Pop, na.rm = TRUE), .groups = "drop") %>%
+  mutate(AG = factor(AG, levels = AG_levels)) %>%
+  arrange(AG) %>%
+  mutate(
+    Pop_share = Pop / sum(Pop),
+    cum_share = cumsum(Pop_share),
+    percentile = round(cum_share * 100, 1)
+  )
+
+# Get the median group
+median_AGsum2 <- AGsum2 %>%
+  filter(cumsum(Pop) >= sum(Pop) / 2) %>%
+  slice(1) %>%
+  pull(AG)
+
+# Get the third quantile or 75 percentile
+q3_AGsum2 <- AGsum2 %>%
+  filter(cumsum(Pop) >= sum(Pop) * 0.75) %>%
+  slice(1) %>%
+  pull(AG)
+
+AGsumplot2 <- AGsum2 %>%
+  ggplot(
+       aes(y = Pop/1000, x = AG)) +  # reorder AG_recode by Pop
+  geom_col(show.legend = FALSE, fill = "pink4") +
+  geom_text(aes(label = (Pop/1000)),
+            color = "black", size = 3, angle = 90, hjust = -0.2) +
+  ggtitle("Age Distribution of Singapore Resident Population",
+  subtitle = "in thousands (‘000)") +
+  annotate("segment",
+         x = median_AGsum2, xend = median_AGsum2,
+         y = 0, yend = 360,
+         color = "red", 
+         linewidth = 0.7, 
+         linetype = "dotted") +
+  annotate("text",
+         x = median_AGsum2, 
+         y = 370,
+         label = "Median",
+         color = "red",
+         size = 2.8)+
+  annotate("segment",
+         x = q3_AGsum2, xend = q3_AGsum2,
+         y = 0, yend = 360,
+         color = "skyblue", 
+         linewidth = 0.7, 
+         linetype = "dotted") +
+  annotate(
+    geom = "text", 
+    x = q3_AGsum2, 
+    y = 370,
+    label = paste0("Q3"),
+    color="skyblue",
+    size = 2.8)+
+  labs(
+    y = NULL,
+    x = "Age Group",
+    caption = "Source: singstat.gov.sg") +
+  theme_ipsum(base_family = "Arial",
+  plot_title_size = 14,
+  subtitle_size = 10,
+  caption_size = 8,
+  plot_title_face = "bold",
+  caption_face = "italic",
+  grid = "Y",
+  axis_title_face = "bold",
+  axis_title_size = 11) +
+  theme(axis.text.x = element_text(size=8, face="bold", angle = -45, hjust = 0),
+        axis.text.y = element_blank(), #element_text(size=11, face="bold"),
+        axis.title.x = element_text(size=11, face="bold", hjust = 0.5)
+        )+
+  scale_y_continuous(expand = expansion(mult = c(0, 0.02))) + 
+  scale_x_discrete(labels=c("0_to_4" = "0-4",
+      "5_to_9" = "5-9",
+      "10_to_14" = "10-14",
+      "15_to_19" = "15-19",
+      "20_to_24" = "20-24",
+      "25_to_29" = "25-29",
+      "30_to_34" = "30-34",
+      "35_to_39" = "35-39",
+      "40_to_44" = "40-44",
+      "45_to_49" = "45-49",
+      "50_to_54" = "50-54",
+      "55_to_59" = "55-59",
+      "60_to_64" = "60-64",
+      "65_to_69" = "65-69",
+      "70_to_74" = "70-74",
+      "75_to_79" = "75-79",
+      "80_to_84" = "80-84",
+      "85_to_89" = "85-89",
+      "90_and_over" = "> 90"))
+
+AGsumplot2
+```
+
+# Deepdive for more insights
+
+```{r}
+# Details of the AG distribution
+AGsum2
+```
+:::
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Insights Plot 2** {.no-top-padding}
+
+The median age falls within 40 to 44 age group with 25% of the population is aged 60 and above and 18% aged 65 and older. This indicates an aging population, a trend characterized by an increasing proportion of older individuals [(typically defined as 65 years and over)](https://www.weforum.org/stories/2023/09/life-expectancy-countries-ageing-populations/).
+
+25% of the population is already aged 60 and above. 18% of the population are 65 and above An aging population refers to a demographic shift where the proportion of older people (typically 65 and over). The youngest age groups (0–4, 5–9, 10–14) collectively account for only about 13.8% of the population, suggesting lower birth rates in recent years. According to the [Ministry of Manpower](https://stats.mom.gov.sg/Statistics/Pages/labourforce.aspx), the working-age population is defined as those aged 15 to 64, who make up approximately 68.2% of the total population. This reflects a strong labour force, though future demographic challenges may arise as this group continues to age.
+:::
+
+## [5.3]{style="color:#d496d4; background:none;"} Sex distribution by Age Group
+
+::: panel-tabset
+# Plot 3
+
+```{r}
+#| echo: false
+pyramid_data <- demographic_data_clean %>%
+  group_by(AG, Sex) %>%
+  summarise(Population = (sum(Pop, na.rm = TRUE)/1000)) %>%
+  ungroup()
+
+totpop_pyramid <- sum(pyramid_data$Population)
+
+pyramid_data <- pyramid_data %>%
+  mutate(PopPercentage = ifelse(Sex == "Females",
+                                -round(Population / totpop_pyramid * 100, 2),
+                                round(Population / totpop_pyramid * 100, 2)),
+         Signal = ifelse(Sex == "Females", -1, 1))
+
+pyramid_data$AG <- factor(pyramid_data$AG,
+                           levels = c("0_to_4", "5_to_9", "10_to_14", "15_to_19",
+                                      "20_to_24", "25_to_29", "30_to_34", "35_to_39",
+                                      "40_to_44", "45_to_49", "50_to_54", "55_to_59",
+                                      "60_to_64", "65_to_69", "70_to_74", "75_to_79",
+                                      "80_to_84", "85_to_89", "90_and_over"),
+                           labels = c("0-4", "5-9", "10-14", "15-19",
+                                      "20-24", "25-29", "30-34", "35-39",
+                                      "40-44", "45-49", "50-54", "55-59",
+                                      "60-64", "65-69", "70-74", "75-79",
+                                      "80-84", "85-89", ">90"),
+                           ordered = TRUE)
+
+
+pyramid_plot <- ggplot(pyramid_data, aes(x = AG, y = PopPercentage, fill = Sex)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(y = PopPercentage + Signal * 0.5, label = abs(PopPercentage)),
+            size = 3, color = "black") +
+  coord_flip() +
+  scale_fill_manual(values = c("Females" = "pink2", "Males" = "steelblue"),
+                    guide = guide_legend(override.aes = list(fill = NA))) +
+  scale_y_continuous(labels = abs) +
+  ggtitle("Population Pyramid of Singapore Residents\nby Age and Sex 2024",
+  subtitle = "in percentage (%)") +
+  labs(
+    y = "Population (%)",
+    x = "Age Group",
+    fill = "Sex",
+    caption = "Source: singstat.gov.sg") +
+  theme_ipsum(base_family = "Arial",
+  plot_title_size = 14,
+  subtitle_size = 10,
+  caption_size = 8,
+  plot_title_face = "bold",
+  caption_face = "italic",
+  grid = "Y",
+  axis_title_face = "bold",
+  axis_title_size = 11,
+  axis_text_size = 8) +
+  theme(
+    strip.text = element_text(face = "bold"),
+    axis.title.x = element_text(hjust = 0.5),
+    axis.title.y = element_text(hjust = 0.5),
+    #axis.text.y = element_text(size = 8),
+    legend.position = "top",
+    legend.title = element_blank(),
+    legend.justification = c(0.45, 0),
+    legend.margin = margin(t = -20, r = 0, b = -10, l = 0, unit = "pt"))
+
+pyramid_plot
+```
+
+# Code
+
+```{r}
+#| eval: false
+pyramid_data <- demographic_data_clean %>%
+  group_by(AG, Sex) %>%
+  summarise(Population = (sum(Pop, na.rm = TRUE)/1000)) %>%
+  ungroup()
+
+totpop_pyramid <- sum(pyramid_data$Population)
+
+pyramid_data <- pyramid_data %>%
+  mutate(PopPercentage = ifelse(Sex == "Females",
+                                -round(Population / totpop_pyramid * 100, 2),
+                                round(Population / totpop_pyramid * 100, 2)),
+         Signal = ifelse(Sex == "Females", -1, 1))
+
+pyramid_data$AG <- factor(pyramid_data$AG,
+                           levels = c("0_to_4", "5_to_9", "10_to_14", "15_to_19",
+                                      "20_to_24", "25_to_29", "30_to_34", "35_to_39",
+                                      "40_to_44", "45_to_49", "50_to_54", "55_to_59",
+                                      "60_to_64", "65_to_69", "70_to_74", "75_to_79",
+                                      "80_to_84", "85_to_89", "90_and_over"),
+                           labels = c("0-4", "5-9", "10-14", "15-19",
+                                      "20-24", "25-29", "30-34", "35-39",
+                                      "40-44", "45-49", "50-54", "55-59",
+                                      "60-64", "65-69", "70-74", "75-79",
+                                      "80-84", "85-89", ">90"),
+                           ordered = TRUE)
+
+
+pyramid_plot <- ggplot(pyramid_data, aes(x = AG, y = PopPercentage, fill = Sex)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(y = PopPercentage + Signal * 0.5, label = abs(PopPercentage)),
+            size = 3, color = "black") +
+  coord_flip() +
+  scale_fill_manual(values = c("Females" = "pink2", "Males" = "steelblue"),
+                    guide = guide_legend(override.aes = list(fill = NA))) +
+  scale_y_continuous(labels = abs) +
+  ggtitle("Population Pyramid of Singapore Residents\nby Age and Sex 2024",
+  subtitle = "in percentage (%)") +
+  labs(
+    y = "Population (%)",
+    x = "Age Group",
+    fill = "Sex",
+    caption = "Source: singstat.gov.sg") +
+  theme_ipsum(base_family = "Arial",
+  plot_title_size = 14,
+  subtitle_size = 10,
+  caption_size = 8,
+  plot_title_face = "bold",
+  caption_face = "italic",
+  grid = "Y",
+  axis_title_face = "bold",
+  axis_title_size = 11,
+  axis_text_size = 8) +
+  theme(
+    strip.text = element_text(face = "bold"),
+    axis.title.x = element_text(hjust = 0.5),
+    axis.title.y = element_text(hjust = 0.5),
+    #axis.text.y = element_text(size = 8),
+    legend.position = "top",
+    legend.title = element_blank(),
+    legend.justification = c(0.45, 0),
+    legend.margin = margin(t = -20, r = 0, b = -10, l = 0, unit = "pt"))
+
+pyramid_plot
+```
+
+# Deepdive for more insights
+```{r}
+# Details of the population pyramid distribution
+pyramid_data
+```
+:::
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Insights Plot 3** {.no-top-padding}
+
+In the youngest age group (0-4), there are slightly more males than females. The 25-29 age group shows a near-equal population size for both genders. The gender gap widens in the older age cohorts, with majority female in the 80+ age groups. This show that females live longer than males on average, consistent with the [2023 report by the Singapore Department of Statistics](https://www.singstat.gov.sg/-/media/files/publications/population/lifetable22-23.ashx), which states that life expectancy at birth was 85.2 years for females and 80.7 years for males. 
+
+:::
+
+# [6]{style="color:#d496d4; background:none;"} Reference
+
+\- [ggplot for categorical-data](https://mq-software-carpentry.github.io/r-ggplot-extension/02-categorical-data/index.html)\
+- [Describe function](https://www.geeksforgeeks.org/describe-function-in-r/)\
+- [gt package](https://gt.rstudio.com/)\
+- [theme for ggplot2](https://ggplot2.tidyverse.org/reference/theme.html)\
+- [Recode Values with dplyr](https://dplyr.tidyverse.org/reference/recode.html)\
+- [Customize tick marks and labels](https://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels)\
+- [National Statistical Standards Recommendations on Definition and Classification of Age](https://www.singstat.gov.sg/-/media/files/standards_and_classifications/nsa.ashx)\
+- [Cencus of Population 2020](https://www.parliament.gov.sg/docs/default-source/default-document-library/cop2020sr2.pdf)\
+- [Population Pyramid Plot](https://www.njtierney.com/post/2022/08/09/ggplot-pyramid/)\
+- [Ageing Population](https://www.weforum.org/stories/2023/09/life-expectancy-countries-ageing-populations/)
+
+# [7]{style="color:#d496d4; background:none;"} Appendix
+
+## [7.1]{style="color:#d496d4; background:none;"} Appendix A {#appendixa}
+
+| **Column Name** | **Description**             |
+|-----------------|-----------------------------|
+| PA              | Planning Area               |
+| SZ              | Subzone                     |
+| AG              | Age Group                   |
+| Sex             | Sex                         |
+| FA              | Floor Area of Residence     |
+| Pop             | Resident Count (Population) |
+| Time            | Time / Period               |
+
+: {tbl-colwidths="\[20,80\]"}

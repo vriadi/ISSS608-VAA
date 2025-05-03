@@ -94,6 +94,17 @@ website:
           contents:
             - text: "2 - Superstore Sales and Profit Report"
               href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
+            - text: "3 - Superstore Sales vs Profit by States Quadrant"
+              href: In-class_Ex/In-class_Ex03/In-class_Ex03.html
+    - title: "Take-Home Exercise"
+      style: "floating"
+      collapse-level: 2
+      align: left
+      contents:
+        - section: "Take-Home Exercise"
+          contents:
+            - text: "1 - Demographic structures and distribution of Singapore in 2024"
+              href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html
 
 format:
   html:
