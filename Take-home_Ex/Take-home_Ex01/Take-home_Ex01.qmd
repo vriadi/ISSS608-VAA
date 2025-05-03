@@ -1,7 +1,7 @@
 ---
 title: "Take-home Exercise 1: Demographic structures and distribution of Singapore in 2024"
 author: "Vanessa Riadi"
-date: "April 28, 2025"
+date: "May 4, 2025"
 date-modified: "last-modified"
 format:
   html:

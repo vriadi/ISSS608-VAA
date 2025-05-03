@@ -41,7 +41,7 @@ website:
         href: about.html
   
   announcement: 
-    content: "**NEW (28/04)** - [**Hands-on Exercise 3.1**](https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex03_1/hands-on_ex03_1) and [**Hands-on Exercise 3.2**](https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex03_2/hands-on_ex03_2) are published!"
+    content: "**NEW (04/05)** - [**Take-home Exercise 1**](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex01/take-home_ex01) is published!"
     position: below-navbar
     icon: info-circle
     type: info
