@@ -261,7 +261,11 @@ cat(perc_pop_top10$Pop)
 ::: {.nursebox .nurse data-latex="nurse"}
 #### **Insights Plot 1** {.no-top-padding}
 
-In 2024, slightly over half (56.3%) of the 4,187.72 thousand (\~4.19 million) residents in Singapore stayed in the top 10 planning areas of residence. There were five planning areas with more than 250,000 residents each, namely Tampines, Bedok, Sengkang, Jurong West, and Woodlands. Tampines was the most populated with 284,720 residents.
+-   Slightly over half (56.3%) of the 4,187.72 thousand (\~4.19 million) residents in Singapore stayed in the top 10 planning areas of residence.
+
+-   There were five planning areas with more than 250,000 residents each, namely Tampines, Bedok, Sengkang, Jurong West, and Woodlands.
+
+-   Tampines was the most populated with 284,720 residents.
 :::
 
 ## [5.2]{style="color:#d496d4; background:none;"} Age Distribution
@@ -494,7 +498,11 @@ AGsum2
 ::: {.nursebox .nurse data-latex="nurse"}
 #### **Insights Plot 2** {.no-top-padding}
 
-The median age falls within 40 to 44 age group with 25% of the population is aged 60 and above and 18% aged 65 and older. This indicates an aging population, a trend characterized by an increasing proportion of older individuals [(typically defined as 65 years and over)](https://www.weforum.org/stories/2023/09/life-expectancy-countries-ageing-populations/). The youngest age groups (0–4, 5–9, 10–14) collectively account for only about 13.8% of the population, suggesting lower birth rates in recent years. According to the [Ministry of Manpower](https://stats.mom.gov.sg/Statistics/Pages/labourforce.aspx), the working-age population is defined as those aged 15 to 64, who make up approximately 68.2% of the total population. This reflects a strong labour force, though future demographic challenges may arise as this group continues to age.
+-   The median age falls within 40 to 44 age group with 25% of the population is aged 60 and above and 18% aged 65 and older. This indicates an aging population, a trend characterized by an increasing proportion of older individuals [(typically defined as 65 years and over)](https://www.weforum.org/stories/2023/09/life-expectancy-countries-ageing-populations/).
+
+-   The youngest age groups (0–4, 5–9, 10–14) collectively account for only about 13.8% of the population, suggesting lower birth rates in recent years.
+
+-   According to the [Ministry of Manpower](https://stats.mom.gov.sg/Statistics/Pages/labourforce.aspx), the working-age population is defined as those aged 15 to 64, who make up approximately 68.2% of the total population. This reflects a strong labour force, though future demographic challenges may arise as this group continues to age.
 :::
 
 ## [5.3]{style="color:#d496d4; background:none;"} Sex distribution by Age Group
@@ -639,6 +647,7 @@ pyramid_plot
 ```
 
 # Deepdive for more insights
+
 ```{r}
 # Details of the population pyramid distribution
 pyramid_data
@@ -648,8 +657,11 @@ pyramid_data
 ::: {.nursebox .nurse data-latex="nurse"}
 #### **Insights Plot 3** {.no-top-padding}
 
-In the youngest age group (0-4), there are slightly more males than females. The 25-29 age group shows a near-equal population size for both genders. The gender gap widens in the older age cohorts, with majority female in the 80+ age groups. This show that females live longer than males on average, consistent with the life expectancy at birth between the different gendersfrom [2023 report by the Singapore Department of Statistics](https://www.singstat.gov.sg/-/media/files/publications/population/lifetable22-23.ashx). 
+-   In the youngest age group (0-4), there are slightly more males than females.
 
+-   The 25-29 age group shows a near-equal population size for both genders.
+
+-   The gender gap widens in the older age cohorts, with majority female in the 80+ age groups. This show that females live longer than males on average, consistent with the life expectancy at birth between the different gendersfrom [2023 report by the Singapore Department of Statistics](https://www.singstat.gov.sg/-/media/files/publications/population/lifetable22-23.ashx).
 :::
 
 # [6]{style="color:#d496d4; background:none;"} Reference
