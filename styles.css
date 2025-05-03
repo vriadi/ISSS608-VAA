@@ -23,3 +23,20 @@ a:hover {
 
 /* for chap no [2.4]{style="color:#d496d4; background:none;"} */
 
+.nursebox {
+  padding: 1em 1em 1em 1em;
+  border: 1.5px dotted #50434f;
+  border-radius: 10px;
+  background:  #f0dcf4;
+}
+
+.nurse {
+  background-position: left;
+  background-position-x: 1rem;
+  background-position-y: 1rem;
+  background-size: auto 62px;
+}
+
+.no-top-padding {
+  padding-top: 0 !important; /* Use !important to ensure it overrides other styles if needed */
+}
