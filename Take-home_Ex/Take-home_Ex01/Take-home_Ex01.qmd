@@ -127,8 +127,10 @@ cat(cntpop$Pop)
 
 ## [4.3]{style="color:#d496d4; background:none;"} Data Preparation {#dataprep}
 
+As mentioned earlier, we will be focusing on the top-level visualization per Planning Areas and granular details like Population per Subzone and Floor Area aren't necessary. Here we will exclude those rows with zero population values at the Planning Area level by using `filter`.
+
 ::: panel-tabset
-## Data Cleaning
+## Cleaned Data
 
 ```{r}
 #| echo: false
@@ -142,7 +144,7 @@ DT::datatable(demographic_data_clean , options = list(
 ```
 
 ## Code
-
+Clean using `filter` and display as data table
 ```{r}
 #| eval: false
 demographic_data_clean <- demographic_data %>%
@@ -650,7 +652,7 @@ pyramid_plot
 
 ```{r}
 # Details of the population pyramid distribution
-pyramid_data
+print(pyramid_data, n = 38)
 ```
 :::
 
