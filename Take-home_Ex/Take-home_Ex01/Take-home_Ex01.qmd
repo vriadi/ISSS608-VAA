@@ -694,29 +694,38 @@ AGsum2
 ```{r}
 #| echo: false
 #| fig-height: 15
+
 table_data <- table(demographic_data_recode$AG_recode, demographic_data_recode$PA)
 
 chi_test <- chisq.test(table_data)
 
 residuals_df <- as.data.frame(as.table(chi_test$residuals))
+
+AG_levels <- c("Below 20 Years", "20-64 Years", "65 Years and Above")
+
+AG_labels <- c("Below 20 Years", "20-64 Years", "65 Years and Above")
+
+residuals_df <- residuals_df %>%
+  mutate(Var1 = factor(Var1, levels = AG_levels, labels = AG_labels, ordered = TRUE))
+
 ggplot(residuals_df, aes(Var1, Var2, fill = Freq)) +
-     geom_tile() +
-     geom_text(aes(label = round(Freq, 2)), size = 4) +
-     scale_fill_gradient2(low = "steelblue", high = "red3", mid = "white", midpoint = 0) +
-     labs(x = "AG", y = "PA", fill = "Residuals") +
+  geom_tile() +
+  geom_text(aes(label = round(Freq, 2)), size = 4) +
+  scale_fill_gradient2(low = "steelblue", high = "red3", mid = "white", midpoint = 0) +
+  labs(x = "AG", y = "PA", fill = "Residuals") +
   ggtitle("Association Between Age Group\nand Planning Area in Singapore 2024",
-         subtitle = "Meassured using Pearson's Chi-squared test") +
+          subtitle = "Meassured using Pearson's Chi-squared test") +
   labs(caption = "Source: singstat.gov.sg")+
-theme_ipsum(base_family = "Arial",
-            plot_title_size = 14,
-            subtitle_size = 10,
-            caption_size = 8,
-            plot_title_face = "bold",
-            caption_face = "italic",
-            grid = "Y",
-            axis_title_face = "bold",
-            axis_title_size = 11,
-            axis_text_size = 8) +
+  theme_ipsum(base_family = "Arial",
+              plot_title_size = 14,
+              subtitle_size = 10,
+              caption_size = 8,
+              plot_title_face = "bold",
+              caption_face = "italic",
+              grid = "Y",
+              axis_title_face = "bold",
+              axis_title_size = 11,
+              axis_text_size = 8) +
   theme(
     strip.text = element_text(face = "bold"),
     axis.text.x = element_text(size=10, face="bold", angle = -45, hjust = 0),
@@ -741,24 +750,32 @@ table_data <- table(demographic_data_recode$AG_recode, demographic_data_recode$P
 chi_test <- chisq.test(table_data)
 
 residuals_df <- as.data.frame(as.table(chi_test$residuals))
+
+AG_levels <- c("Below 20 Years", "20-64 Years", "65 Years and Above")
+
+AG_labels <- c("Below 20 Years", "20-64 Years", "65 Years and Above")
+
+residuals_df <- residuals_df %>%
+  mutate(Var1 = factor(Var1, levels = AG_levels, labels = AG_labels, ordered = TRUE))
+
 ggplot(residuals_df, aes(Var1, Var2, fill = Freq)) +
-     geom_tile() +
-     geom_text(aes(label = round(Freq, 2)), size = 4) +
-     scale_fill_gradient2(low = "steelblue", high = "red3", mid = "white", midpoint = 0) +
-     labs(x = "AG", y = "PA", fill = "Residuals") +
+  geom_tile() +
+  geom_text(aes(label = round(Freq, 2)), size = 4) +
+  scale_fill_gradient2(low = "steelblue", high = "red3", mid = "white", midpoint = 0) +
+  labs(x = "AG", y = "PA", fill = "Residuals") +
   ggtitle("Association Between Age Group\nand Planning Area in Singapore 2024",
-         subtitle = "Meassured using Pearson's Chi-squared test") +
+          subtitle = "Meassured using Pearson's Chi-squared test") +
   labs(caption = "Source: singstat.gov.sg")+
-theme_ipsum(base_family = "Arial",
-            plot_title_size = 14,
-            subtitle_size = 10,
-            caption_size = 8,
-            plot_title_face = "bold",
-            caption_face = "italic",
-            grid = "Y",
-            axis_title_face = "bold",
-            axis_title_size = 11,
-            axis_text_size = 8) +
+  theme_ipsum(base_family = "Arial",
+              plot_title_size = 14,
+              subtitle_size = 10,
+              caption_size = 8,
+              plot_title_face = "bold",
+              caption_face = "italic",
+              grid = "Y",
+              axis_title_face = "bold",
+              axis_title_size = 11,
+              axis_text_size = 8) +
   theme(
     strip.text = element_text(face = "bold"),
     axis.text.x = element_text(size=10, face="bold", angle = -45, hjust = 0),
