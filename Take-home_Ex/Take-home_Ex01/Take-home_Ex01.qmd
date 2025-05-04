@@ -779,7 +779,7 @@ theme_ipsum(base_family = "Arial",
 
 -   [Central Areas](https://www.hdb.gov.sg/about-us/history/hdb-towns-your-home/central){target="_blank"} like Downtown Core are skewed toward working-age group with strong over-representation of the 20–64 group (+7.46) and lesser children (–4.03) and seniors (–6.69), reflecting its role as a Central Business District. Similar patterns appear in Newton, Museum (Bras Basah, Dhoby Ghaut, Fort Canning), and Singapore River (Boat Quay, Clarke Quay, Robertson Quay).
 
--   New BTO areas like (Tengah)[https://www.hdb.gov.sg/about-us/history/hdb-towns-your-home/tengah]{target="_blank"} and [Punggol](https://www.hdb.gov.sg/about-us/history/hdb-towns-your-home/punggol){target="_blank"} show more children and lesser seniors, indicating young families moving into new Towns / Planning Areas.
+-   New BTO areas like [Tengah](https://www.hdb.gov.sg/about-us/history/hdb-towns-your-home/tengah){target="_blank"} and [Punggol](https://www.hdb.gov.sg/about-us/history/hdb-towns-your-home/punggol){target="_blank"} show more children and lesser seniors, indicating young families moving into new Towns / Planning Areas.
 
 -   [Mature Towns](https://www.channelnewsasia.com/singapore/mature-estates-hdb-flats-classified-cna-explains-3581846#:~:text=The%20mature%20towns%20and%20estates,Serangoon%2C%20Tampines%20and%20Toa%20Payoh.){target="_blank"} such as Bedok, Ang Mo Kio, and Hougang exhibit neutral residuals, suggesting stable populations with a mix of age groups and long-term residents.
 
