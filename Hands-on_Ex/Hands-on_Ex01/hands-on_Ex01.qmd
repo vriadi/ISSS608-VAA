@@ -45,7 +45,7 @@ pacman::p_load(tidyverse)
 -   **readr** is one of the tidyverse package.
 
 ```{r}
-exam_data <- read_csv("data/Exam_data.csv")
+exam_data <- read_csv("../data/Exam_data.csv")
 ```
 
 -   Year end examination grades of a cohort of primary 3 students from a local school.
