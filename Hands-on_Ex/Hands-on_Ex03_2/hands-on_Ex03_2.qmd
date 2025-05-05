@@ -65,23 +65,25 @@ In this hands-on exercise, the *Data* worksheet from *GlobalPopulation* Excel wo
 Write a code chunk to import Data worksheet from GlobalPopulation Excel workbook by using appropriate R package from tidyverse family.
 
 ::: panel-tabset
-## mutate_at\*()
+## mutate_at()
 
 Using [`mutate_at()`]() as shown in the code chunk below.
 
 ```{r}
 col <- c("Country", "Continent")
-globalPop <- read_xls("data/GlobalPopulation.xls",
+globalPop <- read_xls("../data/GlobalPopulation.xls",
                       sheet="Data") %>%
   mutate_at(col, as.factor) %>%
   mutate(Year = as.integer(Year))
 ```
 
-## Instead of using `mutate_at()`, [`across()`](https://dplyr.tidyverse.org/reference/across.html) can be used to derive the same outputs.
+## across()
+
+Instead of using `mutate_at()`, [`across()`](https://dplyr.tidyverse.org/reference/across.html) can be used to derive the same outputs.
 
 ```{r}
 col <- c("Country", "Continent")
-globalPop <- read_xls("data/GlobalPopulation.xls",
+globalPop <- read_xls("../data/GlobalPopulation.xls",
                       sheet="Data") %>%
   mutate(across(col, as.factor)) %>%
   mutate(Year = as.integer(Year))
@@ -94,7 +96,7 @@ Unfortunately, `mutate_each_()` was deprecated in dplyr 0.7.0. and `funs()` was 
 ```{r}
 #| eval: false
 col <- c("Country", "Continent")
-globalPop <- read_xls("data/GlobalPopulation.xls",
+globalPop <- read_xls("../data/GlobalPopulation.xls",
                       sheet="Data") %>%
   mutate_each_(funs(factor(.)), col) %>%
   mutate(Year = as.integer(Year))

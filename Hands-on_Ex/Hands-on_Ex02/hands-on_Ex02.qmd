@@ -50,7 +50,7 @@ The code chunk below imports *exam_data.csv* into R environment by using [*read_
 
 ::: {style="font-size: 1.4em"}
 ```{r}
-exam_data <- read_csv("data/Exam_data.csv")
+exam_data <- read_csv("../data/Exam_data.csv")
 ```
 :::
 

@@ -44,7 +44,7 @@ The code below `read_csv()` of **readr** package is used to import *Exam_data.cs
 
 ::: {style="font-size: 1.2em"}
 ```{r}
-exam_data <- read_csv("data/Exam_data.csv")
+exam_data <- read_csv("../data/Exam_data.csv")
 ```
 :::
 
