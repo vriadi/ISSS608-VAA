@@ -5,6 +5,14 @@ project:
 website:
   favicon: images/favicon.png
   title: ""
+  
+  announcement: 
+    content: "**NEW (08/05)** - [**Hands-on Exercise 4**](Hands-on_Ex/Hands-on_Ex04_1/hands-on_Ex04_1.html) is published!"
+    position: below-navbar
+    icon: info-circle
+    type: info
+    dismissable: true
+    
   navbar:
     background: "#50434f"
     foreground: "#ffffff"
@@ -20,6 +28,14 @@ website:
             href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.html
           - text: "3.2 - Programming Interactive Data Visualisation with R"
             href: Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.html
+          - text: "4.1 - Visualising Distribution"
+            href: Hands-on_Ex/Hands-on_Ex04_1/hands-on_Ex04_1.html
+          - text: "4.2 - Visual Statistical Analysis"
+            href: Hands-on_Ex/Hands-on_Ex04_2/hands-on_Ex04_2.html
+          - text: "4.3 - Visualising Uncertainty"
+            href: Hands-on_Ex/Hands-on_Ex04_3/hands-on_Ex04_3.html
+          - text: "4.4 - Funnel Plots for Fair Comparisons"
+            href: Hands-on_Ex/Hands-on_Ex04_4/hands-on_Ex04_4.html
 
       - text: "In-class Exercise"
         menu:
@@ -30,8 +46,10 @@ website:
             
       - text: "Take-home Exercise"
         menu:
-          - text: "1 - Demographic structures and distribution of Singapore in 2024"
+          - text: "1.1 - Demographic structures and distribution of Singapore in 2024"
             href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html
+          - text: "1.2 - Take Home Exercise 1 Part 2"
+            href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01_phase2.html
     right:
       - icon: house-fill
         text: Home
@@ -39,13 +57,54 @@ website:
       - icon: person-circle
         text: About Me
         href: about.html
-  
-  announcement: 
-    content: "**NEW (04/05)** - [**Take-home Exercise 1**](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex01/take-home_ex01) is published!"
-    position: below-navbar
-    icon: info-circle
-    type: info
-    dismissable: true
+    
+  sidebar:
+    - # background: "#f1f4f5" 
+      title: "Hands-On Exercise"
+      style: "floating"
+      collapse-level: 2
+      align: left
+      contents:
+        - section: "Hands-On Excercise"
+          contents:
+            - text: "1 - A Layered Grammar of Graphics"
+              href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.html
+            - text: "2 - Beyond ggplot2 Fundamentals"
+              href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.html
+            - text: "3.1 - Programming Interactive Data Visualisation with R"
+              href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.html
+            - text: "3.2 - Programming Interactive Data Visualisation with R"
+              href: Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.html
+            - text: "4.1 - Visualising Distribution"
+              href: Hands-on_Ex/Hands-on_Ex04_1/hands-on_Ex04_1.html
+            - text: "4.2 - Visual Statistical Analysis"
+              href: Hands-on_Ex/Hands-on_Ex04_2/hands-on_Ex04_2.html
+            - text: "4.3 - Visualising Uncertainty"
+              href: Hands-on_Ex/Hands-on_Ex04_3/hands-on_Ex04_3.html
+            - text: "4.4 - Funnel Plots for Fair Comparisons"
+              href: Hands-on_Ex/Hands-on_Ex04_4/hands-on_Ex04_4.html
+    - title: "In-Class Exercise"
+      style: "floating"
+      collapse-level: 2
+      align: left
+      contents:
+        - section: "In-Class Excercise"
+          contents:
+            - text: "2 - Superstore Sales and Profit Report"
+              href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
+            - text: "3 - Superstore Sales vs Profit by States Quadrant"
+              href: In-class_Ex/In-class_Ex03/In-class_Ex03.html
+    - title: "Take-Home Exercise"
+      style: "floating"
+      collapse-level: 2
+      align: left
+      contents:
+        - section: "Take-Home Exercise"
+          contents:
+            - text: "1 - Demographic structures and distribution of Singapore in 2024"
+              href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html
+            - text: "1.2 - Take Home Exercise 1 Part 2"
+              href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01_phase2.html
 
   page-footer:
     background: "#50434f"
@@ -67,44 +126,6 @@ website:
       - text: "<img src='/images/tableauwhite.png' style='height:19px; vertical-align:top;'>"
         href: https://public.tableau.com/app/profile/vanessa.riadi/vizzes
         target: _blank
-
-  sidebar:
-    - # background: "#f1f4f5" 
-      title: "Hands-On Exercise"
-      style: "floating"
-      collapse-level: 2
-      align: left
-      contents:
-        - section: "Hands-On Excercise"
-          contents:
-            - text: "1 - A Layered Grammar of Graphics"
-              href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.html
-            - text: "2 - Beyond ggplot2 Fundamentals"
-              href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.html
-            - text: "3.1 - Programming Interactive Data Visualisation with R"
-              href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.html
-            - text: "3.2 - Programming Interactive Data Visualisation with R"
-              href: Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.html
-    - title: "In-Class Exercise"
-      style: "floating"
-      collapse-level: 2
-      align: left
-      contents:
-        - section: "In-Class Excercise"
-          contents:
-            - text: "2 - Superstore Sales and Profit Report"
-              href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
-            - text: "3 - Superstore Sales vs Profit by States Quadrant"
-              href: In-class_Ex/In-class_Ex03/In-class_Ex03.html
-    - title: "Take-Home Exercise"
-      style: "floating"
-      collapse-level: 2
-      align: left
-      contents:
-        - section: "Take-Home Exercise"
-          contents:
-            - text: "1 - Demographic structures and distribution of Singapore in 2024"
-              href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html
 
 format:
   html:

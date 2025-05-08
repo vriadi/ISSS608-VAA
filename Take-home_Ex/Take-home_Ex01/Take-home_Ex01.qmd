@@ -1,11 +1,12 @@
 ---
 title: "Take-home Exercise 1: Demographic structures and distribution of Singapore in 2024"
 author: "Vanessa Riadi"
-date: "May 4, 2025"
+date: "May 9, 2025"
 date-modified: "last-modified"
 format:
   html:
     toc: true
+    prefer-html: true
 execute: 
   echo: true
   eval: true
@@ -128,6 +129,7 @@ cat(cntpop$Pop)
 ## [4.3]{style="color:#d496d4; background:none;"} Data Preparation {#dataprep}
 
 ### [4.3.1]{style="color:#d496d4; background:none;"} Cleaning Data
+
 As mentioned earlier, we will be focusing on the top-level visualization per Planning Areas and granular details like Population per Subzone and Floor Area aren't necessary. Here we will exclude those rows with zero population values at the Planning Area level by using `filter`.
 
 ::: panel-tabset
@@ -161,6 +163,7 @@ DT::datatable(demographic_data_clean , options = list(
 :::
 
 ### [4.3.2]{style="color:#d496d4; background:none;"} Age Group recoding
+
 We will be recoding the Age Group to three groups for clearer visualization: Below 20 years, 20-64 Years, 65 years & Over following [National Statistical Standards Recommendations on Definition and Classification of Age](https://www.singstat.gov.sg/-/media/files/standards_and_classifications/nsa.ashx){target="_blank"} (More details in [Appendix B](#appendixb) ).
 
 ::: panel-tabset
@@ -801,8 +804,7 @@ ggplot(residuals_df, aes(Var1, Var2, fill = Freq)) +
 -   [Mature Towns](https://www.channelnewsasia.com/singapore/mature-estates-hdb-flats-classified-cna-explains-3581846#:~:text=The%20mature%20towns%20and%20estates,Serangoon%2C%20Tampines%20and%20Toa%20Payoh.){target="_blank"} such as Bedok, Ang Mo Kio, and Hougang exhibit neutral residuals, suggesting stable populations with a mix of age groups and long-term residents.
 
 -   Affluent Districts such as [Bukit Timah](https://www.propertyasiadirect.com/sg/places/bukit-timah/#google_vignette){target="_blank"}, we observe more children (+1.98) and 20-65 group (+2.99) with lesser seniors (-5.75). Proximity to "good schools" for *kiasu* parents likely attracts young wealthy families with its abundance of private housing. Similar trends observed in Tanglin.
-
-::: 
+:::
 
 # [6]{style="color:#d496d4; background:none;"} Reference
 
@@ -836,27 +838,27 @@ ggplot(residuals_df, aes(Var1, Var2, fill = Freq)) +
 : {tbl-colwidths="\[20,80\]"}
 
 ## [7.2]{style="color:#d496d4; background:none;"} Appendix B {#appendixb}
+
 [National Statistical Standards Recommendations on Definition and Classification of Age](https://www.singstat.gov.sg/-/media/files/standards_and_classifications/nsa.ashx){target="_blank"}
 
-| **AG**      | **AG_recode** |
-|-------------|-------------------|
-| 0_to_4      | Below 20 years    |
-| 5_to_9      | Below 20 years    |
-| 10_to_14    | Below 20 years    |
-| 15_to_19    | Below 20 years    |
-| 20_to_24    | 20-64 Years       |
-| 25_to_29    | 20-64 Years       |
-| 30_to_34    | 20-64 Years       |
-| 35_to_39    | 20-64 Years       |
-| 40_to_44    | 20-64 Years       |
-| 45_to_49    | 20-64 Years       |
-| 50_to_54    | 20-64 Years       |
-| 55_to_59    | 20-64 Years       |
-| 60_to_64    | 20-64 Years       |
-| 65_to_69    | 65 years & Over   |
-| 70_to_74    | 65 years & Over   |
-| 75_to_79    | 65 years & Over   |
-| 80_to_84    | 65 years & Over   |
-| 85_to_89    | 65 years & Over   |
-| 90_and_over | 65 years & Over       |
-
+| **AG**      | **AG_recode**   |
+|-------------|-----------------|
+| 0_to_4      | Below 20 years  |
+| 5_to_9      | Below 20 years  |
+| 10_to_14    | Below 20 years  |
+| 15_to_19    | Below 20 years  |
+| 20_to_24    | 20-64 Years     |
+| 25_to_29    | 20-64 Years     |
+| 30_to_34    | 20-64 Years     |
+| 35_to_39    | 20-64 Years     |
+| 40_to_44    | 20-64 Years     |
+| 45_to_49    | 20-64 Years     |
+| 50_to_54    | 20-64 Years     |
+| 55_to_59    | 20-64 Years     |
+| 60_to_64    | 20-64 Years     |
+| 65_to_69    | 65 years & Over |
+| 70_to_74    | 65 years & Over |
+| 75_to_79    | 65 years & Over |
+| 80_to_84    | 65 years & Over |
+| 85_to_89    | 65 years & Over |
+| 90_and_over | 65 years & Over |
