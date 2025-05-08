@@ -418,7 +418,7 @@ Next, we will add the second geometry layer using [`geom_boxplot()`]() of ggplot
 ## The plot
 
 ```{r}
-#| eval: false
+#| echo: false
 ggplot(exam, 
        aes(x = RACE, 
            y = ENGLISH)) +
@@ -439,7 +439,7 @@ ggplot(exam,
 ## The code chunk
 
 ```{r}
-#| echo: false
+#| eval: false
 ggplot(exam, 
        aes(x = RACE, 
            y = ENGLISH)) +
