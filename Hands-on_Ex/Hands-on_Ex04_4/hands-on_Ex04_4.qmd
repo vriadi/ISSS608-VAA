@@ -246,10 +246,13 @@ p
 
 The funnel plot created using ggplot2 functions can be made interactive with `ggplotly()` of **plotly** r package.
 
+::: panel-tabset
+## The Plot
 ```{r}
+#| echo: false
 fp_ggplotly <- ggplotly(p,
   tooltip = c("text"))
-fp_ggplotly
+#fp_ggplotly #dont call here
 
 # Add custom tooltips for lines
 pfp_ggplotly <- fp_ggplotly %>%
@@ -269,6 +272,34 @@ pfp_ggplotly$x$data[[6]]$text <- paste("Mean:", dfCI$fit.mean)
 pfp_ggplotly
 
 ```
+
+## The Code 
+```{r}
+#| eval: false
+fp_ggplotly <- ggplotly(p,
+  tooltip = c("text"))
+#fp_ggplotly #dont call here
+
+# Add custom tooltips for lines
+pfp_ggplotly <- fp_ggplotly %>%
+  layout(hovermode = "closest")
+
+# Add custom hover text for lines
+pfp_ggplotly$x$data[[2]]$text <- paste("Cases:", dfCI$number.seq, 
+                                       "<br>95% Lower Limit:", round(dfCI$number.ll95 * 100, 4), "%")
+pfp_ggplotly$x$data[[3]]$text <- paste("Cases:", dfCI$number.seq, 
+                                       "<br>95% Upper Limit:", round(dfCI$number.ul95 * 100, 4), "%")
+pfp_ggplotly$x$data[[4]]$text <- paste("Cases:", dfCI$number.seq, 
+                                       "<br>99.9% Lower Limit:", round(dfCI$number.ll999 * 100, 4), "%")
+pfp_ggplotly$x$data[[5]]$text <- paste("Cases:", dfCI$number.seq, 
+                                       "<br>99.9% Upper Limit:", round(dfCI$number.ul999 * 100, 4), "%")
+pfp_ggplotly$x$data[[6]]$text <- paste("Mean:", dfCI$fit.mean)
+
+pfp_ggplotly
+
+```
+
+:::
 
 ## [6]{style="color:#d496d4"} References
 
