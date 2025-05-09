@@ -43,7 +43,6 @@ website:
             href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
           - text: "3 - Superstore Sales vs Profit by States Quadrant"
             href: In-class_Ex/In-class_Ex03/In-class_Ex03.html
-            
       - text: "Take-home Exercise"
         menu:
           - text: "1.1 - Demographic structures and distribution of Singapore in 2024"
@@ -65,16 +64,22 @@ website:
       collapse-level: 2
       align: left
       contents:
-        - section: "Hands-On Excercise"
+        - section: "Hands-On Exercise 1"
           contents:
             - text: "1 - A Layered Grammar of Graphics"
               href: Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.html
+        - section: "Hands-On Exercise 2"
+          contents:
             - text: "2 - Beyond ggplot2 Fundamentals"
               href: Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.html
+        - section: "Hands-On Exercise 3"
+          contents:
             - text: "3.1 - Programming Interactive Data Visualisation with R"
               href: Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.html
             - text: "3.2 - Programming Interactive Data Visualisation with R"
               href: Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.html
+        - section: "Hands-On Exercise 4"
+          contents:
             - text: "4.1 - Visualising Distribution"
               href: Hands-on_Ex/Hands-on_Ex04_1/hands-on_Ex04_1.html
             - text: "4.2 - Visual Statistical Analysis"
@@ -99,7 +104,7 @@ website:
       collapse-level: 2
       align: left
       contents:
-        - section: "Take-Home Exercise"
+        - section: "Take-Home Exercise 1"
           contents:
             - text: "1 - Demographic structures and distribution of Singapore in 2024"
               href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html
