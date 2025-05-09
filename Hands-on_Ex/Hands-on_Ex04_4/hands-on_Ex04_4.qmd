@@ -66,7 +66,7 @@ kable(head(covid19))
 The code chunk below plots a funnel plot.
 
 ```{r}
-funnel_plot(
+fp <- funnel_plot(
   .data = covid19,
   numerator = Positive,
   denominator = Death,
@@ -75,6 +75,8 @@ funnel_plot(
   x_label = "Cumulative COVID-19 Positive Cases", #<<
   y_label = "Cumulative Fatality Rate"  #<<
 )
+
+plot(fp)+theme(legend.position = "right")
 ```
 
 Things to learn from the code chunk above.
@@ -88,7 +90,7 @@ Things to learn from the code chunk above.
 The code chunk below plots a funnel plot.
 
 ```{r}
-funnel_plot(
+fp2 <- funnel_plot(
   .data = covid19,
   numerator = Death,
   denominator = Positive,
@@ -100,6 +102,8 @@ funnel_plot(
   x_label = "Cumulative COVID-19 Positive Cases", #<<
   y_label = "Cumulative Fatality Rate"  #<<
 )
+
+plot(fp2)+theme(legend.position = "right")
 ```
 
 Things to learn from the code chunk above. + `data_type` argument is used to change from default "SR" to "PR" (i.e. proportions). + `xrange` and `yrange` are used to set the range of x-axis and y-axis
@@ -109,7 +113,7 @@ Things to learn from the code chunk above. + `data_type` argument is used to cha
 The code chunk below plots a funnel plot.
 
 ```{r}
-funnel_plot(
+fp3 <- funnel_plot(
   .data = covid19,
   numerator = Death,
   denominator = Positive,
@@ -122,6 +126,8 @@ funnel_plot(
   x_label = "Cumulative COVID-19 Positive Cases", #<<
   y_label = "Cumulative Fatality Rate"  #<<
 )
+
+plot(fp3)+theme(legend.position = "right")
 ```
 
 Things to learn from the code chunk above.
@@ -172,36 +178,39 @@ In the code chunk below, ggplot2 functions are used to plot a static funnel plot
 ```{r}
 p <- ggplot(df, aes(x = Positive, y = rate)) +
   geom_point(aes(label=`Sub-district`), 
-             alpha=0.4) +
+             alpha=0.6,
+             colour = "skyblue",
+             stroke = 1,
+             size = 2) +
   geom_line(data = dfCI, 
             aes(x = number.seq, 
                 y = number.ll95), 
             size = 0.4, 
-            colour = "grey40", 
+            colour = "purple", 
             linetype = "dashed") +
   geom_line(data = dfCI, 
             aes(x = number.seq, 
                 y = number.ul95), 
             size = 0.4, 
-            colour = "grey40", 
+            colour = "purple", 
             linetype = "dashed") +
   geom_line(data = dfCI, 
             aes(x = number.seq, 
                 y = number.ll999), 
             size = 0.4, 
-            colour = "grey40") +
+            colour = "green4") +
   geom_line(data = dfCI, 
             aes(x = number.seq, 
                 y = number.ul999), 
             size = 0.4, 
-            colour = "grey40") +
+            colour = "green4") +
   geom_hline(data = dfCI, 
              aes(yintercept = fit.mean), 
              size = 0.4, 
-             colour = "grey40") +
+             colour = "green4") +
   coord_cartesian(ylim=c(0,0.05)) +
-  annotate("text", x = 1, y = -0.13, label = "95%", size = 3, colour = "grey40") + 
-  annotate("text", x = 4.5, y = -0.18, label = "99%", size = 3, colour = "grey40") + 
+  annotate("text", x = 1, y = -0.13, label = "95%", size = 3, colour = "skyblue") + 
+  annotate("text", x = 4.5, y = -0.18, label = "99%", size = 3, colour = "skyblue") + 
   ggtitle("Cumulative Fatality Rate by Cumulative Number of COVID-19 Cases") +
   xlab("Cumulative Number of COVID-19 Cases") + 
   ylab("Cumulative Fatality Rate") +
@@ -210,7 +219,7 @@ p <- ggplot(df, aes(x = Positive, y = rate)) +
         legend.position = c(0.91,0.85), 
         legend.title = element_text(size=7),
         legend.text = element_text(size=7),
-        legend.background = element_rect(colour = "grey60", linetype = "dotted"),
+        legend.background = element_rect(colour = "skyblue", linetype = "dotted"),
         legend.key.height = unit(0.3, "cm"))
 p
 ```
