@@ -167,6 +167,7 @@ number.ll95 <- fit.mean - 1.96 * sqrt((fit.mean*(1-fit.mean)) / (number.seq))
 number.ul95 <- fit.mean + 1.96 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) 
 number.ll999 <- fit.mean - 3.29 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) 
 number.ul999 <- fit.mean + 3.29 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) 
+
 dfCI <- data.frame(number.ll95, number.ul95, number.ll999, 
                    number.ul999, number.seq, fit.mean)
 ```
@@ -177,35 +178,52 @@ In the code chunk below, ggplot2 functions are used to plot a static funnel plot
 
 ```{r}
 p <- ggplot(df, aes(x = Positive, y = rate)) +
-  geom_point(aes(label=`Sub-district`), 
+  geom_point(aes(#label=`Sub-district`,
+                    text = paste('Sub-district:', `Sub-district`, 
+                              '<br>Positive Case:', Positive,
+                              '<br>Rate:',round(rate,4)*100,'%')), 
              alpha=0.6,
              colour = "skyblue",
              stroke = 1,
              size = 2) +
   geom_line(data = dfCI, 
             aes(x = number.seq, 
-                y = number.ll95), 
+                y = number.ll95
+                #text = paste("Cases:", number.seq, 
+             #"<br>95% Lower Limit:", paste0(round(number.ll95 * 100, 4), "%"))
+             ),
             size = 0.4, 
             colour = "purple", 
             linetype = "dashed") +
   geom_line(data = dfCI, 
             aes(x = number.seq, 
-                y = number.ul95), 
+                y = number.ul95
+                #text = paste("Cases:", number.seq, 
+                              #"<br>95% Upper Limit:", round(number.ul95, 4)*100,"%")
+                ), 
             size = 0.4, 
             colour = "purple", 
             linetype = "dashed") +
   geom_line(data = dfCI, 
             aes(x = number.seq, 
-                y = number.ll999), 
+                y = number.ll999,
+                #text = paste("Cases:", number.seq, 
+                              #"<br>99.9% Lower Limit:", round(number.ll999, 4)*100,"%")
+                ), 
             size = 0.4, 
             colour = "green4") +
   geom_line(data = dfCI, 
             aes(x = number.seq, 
-                y = number.ul999), 
+                y = number.ul999,
+                #text = paste("Cases:", number.seq, 
+                              #"<br>99.9% Upper Limit:", round(number.ul999, 4)*100,"%")
+                ), 
             size = 0.4, 
             colour = "green4") +
   geom_hline(data = dfCI, 
-             aes(yintercept = fit.mean), 
+             aes(yintercept = fit.mean,
+                #text = paste("Mean:", fit.mean)
+                ), 
              size = 0.4, 
              colour = "green4") +
   coord_cartesian(ylim=c(0,0.05)) +
@@ -230,10 +248,26 @@ The funnel plot created using ggplot2 functions can be made interactive with `gg
 
 ```{r}
 fp_ggplotly <- ggplotly(p,
-  tooltip = c("label", 
-              "x", 
-              "y"))
+  tooltip = c("text"))
 fp_ggplotly
+
+# Add custom tooltips for lines
+pfp_ggplotly <- fp_ggplotly %>%
+  layout(hovermode = "closest")
+
+# Add custom hover text for lines
+pfp_ggplotly$x$data[[2]]$text <- paste("Cases:", dfCI$number.seq, 
+                                       "<br>95% Lower Limit:", round(dfCI$number.ll95 * 100, 4), "%")
+pfp_ggplotly$x$data[[3]]$text <- paste("Cases:", dfCI$number.seq, 
+                                       "<br>95% Upper Limit:", round(dfCI$number.ul95 * 100, 4), "%")
+pfp_ggplotly$x$data[[4]]$text <- paste("Cases:", dfCI$number.seq, 
+                                       "<br>99.9% Lower Limit:", round(dfCI$number.ll999 * 100, 4), "%")
+pfp_ggplotly$x$data[[5]]$text <- paste("Cases:", dfCI$number.seq, 
+                                       "<br>99.9% Upper Limit:", round(dfCI$number.ul999 * 100, 4), "%")
+pfp_ggplotly$x$data[[6]]$text <- paste("Mean:", dfCI$fit.mean)
+
+pfp_ggplotly
+
 ```
 
 ## [6]{style="color:#d496d4"} References
