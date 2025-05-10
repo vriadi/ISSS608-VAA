@@ -36,6 +36,18 @@ website:
             href: Hands-on_Ex/Hands-on_Ex04_3/hands-on_Ex04_3.html
           - text: "4.4 - Funnel Plots for Fair Comparisons"
             href: Hands-on_Ex/Hands-on_Ex04_4/hands-on_Ex04_4.html
+          - text: "5 - Modelling, Visualising and Analysing Network Data with R"
+            href: Hands-on_Ex/Hands-on_Ex05/hands-on_Ex05.html
+          #- text: "9.1 - Creating Ternary Plot with R"
+          #  href: Hands-on_Ex/Hands-on_Ex09_1/hands-on_Ex09_1.html
+          #- text: "9.2 - Visual Correlation Analysis"
+          #  href: Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html
+          #- text: "9.3 - Visual Multivariate Analysis with Heatmap"
+          #  href: Hands-on_Ex/Hands-on_Ex09_3/hands-on_Ex09_3.html
+          #- text: "9.4 - Visual Multivariate Analysis with Parallel Coordinates Plot"
+          #  href: Hands-on_Ex/Hands-on_Ex09_4/hands-on_Ex09_4.html
+          #- text: "9.5 - Treemap Visualisation with R"
+          #  href: Hands-on_Ex/Hands-on_Ex09_5/hands-on_Ex09_5.html
 
       - text: "In-class Exercise"
         menu:
@@ -88,6 +100,22 @@ website:
               href: Hands-on_Ex/Hands-on_Ex04_3/hands-on_Ex04_3.html
             - text: "4.4 - Funnel Plots for Fair Comparisons"
               href: Hands-on_Ex/Hands-on_Ex04_4/hands-on_Ex04_4.html
+        - section: "Hands-On Exercise 5"
+          contents:
+            - text: "5 - Modelling, Visualising and Analysing Network Data with R"
+              href: Hands-on_Ex/Hands-on_Ex05/hands-on_Ex05.html
+        #- section: "Hands-On Exercise 5"
+        #  contents:
+            #- text: "9.1 - Creating Ternary Plot with R"
+            #  href: Hands-on_Ex/Hands-on_Ex09_1/hands-on_Ex09_1.html
+            #- text: "9.2 - Visual Correlation Analysis"
+            #  href: Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html
+            #- text: "9.3 - Visual Multivariate Analysis with Heatmap"
+            #  href: Hands-on_Ex/Hands-on_Ex09_3/hands-on_Ex09_3.html
+            #- text: "9.4 - Visual Multivariate Analysis with Parallel Coordinates Plot"
+            #  href: Hands-on_Ex/Hands-on_Ex09_4/hands-on_Ex09_4.html
+            #- text: "9.5 - Treemap Visualisation with R"
+            #  href: Hands-on_Ex/Hands-on_Ex09_5/hands-on_Ex09_5.html
     - title: "In-Class Exercise"
       style: "floating"
       collapse-level: 2
@@ -110,6 +138,15 @@ website:
               href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html
             - text: "1.2 - Take Home Exercise 1 Part 2"
               href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01_phase2.html
+        - section: "Take-Home Exercise 2"
+          contents:
+            - text: "COMING SOON"
+              #href: Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html
+        - section: "Take-Home Exercise 3"
+          contents:
+            - text: "COMING SOON"
+              #href: Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html
+            
 
   page-footer:
     background: "#50434f"
