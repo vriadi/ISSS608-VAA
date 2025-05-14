@@ -1,0 +1,237 @@
+---
+title: "Creating Ternary Plot with R"
+author: "Vanessa Riadi"
+date: "May 8, 2025"
+date-modified: "last-modified"
+format:
+  html:
+    toc: true
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+## Overview
+
+[Ternary plots](https://en.wikipedia.org/wiki/Ternary_plot) are a way of displaying the distribution and variability of three-part compositional data. (For example, the proportion of aged, economy active and young population or sand, silt, and clay in soil.) It's display is a triangle with sides scaled from 0 to 1. Each side represents one of the three components. A point is plotted so that a line drawn perpendicular from the point to each leg of the triangle intersect at the component values of the point.
+
+In this hands-on, you will learn how to build ternary plot programmatically using R for visualising and analysing population structure of Singapore.
+
+The hands-on exercise consists of four steps:
+
+-   Install and launch **tidyverse** and **ggtern** packages.
+-   Derive three new measures using *mutate()* function of **dplyr** package.
+-   Build a static ternary plot using *ggtern()* function of **ggtern** package.
+-   Build an interactive ternary plot using *plot-ly()* function of **Plotly R** package.
+
+## Installing and launching R packages
+
+For this exercise, two main R packages will be used in this hands-on exercise, they are:
+
+-   [**ggtern**](http://www.ggtern.com/), a ggplot extension specially designed to plot ternary diagrams. The package will be used to plot static ternary plots.
+-   [**Plotly R**](https://plot.ly/r/), an R package for creating interactive web-based graphs via plotly's JavaScript graphing library, plotly.js . The **plotly R** libary contains the *ggplotly* function, which will convert **ggplot2** figures into a Plotly object.
+
+We will also need to ensure that selected **tidyverse** family packages namely: **readr**, **dplyr** and **tidyr** are also installed and loaded.
+
+In this exercise, version 3.2.1 of **ggplot2** will be installed instead of the latest version of **ggplot2**. This is because the current version of **ggtern** package is not compatible to the latest version of **ggplot2**.
+
+The code chunks below will accomplish the task.
+
+```{r}
+pacman::p_load(plotly, ggtern, tidyverse)
+```
+
+## Data Preparation
+
+### The data
+
+For the purpose of this hands-on exercise, the [Singapore Residents by Planning AreaSubzone, Age Group, Sex and Type of Dwelling, June 2000-2018](https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data) data will be used. The data set has been downloaded and included in the data sub-folder of the hands-on exercise folder. It is called *respopagsex2000to2018_tidy.csv* and is in csv file format.
+
+### Importing Data
+
+To important *respopagsex2000to2018_tidy.csv* into R, ***read_csv()*** function of **readr** package will be used.
+
+```{r, echo=TRUE}
+#Reading the data into R environment
+pop_data <- read_csv("../data/respopagsex2000to2018_tidy.csv") 
+```
+
+### Preparing the Data
+
+Next, use the ***mutate()*** function of **dplyr** package to derive three new measures, namely: young, active, and old.
+
+```{r, echo=TRUE}
+#Deriving the young, economy active and old measures
+agpop_mutated <- pop_data %>%
+  mutate(`Year` = as.character(Year))%>%
+  spread(AG, Population) %>%
+  mutate(YOUNG = rowSums(.[4:8]))%>%
+  mutate(ACTIVE = rowSums(.[9:16]))  %>%
+  mutate(OLD = rowSums(.[17:21])) %>%
+  mutate(TOTAL = rowSums(.[22:24])) %>%
+  filter(Year == 2018)%>%
+  filter(TOTAL > 0)
+```
+
+## Plotting Ternary Diagram with R
+
+### 4.1 Plotting a static ternary diagram
+
+Use ***ggtern()*** function of **ggtern** package to create a simple ternary plot.
+
+```{r, echo=TRUE, message=FALSE}
+
+#Building the static ternary plot
+ggtern(data=agpop_mutated,aes(x=YOUNG,y=ACTIVE, z=OLD)) +
+  geom_point()
+```
+
+```{r, echo=TRUE, message=FALSE}
+
+#Building the static ternary plot
+ggtern(data=agpop_mutated, aes(x=YOUNG,y=ACTIVE, z=OLD)) +
+  geom_point() +
+  labs(title="Population structure, 2015") +
+  theme_rgbw()
+```
+
+### Plotting an interative ternary diagram
+
+The code below create an interactive ternary plot using ***plot_ly()*** function of **Plotly R**.
+
+```{r, eval=TRUE, message=FALSE, warning=FALSE, echo=TRUE}
+
+# reusable function for creating annotation object
+label <- function(txt) {
+  list(
+    text = txt, 
+    x = 0.1, y = 1,
+    ax = 0, ay = 0,
+    xref = "paper", yref = "paper", 
+    align = "center",
+    font = list(family = "serif", size = 15, color = "white"),
+    bgcolor = "#b3b3b3", bordercolor = "black", borderwidth = 2
+  )
+}
+
+# reusable function for axis formatting
+axis <- function(txt) {
+  list(
+    title = txt, tickformat = ".0%", tickfont = list(size = 10)
+  )
+}
+
+ternaryAxes <- list(
+  aaxis = axis("Young"), 
+  baxis = axis("Active"), 
+  caxis = axis("Old")
+)
+
+# Initiating a plotly visualization 
+plot_ly(
+  agpop_mutated, 
+  a = ~YOUNG, 
+  b = ~ACTIVE, 
+  c = ~OLD, 
+  color = I("black"), 
+  type = "scatterternary"
+) %>%
+  layout(
+    annotations = label("Ternary Markers"), 
+    ternary = ternaryAxes
+  )
+```
+
+## References
+## Readings
+
+### Core Readings
+
+**Multivariate Methods**
+
+-   [An Introduction to Visual Multivariate Analysis](http://www.perceptualedge.com/articles/b-eye/visual_multivariate_analysis.pdf)
+-   [Corrgrams: Exploratory Displays for Correlation Matrices](https://search-proquest-com.libproxy.smu.edu.sg/docview/228501277?rfr_id=info%3Axri%2Fsid%3Aprimo)
+-   [Ternary Plot](https://en.wikipedia.org/wiki/Ternary_plot)
+-   [Multivariate Data Glyphs](https://link-springer-com.libproxy.smu.edu.sg/content/pdf/10.1007%2F978-3-540-33037-0_8.pdf)
+-   [Parallel Coordinates](https://link-springer-com.libproxy.smu.edu.sg/content/pdf/10.1007%2F978-3-540-33037-0_25.pdf)
+-   [Wikipedia: Heatmap](http://en.wikipedia.org/wiki/Heat_map)
+
+**Treemaps**
+
+-   Shneiderman, Ben (2008) [Treemaps for space-constrained visualization of hierarchies](http://www.cs.umd.edu/hcil/treemap-history/)
+-   [Extending the Utility of Treemaps with Flexible Hierarchy](http://www.cs.umd.edu/hcil/treemap/FLEXIBLE-HIERARCHY-FINAL.pdf)
+
+### Optional Readings
+
+**Multivariate Methods**
+
+-   [The scatter-plot matrix: a great tool](http://junkcharts.typepad.com/junk_charts/2010/06/the-scatterplot-matrix-a-great-tool.html)
+-   [A Graphical Display of Large Correlation Matrices](https://search-proquest-com.libproxy.smu.edu.sg/docview/1750838449?rfr_id=info%3Axri%2Fsid%3Aprimo)
+-   [Ternary Diagram](https://www.sciencedirect.com/topics/engineering/ternary-diagram)
+-   [Reading a Ternary Diagram](http://csmgeo.csm.jmu.edu/geollab/fichter/Sedrx/readternary.html)
+-   [Multidimensional Detective](http://www.ifs.tuwien.ac.at/~silvia/wien/vu-infovis/articles/Inselberg-InfoVis97.pdf)
+-   [Parallel Coordinates](https://eagereyes.org/techniques/parallel-coordinates)
+-   [Multivariate Analysis Using Parallel Coordinates](http://www.perceptualedge.com/articles/b-eye/parallel_coordinates.pdf)
+-   [Ghosts on the Radar --- Why Radar Charts Are Easily Misread](https://towardsdatascience.com/ghosts-on-the-radar-why-radar-charts-are-easily-misread-dba00fc399ef)
+-   [Keep Radar Graphs Below the Radar - Far Below](https://www.perceptualedge.com/articles/dmreview/radar_graphs.pdf)
+-   [A Critique of Radar Charts](https://blog.scottlogic.com/2011/09/23/a-critique-of-radar-charts.html)
+-   [Radar: More Evil Than Pie](https://www.darkhorseanalytics.com/blog/radar-more-evil-than-pie)
+
+**Treemaps**
+
+-   [Treemaps](http://eagereyes.org/Techniques/Treemaps.html)
+-   [Discovering Business Intelligence Using Treemap Visualization](http://www.b-eye-network.com/view/2673)
+-   [10 Lessons in Treemap Design](http://www.juiceanalytics.com/writing/10-lessons-treemap-design/)
+-   Bederson, Benjamin B.; Shneiderman, Ben; Wattenberg, Martin (2002). [*Ordered and quantum treemaps: Making effective use of 2D space to display hierarchies*](http://delivery.acm.org.libproxy.smu.edu.sg/10.1145/580000/571649/p833-b_bederson.pdf?ip=202.161.43.77&id=571649&acc=ACTIVE%20SERVICE&key=FF6731C4D3E3CFFF%2E39D185EE56A58666%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&__acm__=1538033167_4a6787aed9b15196b9e585b3af4b7031). **ACM Transactions on Graphics**. 21 (4): 833.
+-   Bruls, Mark; Huizing, Kees; van Wijk, Jarke J. (2000). [*Squarified treemaps*](http://www.win.tue.nl/~vanwijk/stm.pdf). In de Leeuw, W.; van Liere, R. **Data Visualization 2000: Proc.** Joint Eurographics and IEEE TCVG Symp. on Visualization\]
+-   [US Economic Census Treemap](http://www.juiceanalytics.com/writing/us-economic-census-treemap/)
+-   [TreeCovery: Coordinated dual treemap visualization for exploring the Recovery Act](https://ac-els-cdn-com.libproxy.smu.edu.sg/S0740624X11001055/1-s2.0-S0740624X11001055-main.pdf?_tid=5f3e825d-c9d0-414f-b1d2-3ffbe8e115d1&acdnat=1538033558_64b0c1431092fec2ea12cc5e7ba8e77b)
+-   [Juice's Stimulus Bill Explorer](http://www.juiceanalytics.com/writing/juices-stimulus-bill-explorer/)
+-   [Fundexplorer](http://www.cc.gatech.edu/gvu/ii/fundexplorer/)
+-   [Map of the Market](http://www.smartmoney.com/map-of-the-market/)
+-   [The HIVE Group](http://www.hivegroup.com/gallery/index.html)
+-   [Truck Sales Slip, Tripping Up Chrysler](http://www.nytimes.com/imagepages/2007/02/25/business/20070225_CHRYSLER_GRAPHIC.html)
+-   [Newsmap](http://newsmap.jp/)
+-   [Obama's 2011 Budget Proposal: How It's Spent](http://www.nytimes.com/interactive/2010/02/01/us/budget.html)
+
+## R Packages
+
+### Correlation Matrix
+
+-   [ggscatmat](https://ggobi.github.io/ggally/#ggallyggscatmat) and [ggpairs](https://ggobi.github.io/ggally/#ggallyggpairs) of [GGally](https://ggobi.github.io/ggally/index.html).
+-   [corrplot](https://cran.r-project.org/web/packages/corrplot/index.html). A graphical display of a correlation matrix or general matrix. It also contains some algorithms to do matrix reordering. In addition, corrplot is good at details, including choosing color, text labels, color labels, layout, etc.
+-   [corrgram](https://cran.r-project.org/web/packages/corrgram/index.html) calculates correlation of variables and displays the results graphically. Included panel functions can display points, shading, ellipses, and correlation values with confidence intervals.
+
+### Heatmap
+
+**Static heatmap**
+
+-   [heatmap()](https://www.rdocumentation.org/packages/stats/versions/3.6.0/topics/heatmap) of R stats package. It draws a simple heatmap.
+-   [heatmap.2()](https://www.rdocumentation.org/packages/gplots/versions/3.0.1.1/topics/heatmap.2) of **gplots** R package. It draws an enhanced heatmap compared to the R base function.
+-   [pheatmap()](https://www.rdocumentation.org/packages/pheatmap/versions/1.0.12/topics/pheatmap) of [**pheatmap**](https://www.rdocumentation.org/packages/pheatmap) R package. **pheatmap** package also known as Pretty Heatmap. The package provides functions to draws pretty heatmaps and provides more control to change the appearance of heatmaps.
+-   [**ComplexHeatmap**](https://bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html) package of R/Bioconductor package. The package draws, annotates and arranges complex heatmaps (very useful for genomic data analysis). The full reference guide of the package is available [here](https://jokergoo.github.io/ComplexHeatmap-reference/book/).
+-   [**superheat**](https://cran.r-project.org/web/packages/superheat/) package: A Graphical Tool for Exploring Complex Datasets Using Heatmaps. A system for generating extendable and customizable heatmaps for exploring complex datasets, including big data and data with multiple data types. The full reference guide of the package is available [here](https://rlbarter.github.io/superheat/).
+
+**Interactive Heatmap**
+
+-   [heatmaply](https://cran.r-project.org/web/packages/heatmaply/index.html): Make Interactive Cluster Heat Maps Using 'plotly'
+-   [d3heatmap](https://cran.r-project.org/web/packages/d3heatmap/index.html): Make Interactive Heat Maps Using 'htmlwidgets' and 'D3.js.
+-   [iheatmapr](https://cran.r-project.org/web/packages/iheatmapr/index.html) makes complex, interactive heatmaps. Detail information are available at [here](https://docs.ropensci.org/iheatmapr/).
+
+### Treemaps
+
+-   [Treemap](https://cran.r-project.org/web/packages/treemap/) package.
+    -   [Creating a Treemap in R](https://rpubs.com/brandonkopp/creating-a-treemap-in-r)
+    -   [treemap: mapping to color palettes](https://cran.r-project.org/web/packages/treemap/vignettes/treemap-color_mapping.html)
+    -   [Simple Steps to Create Treemap in R](https://r-posts.com/simple-steps-to-create-treemap-in-r/)
+-   [treemapify: Draw Treemaps in 'ggplot2'](https://cran.r-project.org/web/packages/treemapify/index.html)
+    -   [Introduction to treemapify](https://cran.r-project.org/web/packages/treemapify/vignettes/introduction-to-treemapify.html)
+    -   [Interactive visualization with R-Shiny versus with Tableau: Treemaps](https://datascience-enthusiast.com/R/R_shiny_Tableau_treemap.html)
+
+### Sunburst Diagram
+
+-   [sunburstR](https://cran.r-project.org/web/packages/sunburstR/)
+-   [Sunburst 2.0.0](https://cran.r-project.org/web/packages/sunburstR/vignettes/sunburst-2-0-0.html)
+-   [Create Basic Sunburst Graphs with ggplot2](https://medium.com/optima-blog/create-basic-sunburst-graphs-with-ggplot2-7d7484d92c61)
