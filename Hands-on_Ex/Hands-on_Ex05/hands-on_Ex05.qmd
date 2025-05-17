@@ -320,14 +320,14 @@ g + theme_graph(background = 'grey10',
 **ggraph** support many layout for standard used, they are: star, circle, nicely (default), dh, gem, graphopt, grid, mds, spahere, randomly, fr, kk, drl and lgl. Figures below and on the right show layouts supported by `ggraph()`.
 
 ::: callout-note
-In very short terms, a [layout](https://www.data-imaginist.com/posts/2017-02-06-ggraph-introduction-layouts/index.html) is the vertical and horizontal placement of nodes when plotting a particular graph structure. When people think of network visualizations, they think of node-edge diagrams where strongly connected nodes are attempted to be plotted in close proximity BUT layouts can be a lot of other things too — e.g. hive plots and treemaps. 
+In very short terms, a [layout](https://www.data-imaginist.com/posts/2017-02-06-ggraph-introduction-layouts/index.html) is the vertical and horizontal placement of nodes when plotting a particular graph structure. When people think of network visualizations, they think of node-edge diagrams where strongly connected nodes are attempted to be plotted in close proximity BUT layouts can be a lot of other things too — e.g. hive plots and treemaps.
 :::
 
 ![](img/image4.jpg) ![](img/image5.jpg)
 
 ### [5.5.5]{style="color:#d496d4"} Layout
 
-We use  *layout* argument is used to define the layout to be used.
+We use *layout* argument is used to define the layout to be used.
 
 #### 🎀 [PRACTICE]{style="color:#d496d4"}
 
@@ -335,6 +335,7 @@ We use  *layout* argument is used to define the layout to be used.
 ## Fruchterman and Reingold Layout
 
 The code chunks below will be used to plot the network graph using Fruchterman and Reingold layout.
+
 ```{r}
 frLayout <- ggraph(GAStech_graph, 
             layout = "fr") +
@@ -345,7 +346,9 @@ frLayout <- ggraph(GAStech_graph,
 frLayout <- frLayout + theme_graph() + ggtitle("fr layout")
 frLayout
 ```
+
 ## Stress Layout
+
 ```{r}
 StressLayout <- ggraph(GAStech_graph, 
             layout = "stress") +
@@ -357,7 +360,8 @@ StressLayout <- StressLayout + theme_graph()  + ggtitle("stress layout")
 StressLayout
 ```
 
-## Large Graph Layout 
+## Large Graph Layout
+
 ```{r}
 LgLayout <- ggraph(GAStech_graph, 
             layout = "lgl") +
@@ -370,6 +374,7 @@ LgLayout
 ```
 
 ## Kamada-Kawai layout
+
 ```{r}
 KKLayout <- ggraph(GAStech_graph, 
             layout = "kk") +
@@ -380,7 +385,9 @@ KKLayout <- ggraph(GAStech_graph,
 KKLayout <- KKLayout + theme_graph() + ggtitle("kk layout")
 KKLayout
 ```
+
 ## Distributed Recursive Layout
+
 ```{r}
 DrLayout <- ggraph(GAStech_graph, 
             layout = "drl") +
@@ -391,7 +398,9 @@ DrLayout <- ggraph(GAStech_graph,
 DrLayout <- DrLayout + theme_graph() + ggtitle("drl layout")
 DrLayout
 ```
+
 ## GraphOpt Layout
+
 ```{r}
 GraphOpt <- ggraph(GAStech_graph, 
             layout = "graphopt") +
@@ -402,10 +411,10 @@ GraphOpt <- ggraph(GAStech_graph,
 GraphOpt <- GraphOpt + theme_graph() + ggtitle("graphopt layout")
 GraphOpt
 ```
-
 :::
 
 🎀 [**For easy comparison**]{style="color:#d496d4"}
+
 ```{r}
 #| echo: false
 #| fig-width: 20
@@ -415,7 +424,6 @@ library(patchwork)
 ((LgLayout / KKLayout) | (DrLayout / GraphOpt) | (frLayout / StressLayout)) 
 
 ```
-
 
 ### [5.5.6]{style="color:#d496d4"} Modifying network nodes
 
@@ -436,6 +444,7 @@ Things to learn from the code chunks above:
 -   *geom_node_point* is equivalent in functionality to *geo_point* of **ggplot2**. It allows for simple plotting of nodes in different shapes, colours and sizes. In the codes chunks above colour and size are used.
 
 #### 🎀 [PRACTICE]{style="color:#d496d4"}
+
 ```{r}
 g <- ggraph(GAStech_graph, 
             layout = "nicely") + 
@@ -537,7 +546,7 @@ g + facet_edges(~Weekday) +
 
 ### [5.6.4]{style="color:#d496d4"} Working with *facet_nodes()*
 
-[*facet_nodes()*](https://ggraph.data-imaginist.com/reference/facet_nodes.html) 
+[*facet_nodes()*](https://ggraph.data-imaginist.com/reference/facet_nodes.html)
 
 ```{r}
 set_graph_style()
@@ -560,15 +569,13 @@ g + facet_nodes(~Department)+
 
 ### [5.7.1]{style="color:#d496d4"} Computing centrality indices
 
-Centrality measures are a collection of statistical indices use to describe the relative important of the actors are to a network. There are four well-known centrality measures: degree, betweenness, closeness and eigenvector. 
+Centrality measures are a collection of statistical indices use to describe the relative important of the actors are to a network. There are four well-known centrality measures: degree, betweenness, closeness and eigenvector.
 
-::: 🎀 callout-note
-For the principles and mathematics of these measure refer to *Chapter 7: Actor Prominence* of **A user’s guide to network analysis in R** by Luke, Douglas A (2015) to gain better understanding of theses network measures. 
+::: 🎀 callout-note For the principles and mathematics of these measure refer to *Chapter 7: Actor Prominence* of **A user’s guide to network analysis in R** by Luke, Douglas A (2015) to gain better understanding of theses network measures.
 
 *Available for free [here](https://link-springer-com.libproxy.smu.edu.sg/book/10.1007/978-3-319-23883-8)*
 
-*Girl math is believing that SMU library books are free 🎀🤷‍♀💅*
-:::
+*Girl math is believing that SMU library books are free 🎀🤷‍♀💅* :::
 
 ```{r}
 g <- GAStech_graph %>%
@@ -713,7 +720,9 @@ visNetwork(GAStech_nodes,
 ```
 
 #### 🎀 [PRACTICE]{style="color:#d496d4"}
+
 We customise label style in visNetwork, by setting the labelHighlightBold, font, and sometimes shape or label options for nodes. Here we will use attribute of visNodes()
+
 ```{r}
 visNetwork(GAStech_nodes,
            GAStech_edges_aggregated) %>%
@@ -724,7 +733,6 @@ visNetwork(GAStech_nodes,
     size = 20
   ))
 ```
-
 
 Visit [Igraph](http://datastorm-open.github.io/visNetwork/igraph.html) to find out more about *visIgraphLayout*'s argument.
 

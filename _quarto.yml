@@ -38,6 +38,8 @@ website:
             href: Hands-on_Ex/Hands-on_Ex04_4/hands-on_Ex04_4.html
           - text: "5 - Modelling, Visualising and Analysing Network Data with R"
             href: Hands-on_Ex/Hands-on_Ex05/hands-on_Ex05.html
+          - text: "6 - Visualising and Analysing Time-oriented Data"
+            href: Hands-on_Ex/Hands-on_Ex06/hands-on_Ex06.html
           #- text: "9.1 - Creating Ternary Plot with R"
           #  href: Hands-on_Ex/Hands-on_Ex09_1/hands-on_Ex09_1.html
           #- text: "9.2 - Visual Correlation Analysis"
@@ -51,10 +53,12 @@ website:
 
       - text: "In-class Exercise"
         menu:
-          - text: "2 - Superstore Sales and Profit Report"
+          - text: "Session 2 - Superstore Sales and Profit Report"
             href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
-          - text: "3 - Superstore Sales vs Profit by States Quadrant"
+          - text: "Session 3 - Superstore Sales vs Profit by States Quadrant"
             href: In-class_Ex/In-class_Ex03/In-class_Ex03.html
+          - text: "Session 5 - Preparation for VAST 2025 Mini Challenge 1"
+            href: In-class_Ex/In-class_Ex05/In-class_Ex05.html
       - text: "Take-home Exercise"
         menu:
           - text: "1.1 - Demographic structures and distribution of Singapore in 2024"
@@ -104,6 +108,10 @@ website:
           contents:
             - text: "5 - Modelling, Visualising and Analysing Network Data with R"
               href: Hands-on_Ex/Hands-on_Ex05/hands-on_Ex05.html
+        - section: "Hands-On Exercise 6"
+          contents:
+            - text: "6 - Visualising and Analysing Time-oriented Data"
+              href: Hands-on_Ex/Hands-on_Ex06/hands-on_Ex06.html
         #- section: "Hands-On Exercise 5"
         #  contents:
             #- text: "9.1 - Creating Ternary Plot with R"
@@ -123,10 +131,12 @@ website:
       contents:
         - section: "In-Class Excercise"
           contents:
-            - text: "2 - Superstore Sales and Profit Report"
+            - text: "Session 2 - Superstore Sales and Profit Report"
               href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
-            - text: "3 - Superstore Sales vs Profit by States Quadrant"
+            - text: "Session 3 - Superstore Sales vs Profit by States Quadrant"
               href: In-class_Ex/In-class_Ex03/In-class_Ex03.html
+            - text: "Session 5 - Preparation for VAST 2025 Mini Challenge 1"
+              href: In-class_Ex/In-class_Ex05/In-class_Ex05.html
     - title: "Take-Home Exercise"
       style: "floating"
       collapse-level: 2
