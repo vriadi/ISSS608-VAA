@@ -1,7 +1,7 @@
 ---
 title: "Visualising and Analysing Time-oriented Data"
 author: "Vanessa Riadi"
-date: "May 17, 2025"
+date: "May 19, 2025"
 date-modified: "last-modified"
 format:
   html:
@@ -97,6 +97,12 @@ make_hr_wkday <- function(ts, sc, tz) {
 ::: callout-note
 -   [`ymd_hms()`](https://lubridate.tidyverse.org/reference/ymd_hms.html) and [`hour()`](https://lubridate.tidyverse.org/reference/hour.html) are from [**lubridate**](https://lubridate.tidyverse.org/) package, and
 -   [`weekdays()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/weekdays) is a **base** R function.
+:::
+
+::: callout-tip
+# Cheatsheet for lubridate [here](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf)
+
+![](lubridate.pdf){fig-align="center" width="700" height="350"}
 :::
 
 Step 2: Deriving the attacks tibble data frame
@@ -309,6 +315,32 @@ kable(head(hline.data))
 
 The code chunk below is used to plot the cycle plot as shown in Slide 12/23.
 
+::: panel-tabset
+
+## 🎀 [PRACTICE]{style="color:#d496d4"}
+```{r}
+
+ggplot() + 
+  geom_line(data=Vietnam,
+            aes(x=year, 
+                y=`Vietnam`, 
+                group=month), 
+            colour="black") +
+  geom_hline(aes(yintercept=avgvalue), 
+             data=hline.data, 
+             linetype=6, 
+             colour="red", 
+             linewidth=0.5) + 
+  facet_grid(~month) +
+  labs(axis.text.x = element_blank(),
+       title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
+  xlab("") +
+  ylab("No. of Visitors") +
+  theme_grey(base_family = "Helvetica") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) 
+```
+
+## Plot & Code
 ```{r}
 ggplot() + 
   geom_line(data=Vietnam,
@@ -320,7 +352,7 @@ ggplot() +
              data=hline.data, 
              linetype=6, 
              colour="red", 
-             size=0.5) + 
+             linewidth=0.5) + 
   facet_grid(~month) +
   labs(axis.text.x = element_blank(),
        title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
@@ -328,6 +360,8 @@ ggplot() +
   ylab("No. of Visitors") +
   theme_tufte(base_family = "Helvetica")
 ```
+
+:::
 
 ## [5.5]{style="color:#d496d4"} Plotting Slopegraph
 
