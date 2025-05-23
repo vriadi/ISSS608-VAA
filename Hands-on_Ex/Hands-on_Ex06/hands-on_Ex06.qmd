@@ -137,8 +137,8 @@ kable(head(attacks))
 
 ### [5.3.4]{style="color:#d496d4"} Building the Calendar Heatmaps
 
-::: callout-note
-Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0. So we will use use `linewidth` instead.
+::: {.nursebox .nurse data-latex="nurse"}
+**NOTE:** Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0. So we will use use `linewidth` instead.
 :::
 
 ```{r}
@@ -174,7 +174,7 @@ theme(axis.ticks = element_blank(),
 -   a tibble data table called *grouped* is derived by aggregating the attack by *weekday* and *hour* fields.
 -   a new field called *n* is derived by using `group_by()` and `count()` functions.
 -   `na.omit()` is used to exclude missing value.
--   `geom_tile()` is used to plot tiles (grids) at each x and y position. `color` and `size` arguments are used to specify the border color and line size of the tiles.
+-   `geom_tile()` is used to plot tiles (grids) at each x and y position. `color` and `linewidth` arguments are used to specify the border color and line size of the tiles.
 -   [`theme_tufte()`](https://jrnold.github.io/ggthemes/reference/theme_tufte.html) of [**ggthemes**](https://jrnold.github.io/ggthemes/reference/index.html) package is used to remove unnecessary chart junk. To learn which visual components of default ggplot2 have been excluded, you are encouraged to comment out this line to examine the default plot.
 -   `coord_equal()` is used to ensure the plot will have an aspect ratio of 1:1.
 -   `scale_fill_gradient()` function is used to creates a two colour gradient (low-high).
@@ -250,7 +250,7 @@ ggplot(top4_attacks,
 
 In this section, you will learn how to plot a cycle plot showing the time-series patterns and trend of visitor arrivals from Vietnam programmatically by using ggplot2 functions.
 
-![](img/image03.png)
+**EXAMPLE** ![](img/image03.png)
 
 ### [5.4.1]{style="color:#d496d4"} Step 1: Data Import
 
@@ -316,13 +316,15 @@ kable(head(hline.data))
 The code chunk below is used to plot the cycle plot as shown in Slide 12/23.
 
 ::: panel-tabset
-
 ## 🎀 [PRACTICE]{style="color:#d496d4"}
+
 ```{r}
+#| fig-width: 8
+#| fig-height: 4
 
 ggplot() + 
   geom_line(data=Vietnam,
-            aes(x=year, 
+            aes(x = as.factor(year), 
                 y=`Vietnam`, 
                 group=month), 
             colour="black") +
@@ -332,15 +334,18 @@ ggplot() +
              colour="red", 
              linewidth=0.5) + 
   facet_grid(~month) +
+  facet_wrap(~month, nrow = 2) +
   labs(axis.text.x = element_blank(),
        title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
   xlab("") +
   ylab("No. of Visitors") +
   theme_grey(base_family = "Helvetica") +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) 
+  theme(axis.text.x = element_text(hjust = 1, angle = 90, vjust = 0.5, size = 6),
+        axis.text.y = element_text(size = 6),) 
 ```
 
 ## Plot & Code
+
 ```{r}
 ggplot() + 
   geom_line(data=Vietnam,
@@ -360,7 +365,6 @@ ggplot() +
   ylab("No. of Visitors") +
   theme_tufte(base_family = "Helvetica")
 ```
-
 :::
 
 ## [5.5]{style="color:#d496d4"} Plotting Slopegraph
@@ -395,8 +399,8 @@ rice %>%
   mutate(Year = factor(Year)) %>%
   filter(Year %in% c(1961, 1980)) %>%
   newggslopegraph(Year, Yield, Country,
-                Title = "Rice Yield of Top 11 Asian Counties",
-                SubTitle = "1961-1980",
+                Title = "Rice Yield of Top 11 Asian Countries",
+                SubTitle = "From 1961 to 1980 (kg/ha)",
                 Caption = "Prepared by: Vanessa Riadi")
 ```
 
@@ -419,3 +423,88 @@ rice %>%
 For effective data visualisation design, `factor()` is used convert the value type of *Year* field from numeric to factor.
 :::
 ::::
+
+## 🎀 [PRACTICE]{style="color:#d496d4"}
+
+Let's practice using the additional dataset!
+
+```{r}
+averp <- read_csv("../data/AVERP.csv")
+```
+
+```{r}
+#| echo: false
+kable(head(averp))
+```
+
+```{r}
+averp$month <- factor(month(averp$`Date`), 
+                    levels=1:12, 
+                    labels=month.abb, 
+                    ordered=TRUE) 
+averp$year <- year(dmy(averp$`Date`))
+```
+
+Let's check out white bread price across the months and year!
+
+```{r}
+whiteBread <- averp %>% 
+  select(year, 
+         month,
+         `Consumer Items`,
+         Values) %>%
+  filter(`Consumer Items` == "Ordinary White Bread (Per 400 Gram)")
+```
+
+```{r}
+kable(head(whiteBread))
+```
+
+```{r}
+avgline.data <- whiteBread %>% 
+  group_by(month) %>%
+  summarise(avgvalue = mean(Values, na.rm = TRUE))
+```
+
+```{r}
+kable(head(avgline.data))
+```
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4
+
+ggplot() + 
+  geom_line(data=whiteBread,
+            aes(x = as.factor(year), 
+                y=Values, 
+                group=month), 
+            colour="black") +
+  geom_hline(aes(yintercept=avgvalue), 
+             data=avgline.data, 
+             linetype=6, 
+             colour="red", 
+             linewidth=0.5) + 
+  facet_grid(~month) +
+  facet_wrap(~month, nrow = 2) +
+  labs(axis.text.x = element_blank(),
+       title = "Value of Ordinary White Bread, Jan 2014-Dec 2022",
+       subtitle = "(Per 400 Gram)") +
+  xlab("") +
+  ylab("Value") +
+  theme_grey(base_family = "Helvetica") +
+  theme(axis.text.x = element_text(hjust = 1, angle = 90, vjust = 0.5, size = 6),
+        axis.text.y = element_text(size = 6)) 
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+**DID YOU KNOW?**
+
+Inflation can be seen through value of bread! 😱 [read more](https://finsbury-associates.com/what-inflation-does-with-bread-price/)
+
+Current situation:
+
+Singapore Retail Prices: Ordinary White Bread (Per 400 Gram) data was reported at 2.230 SGD/400 g in Dec 2024. [source](https://www.ceicdata.com/en/singapore/average-retail-prices-2019100/retail-prices-ordinary-white-bread-per-400-gram)
+
+Just checked FairPrice site and it's ranged from \$2.05 (house brand) to \$3.20!!
+:::
