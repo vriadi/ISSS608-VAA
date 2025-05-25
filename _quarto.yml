@@ -54,11 +54,13 @@ website:
       - text: "In-class Exercise"
         menu:
           - text: "Session 2 - Superstore Sales and Profit Report"
-            href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
+            href: In-class_Ex/In-class_Ex02.html
           - text: "Session 3 - Superstore Sales vs Profit by States Quadrant"
-            href: In-class_Ex/In-class_Ex03/In-class_Ex03.html
+            href: In-class_Ex/In-class_Ex03.html
           - text: "Session 5 - Preparation for VAST 2025 Mini Challenge 1"
-            href: In-class_Ex/In-class_Ex05/In-class_Ex05.html
+            href: In-class_Ex/In-class_Ex05.html
+          - text: "Session 6 - Visitor Air Arrivals by Country Dashboard"
+            href: In-class_Ex/In-class_Ex06.html
       - text: "Take-home Exercise"
         menu:
           - text: "1.1 - Demographic structures and distribution of Singapore in 2024"
@@ -132,11 +134,13 @@ website:
         - section: "In-Class Excercise"
           contents:
             - text: "Session 2 - Superstore Sales and Profit Report"
-              href: In-class_Ex/In-class_Ex02/In-class_Ex02.html
+              href: In-class_Ex/In-class_Ex02.html
             - text: "Session 3 - Superstore Sales vs Profit by States Quadrant"
-              href: In-class_Ex/In-class_Ex03/In-class_Ex03.html
+              href: In-class_Ex/In-class_Ex03.html
             - text: "Session 5 - Preparation for VAST 2025 Mini Challenge 1"
-              href: In-class_Ex/In-class_Ex05/In-class_Ex05.html
+              href: In-class_Ex/In-class_Ex05.html
+            - text: "Session 6 - Visitor Air Arrivals by Country Dashboard"
+              href: In-class_Ex/In-class_Ex06.html
     - title: "Take-Home Exercise"
       style: "floating"
       collapse-level: 2

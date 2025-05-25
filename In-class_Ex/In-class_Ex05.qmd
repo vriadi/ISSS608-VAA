@@ -22,7 +22,7 @@ pacman::p_load(tidyverse, jsonlite, SmartEDA, tidygraph, ggraph)
 # [2]{style="color:#d496d4"} Importing Knowledge Graph Data
 
 ```{r}
-kg <- fromJSON("../data/MC1_graph.json")
+kg <- fromJSON("data/MC1_graph.json")
 ```
 
 ## [2.1]{style="color:#d496d4"} Inspect Structure
