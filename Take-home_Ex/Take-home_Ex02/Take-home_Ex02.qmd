@@ -1,0 +1,388 @@
+---
+title: "Take-home Exercise 2: VAST Challenge 2025 - Mini Challenge 3"
+author: "Vanessa Riadi"
+date: "May 26, 2025"
+date-modified: "last-modified"
+format:
+  html:
+    toc: true
+    prefer-html: true
+execute: 
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+# [1]{style="color:#d496d4; background:none;"} Overview
+
+Clepper Jessen, an investigative journalist, is uncovering possible corruption in Oceanus linked to the closure of Nemo Reef and the arrival of pop star Sailor Shift. Using intercepted radio communications, a knowledge graph was created to map out interactions between people, vessels, and organizations. This Mini Challenge aims to support Clepper's investigation through data-driven visual analytics, uncovering patterns, pseudonym usage, social groupings, and suspicious behavior—especially concerning Nadia Conti, a previously implicated figure in illegal fishing.
+
+# [2]{style="color:#d496d4; background:none;"} Objective
+
+The Mini Challenge 3 tasked us to design and develop up to three graph-based data visualizations that:
+
+-   Identify temporal patterns in communications.
+
+-   Reveal relationships and influence among entities (people, vessels, groups).
+
+-   Expose pseudonym usage and investigate Nadia Conti's activity for potential misconduct.
+
+This is part 1 of the Mini Challenge 3 where we will be looking at question 1:
+
+a)  Develop a graph-based visual analytics approach to identify any daily temporal patterns in communications.
+
+b)  How do these patterns shift over the two weeks of observations?
+
+c)  Focus on a specific entity and use this information to determine who has influence over them.
+
+and 3c) How does your understanding of activities change given your understanding of pseudonyms?
+
+::: {.nursebox .nurse data-latex="nurse"}
+For part 2 go to Hoa's page (link pending)
+
+For part 3 go to Summer's page (link pending)
+:::
+
+# [3]{style="color:#d496d4; background:none;"} Analytical Toolkit: RStudio
+
+RStudio and Quarto are used as the primary analytical tools for this challenge. The data will be analyzed and visualized using the **tidyverse** suite and advanced network visualization packages to explore the knowledge graph and temporal communication dynamics.
+
+Before we get started, it is important for us to ensure that the required R packages have been installed.
+
+::: callout-note
+# Install [**pacman**](https://cran.r-project.org/web/packages/pacman/index.html){target="_blank"} package
+
+If you have yet to install pacman, install itby typing below in the Console:
+
+```{r}
+#| eval: false
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("pacman")
+```
+:::
+
+We then load the following R packages using the `pacman::p_load()` function:
+
+```{r}
+pacman::p_load(tidyverse, tidygraph, ggraph, jsonlite, ggplot2,
+               SmartEDA, lubridate, ggthemes, readr, readxl, knitr, dplyr, visNetwork)
+```
+
+# [4]{style="color:#d496d4; background:none;"} Data
+
+The core dataset is a knowledge graph derived from radio communications intercepted over a two-week period on Oceanus. Each node in the graph represents an entity such as a person, vessel, pseudonym, or organization. Edges represent interactions or co-occurrences in communications. Edge attributes include timestamp, topic, message type, and possible pseudonym use.
+
+Supplementary information from the story given on the Mini Challenge page includes:
+
+-   Entity roles and affiliations (e.g., Green Guardians, Sailor Shift's crew).
+
+-   Known pseudonyms (e.g., “Boss”, “The Lookout”).
+
+-   Historical involvement in illicit activities (e.g., Nadia Conti).
+
+Refer to the data description details in [Appendix A](#appendixa)
+
+## [4.1]{style="color:#d496d4; background:none;"} Load the Data
+
+First we load the data.
+
+```{r}
+graph_data <- fromJSON("data/MC3_graph.json")
+schema_data <- fromJSON("data/MC3_schema.json")
+```
+
+## [4.2]{style="color:#d496d4; background:none;"} Check the Data
+
+```{r}
+glimpse(graph_data)
+```
+
+```{r}
+glimpse(schema_data)
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Observation** {.no-top-padding}
+
+-   There are a lot of NA values because only certain types have certain information. Let's look more towards each edges and nodes.
+-   Since the focus is recorded intercepted radio communications over the last two weeks, we will also focus on Communications records.
+-   We also need to clean and convert some of the data types (e.g Convert timestamp from chr to datetime format)
+
+But let's explore more first!
+:::
+
+## [4.3]{style="color:#d496d4; background:none;"} Extracting the edges and nodes tables
+
+Next, `as_tibble()` of **tibble** package package is used to extract the nodes and links tibble data frames from *mc3* tibble dataframe into two separate tibble dataframes called *mc3_nodes* and *mc3_edges* respectively.
+
+```{r}
+nodes_tbl <- as_tibble(graph_data$nodes)
+edges_tbl <- as_tibble(graph_data$edges)
+```
+
+```{r}
+head(nodes_tbl)
+```
+
+```{r}
+head(edges_tbl)
+```
+
+### View distinct node types
+
+```{r}
+table(nodes_tbl$type)
+```
+
+### [4.3.1]{style="color:#d496d4; background:none;"} Initial EDA
+
+In the code chunk below, `ExpCatViz()` of SmartEDA package is used to reveal the frequency distribution of all categorical fields in *nodes_tbl* dataframe.
+
+```{r}
+ExpCatViz(data=nodes_tbl,
+          col="lightblue")
+```
+
+::: callout-note
+What useful discovery can you obtained from the visualisation above?
+:::
+
+On the other hands, code chunk below uses `ExpCATViz()` of SmartEDA package to reveal the frequency distribution of all categorical fields in *edges_tbl* dataframe.
+
+```{r}
+ExpCatViz(data=edges_tbl,
+          col="lightblue")
+```
+
+::: callout-note
+What useful discovery can you obtained from the visualisation above?
+:::
+
+## [4.4]{style="color:#d496d4; background:none;"} Data Preparation {#dataprep}
+
+We will performs the following data cleaning and data wrangling tasks:
+
+-   Extract communication events with timestamps
+-   Clean timestamp
+-   Extract sender and receiver links
+-   Separate senders and receivers
+-   Join sender-receiver pairs
+-   Join with communication details
+-   Join to get sender/receiver labels
+-   Save the result for use
+
+### [4.4.1]{style="color:#d496d4; background:none;"} Extract communication events with timestamps
+
+```{r}
+comm_events <- nodes_tbl %>%
+  filter(type == "Event", sub_type == "Communication")
+
+head(comm_events)
+```
+
+### [4.4.2]{style="color:#d496d4; background:none;"} Extract necessary fields
+
+We'll use `id`, `timestamp` and `content`
+
+```{r}
+comm_events <- comm_events %>%
+  select(id, timestamp = timestamp, content = content)
+
+head(comm_events)
+```
+
+### [4.4.3]{style="color:#d496d4; background:none;"} Convert timestamp from chr to datetime format
+
+```{r}
+comm_events <- comm_events %>%
+  mutate(timestamp = ymd_hms(timestamp))
+
+head(comm_events)
+```
+
+### [4.4.3]{style="color:#d496d4; background:none;"} Filter edges for sender and receiver
+
+```{r}
+comm_edges <- edges_tbl %>%
+  filter(type %in% c("sent", "received")) %>%
+  select(source, target, type)
+
+head(comm_edges)
+```
+
+### [4.4.4]{style="color:#d496d4; background:none;"} Separate and rename
+
+```{r}
+senders <- comm_edges %>%
+  filter(type == "sent") %>%
+  rename(sender = source, message_id = target)
+
+receivers <- comm_edges %>%
+  filter(type == "received") %>%
+  rename(receiver = target, message_id = source)
+```
+
+### [4.4.5]{style="color:#d496d4; background:none;"} Join sender and receiver info
+
+```{r}
+comm_pairs <- inner_join(senders, receivers, by = "message_id")
+
+head(comm_pairs)
+```
+
+### [4.4.6]{style="color:#d496d4; background:none;"} Combine with communication details
+
+```{r}
+comm_full <- comm_pairs %>%
+  left_join(comm_events, by = c("message_id" = "id"))
+
+head(comm_full)
+```
+
+### [4.4.7]{style="color:#d496d4; background:none;"} Join entity labels for sender and receiver
+
+```{r}
+entity_labels <- nodes_tbl %>%
+  filter(type == "Entity") %>%
+  select(id, label, sub_type)
+
+head(entity_labels)
+```
+
+### [4.4.7]{style="color:#d496d4; background:none;"} Combine everything and save to CSV
+
+```{r}
+comm_full <- comm_full %>%
+  left_join(entity_labels, by = c("sender" = "id")) %>%
+  rename(sender_label = label, sender_type = sub_type) %>%
+  left_join(entity_labels, by = c("receiver" = "id")) %>%
+  rename(receiver_label = label, receiver_type = sub_type)
+
+head(comm_full)
+```
+
+For the purpose of this Take Home Exercise, we will extract out to CSV so the rest of the group can work with this cleaned data!
+
+```{r}
+#| eval: false
+write_csv(comm_full, "data/communications_full.csv")
+```
+
+# [5]{style="color:#d496d4; background:none;"} Data Visualisation, Observation, and Insights
+
+For part 1 of the Mini Challenge 3 Let's look specifically into event nodes where communications occur.
+
+## [5.1]{style="color:#d496d4; background:none;"} Develop a graph-based visual analytics approach to identify any daily temporal patterns in communications.
+
+How do these patterns shift over the two weeks of observations?
+
+```{r}
+comm_full %>%
+  mutate(date = as.Date(timestamp)) %>%
+  count(date) %>%
+  ggplot(aes(x = date, y = n)) +
+  geom_line(color = "steelblue", size = 1.2) +
+  labs(
+    title = "Daily Communication Volume",
+    x = "Date", y = "Number of Messages"
+  ) +
+  theme_minimal()
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### 🎀 **Insights Plot 1** {.no-top-padding}
+
+-   
+:::
+
+## [5.2]{style="color:#d496d4; background:none;"} Focus on a specific entity and use this information to determine who has influence over them.
+
+```{r}
+# Create edge list
+graph_edges <- comm_full %>%
+  count(sender_label, receiver_label) %>%
+  filter(!is.na(sender_label), !is.na(receiver_label)) %>%
+  rename(from = sender_label, to = receiver_label, value = n)
+
+# Create node list from edges
+graph_nodes <- tibble(name = unique(c(graph_edges$from, graph_edges$to))) %>%
+  mutate(id = name, label = name, group = name)
+
+# visNetwork expects numeric node IDs, but we can use labels for both
+visNetwork(nodes = graph_nodes, edges = graph_edges) %>%
+  visEdges(arrows = "to") %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+  visLayout(randomSeed = 123) %>%
+  visPhysics(stabilization = TRUE) %>%
+  visInteraction(navigationButtons = TRUE) %>%
+  visLegend()
+
+```
+::: {.nursebox .nurse data-latex="nurse"}
+#### 🎀 **Insights Plot 2** {.no-top-padding}
+
+-   
+:::
+
+## [5.3]{style="color:#d496d4; background:none;"} Pseudonym Usage & Nadia Conti's Activity
+
+### [5.3.1]{style="color:#d496d4; background:none;"} Filter: Communications involving Nadia Conti
+
+```{r}
+# Filter communications with Nadia
+nadia_msgs <- comm_full %>%
+  filter(sender_label == "Nadia Conti" | receiver_label == "Nadia Conti")
+
+# See who she communicates with
+nadia_msgs %>%
+  count(sender_label, receiver_label, sort = TRUE)
+
+```
+
+### [5.3.2]{style="color:#d496d4; background:none;"} Create tidygraph object for Nadia's ego network
+
+```{r}
+nadia_edges <- nadia_msgs %>%
+  count(sender_label, receiver_label) %>%
+  rename(from = sender_label, to = receiver_label, weight = n)
+
+nadia_nodes <- tibble(name = unique(c(nadia_edges$from, nadia_edges$to)))
+
+nadia_graph <- tbl_graph(nodes = nadia_nodes, edges = nadia_edges, directed = TRUE)
+
+ggraph(nadia_graph, layout = "kk") +
+  geom_edge_link(aes(width = weight), alpha = 0.6, color = "purple") +
+  geom_node_point(color = "orange", size = 6) +
+  geom_node_text(aes(label = name), repel = TRUE, size = 4) +
+  labs(title = "Nadia Conti's Communication Network") +
+  theme_void()
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### 🎀 **Insights Plot 3** {.no-top-padding}
+
+-   
+:::
+
+# [6]{style="color:#d496d4; background:none;"} Reference
+
+\- [**VAST 2024 Mini Challenge 3**](https://vast-challenge.github.io/2025/MC3.html){target="_blank"}\
+- [**jsonlite**](https://cran.r-project.org/package=jsonlite){target="_blank"}: A robust and high-performance JSON parser and generator for R, useful for working with web APIs and structured data.  \
+- [**tibble**](https://cran.r-project.org/package=tibble){target="_blank"}: A modern reimagining of data frames in R that prints cleaner and is better for programming.\
+- [**dplyr**](https://cran.r-project.org/package=dplyr){target="_blank"}: A grammar of data manipulation, making data wrangling concise, fast, and readable.\
+- [**knitr**](https://cran.r-project.org/package=knitr){target="_blank"}: A dynamic report generation tool in R, used for rendering markdown reports and tables.\
+- [**SmartEDA**](https://cran.r-project.org/package=SmartEDA){target="_blank"}: Automatically generates EDA reports including statistical summaries and visualizations.\
+- [**lubridate**](https://cran.r-project.org/package=lubridate){target="_blank"}: Simplifies the parsing, manipulation, and extraction of date-time data.\
+- [**readr**](https://cran.r-project.org/package=readr){target="_blank"}: Provides fast and friendly functions for reading and writing rectangular data (e.g., CSV).\
+- [**ggplot2**](https://cran.r-project.org/package=ggplot2){target="_blank"}: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.\
+- [**visNetwork**](https://datastorm-open.github.io/visNetwork/){target="_blank"}: Enables interactive network visualizations in R using the vis.js JavaScript library.\
+- [**tidygraph**](https://cran.r-project.org/package=tidygraph){target="_blank"}: Provides a tidy framework for network analysis, integrating graph theory with tidy data principles.\
+- [**ggraph**](https://cran.r-project.org/package=ggraph){target="_blank"}: Extends ggplot2 to visualize network and graph structures with customizable layouts.\
+- [**ggrepel**](https://cran.r-project.org/package=ggrepel){target="_blank"}: Automatically adjusts overlapping text labels in ggplot2 and ggraph visualizations to improve clarity.
+
+# [7]{style="color:#d496d4; background:none;"} Appendix
+
+## [7.1]{style="color:#d496d4; background:none;"} Appendix A {#appendixa}
+
+![](data/MC3_data_description.pdf){fig-align="center" width="700" height="350"}

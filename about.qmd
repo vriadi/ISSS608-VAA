@@ -33,7 +33,7 @@ Current GPA: 3.62 / 4.0
 
 **Coventry University** \| Distant Learning\
 Oct 2015 - Dec 2018\
-Bachelor of Artrs in Digital Media
+Bachelor of Arts in Digital Media
 
 ## Certifications
 
@@ -44,11 +44,14 @@ Credential ID: ZOZVYKSV
 
 ## Experience
 
-**Porsche** \| Singapore \| Feb 2025 - present\
+**Porsche Services Singapore** \| Singapore \| Feb 2025 - present\
 **Digital Business Development Intern**\
-• Partner as a business owner with external scrum team including product owner, scrum master, and developers to develop, enhance and deploy Digital Service Hub products, such as internal Sales Funnel Excellence App and Porsche E-commerce Shop.\
-• Identify gaps and propose actions to drive deployment and operational excellence in “Growth Region V5” markets including Singapore, Malaysia, Thailand, Korea, Japan, Taiwan, New Zealand and Australia.\
-• Design and implement Excel-based report templates for Sales Funnel tracking, enabling data-driven decision-making through contact capture analysis and conversion rate monitoring.
+• Support the roll out of Digital Service Hub products including internal Sales Funnel Excellence Web App (CRM solution) and Porsche E-commerce Shop.\
+• Manage and collaborate with external vendors to develop and enhance the products by creating test scenarios, conducting User Acceptance Testing (UAT), and ensuring production readiness.\
+• Defined and track OKRs using a data science framework to translate business goals into measurable KPIs, and initiated the development of a custom data export format with vendors to enable enhanced reporting on product usage and operational performance.\
+• Identify system and operation gaps, recommend actionable strategies to improve deployment and market success across Growth Region V5 markets (SG, MY, TH, KR, JP, TW, NZ, AU).\
+• Develop and deliver training materials and plans across markets to support product adoption.\
+• Provide day-to-day operational support by troubleshooting system issues, escalating bugs, and coordinating resolutions with developers.
 
 **Third i** \| Singapore \| Jan 2025\
 **Data Engineering Intern**\
@@ -57,7 +60,7 @@ Credential ID: ZOZVYKSV
 **Central Provident Fund Board (CPFB)** \| Singapore \| Apr 2024 – Dec 2024\
 **Manager, Business Analytics \|** Agency Governance & Planning Department\
 • Managed automation project and worked with cross-functional teams to develop and implement automation solution using Python.\
-**Award:** **Pinnacle Award at CPFB Excellence Award 2024 (Nov 2024)** for enabling quicker implementation of government transfers through the Citizen Disbursement IT System achieving a 60% e\[iciency in user e\[ort and vendor costs per batch User Acceptance Testing (UAT).\
+**Award:** **Pinnacle Award at CPFB Excellence Award 2024 (Nov 2024)** for enabling quicker implementation of government transfers through the Citizen Disbursement IT System achieving a 60% efficiency in user e\[ort and vendor costs per batch User Acceptance Testing (UAT).\
 • Led and conducted data asnalysis and statistical projects using Python, Excel, and Power BI with cross- functional team members to guide policy principals and improve operational e\[iciency.\
 **Notable Project:** Customer Engagement Team (CET) GovBenefit Portal study where we investigate the spike in enquiry and appeal cases which led to UI/UX overhaul of GovBenefit website (https://www.govbenefits.gov.sg/).
 
