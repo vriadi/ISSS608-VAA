@@ -102,7 +102,7 @@ make_hr_wkday <- function(ts, sc, tz) {
 ::: callout-tip
 # Cheatsheet for lubridate [here](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf)
 
-![](lubridate.pdf){fig-align="center" width="700" height="350"}
+![](img/lubridate.pdf){fig-align="center" width="700" height="350"}
 :::
 
 Step 2: Deriving the attacks tibble data frame
@@ -324,7 +324,7 @@ The code chunk below is used to plot the cycle plot as shown in Slide 12/23.
 
 ggplot() + 
   geom_line(data=Vietnam,
-            aes(x = as.factor(year), xw
+            aes(x = as.factor(year), 
                 y=`Vietnam`, 
                 group=month), 
             colour="black") +

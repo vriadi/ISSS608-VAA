@@ -1,0 +1,39 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"My First ShinyApp\"\n",
+        "author: \"Vanessa Riadi\"\n",
+        "date: \"May 31, 2025\"\n",
+        "date-modified: \"last-modified\"\n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    prefer-html: true\n",
+        "execute: \n",
+        "  echo: true\n",
+        "  eval: true\n",
+        "  warning: false\n",
+        "  freeze: true\n",
+        "---\n",
+        "\n",
+        "```{html}\n",
+        "<iframe src=\"https://vriadi.shinyapps.io/In-Class_Ex07/\" width=\"600\" height=\"400\"></iframe>\n",
+        "```"
+      ],
+      "id": "bccadaca"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

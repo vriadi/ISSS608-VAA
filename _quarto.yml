@@ -61,6 +61,8 @@ website:
             href: In-class_Ex/In-class_Ex05.html
           - text: "Session 6 - Visitor Air Arrivals by Country Dashboard"
             href: In-class_Ex/In-class_Ex06.html
+          #- text: "Session 7 - ShinyApp"
+          #  href: In-class_Ex/In-class_Ex07.html
       - text: "Take-home Exercise"
         menu:
           - text: "1.1 - Demographic structures and distribution of Singapore in 2024"
@@ -143,6 +145,8 @@ website:
               href: In-class_Ex/In-class_Ex05.html
             - text: "Session 6 - Visitor Air Arrivals by Country Dashboard"
               href: In-class_Ex/In-class_Ex06.html
+            #- text: "Session 7 - ShinyApp"
+            #  href: In-class_Ex/In-class_Ex07.html
     - title: "Take-Home Exercise"
       style: "floating"
       collapse-level: 2

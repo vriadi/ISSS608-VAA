@@ -53,9 +53,10 @@ Before we get started, it is important for us to ensure that the required R pack
 ::: callout-note
 # Install [**pacman**](https://cran.r-project.org/web/packages/pacman/index.html){target="_blank"} package
 
-If you have yet to install pacman, install itby typing below in the Console:
+If you have yet to install pacman, install it by typing below in the Console:
 
 ```{r}
+#| code-fold: true
 #| eval: false
 options(repos = c(CRAN = "https://cloud.r-project.org"))
 install.packages("pacman")
@@ -65,6 +66,7 @@ install.packages("pacman")
 We then load the following R packages using the `pacman::p_load()` function:
 
 ```{r}
+#| code-fold: true
 pacman::p_load(tidyverse, tidygraph, ggraph, jsonlite, ggplot2,
                SmartEDA, lubridate, ggthemes, readr, readxl, knitr, dplyr, visNetwork)
 ```
@@ -85,8 +87,6 @@ Refer to the data description details in [Appendix A](#appendixa)
 
 ## [4.1]{style="color:#d496d4; background:none;"} Load the Data
 
-First we load the data.
-
 ```{r}
 graph_data <- fromJSON("data/MC3_graph.json")
 schema_data <- fromJSON("data/MC3_schema.json")
@@ -94,45 +94,58 @@ schema_data <- fromJSON("data/MC3_schema.json")
 
 ## [4.2]{style="color:#d496d4; background:none;"} Check the Data
 
+### [4.2.1]{style="color:#d496d4; background:none;"} graph_data
+
 ```{r}
+#| code-fold: true
 glimpse(graph_data)
 ```
 
+### [4.2.2]{style="color:#d496d4; background:none;"} schema_data
+
 ```{r}
+#| code-fold: true
 glimpse(schema_data)
 ```
 
-::: {.nursebox .nurse data-latex="nurse"}
-#### **Observation** {.no-top-padding}
+::: {.nursebox .nurse data-latex="nurse"} {#glimpse} \#### **Observation** {.no-top-padding}
 
--   There are a lot of NA values because only certain types have certain information. Let's look more towards each edges and nodes.
+-   The each data set area already split to nodes and edges thus we will extract the edges and nodes tables.
+-   There are a lot of NA values because only certain types have certain information. For example type = "events" and sub_type = "Communications" will have timestamp and content.
 -   Since the focus is recorded intercepted radio communications over the last two weeks, we will also focus on Communications records.
 -   We also need to clean and convert some of the data types (e.g Convert timestamp from chr to datetime format)
 
-But let's explore more first!
-:::
+Let's explore each edges and nodes! :::
 
 ## [4.3]{style="color:#d496d4; background:none;"} Extracting the edges and nodes tables
 
-Next, `as_tibble()` of **tibble** package package is used to extract the nodes and links tibble data frames from *mc3* tibble dataframe into two separate tibble dataframes called *mc3_nodes* and *mc3_edges* respectively.
+First we need to extract the nodes and links tibble data frames using `as_tibble()` of **tibble** package package into two separate tibble dataframes called *nodes_tbl* and *edges_tbl* respectively.
 
 ```{r}
 nodes_tbl <- as_tibble(graph_data$nodes)
 edges_tbl <- as_tibble(graph_data$edges)
 ```
 
+### Check how many distinct nodes
+
+```{r}
+#| code-fold: true
+table(nodes_tbl$type)
+```
+
 ```{r}
 head(nodes_tbl)
 ```
 
+### Check how many distinct edges
+
 ```{r}
-head(edges_tbl)
+#| code-fold: true
+table(edges_tbl$type)
 ```
 
-### View distinct node types
-
 ```{r}
-table(nodes_tbl$type)
+head(edges_tbl)
 ```
 
 ### [4.3.1]{style="color:#d496d4; background:none;"} Initial EDA
@@ -140,37 +153,51 @@ table(nodes_tbl$type)
 In the code chunk below, `ExpCatViz()` of SmartEDA package is used to reveal the frequency distribution of all categorical fields in *nodes_tbl* dataframe.
 
 ```{r}
-ExpCatViz(data=nodes_tbl,
-          col="lightblue")
+#| fig-height: 24
+#| fig-width: 10
+ExpCatViz(nodes_tbl, col = "lightblue",margin=2,Page = c(7,2))
 ```
 
-::: callout-note
-What useful discovery can you obtained from the visualisation above?
+::: {.nursebox .nurse data-latex="nurse"}{#obsv1}
+#### **Observation** {.no-top-padding}
+
+-   Node type is dominated Events (69%) followed by Relationship (25%) and Entity (6%).
+-   We need to convert some of the data types for date and time from chr to datetime format.
+-   High Missing Values Across Most Fields. Fields like reference, authority_level, and report_type are nearly all NA.
+-   Fields like monitoring_type, assessment_type, movement_type, etc. also show very sparse use. Which supports the earlier [glimpse()](#glimpse) finding where most attribute fields are only relevant to certain subtypes (e.g. type = "events" and sub_type = "Communications" will have timestamp and content but other type and sub_types doesn't have these information). We need to conditionally filter or visualize based on both type and sub_type to avoid misleading analysis. For example, don’t rely on type: assessment_type unless sub_type == "Assessment".
 :::
 
-On the other hands, code chunk below uses `ExpCATViz()` of SmartEDA package to reveal the frequency distribution of all categorical fields in *edges_tbl* dataframe.
+Now we will reveal the frequency distribution of all categorical fields in *edges_tbl* dataframe.
 
 ```{r}
 ExpCatViz(data=edges_tbl,
           col="lightblue")
 ```
 
-::: callout-note
-What useful discovery can you obtained from the visualisation above?
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Observation** {.no-top-padding}
+
+-   A large proportion (32%) of edges have missing/undefined type values (NA). But as we've discovered from the earlier findings in earlier [SmartEDA of nodes_tbl]({obsv1) and [glimpse()](#glimpse), we know that only certain type and sub_type have all information.
+
+-   Significant portion of edges are evidence_for (32%), suggests more evidential or contextual links. Possibly connecting events or documents to people, vessels, or actions.
+
+-   Communication events (e.g., who sent/received messages) only make up 18% each of the dataset means that communication-specific analyses should filter only these types, excluding NA and evidence_for.
+
+-   These observations support the earlier suggestion in glimpse() to filter only communication related data for our visualisation later on.
 :::
 
 ## [4.4]{style="color:#d496d4; background:none;"} Data Preparation {#dataprep}
 
-We will performs the following data cleaning and data wrangling tasks:
+After the initial EDA done in the previous chapter, we will performs the following data cleaning and data wrangling tasks:
 
--   Extract communication events with timestamps
--   Clean timestamp
--   Extract sender and receiver links
--   Separate senders and receivers
--   Join sender-receiver pairs
--   Join with communication details
--   Join to get sender/receiver labels
--   Save the result for use
+-   Extract type = "Event", and sub_type = "communication" events since we will be focusing on intercepted communications.
+-   Convert timestamp from chr to datetime format.
+-   Extract sender and receiver links.
+-   Separate senders and receivers.
+-   Join sender-receiver pairs.
+-   Join with communication details.
+-   Join to get sender/receiver labels.
+-   Save the result for further analysis and visualisation usage.
 
 ### [4.4.1]{style="color:#d496d4; background:none;"} Extract communication events with timestamps
 
@@ -319,6 +346,7 @@ visNetwork(nodes = graph_nodes, edges = graph_edges) %>%
   visLegend()
 
 ```
+
 ::: {.nursebox .nurse data-latex="nurse"}
 #### 🎀 **Insights Plot 2** {.no-top-padding}
 
@@ -368,7 +396,7 @@ ggraph(nadia_graph, layout = "kk") +
 # [6]{style="color:#d496d4; background:none;"} Reference
 
 \- [**VAST 2024 Mini Challenge 3**](https://vast-challenge.github.io/2025/MC3.html){target="_blank"}\
-- [**jsonlite**](https://cran.r-project.org/package=jsonlite){target="_blank"}: A robust and high-performance JSON parser and generator for R, useful for working with web APIs and structured data.  \
+- [**jsonlite**](https://cran.r-project.org/package=jsonlite){target="_blank"}: A robust and high-performance JSON parser and generator for R, useful for working with web APIs and structured data. \
 - [**tibble**](https://cran.r-project.org/package=tibble){target="_blank"}: A modern reimagining of data frames in R that prints cleaner and is better for programming.\
 - [**dplyr**](https://cran.r-project.org/package=dplyr){target="_blank"}: A grammar of data manipulation, making data wrangling concise, fast, and readable.\
 - [**knitr**](https://cran.r-project.org/package=knitr){target="_blank"}: A dynamic report generation tool in R, used for rendering markdown reports and tables.\
