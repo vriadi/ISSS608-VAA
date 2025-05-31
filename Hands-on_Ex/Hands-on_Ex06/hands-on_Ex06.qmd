@@ -13,7 +13,7 @@ execute:
   freeze: true
 ---
 
-## [5.1]{style="color:#d496d4"} Learning Outcome
+## [6.1]{style="color:#d496d4"} Learning Outcome
 
 We will learn how to create the followings using R visualisation in this hands-on exercise:
 
@@ -25,9 +25,9 @@ We will learn how to create the followings using R visualisation in this hands-o
 
 -   plotting a horizon chart
 
-## [5.2]{style="color:#d496d4"} Getting Started
+## [6.2]{style="color:#d496d4"} Getting Started
 
-### [5.2.1]{style="color:#d496d4"} Installing and launching R packages
+### [6.2.1]{style="color:#d496d4"} Installing and launching R packages
 
 We will install and launch the following R packages: scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table and tidyverse.
 
@@ -37,7 +37,7 @@ pacman::p_load(scales, viridis, lubridate, ggthemes,
                CGPfunctions, ggHoriPlot, tidyverse)
 ```
 
-## [5.3]{style="color:#d496d4"} Plotting Calendar Heatmap
+## [6.3]{style="color:#d496d4"} Plotting Calendar Heatmap
 
 In this section, you will learn how to:
 
@@ -50,7 +50,7 @@ Example of a calender heatmap programmatically by using ggplot2 package:
 
 ![](img/image01.png)
 
-### [5.3.1]{style="color:#d496d4"} The Data
+### [6.3.1]{style="color:#d496d4"} The Data
 
 For the purpose of this hands-on exercise, *eventlog.csv* file will be used. This data file consists of 199,999 rows of time-series cyber attack records by country.
 
@@ -60,7 +60,7 @@ First we import *eventlog.csv* file into R environment and called the data frame
 attacks <- read_csv("../data/eventlog.csv")
 ```
 
-### [5.3.2]{style="color:#d496d4"} Examining the data structure
+### [6.3.2]{style="color:#d496d4"} Examining the data structure
 
 It is always a good practice to examine the imported data frame before further analysis is performed.
 
@@ -76,7 +76,7 @@ There are three columns, namely *timestamp*, *source_country* and *tz*.
 -   *source_country* field stores the source of the attack. It is in *ISO 3166-1 alpha-2* country code.\
 -   *tz* field stores time zone of the source IP address.
 
-### [5.3.3]{style="color:#d496d4"} Data Preparation
+### [6.3.3]{style="color:#d496d4"} Data Preparation
 
 Step 1: Deriving *weekday* and *hour of day* fields
 
@@ -135,7 +135,7 @@ Table below shows the tidy tibble table after processing.
 kable(head(attacks))
 ```
 
-### [5.3.4]{style="color:#d496d4"} Building the Calendar Heatmaps
+### [6.3.4]{style="color:#d496d4"} Building the Calendar Heatmaps
 
 ::: {.nursebox .nurse data-latex="nurse"}
 **NOTE:** Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0. So we will use use `linewidth` instead.
@@ -182,13 +182,13 @@ theme(axis.ticks = element_blank(),
 
 Then we can simply group the count by hour and weekday and plot it, since we know that we have values for every combination there's no need to further preprocess the data.
 
-### [5.3.5]{style="color:#d496d4"} Building Multiple Calendar Heatmaps
+### [6.3.5]{style="color:#d496d4"} Building Multiple Calendar Heatmaps
 
 **Challenge:** Building multiple heatmaps for the top four countries with the highest number of attacks.
 
 **EXAMPLE:** ![](img/image02.png)
 
-### [5.3.6]{style="color:#d496d4"} Plotting Multiple Calendar Heatmaps
+### [6.3.6]{style="color:#d496d4"} Plotting Multiple Calendar Heatmaps
 
 Step 1: Deriving attack by country object
 
@@ -220,7 +220,7 @@ top4_attacks <- attacks %>%
   na.omit()
 ```
 
-### [5.3.7]{style="color:#d496d4"} Plotting Multiple Calendar Heatmaps
+### [6.3.7]{style="color:#d496d4"} Plotting Multiple Calendar Heatmaps
 
 Step 3: Plotting the Multiple Calender Heatmap by using ggplot2 package.
 
@@ -246,13 +246,13 @@ ggplot(top4_attacks,
         legend.text = element_text(size = 6) )
 ```
 
-## [5.4]{style="color:#d496d4"} Plotting Cycle Plot
+## [6.4]{style="color:#d496d4"} Plotting Cycle Plot
 
 In this section, you will learn how to plot a cycle plot showing the time-series patterns and trend of visitor arrivals from Vietnam programmatically by using ggplot2 functions.
 
 **EXAMPLE** ![](img/image03.png)
 
-### [5.4.1]{style="color:#d496d4"} Step 1: Data Import
+### [6.4.1]{style="color:#d496d4"} Step 1: Data Import
 
 For the purpose of this hands-on exercise, *arrivals_by_air.xlsx* will be used.
 
@@ -267,7 +267,7 @@ air <- read_excel("../data/arrivals_by_air.xlsx")
 kable(head(air))
 ```
 
-### [5.4.2]{style="color:#d496d4"} Step 2: Deriving month and year fields
+### [6.4.2]{style="color:#d496d4"} Step 2: Deriving month and year fields
 
 Next, two new fields called *month* and *year* are derived from *Month-Year* field.
 
@@ -279,7 +279,7 @@ air$month <- factor(month(air$`Month-Year`),
 air$year <- year(ymd(air$`Month-Year`))
 ```
 
-### [5.4.3]{style="color:#d496d4"} Step 4: Extracting the target country
+### [6.4.3]{style="color:#d496d4"} Step 4: Extracting the target country
 
 Next, the code chunk below is use to extract data for the target country (i.e. Vietnam)
 
@@ -296,7 +296,7 @@ Vietnam <- air %>%
 kable(head(Vietnam))
 ```
 
-### [5.4.4]{style="color:#d496d4"} Step 5: Computing year average arrivals by month
+### [6.4.4]{style="color:#d496d4"} Step 5: Computing year average arrivals by month
 
 The code chunk below uses `group_by()` and `summarise()` of **dplyr** to compute year average arrivals by month.
 
@@ -311,7 +311,7 @@ hline.data <- Vietnam %>%
 kable(head(hline.data))
 ```
 
-### [5.4.5]{style="color:#d496d4"} Step 6: Plotting the cycle plot
+### [6.4.5]{style="color:#d496d4"} Step 6: Plotting the cycle plot
 
 The code chunk below is used to plot the cycle plot as shown in Slide 12/23.
 
@@ -367,13 +367,13 @@ ggplot() +
 ```
 :::
 
-## [5.5]{style="color:#d496d4"} Plotting Slopegraph
+## [6.5]{style="color:#d496d4"} Plotting Slopegraph
 
 In this section you will learn how to plot a [slopegraph](https://www.storytellingwithdata.com/blog/2020/7/27/what-is-a-slopegraph) by using R.
 
 Before getting start, make sure that **CGPfunctions** has been installed and loaded onto R environment. Then, refer to [Using newggslopegraph](https://cran.r-project.org/web/packages/CGPfunctions/vignettes/Using-newggslopegraph.html) to learn more about the function. Lastly, read more about `newggslopegraph()` and its arguments by referring to this [link](https://www.rdocumentation.org/packages/CGPfunctions/versions/0.6.3/topics/newggslopegraph).
 
-### [5.5.1]{style="color:#d496d4"} Step 1: Data Import
+### [6.5.1]{style="color:#d496d4"} Step 1: Data Import
 
 Import the rice data set into R environment by using the code chunk below.
 
@@ -386,7 +386,7 @@ rice <- read_csv("../data/rice.csv")
 kable(head(rice))
 ```
 
-### [5.5.2]{style="color:#d496d4"} Step 2: Plotting the slopegraph
+### [6.5.2]{style="color:#d496d4"} Step 2: Plotting the slopegraph
 
 Next, code chunk below will be used to plot a basic slopegraph as shown below.
 

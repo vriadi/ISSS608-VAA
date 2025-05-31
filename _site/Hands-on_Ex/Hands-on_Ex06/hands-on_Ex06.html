@@ -193,6 +193,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex06.html">
  <span class="dropdown-text">Session 6 - Visitor Air Arrivals by Country Dashboard</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex07.html">
+ <span class="dropdown-text">Session 7 - ShinyApp</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -388,33 +392,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-outcome" id="toc-learning-outcome" class="nav-link active" data-scroll-target="#learning-outcome"><span style="color:#d496d4">5.1</span> Learning Outcome</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span style="color:#d496d4">5.2</span> Getting Started</a>
+  <li><a href="#learning-outcome" id="toc-learning-outcome" class="nav-link active" data-scroll-target="#learning-outcome"><span style="color:#d496d4">6.1</span> Learning Outcome</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span style="color:#d496d4">6.2</span> Getting Started</a>
   <ul class="collapse">
-  <li><a href="#installing-and-launching-r-packages" id="toc-installing-and-launching-r-packages" class="nav-link" data-scroll-target="#installing-and-launching-r-packages"><span style="color:#d496d4">5.2.1</span> Installing and launching R packages</a></li>
+  <li><a href="#installing-and-launching-r-packages" id="toc-installing-and-launching-r-packages" class="nav-link" data-scroll-target="#installing-and-launching-r-packages"><span style="color:#d496d4">6.2.1</span> Installing and launching R packages</a></li>
   </ul></li>
-  <li><a href="#plotting-calendar-heatmap" id="toc-plotting-calendar-heatmap" class="nav-link" data-scroll-target="#plotting-calendar-heatmap"><span style="color:#d496d4">5.3</span> Plotting Calendar Heatmap</a>
+  <li><a href="#plotting-calendar-heatmap" id="toc-plotting-calendar-heatmap" class="nav-link" data-scroll-target="#plotting-calendar-heatmap"><span style="color:#d496d4">6.3</span> Plotting Calendar Heatmap</a>
   <ul class="collapse">
-  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"><span style="color:#d496d4">5.3.1</span> The Data</a></li>
-  <li><a href="#examining-the-data-structure" id="toc-examining-the-data-structure" class="nav-link" data-scroll-target="#examining-the-data-structure"><span style="color:#d496d4">5.3.2</span> Examining the data structure</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span style="color:#d496d4">5.3.3</span> Data Preparation</a></li>
-  <li><a href="#building-the-calendar-heatmaps" id="toc-building-the-calendar-heatmaps" class="nav-link" data-scroll-target="#building-the-calendar-heatmaps"><span style="color:#d496d4">5.3.4</span> Building the Calendar Heatmaps</a></li>
-  <li><a href="#building-multiple-calendar-heatmaps" id="toc-building-multiple-calendar-heatmaps" class="nav-link" data-scroll-target="#building-multiple-calendar-heatmaps"><span style="color:#d496d4">5.3.5</span> Building Multiple Calendar Heatmaps</a></li>
-  <li><a href="#plotting-multiple-calendar-heatmaps" id="toc-plotting-multiple-calendar-heatmaps" class="nav-link" data-scroll-target="#plotting-multiple-calendar-heatmaps"><span style="color:#d496d4">5.3.6</span> Plotting Multiple Calendar Heatmaps</a></li>
-  <li><a href="#plotting-multiple-calendar-heatmaps-1" id="toc-plotting-multiple-calendar-heatmaps-1" class="nav-link" data-scroll-target="#plotting-multiple-calendar-heatmaps-1"><span style="color:#d496d4">5.3.7</span> Plotting Multiple Calendar Heatmaps</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"><span style="color:#d496d4">6.3.1</span> The Data</a></li>
+  <li><a href="#examining-the-data-structure" id="toc-examining-the-data-structure" class="nav-link" data-scroll-target="#examining-the-data-structure"><span style="color:#d496d4">6.3.2</span> Examining the data structure</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation"><span style="color:#d496d4">6.3.3</span> Data Preparation</a></li>
+  <li><a href="#building-the-calendar-heatmaps" id="toc-building-the-calendar-heatmaps" class="nav-link" data-scroll-target="#building-the-calendar-heatmaps"><span style="color:#d496d4">6.3.4</span> Building the Calendar Heatmaps</a></li>
+  <li><a href="#building-multiple-calendar-heatmaps" id="toc-building-multiple-calendar-heatmaps" class="nav-link" data-scroll-target="#building-multiple-calendar-heatmaps"><span style="color:#d496d4">6.3.5</span> Building Multiple Calendar Heatmaps</a></li>
+  <li><a href="#plotting-multiple-calendar-heatmaps" id="toc-plotting-multiple-calendar-heatmaps" class="nav-link" data-scroll-target="#plotting-multiple-calendar-heatmaps"><span style="color:#d496d4">6.3.6</span> Plotting Multiple Calendar Heatmaps</a></li>
+  <li><a href="#plotting-multiple-calendar-heatmaps-1" id="toc-plotting-multiple-calendar-heatmaps-1" class="nav-link" data-scroll-target="#plotting-multiple-calendar-heatmaps-1"><span style="color:#d496d4">6.3.7</span> Plotting Multiple Calendar Heatmaps</a></li>
   </ul></li>
-  <li><a href="#plotting-cycle-plot" id="toc-plotting-cycle-plot" class="nav-link" data-scroll-target="#plotting-cycle-plot"><span style="color:#d496d4">5.4</span> Plotting Cycle Plot</a>
+  <li><a href="#plotting-cycle-plot" id="toc-plotting-cycle-plot" class="nav-link" data-scroll-target="#plotting-cycle-plot"><span style="color:#d496d4">6.4</span> Plotting Cycle Plot</a>
   <ul class="collapse">
-  <li><a href="#step-1-data-import" id="toc-step-1-data-import" class="nav-link" data-scroll-target="#step-1-data-import"><span style="color:#d496d4">5.4.1</span> Step 1: Data Import</a></li>
-  <li><a href="#step-2-deriving-month-and-year-fields" id="toc-step-2-deriving-month-and-year-fields" class="nav-link" data-scroll-target="#step-2-deriving-month-and-year-fields"><span style="color:#d496d4">5.4.2</span> Step 2: Deriving month and year fields</a></li>
-  <li><a href="#step-4-extracting-the-target-country" id="toc-step-4-extracting-the-target-country" class="nav-link" data-scroll-target="#step-4-extracting-the-target-country"><span style="color:#d496d4">5.4.3</span> Step 4: Extracting the target country</a></li>
-  <li><a href="#step-5-computing-year-average-arrivals-by-month" id="toc-step-5-computing-year-average-arrivals-by-month" class="nav-link" data-scroll-target="#step-5-computing-year-average-arrivals-by-month"><span style="color:#d496d4">5.4.4</span> Step 5: Computing year average arrivals by month</a></li>
-  <li><a href="#step-6-plotting-the-cycle-plot" id="toc-step-6-plotting-the-cycle-plot" class="nav-link" data-scroll-target="#step-6-plotting-the-cycle-plot"><span style="color:#d496d4">5.4.5</span> Step 6: Plotting the cycle plot</a></li>
+  <li><a href="#step-1-data-import" id="toc-step-1-data-import" class="nav-link" data-scroll-target="#step-1-data-import"><span style="color:#d496d4">6.4.1</span> Step 1: Data Import</a></li>
+  <li><a href="#step-2-deriving-month-and-year-fields" id="toc-step-2-deriving-month-and-year-fields" class="nav-link" data-scroll-target="#step-2-deriving-month-and-year-fields"><span style="color:#d496d4">6.4.2</span> Step 2: Deriving month and year fields</a></li>
+  <li><a href="#step-4-extracting-the-target-country" id="toc-step-4-extracting-the-target-country" class="nav-link" data-scroll-target="#step-4-extracting-the-target-country"><span style="color:#d496d4">6.4.3</span> Step 4: Extracting the target country</a></li>
+  <li><a href="#step-5-computing-year-average-arrivals-by-month" id="toc-step-5-computing-year-average-arrivals-by-month" class="nav-link" data-scroll-target="#step-5-computing-year-average-arrivals-by-month"><span style="color:#d496d4">6.4.4</span> Step 5: Computing year average arrivals by month</a></li>
+  <li><a href="#step-6-plotting-the-cycle-plot" id="toc-step-6-plotting-the-cycle-plot" class="nav-link" data-scroll-target="#step-6-plotting-the-cycle-plot"><span style="color:#d496d4">6.4.5</span> Step 6: Plotting the cycle plot</a></li>
   </ul></li>
-  <li><a href="#plotting-slopegraph" id="toc-plotting-slopegraph" class="nav-link" data-scroll-target="#plotting-slopegraph"><span style="color:#d496d4">5.5</span> Plotting Slopegraph</a>
+  <li><a href="#plotting-slopegraph" id="toc-plotting-slopegraph" class="nav-link" data-scroll-target="#plotting-slopegraph"><span style="color:#d496d4">6.5</span> Plotting Slopegraph</a>
   <ul class="collapse">
-  <li><a href="#step-1-data-import-1" id="toc-step-1-data-import-1" class="nav-link" data-scroll-target="#step-1-data-import-1"><span style="color:#d496d4">5.5.1</span> Step 1: Data Import</a></li>
-  <li><a href="#step-2-plotting-the-slopegraph" id="toc-step-2-plotting-the-slopegraph" class="nav-link" data-scroll-target="#step-2-plotting-the-slopegraph"><span style="color:#d496d4">5.5.2</span> Step 2: Plotting the slopegraph</a></li>
+  <li><a href="#step-1-data-import-1" id="toc-step-1-data-import-1" class="nav-link" data-scroll-target="#step-1-data-import-1"><span style="color:#d496d4">6.5.1</span> Step 1: Data Import</a></li>
+  <li><a href="#step-2-plotting-the-slopegraph" id="toc-step-2-plotting-the-slopegraph" class="nav-link" data-scroll-target="#step-2-plotting-the-slopegraph"><span style="color:#d496d4">6.5.2</span> Step 2: Plotting the slopegraph</a></li>
   </ul></li>
   <li><a href="#practice-2" id="toc-practice-2" class="nav-link" data-scroll-target="#practice-2">🎀 <span style="color:#d496d4">PRACTICE</span></a></li>
   </ul>
@@ -461,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="learning-outcome" class="level2">
-<h2 class="anchored" data-anchor-id="learning-outcome"><span style="color:#d496d4">5.1</span> Learning Outcome</h2>
+<h2 class="anchored" data-anchor-id="learning-outcome"><span style="color:#d496d4">6.1</span> Learning Outcome</h2>
 <p>We will learn how to create the followings using R visualisation in this hands-on exercise:</p>
 <ul>
 <li><p>plotting a calender heatmap by using ggplot2 functions,</p></li>
@@ -471,9 +475,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started"><span style="color:#d496d4">5.2</span> Getting Started</h2>
+<h2 class="anchored" data-anchor-id="getting-started"><span style="color:#d496d4">6.2</span> Getting Started</h2>
 <section id="installing-and-launching-r-packages" class="level3">
-<h3 class="anchored" data-anchor-id="installing-and-launching-r-packages"><span style="color:#d496d4">5.2.1</span> Installing and launching R packages</h3>
+<h3 class="anchored" data-anchor-id="installing-and-launching-r-packages"><span style="color:#d496d4">6.2.1</span> Installing and launching R packages</h3>
 <p>We will install and launch the following R packages: scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table and tidyverse.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(scales, viridis, lubridate, ggthemes,</span>
@@ -483,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="plotting-calendar-heatmap" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-calendar-heatmap"><span style="color:#d496d4">5.3</span> Plotting Calendar Heatmap</h2>
+<h2 class="anchored" data-anchor-id="plotting-calendar-heatmap"><span style="color:#d496d4">6.3</span> Plotting Calendar Heatmap</h2>
 <p>In this section, you will learn how to:</p>
 <ul>
 <li>plot a calender heatmap by using ggplot2 functions and extension,</li>
@@ -494,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Example of a calender heatmap programmatically by using ggplot2 package:</p>
 <p><img src="img/image01.png" class="img-fluid"></p>
 <section id="the-data" class="level3">
-<h3 class="anchored" data-anchor-id="the-data"><span style="color:#d496d4">5.3.1</span> The Data</h3>
+<h3 class="anchored" data-anchor-id="the-data"><span style="color:#d496d4">6.3.1</span> The Data</h3>
 <p>For the purpose of this hands-on exercise, <em>eventlog.csv</em> file will be used. This data file consists of 199,999 rows of time-series cyber attack records by country.</p>
 <p>First we import <em>eventlog.csv</em> file into R environment and called the data frame as <em>attacks</em>.</p>
 <div class="cell">
@@ -502,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="examining-the-data-structure" class="level3">
-<h3 class="anchored" data-anchor-id="examining-the-data-structure"><span style="color:#d496d4">5.3.2</span> Examining the data structure</h3>
+<h3 class="anchored" data-anchor-id="examining-the-data-structure"><span style="color:#d496d4">6.3.2</span> Examining the data structure</h3>
 <p>It is always a good practice to examine the imported data frame before further analysis is performed.</p>
 <p>For example, <em>kable()</em> can be used to review the structure of the imported data frame.</p>
 <div class="cell">
@@ -560,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="data-preparation" class="level3">
-<h3 class="anchored" data-anchor-id="data-preparation"><span style="color:#d496d4">5.3.3</span> Data Preparation</h3>
+<h3 class="anchored" data-anchor-id="data-preparation"><span style="color:#d496d4">6.3.3</span> Data Preparation</h3>
 <p>Step 1: Deriving <em>weekday</em> and <em>hour of day</em> fields</p>
 <p>Before we can plot the calender heatmap, two new fields namely <em>weekday</em> and <em>hour</em> need to be derived. In this step, we will write a function to perform the task.</p>
 <div class="cell">
@@ -694,7 +698,7 @@ Note
 </div>
 </section>
 <section id="building-the-calendar-heatmaps" class="level3">
-<h3 class="anchored" data-anchor-id="building-the-calendar-heatmaps"><span style="color:#d496d4">5.3.4</span> Building the Calendar Heatmaps</h3>
+<h3 class="anchored" data-anchor-id="building-the-calendar-heatmaps"><span style="color:#d496d4">6.3.4</span> Building the Calendar Heatmaps</h3>
 <div class="nursebox nurse">
 <p><strong>NOTE:</strong> Using <code>size</code> aesthetic for lines was deprecated in ggplot2 3.4.0. So we will use use <code>linewidth</code> instead.</p>
 </div>
@@ -755,12 +759,12 @@ Things to learn from the code chunk
 <p>Then we can simply group the count by hour and weekday and plot it, since we know that we have values for every combination there’s no need to further preprocess the data.</p>
 </section>
 <section id="building-multiple-calendar-heatmaps" class="level3">
-<h3 class="anchored" data-anchor-id="building-multiple-calendar-heatmaps"><span style="color:#d496d4">5.3.5</span> Building Multiple Calendar Heatmaps</h3>
+<h3 class="anchored" data-anchor-id="building-multiple-calendar-heatmaps"><span style="color:#d496d4">6.3.5</span> Building Multiple Calendar Heatmaps</h3>
 <p><strong>Challenge:</strong> Building multiple heatmaps for the top four countries with the highest number of attacks.</p>
 <p><strong>EXAMPLE:</strong> <img src="img/image02.png" class="img-fluid"></p>
 </section>
 <section id="plotting-multiple-calendar-heatmaps" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-multiple-calendar-heatmaps"><span style="color:#d496d4">5.3.6</span> Plotting Multiple Calendar Heatmaps</h3>
+<h3 class="anchored" data-anchor-id="plotting-multiple-calendar-heatmaps"><span style="color:#d496d4">6.3.6</span> Plotting Multiple Calendar Heatmaps</h3>
 <p>Step 1: Deriving attack by country object</p>
 <p>In order to identify the top 4 countries with the highest number of attacks, you are required to do the followings:</p>
 <ul>
@@ -788,7 +792,7 @@ Things to learn from the code chunk
 </div>
 </section>
 <section id="plotting-multiple-calendar-heatmaps-1" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-multiple-calendar-heatmaps-1"><span style="color:#d496d4">5.3.7</span> Plotting Multiple Calendar Heatmaps</h3>
+<h3 class="anchored" data-anchor-id="plotting-multiple-calendar-heatmaps-1"><span style="color:#d496d4">6.3.7</span> Plotting Multiple Calendar Heatmaps</h3>
 <p>Step 3: Plotting the Multiple Calender Heatmap by using ggplot2 package.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top4_attacks, </span>
@@ -821,11 +825,11 @@ Things to learn from the code chunk
 </section>
 </section>
 <section id="plotting-cycle-plot" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-cycle-plot"><span style="color:#d496d4">5.4</span> Plotting Cycle Plot</h2>
+<h2 class="anchored" data-anchor-id="plotting-cycle-plot"><span style="color:#d496d4">6.4</span> Plotting Cycle Plot</h2>
 <p>In this section, you will learn how to plot a cycle plot showing the time-series patterns and trend of visitor arrivals from Vietnam programmatically by using ggplot2 functions.</p>
 <p><strong>EXAMPLE</strong> <img src="img/image03.png" class="img-fluid"></p>
 <section id="step-1-data-import" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-data-import"><span style="color:#d496d4">5.4.1</span> Step 1: Data Import</h3>
+<h3 class="anchored" data-anchor-id="step-1-data-import"><span style="color:#d496d4">6.4.1</span> Step 1: Data Import</h3>
 <p>For the purpose of this hands-on exercise, <em>arrivals_by_air.xlsx</em> will be used.</p>
 <p>The code chunk below imports <em>arrivals_by_air.xlsx</em> by using <code>read_excel()</code> of <strong>readxl</strong> package and save it as a tibble data frame called <em>air</em>.</p>
 <div class="cell">
@@ -1147,7 +1151,7 @@ Things to learn from the code chunk
 </div>
 </section>
 <section id="step-2-deriving-month-and-year-fields" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-deriving-month-and-year-fields"><span style="color:#d496d4">5.4.2</span> Step 2: Deriving month and year fields</h3>
+<h3 class="anchored" data-anchor-id="step-2-deriving-month-and-year-fields"><span style="color:#d496d4">6.4.2</span> Step 2: Deriving month and year fields</h3>
 <p>Next, two new fields called <em>month</em> and <em>year</em> are derived from <em>Month-Year</em> field.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>air<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">month</span>(air<span class="sc">$</span><span class="st">`</span><span class="at">Month-Year</span><span class="st">`</span>), </span>
@@ -1158,7 +1162,7 @@ Things to learn from the code chunk
 </div>
 </section>
 <section id="step-4-extracting-the-target-country" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-extracting-the-target-country"><span style="color:#d496d4">5.4.3</span> Step 4: Extracting the target country</h3>
+<h3 class="anchored" data-anchor-id="step-4-extracting-the-target-country"><span style="color:#d496d4">6.4.3</span> Step 4: Extracting the target country</h3>
 <p>Next, the code chunk below is use to extract data for the target country (i.e.&nbsp;Vietnam)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Vietnam <span class="ot">&lt;-</span> air <span class="sc">%&gt;%</span> </span>
@@ -1214,7 +1218,7 @@ Things to learn from the code chunk
 </div>
 </section>
 <section id="step-5-computing-year-average-arrivals-by-month" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-computing-year-average-arrivals-by-month"><span style="color:#d496d4">5.4.4</span> Step 5: Computing year average arrivals by month</h3>
+<h3 class="anchored" data-anchor-id="step-5-computing-year-average-arrivals-by-month"><span style="color:#d496d4">6.4.4</span> Step 5: Computing year average arrivals by month</h3>
 <p>The code chunk below uses <code>group_by()</code> and <code>summarise()</code> of <strong>dplyr</strong> to compute year average arrivals by month.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>hline.data <span class="ot">&lt;-</span> Vietnam <span class="sc">%&gt;%</span> </span>
@@ -1261,7 +1265,7 @@ Things to learn from the code chunk
 </div>
 </section>
 <section id="step-6-plotting-the-cycle-plot" class="level3">
-<h3 class="anchored" data-anchor-id="step-6-plotting-the-cycle-plot"><span style="color:#d496d4">5.4.5</span> Step 6: Plotting the cycle plot</h3>
+<h3 class="anchored" data-anchor-id="step-6-plotting-the-cycle-plot"><span style="color:#d496d4">6.4.5</span> Step 6: Plotting the cycle plot</h3>
 <p>The code chunk below is used to plot the cycle plot as shown in Slide 12/23.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">🎀 <span style="color:#d496d4">PRACTICE</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Plot &amp; Code</a></li></ul>
@@ -1330,11 +1334,11 @@ Things to learn from the code chunk
 </section>
 </section>
 <section id="plotting-slopegraph" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-slopegraph"><span style="color:#d496d4">5.5</span> Plotting Slopegraph</h2>
+<h2 class="anchored" data-anchor-id="plotting-slopegraph"><span style="color:#d496d4">6.5</span> Plotting Slopegraph</h2>
 <p>In this section you will learn how to plot a <a href="https://www.storytellingwithdata.com/blog/2020/7/27/what-is-a-slopegraph">slopegraph</a> by using R.</p>
 <p>Before getting start, make sure that <strong>CGPfunctions</strong> has been installed and loaded onto R environment. Then, refer to <a href="https://cran.r-project.org/web/packages/CGPfunctions/vignettes/Using-newggslopegraph.html">Using newggslopegraph</a> to learn more about the function. Lastly, read more about <code>newggslopegraph()</code> and its arguments by referring to this <a href="https://www.rdocumentation.org/packages/CGPfunctions/versions/0.6.3/topics/newggslopegraph">link</a>.</p>
 <section id="step-1-data-import-1" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-data-import-1"><span style="color:#d496d4">5.5.1</span> Step 1: Data Import</h3>
+<h3 class="anchored" data-anchor-id="step-1-data-import-1"><span style="color:#d496d4">6.5.1</span> Step 1: Data Import</h3>
 <p>Import the rice data set into R environment by using the code chunk below.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>rice <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/rice.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1393,7 +1397,7 @@ Things to learn from the code chunk
 </div>
 </section>
 <section id="step-2-plotting-the-slopegraph" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-plotting-the-slopegraph"><span style="color:#d496d4">5.5.2</span> Step 2: Plotting the slopegraph</h3>
+<h3 class="anchored" data-anchor-id="step-2-plotting-the-slopegraph"><span style="color:#d496d4">6.5.2</span> Step 2: Plotting the slopegraph</h3>
 <p>Next, code chunk below will be used to plot a basic slopegraph as shown below.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">🎀 <span style="color:#d496d4">PRACTICE</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Given Code &amp; Plot</a></li></ul>

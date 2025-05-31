@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -159,6 +159,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../In-class_Ex/In-class_Ex06.html">
  <span class="dropdown-text">Session 6 - Visitor Air Arrivals by Country Dashboard</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../In-class_Ex/In-class_Ex07.html">
+ <span class="dropdown-text">Session 7 - ShinyApp</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -198,6 +202,16 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../In-class_Ex/In-class_Ex02.html">In-Class Excercise</a></li><li class="breadcrumb-item"><a href="../In-class_Ex/In-class_Ex07.html">Session 7 - ShinyApp</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
   <div id="quarto-announcement" data-announcement-id="c0627782ff1ee07dcf65f812000b700b" class="alert alert-info hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
 <p><strong>NEW (19/05)</strong> - <a href="https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex06/hands-on_ex06"><strong>Hands-on Exercise 6</strong></a> is published!</p>
 </div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
@@ -205,14 +219,68 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">In-Class Excercise</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../In-class_Ex/In-class_Ex02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session 2 - Superstore Sales and Profit Report</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../In-class_Ex/In-class_Ex03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session 3 - Superstore Sales vs Profit by States Quadrant</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../In-class_Ex/In-class_Ex05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session 5 - Preparation for VAST 2025 Mini Challenge 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../In-class_Ex/In-class_Ex06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session 6 - Visitor Air Arrivals by Country Dashboard</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../In-class_Ex/In-class_Ex07.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Session 7 - ShinyApp</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#view-on" id="toc-view-on" class="nav-link active" data-scroll-target="#view-on">View on <img src="../images/Posit_logo.png" height="20"></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../In-class_Ex/In-class_Ex02.html">In-Class Excercise</a></li><li class="breadcrumb-item"><a href="../In-class_Ex/In-class_Ex07.html">Session 7 - ShinyApp</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">My First ShinyApp</h1>
 </div>
@@ -249,8 +317,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="view-on" class="level3">
+<h3 class="anchored" data-anchor-id="view-on">View on <a href="http://vriadi.shinyapps.io/In-Class_Ex07" target="_blank"><img src="../images/Posit_logo.png" height="20"></a></h3>
+
+<div style="transform: scale(0.5); transform-origin: top left;">
+&nbsp; <iframe width="1400" height="2000" src="http://vriadi.shinyapps.io/In-Class_Ex07" title="CMAP-RSI Explorer" style="border:none;"></iframe>
+</div>
 
 
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

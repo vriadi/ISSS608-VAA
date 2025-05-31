@@ -14,3 +14,12 @@ execute:
   freeze: true
 ---
 
+### View on [![](/images/Posit_logo.png){height="20"}](http://vriadi.shinyapps.io/In-Class_Ex07){target="_blank"}
+
+```{=html}
+
+<div style="transform: scale(0.5); transform-origin: top left;">
+  <iframe width="1400" height="2000" src="http://vriadi.shinyapps.io/In-Class_Ex07" title="CMAP-RSI Explorer" style="border:none;"></iframe>
+</div>
+
+```

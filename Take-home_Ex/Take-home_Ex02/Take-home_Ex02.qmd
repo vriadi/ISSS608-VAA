@@ -39,21 +39,19 @@ c)  Focus on a specific entity and use this information to determine who has inf
 and 3c) How does your understanding of activities change given your understanding of pseudonyms?
 
 ::: {.nursebox .nurse data-latex="nurse"}
-For part 2 go to Hoa's page (link pending)
+For part 2 go to [Hoa's Netlify page](https://isss608-ay2024-25t.netlify.app/)
 
-For part 3 go to Summer's page (link pending)
+For part 3 go to [Summer's Netlify page](https://summernguyenn.netlify.app/)
 :::
 
 # [3]{style="color:#d496d4; background:none;"} Analytical Toolkit: RStudio
 
 RStudio and Quarto are used as the primary analytical tools for this challenge. The data will be analyzed and visualized using the **tidyverse** suite and advanced network visualization packages to explore the knowledge graph and temporal communication dynamics.
 
-Before we get started, it is important for us to ensure that the required R packages have been installed.
-
 ::: callout-note
 # Install [**pacman**](https://cran.r-project.org/web/packages/pacman/index.html){target="_blank"} package
 
-If you have yet to install pacman, install it by typing below in the Console:
+Before we get started, it is important for us to ensure that the required R packages have been installed. If you have yet to install pacman, install it by typing below in the Console:
 
 ```{r}
 #| code-fold: true
@@ -108,14 +106,16 @@ glimpse(graph_data)
 glimpse(schema_data)
 ```
 
-::: {.nursebox .nurse data-latex="nurse"} {#glimpse} \#### **Observation** {.no-top-padding}
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Observation** {#glimpse .no-top-padding}
 
--   The each data set area already split to nodes and edges thus we will extract the edges and nodes tables.
+-   Each data set are already split to nodes and edges thus we will extract the edges and nodes to their own tables.
 -   There are a lot of NA values because only certain types have certain information. For example type = "events" and sub_type = "Communications" will have timestamp and content.
 -   Since the focus is recorded intercepted radio communications over the last two weeks, we will also focus on Communications records.
 -   We also need to clean and convert some of the data types (e.g Convert timestamp from chr to datetime format)
 
-Let's explore each edges and nodes! :::
+Let's explore each edges and nodes!
+:::
 
 ## [4.3]{style="color:#d496d4; background:none;"} Extracting the edges and nodes tables
 
@@ -126,7 +126,9 @@ nodes_tbl <- as_tibble(graph_data$nodes)
 edges_tbl <- as_tibble(graph_data$edges)
 ```
 
-### Check how many distinct nodes
+### [4.3.1]{style="color:#d496d4; background:none;"} Initial EDA {#EDA}
+
+#### [4.3.1.1]{style="color:#d496d4; background:none;"} Check how many distinct nodes
 
 ```{r}
 #| code-fold: true
@@ -134,10 +136,11 @@ table(nodes_tbl$type)
 ```
 
 ```{r}
-head(nodes_tbl)
+#| code-fold: true
+kable(head(nodes_tbl))
 ```
 
-### Check how many distinct edges
+#### [4.3.1.2]{style="color:#d496d4; background:none;"} Check how many distinct edges
 
 ```{r}
 #| code-fold: true
@@ -145,21 +148,23 @@ table(edges_tbl$type)
 ```
 
 ```{r}
-head(edges_tbl)
+#| code-fold: true
+kable(head(edges_tbl))
 ```
 
-### [4.3.1]{style="color:#d496d4; background:none;"} Initial EDA
+#### [4.3.1.3]{style="color:#d496d4; background:none;"} Explore frequency distribution of nodes_tbl
 
 In the code chunk below, `ExpCatViz()` of SmartEDA package is used to reveal the frequency distribution of all categorical fields in *nodes_tbl* dataframe.
 
 ```{r}
-#| fig-height: 24
+#| code-fold: true
+#| fig-height: 26
 #| fig-width: 10
 ExpCatViz(nodes_tbl, col = "lightblue",margin=2,Page = c(7,2))
 ```
 
-::: {.nursebox .nurse data-latex="nurse"}{#obsv1}
-#### **Observation** {.no-top-padding}
+::: {.nursebox .nurse data-latex="nurse"}
+#### **Observation** {#obsv1 .no-top-padding}
 
 -   Node type is dominated Events (69%) followed by Relationship (25%) and Entity (6%).
 -   We need to convert some of the data types for date and time from chr to datetime format.
@@ -167,9 +172,12 @@ ExpCatViz(nodes_tbl, col = "lightblue",margin=2,Page = c(7,2))
 -   Fields like monitoring_type, assessment_type, movement_type, etc. also show very sparse use. Which supports the earlier [glimpse()](#glimpse) finding where most attribute fields are only relevant to certain subtypes (e.g. type = "events" and sub_type = "Communications" will have timestamp and content but other type and sub_types doesn't have these information). We need to conditionally filter or visualize based on both type and sub_type to avoid misleading analysis. For example, don’t rely on type: assessment_type unless sub_type == "Assessment".
 :::
 
+#### [4.3.1.4]{style="color:#d496d4; background:none;"} Explore frequency distribution of edges_tbl
+
 Now we will reveal the frequency distribution of all categorical fields in *edges_tbl* dataframe.
 
 ```{r}
+#| code-fold: true
 ExpCatViz(data=edges_tbl,
           col="lightblue")
 ```
@@ -177,7 +185,7 @@ ExpCatViz(data=edges_tbl,
 ::: {.nursebox .nurse data-latex="nurse"}
 #### **Observation** {.no-top-padding}
 
--   A large proportion (32%) of edges have missing/undefined type values (NA). But as we've discovered from the earlier findings in earlier [SmartEDA of nodes_tbl]({obsv1) and [glimpse()](#glimpse), we know that only certain type and sub_type have all information.
+-   A large proportion (32%) of edges have missing/undefined type values (NA). But as we've discovered from the earlier findings in earlier [SmartEDA of nodes_tbl](#obsv1) and [glimpse()](#glimpse), we know that only certain type and sub_type have all information.
 
 -   Significant portion of edges are evidence_for (32%), suggests more evidential or contextual links. Possibly connecting events or documents to people, vessels, or actions.
 
@@ -188,7 +196,7 @@ ExpCatViz(data=edges_tbl,
 
 ## [4.4]{style="color:#d496d4; background:none;"} Data Preparation {#dataprep}
 
-After the initial EDA done in the previous chapter, we will performs the following data cleaning and data wrangling tasks:
+After the initial [EDA](#EDA) done in the previous chapter, we will performs the following data cleaning and data wrangling tasks:
 
 -   Extract type = "Event", and sub_type = "communication" events since we will be focusing on intercepted communications.
 -   Convert timestamp from chr to datetime format.
@@ -197,6 +205,7 @@ After the initial EDA done in the previous chapter, we will performs the followi
 -   Join sender-receiver pairs.
 -   Join with communication details.
 -   Join to get sender/receiver labels.
+-   Join to get entity type from sub_type.
 -   Save the result for further analysis and visualisation usage.
 
 ### [4.4.1]{style="color:#d496d4; background:none;"} Extract communication events with timestamps
@@ -205,7 +214,7 @@ After the initial EDA done in the previous chapter, we will performs the followi
 comm_events <- nodes_tbl %>%
   filter(type == "Event", sub_type == "Communication")
 
-head(comm_events)
+kable(head(comm_events))
 ```
 
 ### [4.4.2]{style="color:#d496d4; background:none;"} Extract necessary fields
@@ -216,7 +225,7 @@ We'll use `id`, `timestamp` and `content`
 comm_events <- comm_events %>%
   select(id, timestamp = timestamp, content = content)
 
-head(comm_events)
+kable(head(comm_events))
 ```
 
 ### [4.4.3]{style="color:#d496d4; background:none;"} Convert timestamp from chr to datetime format
@@ -225,7 +234,7 @@ head(comm_events)
 comm_events <- comm_events %>%
   mutate(timestamp = ymd_hms(timestamp))
 
-head(comm_events)
+kable(head(comm_events))
 ```
 
 ### [4.4.3]{style="color:#d496d4; background:none;"} Filter edges for sender and receiver
@@ -235,7 +244,7 @@ comm_edges <- edges_tbl %>%
   filter(type %in% c("sent", "received")) %>%
   select(source, target, type)
 
-head(comm_edges)
+kable(head(comm_edges))
 ```
 
 ### [4.4.4]{style="color:#d496d4; background:none;"} Separate and rename
@@ -255,7 +264,7 @@ receivers <- comm_edges %>%
 ```{r}
 comm_pairs <- inner_join(senders, receivers, by = "message_id")
 
-head(comm_pairs)
+kable(head(comm_pairs))
 ```
 
 ### [4.4.6]{style="color:#d496d4; background:none;"} Combine with communication details
@@ -264,7 +273,7 @@ head(comm_pairs)
 comm_full <- comm_pairs %>%
   left_join(comm_events, by = c("message_id" = "id"))
 
-head(comm_full)
+kable(head(comm_full))
 ```
 
 ### [4.4.7]{style="color:#d496d4; background:none;"} Join entity labels for sender and receiver
@@ -274,10 +283,10 @@ entity_labels <- nodes_tbl %>%
   filter(type == "Entity") %>%
   select(id, label, sub_type)
 
-head(entity_labels)
+kable(head(entity_labels))
 ```
 
-### [4.4.7]{style="color:#d496d4; background:none;"} Combine everything and save to CSV
+### [4.4.7]{style="color:#d496d4; background:none;"} Combine everything
 
 ```{r}
 comm_full <- comm_full %>%
@@ -286,8 +295,57 @@ comm_full <- comm_full %>%
   left_join(entity_labels, by = c("receiver" = "id")) %>%
   rename(receiver_label = label, receiver_type = sub_type)
 
-head(comm_full)
+kable(head(comm_full))
 ```
+
+### [4.4.8]{style="color:#d496d4; background:none;"} Derive weekday and hour of the day fields
+
+Step 1: Deriving *weekday* and *hour of day* fields
+
+Create two new fields namely *weekday* and *hour*. In this step, we will write a function to perform the task.
+
+```{r}
+#| code-fold: true
+make_hr_wkday <- function(timestamp) {
+  real_times <- ymd_hms(timestamp)
+  dt <- data.table(
+    weekday = weekdays(real_times),
+    hour = hour(real_times)
+  )
+  return(dt)
+}
+```
+
+Step 2: Deriving the communication tibble data frame
+
+```{r}
+weekday_levels <- c("Sunday", "Saturday", "Friday", 
+                    "Thursday","Wednesday","Tuesday",  "Monday")
+
+comm_full <- comm_full %>%
+  mutate(
+    date = as.Date(timestamp),
+    weekday = factor(weekdays(timestamp), levels = weekday_levels),
+    hour = factor(hour(timestamp), levels = 0:23),
+    week = isoweek(timestamp),
+    week_label = case_when(
+      isoweek(timestamp) == min(isoweek(timestamp)) ~ "Week 1",
+      isoweek(timestamp) == max(isoweek(timestamp)) ~ "Week 2",
+      TRUE ~ "Other")
+  )
+```
+
+::: callout-note
+Beside extracting the necessary data into *attacks* data frame, `mutate()` of **dplyr** package is used to convert *weekday* and *hour* fields into **factor** so they'll be ordered when plotting
+:::
+
+Table below shows the tidy tibble table after processing.
+
+```{r}
+kable(head(comm_full))
+```
+
+### [4.4.9]{style="color:#d496d4; background:none;"} Save to CSV
 
 For the purpose of this Take Home Exercise, we will extract out to CSV so the rest of the group can work with this cleaned data!
 
@@ -302,32 +360,85 @@ For part 1 of the Mini Challenge 3 Let's look specifically into event nodes wher
 
 ## [5.1]{style="color:#d496d4; background:none;"} Develop a graph-based visual analytics approach to identify any daily temporal patterns in communications.
 
-How do these patterns shift over the two weeks of observations?
-
 ```{r}
 comm_full %>%
-  mutate(date = as.Date(timestamp)) %>%
   count(date) %>%
   ggplot(aes(x = date, y = n)) +
   geom_line(color = "steelblue", size = 1.2) +
   labs(
-    title = "Daily Communication Volume",
+    title = "Daily Communication Volume Over 2 Weeks",
     x = "Date", y = "Number of Messages"
   ) +
   theme_minimal()
 ```
 
-::: {.nursebox .nurse data-latex="nurse"}
-#### 🎀 **Insights Plot 1** {.no-top-padding}
+```{r}
+comm_full %>%
+  count(week_label, date) %>%
+  ggplot(aes(x = date, y = n)) +
+  geom_line(color = "steelblue", size = 1.2) +
+  facet_wrap(~ week_label, scales = "free_x", ncol = 1, labeller = label_value) +
+  labs(
+    title = "Daily Communication Volume Per Week",
+    x = "Date", y = "Number of Messages"
+  ) +
+  theme_minimal()
+```
 
--   
+```{r}
+comm_hourly_weekly <- comm_full %>%
+  count(week_label, weekday, hour)
+
+ggplot(comm_hourly_weekly, aes(x = hour, y = weekday, fill = n)) +
+  geom_tile(color = "white") +
+  scale_fill_viridis_c(option = "plasma", name = "Message Count") +
+  labs(title = "Communication Intensity by Hour and Weekday",
+       x = "Hour of Day", y = "Day of Week") +
+  facet_wrap(~ week_label, ncol = 1) +
+  theme_minimal()
+
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### 🎀 **How do these patterns shift over the two weeks of observations?** {.no-top-padding}
+
+-   In Week 1, daily messages volume remains relatively stable. This suggests routine or planned activity, likely related to operational coordination or normal business across the island.
+
+-   However, in Week 2, the communication pattern becomes more volatile:
+
+    -   There’s a sharp drop at the start of the week (Oct 08–09), possibly indicating reduced activity or deliberate radio silence.
+
+    -   This is followed by a sudden spike on Oct 11 which is day 1 of the closure of Nemo Reef lasting 3 days up to Oct 13.
+
+    -   The remainder of the week shows a steady decline.
+
+        -   Furhter investigation done during this period and found messages on 14 Oct from Davis to Boss with content "Operation complete at Nemo Reef" and Davis to Mako with content "Well done on Nemo Reef operation completion" which may reflect completed operations or deliberate scaling back of activity.
+
+-   The hourly heatmap supports this shift:
+
+    -   In Week 1, communication is consistently concentrated during specific hours of the day (e.g., mornings or early evenings), reflecting regular daily routines.
+
+    -   In Week 2, these temporal patterns shift, with more dispersed or intensified communication on certain days — especially around the spike, indicating possible emergency coordination or reactive behavior.
 :::
 
 ## [5.2]{style="color:#d496d4; background:none;"} Focus on a specific entity and use this information to determine who has influence over them.
 
+**Influence** could be indicated by:
+
+-   Frequent communication to or from the target
+
+-   One-way communication (many messages received, few sent)
+
+-   Connected intermediaries (network centrality or shared contacts)
+
+Let's look into the network graph for 3 scenarios:
+
+## [5.2.1]{style="color:#d496d4; background:none;"} receiver_type: person and sender_type: person
+
 ```{r}
 # Create edge list
 graph_edges <- comm_full %>%
+  filter(receiver_type == "Person" & sender_type == "Person") %>%
   count(sender_label, receiver_label) %>%
   filter(!is.na(sender_label), !is.na(receiver_label)) %>%
   rename(from = sender_label, to = receiver_label, value = n)
@@ -338,6 +449,56 @@ graph_nodes <- tibble(name = unique(c(graph_edges$from, graph_edges$to))) %>%
 
 # visNetwork expects numeric node IDs, but we can use labels for both
 visNetwork(nodes = graph_nodes, edges = graph_edges) %>%
+  visEdges(arrows = "to") %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+  visLayout(randomSeed = 123) %>%
+  visPhysics(stabilization = TRUE) %>%
+  visInteraction(navigationButtons = TRUE) %>%
+  visLegend()
+
+```
+
+## [5.2.1]{style="color:#d496d4; background:none;"} receiver_type: person and sender_type: vessel
+
+```{r}
+# Create edge list
+graph_edges2 <- comm_full %>%
+  filter(receiver_type == "Person" & sender_type == "Vessel") %>%
+  count(sender_label, receiver_label) %>%
+  filter(!is.na(sender_label), !is.na(receiver_label)) %>%
+  rename(from = sender_label, to = receiver_label, value = n)
+
+# Create node list from edges
+graph_nodes <- tibble(name = unique(c(graph_edges2$from, graph_edges2$to))) %>%
+  mutate(id = name, label = name, group = name)
+
+# visNetwork expects numeric node IDs, but we can use labels for both
+visNetwork(nodes = graph_nodes, edges = graph_edges2) %>%
+  visEdges(arrows = "to") %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+  visLayout(randomSeed = 123) %>%
+  visPhysics(stabilization = TRUE) %>%
+  visInteraction(navigationButtons = TRUE) %>%
+  visLegend()
+
+```
+
+## [5.2.1]{style="color:#d496d4; background:none;"} receiver_type: vessel and sender_type: person
+
+```{r}
+# Create edge list
+graph_edges2 <- comm_full %>%
+  filter(receiver_type == "Vessel" & sender_type == "Person") %>%
+  count(sender_label, receiver_label) %>%
+  filter(!is.na(sender_label), !is.na(receiver_label)) %>%
+  rename(from = sender_label, to = receiver_label, value = n)
+
+# Create node list from edges
+graph_nodes <- tibble(name = unique(c(graph_edges2$from, graph_edges2$to))) %>%
+  mutate(id = name, label = name, group = name)
+
+# visNetwork expects numeric node IDs, but we can use labels for both
+visNetwork(nodes = graph_nodes, edges = graph_edges2) %>%
   visEdges(arrows = "to") %>%
   visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
   visLayout(randomSeed = 123) %>%
@@ -388,9 +549,9 @@ ggraph(nadia_graph, layout = "kk") +
 ```
 
 ::: {.nursebox .nurse data-latex="nurse"}
-#### 🎀 **Insights Plot 3** {.no-top-padding}
+#### 🎀 **who has influence over them* {.no-top-padding}
 
--   
+-   From the network graph, we observe that Davis is the one giving frequent instruction to Mako Vessel and he is also the one who updates the operation to Boss
 :::
 
 # [6]{style="color:#d496d4; background:none;"} Reference
@@ -414,3 +575,184 @@ ggraph(nadia_graph, layout = "kk") +
 ## [7.1]{style="color:#d496d4; background:none;"} Appendix A {#appendixa}
 
 ![](data/MC3_data_description.pdf){fig-align="center" width="700" height="350"}
+
+
+
+# try
+
+
+```{r}
+MC3 <- fromJSON("data/MC3_graph.json")
+MC3_schema <- fromJSON("data/MC3_schema.json")
+```
+
+```{r}
+mc3_nodes <- as_tibble(MC3$nodes)
+mc3_edges <- as_tibble(MC3$edges)
+```
+
+## Data Cleaning and Wrangling
+
+### Cleaning and wrangling nodes
+
+Code chunk below performs the following data cleaning tasks:
+
+- convert values in id field into character data type,
+- exclude records with `id` value are na, 
+- exclude records with similar id values, 
+- exclude `thing_collected` field, and
+- save the cleaned tibble dataframe into a new tibble datatable called `mc3_nodes_cleaned`.
+
+
+```{r}
+mc3_nodes_cleaned <- mc3_nodes %>%
+  mutate(id = as.character(id)) %>%
+  filter(!is.na(id)) %>%
+  distinct(id, .keep_all = TRUE) %>%
+  select(-thing_collected)
+```
+
+### Cleaning and wrangling edges
+
+Next, the code chunk below will be used to:
+
+- rename source and target fields to from_id and to_id respectively,
+- convert values in from_id and to_id fields to character data type,
+- exclude values in from_id and to_id which not found in the id field of mc3_nodes_cleaned,
+- exclude records whereby from_id and/or to_id values are missing, and
+- save the cleaned tibble dataframe and called it mc3_edges_cleaned.
+
+```{r}
+mc3_edges_cleaned <- mc3_edges %>%
+  rename(from_id = source, 
+         to_id = target) %>%
+  mutate(across(c(from_id, to_id), 
+                as.character)) %>%
+  filter(from_id %in% mc3_nodes_cleaned$id, 
+         to_id %in% mc3_nodes_cleaned$id) %>%
+  filter(!is.na(from_id), !is.na(to_id))
+```
+
+Next, code chunk below will be used to create mapping of character id in `mc3_nodes_cleaned` to row index
+
+```{r}
+node_index_lookup <- mc3_nodes_cleaned %>%
+  mutate(.row_id = row_number()) %>%
+  select(id, .row_id)
+```
+
+Next, the code chunk below will be used to join and convert `from_id` and `to_id` to integer indices.  At the same time we also drop rows with unmatched nodes.
+
+```{r}
+mc3_edges_indexed <- mc3_edges_cleaned %>%
+  left_join(node_index_lookup, 
+            by = c("from_id" = "id")) %>%
+  rename(from = .row_id) %>%
+  left_join(node_index_lookup, 
+            by = c("to_id" = "id")) %>%
+  rename(to = .row_id) %>%
+  select(from, to, is_inferred, type) %>%
+  filter(!is.na(from) & !is.na(to))  
+```
+
+Next the code chunk below is used to subset nodes to only those referenced by edges.
+
+```{r}
+used_node_indices <- sort(
+  unique(c(mc3_edges_indexed$from, 
+           mc3_edges_indexed$to)))
+
+mc3_nodes_final <- mc3_nodes_cleaned %>%
+  slice(used_node_indices) %>%
+  mutate(new_index = row_number())
+```
+
+We will then use the code chunk below to rebuild lookup from old index to new index.
+
+```{r}
+old_to_new_index <- tibble(
+  old_index = used_node_indices,
+  new_index = seq_along(
+    used_node_indices))
+```
+
+Lastly, the code chunk below will be used to update edge indices to match new node table.
+
+```{r}
+mc3_edges_final <- mc3_edges_indexed %>%
+  left_join(old_to_new_index, 
+            by = c("from" = "old_index")) %>%
+  rename(from_new = new_index) %>%
+  left_join(old_to_new_index, 
+            by = c("to" = "old_index")) %>%
+  rename(to_new = new_index) %>%
+  select(from = from_new, to = to_new, 
+         is_inferred, type)
+```
+
+## Building the tidygraph object
+
+Now we are ready to build the tidygraph object by using the code chunk below.
+
+```{r}
+mc3_graph <- tbl_graph(
+  nodes = mc3_nodes_final,
+  edges = mc3_edges_final,
+  directed = TRUE
+)
+```
+
+After the tidygraph object is created, it is always a good practice to examine the object by using `str()`.
+
+```{r}
+str(mc3_graph)
+```
+
+## Visualising the knowledge graph
+
+Several of the **ggraph** layouts involve randomisation. In order to ensure reproducibility, it is necessary to set the seed value before plotting by using the code chunk below.
+
+```{r}
+set.seed(1234)
+```
+
+In the code chunk below, **ggraph** functions are used to create the whole graph.
+
+```{r}
+ggraph(mc3_graph, 
+       layout = "fr") +
+  geom_edge_link(alpha = 0.3, 
+                 colour = "gray") +
+  geom_node_point(aes(color = `type`), 
+                  size = 4) +
+  geom_node_text(aes(label = type), 
+                 repel = TRUE, 
+                 size = 2.5) +
+  theme_void()
+```
+
+
+```{r}
+# 1. Extract nodes and add an 'id' column for visNetwork
+nodes <- mc3_graph %>%
+  as_tibble() %>%
+  mutate(id = row_number())  # visNetwork requires an 'id' column
+
+
+# 3. Optional: Add labels, colors, or groups to nodes
+# Here assuming a 'type' column exists — adjust as needed
+nodes <- nodes %>%
+  mutate(label = type,                          # Node labels
+         color = ifelse(type == "A", "lightblue", "lightgreen"))  # Example coloring
+
+# 4. Create the visNetwork graph
+visNetwork(nodes, mc3_edges_final) %>%
+  visNodes(size = 20) %>%
+  visEdges(arrows = "to") %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+  visLayout(randomSeed = 123) %>%
+  visPhysics(stabilization = TRUE) %>%
+  visInteraction(navigationButtons = TRUE) %>%
+  visLegend()
+
+```
