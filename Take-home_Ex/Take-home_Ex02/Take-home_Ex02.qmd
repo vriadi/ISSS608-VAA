@@ -356,7 +356,7 @@ write_csv(comm_full, "data/communications_full.csv")
 
 # [5]{style="color:#d496d4; background:none;"} Data Visualisation, Observation, and Insights
 
-For part 1 of the Mini Challenge 3 Let's look specifically into event nodes where communications occur.
+For **part 1a and 1b of the Mini Challenge 3** Let's look specifically into event nodes where communications occur.
 
 ## [5.1]{style="color:#d496d4; background:none;"} Develop a graph-based visual analytics approach to identify any daily temporal patterns in communications.
 
@@ -423,6 +423,8 @@ ggplot(comm_hourly_weekly, aes(x = hour, y = weekday, fill = n)) +
 
 ## [5.2]{style="color:#d496d4; background:none;"} Focus on a specific entity and use this information to determine who has influence over them.
 
+For **part 1c of the Mini Challenge 3** we will be looking at the influence over the nodes.
+
 **Influence** could be indicated by:
 
 -   Frequent communication to or from the target
@@ -431,9 +433,35 @@ ggplot(comm_hourly_weekly, aes(x = hour, y = weekday, fill = n)) +
 
 -   Connected intermediaries (network centrality or shared contacts)
 
-Let's look into the network graph for 3 scenarios:
+Let's look into the network graph:
 
-## [5.2.1]{style="color:#d496d4; background:none;"} receiver_type: person and sender_type: person
+### [5.2.1]{style="color:#d496d4; background:none;"} Communication network graph
+
+```{r}
+# Create edge list
+graph_edges <- comm_full %>%
+  count(sender_label, receiver_label) %>%
+  filter(!is.na(sender_label), !is.na(receiver_label)) %>%
+  rename(from = sender_label, to = receiver_label, value = n)
+
+# Create node list from edges
+graph_nodes <- tibble(name = unique(c(graph_edges$from, graph_edges$to))) %>%
+  mutate(id = name, label = name, group = name)
+
+# visNetwork expects numeric node IDs, but we can use labels for both
+visNetwork(nodes = graph_nodes, edges = graph_edges) %>%
+  visEdges(arrows = "to") %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+  visLayout(randomSeed = 123) %>%
+  visPhysics(stabilization = TRUE) %>%
+  visInteraction(navigationButtons = TRUE) %>%
+  visLegend()
+
+```
+
+Deep dive
+
+#### [5.2.1.1]{style="color:#d496d4; background:none;"} receiver_type: person and sender_type: person
 
 ```{r}
 # Create edge list
@@ -458,7 +486,7 @@ visNetwork(nodes = graph_nodes, edges = graph_edges) %>%
 
 ```
 
-## [5.2.1]{style="color:#d496d4; background:none;"} receiver_type: person and sender_type: vessel
+#### [5.2.1.2]{style="color:#d496d4; background:none;"} receiver_type: person and sender_type: vessel
 
 ```{r}
 # Create edge list
@@ -483,7 +511,7 @@ visNetwork(nodes = graph_nodes, edges = graph_edges2) %>%
 
 ```
 
-## [5.2.1]{style="color:#d496d4; background:none;"} receiver_type: vessel and sender_type: person
+#### [5.2.1.3]{style="color:#d496d4; background:none;"} receiver_type: vessel and sender_type: person
 
 ```{r}
 # Create edge list
@@ -508,50 +536,79 @@ visNetwork(nodes = graph_nodes, edges = graph_edges2) %>%
 
 ```
 
-::: {.nursebox .nurse data-latex="nurse"}
-#### 🎀 **Insights Plot 2** {.no-top-padding}
+#### [5.2.1.4]{style="color:#d496d4; background:none;"} receiver_type: organisation and sender_type: person
 
--   
+```{r}
+# Create edge list
+graph_edges2 <- comm_full %>%
+  filter(receiver_type == "Organization" & sender_type == "Person") %>%
+  count(sender_label, receiver_label) %>%
+  filter(!is.na(sender_label), !is.na(receiver_label)) %>%
+  rename(from = sender_label, to = receiver_label, value = n)
+
+# Create node list from edges
+graph_nodes <- tibble(name = unique(c(graph_edges2$from, graph_edges2$to))) %>%
+  mutate(id = name, label = name, group = name)
+
+# visNetwork expects numeric node IDs, but we can use labels for both
+visNetwork(nodes = graph_nodes, edges = graph_edges2) %>%
+  visEdges(arrows = "to") %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+  visLayout(randomSeed = 123) %>%
+  visPhysics(stabilization = TRUE) %>%
+  visInteraction(navigationButtons = TRUE) %>%
+  visLegend()
+
+```
+
+::: {.nursebox .nurse data-latex="nurse"}
+#### 🎀 **Who has influence over them?** {.no-top-padding}
+
+From the network graph, we observe these top affiliated entities based on communication frequency, categorized by type. Further frequency check was also conducted using pivot table in excel using the CSV exported earlier:
+
+-   Organization:
+    -   Green Guardian (Organization) has the highest number of communication sent, they are the local conservationist group who is central to the Nemo Reef conflict.
+
+    -   Top 2 receiver and sender is actually Oceanus City Council which is a key governing body, possibly linked to expedited approvals.
+
+    -   V. Miesel Shipping seems to be the potential marine logistic partner for this illegal activity.
+-   Vessels
+    -   Mako (Vessel) has the highest number of communication received , likely crucial in coordination or transport.
+
+    -   Reef Guardian — potentially linked with conservation, possibly under Green Guardians.
+
+    -   Remora (62 messages), Neptune (60), Sentinel (41), Horizon (36), EcoVigil (29) — may play roles in patrol, logistics, or covert operations.
+-   Persons
+    -   “Boss” appears to be high-ranking, managing flow between entities like Mrs. Money (possibly financial operator) and Middleman (coordinator). Their involvement with Mako and shipping entities implies they may be central to illicit logistics or moving resources/people covertly.
+
+    -   “The Intern” is likely a junior operative or data/communications relay, possibly linked directly to Mrs. Money. Their mirrored exchanges with “The Lookout” point toward coordinated surveillance or monitoring tasks.
+
+    -   “The Lookout” acts as a watcher/spotter, deeply involved in tracking activity around conservation zones. Their tie to Sam and Green Guardians might indicate a dual role or impersonation within the environmental group.
+
+    -   We observe that Davis is receiving messages from or sending to "Boss", he also observed giving instructions to Mako (a high-traffic vessel). It's plausible that Davis may play a hands-on operational role, where he is looped into the command chain, receives instructions from Boss, relays or enforces those orders to operatives (e.g., Mako, vessel contacts).
+
+    -   Liam Thorne seems to be a double agent who is officially working for Oceanus City Council but reporting to the illegal group as an informant (this is confirmed after reading through the detail communication contents), facilitating or delay approvals, making him crucial in the closure of Nemo Reef or the Sailor Shift project.
+-   Locations
+    -   Himark Harbor (45 messages), Paackland Harbor (32 messages) — logistical hubs or strategic points.
 :::
 
-## [5.3]{style="color:#d496d4; background:none;"} Pseudonym Usage & Nadia Conti's Activity
+## [5.3]{style="color:#d496d4; background:none;"} Pseudonym Usage and The Reflection on Activity
 
-### [5.3.1]{style="color:#d496d4; background:none;"} Filter: Communications involving Nadia Conti
-
-```{r}
-# Filter communications with Nadia
-nadia_msgs <- comm_full %>%
-  filter(sender_label == "Nadia Conti" | receiver_label == "Nadia Conti")
-
-# See who she communicates with
-nadia_msgs %>%
-  count(sender_label, receiver_label, sort = TRUE)
-
-```
-
-### [5.3.2]{style="color:#d496d4; background:none;"} Create tidygraph object for Nadia's ego network
-
-```{r}
-nadia_edges <- nadia_msgs %>%
-  count(sender_label, receiver_label) %>%
-  rename(from = sender_label, to = receiver_label, weight = n)
-
-nadia_nodes <- tibble(name = unique(c(nadia_edges$from, nadia_edges$to)))
-
-nadia_graph <- tbl_graph(nodes = nadia_nodes, edges = nadia_edges, directed = TRUE)
-
-ggraph(nadia_graph, layout = "kk") +
-  geom_edge_link(aes(width = weight), alpha = 0.6, color = "purple") +
-  geom_node_point(color = "orange", size = 6) +
-  geom_node_text(aes(label = name), repel = TRUE, size = 4) +
-  labs(title = "Nadia Conti's Communication Network") +
-  theme_void()
-```
+For **part 3c of the Mini Challenge 3** we will be reflecting on what have been uncovered earlier.
 
 ::: {.nursebox .nurse data-latex="nurse"}
-#### 🎀 **who has influence over them* {.no-top-padding}
+#### 🎀 **How does our understanding of activities change given our understanding of pseudonyms?** {.no-top-padding}
 
--   From the network graph, we observe that Davis is the one giving frequent instruction to Mako Vessel and he is also the one who updates the operation to Boss
+-   Before Identifying Pseudonyms
+    -   The dataset looked like a mix of bureaucratic, logistical, and informal communications — possibly between officials, vessels, and environmental actors. The presence of names like “Boss” or “The Lookout” hinted at secrecy, but without clear roles, their significance was ambiguous.
+-   After Pseudonym Analysis
+    -   Now that we’ve mapped likely roles behind pseudonyms, the story reveals covert orchestration, manipulation of governance, and strategic masking of identities:
+        -   A Coordinated Inner Circle Emerges Boss appears to be a top-level orchestrator, managing directives via trusted intermediaries (e.g., The Middleman, Mrs. Money).
+        -   The Intern and The Lookout serve specific operational functions as mentioned in the previous obserfaction
+        -   Real Individuals Are Embedded in the Scheme Davis is likely coordinating with vessels (e.g., Mako) and receiving instructions from Boss. His seemingly bureaucratic or neutral position is now suspect as central to execution.
+        -   Liam Thorne appears to be straddling official (City Council) and unofficial channels, indicating a mole or power-broker ensuring approvals pass smoothly. This suggests institutional corruption, not just individual misbehavior.
+
+We now know that the Nemo Reef closure not as a public safety or ecological move but as a coordinated action likely benefiting Sailor Shift's team (filming) or facilitating illegal transitions (e.g., laundering operations into tourism). The expedited logistics and vessel movements are also calculated move that may represent covert transport or cover-up operations.
 :::
 
 # [6]{style="color:#d496d4; background:none;"} Reference
@@ -575,184 +632,3 @@ ggraph(nadia_graph, layout = "kk") +
 ## [7.1]{style="color:#d496d4; background:none;"} Appendix A {#appendixa}
 
 ![](data/MC3_data_description.pdf){fig-align="center" width="700" height="350"}
-
-
-
-# try
-
-
-```{r}
-MC3 <- fromJSON("data/MC3_graph.json")
-MC3_schema <- fromJSON("data/MC3_schema.json")
-```
-
-```{r}
-mc3_nodes <- as_tibble(MC3$nodes)
-mc3_edges <- as_tibble(MC3$edges)
-```
-
-## Data Cleaning and Wrangling
-
-### Cleaning and wrangling nodes
-
-Code chunk below performs the following data cleaning tasks:
-
-- convert values in id field into character data type,
-- exclude records with `id` value are na, 
-- exclude records with similar id values, 
-- exclude `thing_collected` field, and
-- save the cleaned tibble dataframe into a new tibble datatable called `mc3_nodes_cleaned`.
-
-
-```{r}
-mc3_nodes_cleaned <- mc3_nodes %>%
-  mutate(id = as.character(id)) %>%
-  filter(!is.na(id)) %>%
-  distinct(id, .keep_all = TRUE) %>%
-  select(-thing_collected)
-```
-
-### Cleaning and wrangling edges
-
-Next, the code chunk below will be used to:
-
-- rename source and target fields to from_id and to_id respectively,
-- convert values in from_id and to_id fields to character data type,
-- exclude values in from_id and to_id which not found in the id field of mc3_nodes_cleaned,
-- exclude records whereby from_id and/or to_id values are missing, and
-- save the cleaned tibble dataframe and called it mc3_edges_cleaned.
-
-```{r}
-mc3_edges_cleaned <- mc3_edges %>%
-  rename(from_id = source, 
-         to_id = target) %>%
-  mutate(across(c(from_id, to_id), 
-                as.character)) %>%
-  filter(from_id %in% mc3_nodes_cleaned$id, 
-         to_id %in% mc3_nodes_cleaned$id) %>%
-  filter(!is.na(from_id), !is.na(to_id))
-```
-
-Next, code chunk below will be used to create mapping of character id in `mc3_nodes_cleaned` to row index
-
-```{r}
-node_index_lookup <- mc3_nodes_cleaned %>%
-  mutate(.row_id = row_number()) %>%
-  select(id, .row_id)
-```
-
-Next, the code chunk below will be used to join and convert `from_id` and `to_id` to integer indices.  At the same time we also drop rows with unmatched nodes.
-
-```{r}
-mc3_edges_indexed <- mc3_edges_cleaned %>%
-  left_join(node_index_lookup, 
-            by = c("from_id" = "id")) %>%
-  rename(from = .row_id) %>%
-  left_join(node_index_lookup, 
-            by = c("to_id" = "id")) %>%
-  rename(to = .row_id) %>%
-  select(from, to, is_inferred, type) %>%
-  filter(!is.na(from) & !is.na(to))  
-```
-
-Next the code chunk below is used to subset nodes to only those referenced by edges.
-
-```{r}
-used_node_indices <- sort(
-  unique(c(mc3_edges_indexed$from, 
-           mc3_edges_indexed$to)))
-
-mc3_nodes_final <- mc3_nodes_cleaned %>%
-  slice(used_node_indices) %>%
-  mutate(new_index = row_number())
-```
-
-We will then use the code chunk below to rebuild lookup from old index to new index.
-
-```{r}
-old_to_new_index <- tibble(
-  old_index = used_node_indices,
-  new_index = seq_along(
-    used_node_indices))
-```
-
-Lastly, the code chunk below will be used to update edge indices to match new node table.
-
-```{r}
-mc3_edges_final <- mc3_edges_indexed %>%
-  left_join(old_to_new_index, 
-            by = c("from" = "old_index")) %>%
-  rename(from_new = new_index) %>%
-  left_join(old_to_new_index, 
-            by = c("to" = "old_index")) %>%
-  rename(to_new = new_index) %>%
-  select(from = from_new, to = to_new, 
-         is_inferred, type)
-```
-
-## Building the tidygraph object
-
-Now we are ready to build the tidygraph object by using the code chunk below.
-
-```{r}
-mc3_graph <- tbl_graph(
-  nodes = mc3_nodes_final,
-  edges = mc3_edges_final,
-  directed = TRUE
-)
-```
-
-After the tidygraph object is created, it is always a good practice to examine the object by using `str()`.
-
-```{r}
-str(mc3_graph)
-```
-
-## Visualising the knowledge graph
-
-Several of the **ggraph** layouts involve randomisation. In order to ensure reproducibility, it is necessary to set the seed value before plotting by using the code chunk below.
-
-```{r}
-set.seed(1234)
-```
-
-In the code chunk below, **ggraph** functions are used to create the whole graph.
-
-```{r}
-ggraph(mc3_graph, 
-       layout = "fr") +
-  geom_edge_link(alpha = 0.3, 
-                 colour = "gray") +
-  geom_node_point(aes(color = `type`), 
-                  size = 4) +
-  geom_node_text(aes(label = type), 
-                 repel = TRUE, 
-                 size = 2.5) +
-  theme_void()
-```
-
-
-```{r}
-# 1. Extract nodes and add an 'id' column for visNetwork
-nodes <- mc3_graph %>%
-  as_tibble() %>%
-  mutate(id = row_number())  # visNetwork requires an 'id' column
-
-
-# 3. Optional: Add labels, colors, or groups to nodes
-# Here assuming a 'type' column exists — adjust as needed
-nodes <- nodes %>%
-  mutate(label = type,                          # Node labels
-         color = ifelse(type == "A", "lightblue", "lightgreen"))  # Example coloring
-
-# 4. Create the visNetwork graph
-visNetwork(nodes, mc3_edges_final) %>%
-  visNodes(size = 20) %>%
-  visEdges(arrows = "to") %>%
-  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
-  visLayout(randomSeed = 123) %>%
-  visPhysics(stabilization = TRUE) %>%
-  visInteraction(navigationButtons = TRUE) %>%
-  visLegend()
-
-```
