@@ -571,7 +571,7 @@ From the network graph, we observe these top affiliated entities based on commun
 
     -   Top 2 receiver and sender is actually Oceanus City Council which is a key governing body, possibly linked to expedited approvals.
 
-    -   V. Miesel Shipping seems to be the potential marine logistic partner for this illegal activity.
+    -   V. Miesel Shipping seems to be the potential marine logistic partner for this illegal activity based on the network graph. Further investigation done and found in Event_Communication_201 by Clepper and Miranda that V. Miesel Shipping is possibly a shell company. Miranda traced V. Miesel Shipping to an offshore account linked to Councilor Knowles' brother-in-law
 -   Vessels
     -   Mako (Vessel) has the highest number of communication received , likely crucial in coordination or transport.
 
@@ -588,6 +588,8 @@ From the network graph, we observe these top affiliated entities based on commun
     -   We observe that Davis is receiving messages from or sending to "Boss", he also observed giving instructions to Mako (a high-traffic vessel). It's plausible that Davis may play a hands-on operational role, where he is looped into the command chain, receives instructions from Boss, relays or enforces those orders to operatives (e.g., Mako, vessel contacts). Further investigation done in the excel CSV exported earlier and found that Event_Communication_343 from Davis revealed in the content that he is Captain Davis who is in charge of Mako.
 
     -   Liam Thorne seems to be a double agent who is officially working for Oceanus City Council but reporting to the illegal group as an informant (this is confirmed after reading through the detail communication contents), facilitating or delay approvals, making him crucial in the closure of Nemo Reef or the Sailor Shift project.
+
+    -   Councilor Knowles is affiliated with V. Miesel Shipping.
 -   Locations
     -   Himark Harbor (45 messages), Paackland Harbor (32 messages) — logistical hubs or strategic points.
 :::
@@ -606,7 +608,8 @@ For **part 3c of the Mini Challenge 3** we will be reflecting on what have been 
         -   A Coordinated Inner Circle Emerges Boss appears to be a top-level orchestrator, managing directives via trusted intermediaries (e.g., The Middleman, Mrs. Money).
         -   The Intern and The Lookout serve specific operational functions as mentioned in the previous obserfaction
         -   Real Individuals Are Embedded in the Scheme. Captain Davis is coordinating the operational for Vessel Mako and receiving instructions from Boss. His seemingly bureaucratic or neutral position is now suspect as central to execution.
-        -   Liam Thorne appears to be straddling official (City Council) and unofficial channels, indicating a mole or power-broker ensuring approvals pass smoothly. This suggests institutional corruption, not just individual misbehavior.
+        -   Liam Thorne appears to be straddling official (City Council) and unofficial channels, indicating a mole or power-broker ensuring approvals pass smoothly. This suggests institutional corruption, not just individual misbehavior. (Evidence from Event_Communication_529, Event_Communication_531, Event_Communication_535 where Nadia requesting for Liam's services and offering to double his fees, which then Liam proceeds to redirected Harbor Master's attention and arrange to meet Nadia to collect his payment).
+        -   People in power like Councilor Knowles, Commissioner Torres (connected through Nadia Conti evidence from Event_Communication_388) is part of the whole orchestra.
 
 We now know that the Nemo Reef closure not as a public safety or ecological move but as a coordinated action likely benefiting Sailor Shift's team (filming) or facilitating illegal transitions (e.g., laundering operations into tourism). The expedited logistics and vessel movements are also calculated move that may represent covert transport or cover-up operations.
 :::
