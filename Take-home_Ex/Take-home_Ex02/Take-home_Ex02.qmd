@@ -1,5 +1,5 @@
 ---
-title: "VAST Challenge 2025 - Mini Challenge 3 Question 1"
+title: "VAST Challenge 2025 - Mini Challenge 3 Part 1"
 author: "Vanessa Riadi"
 date: "May 26, 2025"
 date-modified: "last-modified"
@@ -28,7 +28,7 @@ The Mini Challenge 3 tasked us to design and develop up to three graph-based dat
 
 -   Expose pseudonym usage and investigate Nadia Conti's activity for potential misconduct.
 
-This is part 1 of the Mini Challenge 3 where we will be looking at question 1:
+This is **part 1** of the Mini Challenge 3 where we will be looking at **question 1**:
 
 a)  Develop a graph-based visual analytics approach to identify any daily temporal patterns in communications.
 
@@ -36,7 +36,7 @@ b)  How do these patterns shift over the two weeks of observations?
 
 c)  Focus on a specific entity and use this information to determine who has influence over them.
 
-and 3c) How does your understanding of activities change given your understanding of pseudonyms?
+**and question 3c)** How does your understanding of activities change given your understanding of pseudonyms?
 
 ::: {.nursebox .nurse data-latex="nurse"}
 For part 2 go to [Hoa's Netlify page](https://isss608-ay2024-25t.netlify.app/)
