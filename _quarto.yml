@@ -7,7 +7,7 @@ website:
   title: ""
   
   announcement: 
-    content: "**NEW (01/06)** - [**Take-home Exercise 2**](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02) is published!"
+    content: "**NEW (09/06)** - [**Hands-on Exercise 2**](hands-on_Ex08_1.html) is published!"
     position: below-navbar
     icon: info-circle
     type: info
@@ -40,6 +40,12 @@ website:
             href: Hands-on_Ex/Hands-on_Ex05/hands-on_Ex05.html
           - text: "6 - Visualising and Analysing Time-oriented Data"
             href: Hands-on_Ex/Hands-on_Ex06/hands-on_Ex06.html
+          - text: "8.1 - Chloropleth Mapping in R"
+            href: Hands-on_Ex/Hands-on_Ex08_1/hands-on_Ex08_1.html
+          - text: "8.2 - Visualising Geospatial Point Data"
+            href: Hands-on_Ex/Hands-on_Ex08_2/hands-on_Ex08_2.html
+          - text: "8.3 - Analytical Mapping"
+            href: Hands-on_Ex/Hands-on_Ex08_3/hands-on_Ex08_3.html
           #- text: "9.1 - Creating Ternary Plot with R"
           #  href: Hands-on_Ex/Hands-on_Ex09_1/hands-on_Ex09_1.html
           #- text: "9.2 - Visual Correlation Analysis"
@@ -61,7 +67,7 @@ website:
             href: In-class_Ex/In-class_Ex05.html
           - text: "Session 6 - Visitor Air Arrivals by Country Dashboard"
             href: In-class_Ex/In-class_Ex06.html
-          - text: "Session 7 - ShinyApp"
+          - text: "Session 7 - Pupils Exam Results Dashboard"
             href: In-class_Ex/In-class_Ex07.html
       - text: "Take-home Exercise"
         menu:
@@ -118,7 +124,15 @@ website:
           contents:
             - text: "6 - Visualising and Analysing Time-oriented Data"
               href: Hands-on_Ex/Hands-on_Ex06/hands-on_Ex06.html
-        #- section: "Hands-On Exercise 5"
+        - section: "Hands-On Exercise 8"
+          contents:
+            - text: "8.1 - Chloropleth Mapping in R"
+              href: Hands-on_Ex/Hands-on_Ex08_1/hands-on_Ex08_1.html
+            - text: "8.2 - Visualising Geospatial Point Data"
+              href: Hands-on_Ex/Hands-on_Ex08_2/hands-on_Ex08_2.html
+            - text: "8.3 - Analytical Mapping"
+              href: Hands-on_Ex/Hands-on_Ex08_3/hands-on_Ex08_3.html
+        #- section: "Hands-On Exercise 9"
         #  contents:
             #- text: "9.1 - Creating Ternary Plot with R"
             #  href: Hands-on_Ex/Hands-on_Ex09_1/hands-on_Ex09_1.html
@@ -145,7 +159,7 @@ website:
               href: In-class_Ex/In-class_Ex05.html
             - text: "Session 6 - Visitor Air Arrivals by Country Dashboard"
               href: In-class_Ex/In-class_Ex06.html
-            - text: "Session 7 - ShinyApp"
+            - text: "Session 7 - Pupils Exam Results Dashboard"
               href: In-class_Ex/In-class_Ex07.html
     - title: "Take-Home Exercise"
       style: "floating"
