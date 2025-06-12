@@ -212,46 +212,6 @@ In the following sub-section, we will share with you tmap functions that used to
 
 The basic building block of **tmap** is *tm_shape()* followed by one or more layer elements such as *tm_fill()* and *tm_polygons()*.
 
-In the code chunk below, *tm_shape()* is used to define the input data (i.e *mpsz_pop2020*) and *tm_polygons()* is used to draw the planning subzone polygons
-
-#### 🎀 [**PRACTICE**]{style="color:#d496d4"}
-
-::: panel-tabset
-## tm_shape
-
-Nothing to show because no data layers defined after `tm_shape()`
-```{r}
-#| eval: true
-tm_shape(mpsz_pop2020) 
-```
-
-
-## + tm_fill
-```{r}
-#| eval: true
-tm_shape(mpsz_pop2020) + tm_fill()
-```
-
-```{r}
-#| eval: true
-tm_shape(mpsz_pop2020) + tm_fill("DEPENDENCY")
-```
-
-
-## + tm_polygons
-```{r}
-#| eval: true
-tm_shape(mpsz_pop2020) + 
-  tm_polygons()
-```
-
-```{r}
-#| eval: true
-tm_shape(mpsz_pop2020) + 
-  tm_polygons("DEPENDENCY")
-```
-
-:::
 
 #### [4.2.2]{style="color:#d496d4"} Drawing a choropleth map using *tm_polygons()*
 
@@ -339,7 +299,7 @@ tm_shape(mpsz_pop2020)+
 
 Notice that the distribution of quantile data classification method are **more evenly distributed** then equal data classification method.
 
-## 🎀 [DIY PRACTICE]{style="color:#d496d4"}
+### 🎀 [DIY PRACTICE]{style="color:#d496d4"}
 
 ::: {.nursebox .nurse data-latex="nurse"}
 #### 🎀 **DO YOU KNOW** {.no-top-padding}
@@ -352,6 +312,7 @@ Example:
 **tmap v4**:
 ```{r}
 #| eval: false
+tmap_mode("plot")
 tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 5, values = "brewer.greens")) +
@@ -361,7 +322,7 @@ tm_shape(mpsz_pop2020) +
 **tmap v3**:
 ```{r}
 #| eval: false
-#| code-fold: true
+tmap_mode("plot")
 tm_shape(mpsz_pop2020)+
   tm_fill("DEPENDENCY",
           n = 5,
@@ -377,7 +338,8 @@ tm_shape(mpsz_pop2020)+
 "pretty" – pretty breaks
 
 ```{r}
-#| eval: false
+#| eval: true
+tmap_mode("plot")
 tm_pretty <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("pretty", n = 6, values = "brewer.greens")) +
@@ -388,7 +350,8 @@ tm_pretty <- tm_shape(mpsz_pop2020) +
 ## quantile
 "quantile" – equal number of observations per class
 ```{r}
-#| eval: false
+#| eval: true
+tmap_mode("plot")
 tm_quantile <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 6, values = "brewer.greens")) +
@@ -396,21 +359,11 @@ tm_quantile <- tm_shape(mpsz_pop2020) +
   tm_title("Quantile")
 ```
 
-## equal
-"equal" – equal width intervals
-```{r}
-#| eval: false
-tm_equal <- tm_shape(mpsz_pop2020) +
-  tm_fill("DEPENDENCY", 
-          fill.scale = tm_scale_intervals("equal", n = 6, values = "brewer.greens")) +
-  tm_borders(fill_alpha = 0.3)+
-  tm_title("Equal")
-```
-
 ## jenks
 "jenks" - natural breaks (minimizes intra-class variance)
 ```{r}
-#| eval: false
+#| eval: true
+tmap_mode("plot")
 tm_jenks <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("jenks", n = 6, values = "brewer.greens")) +
@@ -421,7 +374,8 @@ tm_jenks <- tm_shape(mpsz_pop2020) +
 ## kmeans
 "kmeans" – k-means clustering
 ```{r}
-#| eval: false
+#| eval: true
+tmap_mode("plot")
 tm_kmeans <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("kmeans", n = 6, values = "brewer.greens")) +
@@ -432,8 +386,8 @@ tm_kmeans <- tm_shape(mpsz_pop2020) +
 :::
 
 ```{r}
-#| eval: false
-tmap_arrange(tm_pretty, tm_quantile, tm_equal, tm_jenks, tm_kmeans, ncol = 2)
+#| eval: true
+tmap_arrange(tm_pretty, tm_quantile, tm_jenks, tm_kmeans, ncol = 2)
 ```
 
 > DIY: Preparing choropleth maps by using similar classification method but with different numbers of classes (i.e. 2, 6, 10, 20). Compare the output maps, what observation can you draw?
@@ -442,7 +396,8 @@ tmap_arrange(tm_pretty, tm_quantile, tm_equal, tm_jenks, tm_kmeans, ncol = 2)
 
 ## 2 classes
 ```{r}
-#| eval: false
+#| eval: true
+tmap_mode("plot")
 tm2 <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 2, values = "brewer.greens")) +
@@ -451,7 +406,8 @@ tm2 <- tm_shape(mpsz_pop2020) +
 
 ## 6 classes
 ```{r}
-#| eval: false
+#| eval: true
+tmap_mode("plot")
 tm6 <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 6, values = "brewer.greens")) +
@@ -460,7 +416,8 @@ tm6 <- tm_shape(mpsz_pop2020) +
 
 ## 10 classes
 ```{r}
-#| eval: false
+#| eval: true
+tmap_mode("plot")
 tm10 <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 10, values = "brewer.greens")) +
@@ -469,7 +426,8 @@ tm10 <- tm_shape(mpsz_pop2020) +
 
 ## 20 classes
 ```{r}
-#| eval: false
+#| eval: true
+tmap_mode("plot")
 tm20 <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 20, values = "brewer.greens")) +
@@ -478,7 +436,8 @@ tm20 <- tm_shape(mpsz_pop2020) +
 :::
 
 ```{r}
-#| eval: false
+#| eval: true
+tmap_mode("plot")
 tmap_arrange(tm2, tm6, tm10, tm20, ncol = 2)
 ```
 
@@ -533,16 +492,6 @@ tm_shape(mpsz_pop2020)+
         style = "quantile",
         n = 5,
         values = "brewer.pastel1")) +
-  tm_borders(fill_alpha = 0.5)
-```
-## cols4all
-```{r}
-tm_shape(mpsz_pop2020)+
-  tm_polygons("DEPENDENCY",
-      fill.scale = tm_scale_intervals(
-        style = "quantile",
-        n = 5,
-        values = "cols4all.area7")) +
   tm_borders(fill_alpha = 0.5)
 ```
 
@@ -603,6 +552,7 @@ The code chunk below shows the *classic* style is used.
 **tmap v4**:
 ```{r}
 #| eval: true
+#| code-fold: true
 tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals(style = "quantile", n = 5, values = "-brewer.greens")) +
