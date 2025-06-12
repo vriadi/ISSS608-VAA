@@ -486,6 +486,7 @@ To change the colour, we assign the preferred colour to *values* argument of *tm
 ::: panel-tabset
 ## Pastel1
 ```{r}
+#| eval: true
 tm_shape(mpsz_pop2020)+
   tm_polygons("DEPENDENCY",
       fill.scale = tm_scale_intervals(
@@ -497,6 +498,7 @@ tm_shape(mpsz_pop2020)+
 
 ## Green
 ```{r}
+#| eval: true
 tm_shape(mpsz_pop2020)+
   tm_polygons("DEPENDENCY",
       fill.scale = tm_scale_intervals(
@@ -509,6 +511,7 @@ tm_shape(mpsz_pop2020)+
 ## Green reverse
 Notice that the colour scheme has been reversed.
 ```{r}
+#| eval: true
 tm_shape(mpsz_pop2020)+
   tm_polygons("DEPENDENCY",
       fill.scale = tm_scale_intervals(
