@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Vanessa Riadi">
+<meta name="dcterms.date" content="2025-06-12">
+
+<title>Prototyping Modules for Visual Analytics Shiny Application</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../../site_libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+<script src="../../site_libs/vis-9.1.0/vis-network.min.js"></script>
+<script src="../../site_libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/favicon.png" alt="" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hands-on-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Hands-on Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex01/hands-on_Ex01.html">
+ <span class="dropdown-text">1 - A Layered Grammar of Graphics: ggplot2 methods</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex02/hands-on_Ex02.html">
+ <span class="dropdown-text">2 - Beyond ggplot2 Fundamentals</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex03_1/hands-on_Ex03_1.html">
+ <span class="dropdown-text">3.1 - Programming Interactive Data Visualisation with R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex03_2/hands-on_Ex03_2.html">
+ <span class="dropdown-text">3.2 - Programming Interactive Data Visualisation with R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex04_1/hands-on_Ex04_1.html">
+ <span class="dropdown-text">4.1 - Visualising Distribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex04_2/hands-on_Ex04_2.html">
+ <span class="dropdown-text">4.2 - Visual Statistical Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex04_3/hands-on_Ex04_3.html">
+ <span class="dropdown-text">4.3 - Visualising Uncertainty</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex04_4/hands-on_Ex04_4.html">
+ <span class="dropdown-text">4.4 - Funnel Plots for Fair Comparisons</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex05/hands-on_Ex05.html">
+ <span class="dropdown-text">5 - Modelling, Visualising and Analysing Network Data with R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex06/hands-on_Ex06.html">
+ <span class="dropdown-text">6 - Visualising and Analysing Time-oriented Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex08_1/hands-on_Ex08_1.html">
+ <span class="dropdown-text">8.1 - Chloropleth Mapping in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex08_2/hands-on_Ex08_2.html">
+ <span class="dropdown-text">8.2 - Visualising Geospatial Point Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex08_3/hands-on_Ex08_3.html">
+ <span class="dropdown-text">8.3 - Analytical Mapping</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-in-class-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">In-class Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex02.html">
+ <span class="dropdown-text">Session 2 - Superstore Sales and Profit Report</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex03.html">
+ <span class="dropdown-text">Session 3 - Superstore Sales vs Profit by States Quadrant</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex05.html">
+ <span class="dropdown-text">Session 5 - Preparation for VAST 2025 Mini Challenge 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex06.html">
+ <span class="dropdown-text">Session 6 - Visitor Air Arrivals by Country Dashboard</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex07.html">
+ <span class="dropdown-text">Session 7 - Pupils Exam Results Dashboard</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Take-home Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html">
+ <span class="dropdown-text">1.1 - Demographic structures and distribution of Singapore in 2024</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex01/Take-home_Ex01_phase2.html">
+ <span class="dropdown-text">1.2 - Take Home Exercise 1 Part 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html">
+ <span class="dropdown-text">2 - VAST Challenge 2025 - Mini Challenge 3 Part 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html">
+ <span class="dropdown-text">3 - Prototyping Modules for Visual Analytics Shiny Application</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house-fill" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> <i class="bi bi-person-circle" role="img">
+</i> 
+<span class="menu-text">About Me</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html">Take-Home Exercise 3</a></li><li class="breadcrumb-item"><a href="../../Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html">3 - Prototyping Modules for Visual Analytics Shiny Application</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+  <div id="quarto-announcement" data-announcement-id="a45a64b86073c1e351e42255e5aa5d19" class="alert alert-info hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>NEW (12/06)</strong> - <a href="https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex08_1/hands-on_ex08_1"><strong>Hands-on Exercise 8</strong></a> is published!</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Take-Home Exercise 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Demographic structures and distribution of Singapore in 2024</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Take-home_Ex/Take-home_Ex01/Take-home_Ex01_phase2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1.2 - Take Home Exercise 1 Part 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Take-Home Exercise 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 - VAST Challenge 2025 - Mini Challenge 3 Part 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Take-Home Exercise 3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">3 - Prototyping Modules for Visual Analytics Shiny Application</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span style="color:#d496d4; background:none;">1</span> Overview</a></li>
+  <li><a href="#objective" id="toc-objective" class="nav-link" data-scroll-target="#objective"><span style="color:#d496d4; background:none;">2</span> Objective</a></li>
+  <li><a href="#storyboard" id="toc-storyboard" class="nav-link" data-scroll-target="#storyboard"><span style="color:#d496d4; background:none;">2.1</span> Storyboard</a></li>
+  <li><a href="#r-packages-needed-for-shiny-application" id="toc-r-packages-needed-for-shiny-application" class="nav-link" data-scroll-target="#r-packages-needed-for-shiny-application"><span style="color:#d496d4; background:none;">3</span> R packages needed for Shiny application</a></li>
+  <li><a href="#test-the-specific-r-codes-can-be-run" id="toc-test-the-specific-r-codes-can-be-run" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run"><span style="color:#d496d4; background:none;">4</span> Test the specific R codes can be run</a>
+  <ul class="collapse">
+  <li><a href="#temporal-pattern" id="toc-temporal-pattern" class="nav-link" data-scroll-target="#temporal-pattern"><span style="color:#d496d4; background:none;">4.1</span> Temporal Pattern</a></li>
+  <li><a href="#communication-heatmap" id="toc-communication-heatmap" class="nav-link" data-scroll-target="#communication-heatmap"><span style="color:#d496d4; background:none;">4.2</span> Communication Heatmap</a></li>
+  <li><a href="#communication-network-graph" id="toc-communication-network-graph" class="nav-link" data-scroll-target="#communication-network-graph"><span style="color:#d496d4; background:none;">4.3</span> Communication Network Graph</a></li>
+  </ul></li>
+  <li><a href="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" id="toc-parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" class="nav-link" data-scroll-target="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications"><span style="color:#d496d4; background:none;">5</span> Parameters and outputs that will be exposed on the Shiny applications</a></li>
+  <li><a href="#uidesign" id="toc-uidesign" class="nav-link" data-scroll-target="#uidesign"><span style="color:#d496d4; background:none;">6</span> UI Design &amp; Prototype</a>
+  <ul class="collapse">
+  <li><a href="#overall-ui-design" id="toc-overall-ui-design" class="nav-link" data-scroll-target="#overall-ui-design"><span style="color:#d496d4; background:none;">6.1.1</span> Overall UI Design</a></li>
+  <li><a href="#temporal-pattern-1" id="toc-temporal-pattern-1" class="nav-link" data-scroll-target="#temporal-pattern-1"><span style="color:#d496d4; background:none;">6.1.2</span> Temporal Pattern</a></li>
+  <li><a href="#heatmap" id="toc-heatmap" class="nav-link" data-scroll-target="#heatmap"><span style="color:#d496d4; background:none;">6.1.3</span> Heatmap</a></li>
+  <li><a href="#communication-network" id="toc-communication-network" class="nav-link" data-scroll-target="#communication-network"><span style="color:#d496d4; background:none;">6.1.4</span> Communication Network</a></li>
+  <li><a href="#receipts" id="toc-receipts" class="nav-link" data-scroll-target="#receipts"><span style="color:#d496d4; background:none;">6.1.5</span> Receipts</a></li>
+  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span style="color:#d496d4; background:none;">6.2</span> Prototype</a>
+  <ul class="collapse">
+  <li><a href="#view-on" id="toc-view-on" class="nav-link" data-scroll-target="#view-on">View on <img src="../../images/Posit_logo.png" height="20"></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span style="color:#d496d4; background:none;">7</span> Reference</a>
+  <ul class="collapse">
+  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages"><span style="color:#d496d4; background:none;">7.1</span> R Packages</a></li>
+  </ul></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix"><span style="color:#d496d4; background:none;">8</span> Appendix</a>
+  <ul class="collapse">
+  <li><a href="#appendixa" id="toc-appendixa" class="nav-link" data-scroll-target="#appendixa"><span style="color:#d496d4; background:none;">8.1</span> Appendix A</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html">Take-Home Exercise 3</a></li><li class="breadcrumb-item"><a href="../../Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html">3 - Prototyping Modules for Visual Analytics Shiny Application</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Prototyping Modules for Visual Analytics Shiny Application</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Vanessa Riadi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 12, 2025</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 13, 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level1">
+<h1><span style="color:#d496d4; background:none;">1</span> Overview</h1>
+<p>Still in the same storyline with the previous <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a>, Clepper Jessen, an investigative journalist, is uncovering possible corruption in Oceanus linked to the closure of Nemo Reef and the arrival of pop star Sailor Shift. Using intercepted radio communications, a knowledge graph was created to map out interactions between people, vessels, and organizations. This Mini Challenge aims to support Clepper’s investigation through data-driven visual analytics, uncovering patterns, pseudonym usage, social groupings, and suspicious behavior—especially concerning Nadia Conti, a previously implicated figure in illegal fishing.</p>
+<p>This is part 1 of the entire Mini Challenge 3 where we will be working as a group to create different approaces to uncover these whispers!</p>
+</section>
+<section id="objective" class="level1">
+<h1><span style="color:#d496d4; background:none;">2</span> Objective</h1>
+<p>Base on the previous <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a>, this take home exercise 3 objective is to:</p>
+<ul>
+<li>Evaluate and determine the necessary R packages needed for your Shiny application are supported in R CRAN</li>
+<li>Prepare and test the specific R codes can be run and returned the correct output as expected</li>
+<li>Determine the parameters and outputs that will be exposed on the Shiny applications, and</li>
+<li>Select the appropriate Shiny UI components for exposing the parameters determine above.</li>
+</ul>
+</section>
+<section id="storyboard" class="level1">
+<h1><span style="color:#d496d4; background:none;">2.1</span> Storyboard</h1>
+<p>For this part 1 we will be focusing on:</p>
+<ul>
+<li><p>Identify temporal patterns in communications.</p></li>
+<li><p>Reveal relationships and influence among entities (people, vessels, groups).</p></li>
+<li><p>Expose pseudonym usage and investigate Nadia Conti’s activity for potential misconduct.</p></li>
+</ul>
+<p>Hence, we will be looking at a Shiny web app that allows user to explore the temporal interpolation and heatmap of the communication pattern, as well as the communication network graph to see the relationships and influence among the entities. Through this, user is able to uncover the above agendas. We will be splitting this app into 4 main section that will be further detailed in <a href="#uidesign">Chapter 6</a>.</p>
+<div class="nursebox nurse">
+<p>Other than the first part, we will also be uncovering other parts separately. Check them out!</p>
+<p>Part 2 - Relationship Cluster and Pseudonym: <a href="https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Hoa’s Take Home Exercise 2</a></p>
+<p>Part 3 - Time Series Analysis and Social Network graph: <a href="https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Summer’s Take Home Exercise 2</a></p>
+</div>
+</section>
+<section id="r-packages-needed-for-shiny-application" class="level1">
+<h1><span style="color:#d496d4; background:none;">3</span> R packages needed for Shiny application</h1>
+<p>As we will be adapting our Take Home Exercise 2 graphs to Shiny Application, we need to ensure that we have all the necessary R packages needed for this conversion such as:</p>
+<ul>
+<li><a href="https://shiny.posit.co/" target="_blank"><strong>shiny</strong></a><strong>:</strong> Easy web apps for data science without the compromises.</li>
+<li><a href="https://cran.r-project.org/package=dplyr" target="_blank"><strong>dplyr</strong></a>: A grammar of data manipulation, making data wrangling concise, fast, and readable.</li>
+<li><a href="https://cran.r-project.org/package=ggplot2" target="_blank"><strong>ggplot2</strong></a>: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.</li>
+<li><a href="https://datastorm-open.github.io/visNetwork/" target="_blank"><strong>visNetwork</strong></a>: Enables interactive network visualizations in R using the vis.js JavaScript library.</li>
+</ul>
+</section>
+<section id="test-the-specific-r-codes-can-be-run" class="level1">
+<h1><span style="color:#d496d4; background:none;">4</span> Test the specific R codes can be run</h1>
+<p>Most preparation have been done in <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a>.</p>
+<p>In this section we will prepare and test the specific R codes can be run and returned the correct output as expected.</p>
+<p>First we load the requred R packages:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, tidygraph, ggraph, jsonlite, ggplot2,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               SmartEDA, lubridate, ggthemes, readr, readxl, knitr, dplyr, visNetwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Next we load the data in</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>comm_full <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/communications_full.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(comm_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       sender              message_id type.x             receiver   type.y
+1         Sam Event_Communication_370   sent                Kelly received
+2       Kelly   Event_Communication_3   sent                  Sam received
+3       Kelly Event_Communication_443   sent                  Sam received
+4 Nadia Conti Event_Communication_331   sent      Haacklee Harbor received
+5 Nadia Conti Event_Communication_334   sent Oceanus City Council received
+6 Nadia Conti Event_Communication_529   sent          Liam Thorne received
+             timestamp
+1 2040-10-05T10:48:00Z
+2 2040-10-01T08:13:00Z
+3 2040-10-07T08:11:00Z
+4 2040-10-05T09:45:00Z
+5 2040-10-05T09:49:00Z
+6 2040-10-08T08:18:00Z
+                                                                                                                                                                                                                                                                                     content
+1                                                              Hey Kelly, it's Sam. This permit approval seems fishy. Could you get details on who signed off on it while you're at the harbor? I need to understand these 'special access corridors' before my meeting with Elise tomorrow.
+2                                                                                  Sam, it's Kelly! Let's meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I've heard there might be some rare shorebirds passing through this weekend. Can't wait!
+3                                         Hey Sam, it's Kelly! Got some photos of those crates - definitely marked 'fragile' and 'handle with care.' Neptune's crew is being super secretive. They're using special loading equipment I've never seen before. See you at 7 for birdwatching!
+4 Haacklee Harbor, this is Nadia Conti. I need to cancel the special access corridor arrangements for Nemo Reef immediately. Plans have changed due to unforeseen circumstances. Destroy all related documentation. I'll contact you when we're ready to proceed with alternative locations.
+5                                          This is Nadia Conti. My cancellation was due to scheduling conflicts with our tourism development initiatives. I wasn't aware of any permit approvals. I'll submit revised documentation for alternative sustainable tourism proposals next week.
+6                                                        Liam, Nadia here. Need your services urgently. Investigation brewing around Nemo Reef permits. Double your usual fee if you can ensure Harbor Master remains cooperative through next week. Meet at the usual place tomorrow, 10PM.
+  sender_label sender_type       receiver_label receiver_type weekday hour week
+1          Sam      Person                Kelly        Person  Friday   10   40
+2        Kelly      Person                  Sam        Person  Monday    8   40
+3        Kelly      Person                  Sam        Person  Sunday    8   40
+4  Nadia Conti      Person      Haacklee Harbor      Location  Friday    9   40
+5  Nadia Conti      Person Oceanus City Council  Organization  Friday    9   40
+6  Nadia Conti      Person          Liam Thorne        Person  Monday    8   41
+  week_label       date
+1     Week 1 2040-10-05
+2     Week 1 2040-10-01
+3     Week 1 2040-10-07
+4     Week 1 2040-10-05
+5     Week 1 2040-10-05
+6     Week 2 2040-10-08</code></pre>
+</div>
+</div>
+<section id="temporal-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="temporal-pattern"><span style="color:#d496d4; background:none;">4.1</span> Temporal Pattern</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>comm_full <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(week_label, date) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> n, <span class="at">group =</span> week_label)) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> week_label, <span class="at">scales =</span> <span class="st">"free_x"</span>, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">labeller =</span> label_value) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Daily Communication Volume Per Week"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Number of Messages"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="communication-heatmap" class="level2">
+<h2 class="anchored" data-anchor-id="communication-heatmap"><span style="color:#d496d4; background:none;">4.2</span> Communication Heatmap</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>comm_hourly_weekly <span class="ot">&lt;-</span> comm_full <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(week_label, weekday, hour)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(comm_hourly_weekly, <span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> weekday, <span class="at">fill =</span> n)) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">name =</span> <span class="st">"Message Count"</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Communication Intensity by Hour and Weekday"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Hour of Day"</span>, <span class="at">y =</span> <span class="st">"Day of Week"</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> week_label, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="communication-network-graph" class="level2">
+<h2 class="anchored" data-anchor-id="communication-network-graph"><span style="color:#d496d4; background:none;">4.3</span> Communication Network Graph</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create edge list</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>graph_edges <span class="ot">&lt;-</span> comm_full <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sender_label, receiver_label) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sender_label), <span class="sc">!</span><span class="fu">is.na</span>(receiver_label)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">from =</span> sender_label, <span class="at">to =</span> receiver_label, <span class="at">value =</span> n)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create node list from edges</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>graph_nodes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">unique</span>(<span class="fu">c</span>(graph_edges<span class="sc">$</span>from, graph_edges<span class="sc">$</span>to))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> name, <span class="at">label =</span> name, <span class="at">group =</span> name)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># visNetwork expects numeric node IDs, but we can use labels for both</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">visNetwork</span>(<span class="at">nodes =</span> graph_nodes, <span class="at">edges =</span> graph_edges) <span class="sc">%&gt;%</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visEdges</span>(<span class="at">arrows =</span> <span class="st">"to"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visOptions</span>(<span class="at">highlightNearest =</span> <span class="cn">TRUE</span>, <span class="at">nodesIdSelection =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visLayout</span>(<span class="at">randomSeed =</span> <span class="dv">123</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visPhysics</span>(<span class="at">stabilization =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visInteraction</span>(<span class="at">navigationButtons =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-70670b5da545a99f9476" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-70670b5da545a99f9476">{"x":{"nodes":{"name":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"id":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"label":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"group":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"]},"edges":{"from":["Boss","Boss","Boss","Boss","Clepper Jensen","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Defender","Defender","Defender","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","Elise","Elise","Elise","Glitters Team","Glitters Team","Glitters Team","Glitters Team","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Kelly","Knowles","Knowles","Knowles","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Marlin","Marlin","Marlin","Marlin","Marlin","Miranda Jordan","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Northern Light","Northern Light","Northern Light","Northern Light","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Osprey","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Sailor Shifts Team","Sailor Shifts Team","Sam","Samantha Blake","Samantha Blake","Samantha Blake","Seawatch","Seawatch","Seawatch","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Serenity","Serenity","Serenity","Serenity","Small Fry","Small Fry","Small Fry","The Accountant","The Accountant","The Intern","The Intern","The Intern","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Middleman","The Middleman","The Middleman","The Middleman","The Middleman","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping"],"to":["Mako","Mrs. Money","The Middleman","V. Miesel Shipping","Miranda Jordan","Boss","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Remora","V. Miesel Shipping","Mako","Reef Guardian","Seawatch","EcoVigil","Horizon","Liam Thorne","Oceanus City Council","Reef Guardian","Sentinel","Liam Thorne","Nadia Conti","V. Miesel Shipping","Boss","Northern Light","Remora","Samantha Blake","EcoVigil","Green Guardians","Horizon","Mako","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Sentinel","EcoVigil","Knowles","Mako","Nadia Conti","Oceanus City Council","Osprey","Mako","Marlin","Neptune","Northern Light","Oceanus City Council","Remora","Seawatch","Serenity","EcoVigil","Green Guardians","Mako","Oceanus City Council","Reef Guardian","Seawatch","Sentinel","Sam","Davis","Haacklee Harbor","Mako","Boss","EcoVigil","Elise","Nadia Conti","Oceanus City Council","Boss","Davis","Elise","Himark Harbor","Marlin","Neptune","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Sailor Shifts Team","Samantha Blake","Sentinel","Serenity","V. Miesel Shipping","Himark Harbor","Mako","Oceanus City Council","Reef Guardian","Remora","Clepper Jensen","Boss","Mako","Neptune","Remora","The Intern","The Middleman","V. Miesel Shipping","Haacklee Harbor","Liam Thorne","Marlin","Neptune","Oceanus City Council","V. Miesel Shipping","City Officials","Davis","Elise","Himark Harbor","Mako","Nadia Conti","Reef Guardian","Remora","Serenity","V. Miesel Shipping","Green Guardians","Himark Harbor","Oceanus City Council","Sailor Shifts Team","EcoVigil","Green Guardians","Himark Harbor","Liam Thorne","Mako","Marlin","Nadia Conti","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Samantha Blake","Sentinel","Mako","Liam Thorne","Mako","Oceanus City Council","Reef Guardian","Remora","Sentinel","Defender","EcoVigil","Horizon","Mako","Marlin","Neptune","Oceanus City Council","Paackland Harbor","Port Security","Reef Guardian","Seawatch","Sentinel","Serenity","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Paackland Harbor","Rodriguez","Sailor Shifts Team","V. Miesel Shipping","Boss","Davis","Mrs. Money","Nadia Conti","Remora","Rodriguez","Sailor Shifts Team","Nadia Conti","Remora","Kelly","Mako","Oceanus City Council","Sailor Shifts Team","Green Guardians","Himark Harbor","Reef Guardian","Green Guardians","Horizon","Mako","Nadia Conti","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Himark Harbor","Mako","Neptune","Reef Guardian","Davis","Mako","Remora","Boss","The Middleman","Mrs. Money","The Intern","The Lookout","Green Guardians","Horizon","Reef Guardian","Sam","Sentinel","The Intern","Boss","Liam Thorne","Mrs. Money","Paackland Harbor","The Accountant","Boss","Davis","Elise","Mako","Mrs. Money","Nadia Conti","Neptune","Remora","Rodriguez","V. Miesel Shipping"],"value":[1,4,3,1,20,1,6,1,5,5,1,4,2,1,3,1,2,5,2,1,2,2,1,3,1,1,1,1,1,3,12,4,2,1,12,1,6,2,1,1,1,1,1,2,1,3,2,5,1,7,3,3,3,3,2,1,1,1,2,4,2,2,1,1,1,1,1,2,6,2,1,1,4,1,3,1,2,2,2,5,1,4,4,1,1,2,1,1,1,2,18,6,1,2,1,5,3,1,1,2,1,2,1,1,1,2,3,1,7,1,1,9,1,8,1,1,1,1,1,6,5,8,2,1,1,1,1,6,2,2,1,6,1,3,2,2,4,4,2,4,3,2,3,1,4,2,1,3,3,3,3,1,1,9,1,6,3,1,2,1,3,3,1,1,1,4,1,1,1,1,3,3,3,1,1,1,2,5,5,1,2,1,1,1,2,2,2,2,2,1,4,2,1,15,1,8,3,5,1,8,4,12,4,2,3,1,3,1,1,1,1,1,1,4,2,1,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to"},"layout":{"randomSeed":123},"physics":{"stabilization":true},"interaction":{"navigationButtons":true,"zoomSpeed":1}},"groups":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","legend":{"width":0.2,"useGroups":true,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+</section>
+<section id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" class="level1">
+<h1><span style="color:#d496d4; background:none;">5</span> Parameters and outputs that will be exposed on the Shiny applications</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Parameters (UI Inputs):</strong></th>
+<th><strong>Outputs (UI Outputs):</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ul>
+<li><p>Entity filter (e.g., person, vessel, pseudonym, organization)</p></li>
+<li><p>Week selection: Week 1 / Week 2</p></li>
+<li><p>Date range input (subset communication dates)</p></li>
+<li><p>Hour range input (to analyze time-of-day patterns)</p></li>
+<li><p>Sender / Receiver entity selection</p></li>
+<li><p>Graph type: Full vs.&nbsp;person-to-person communication</p></li>
+</ul></td>
+<td><ul>
+<li><p>Line plot of communication volume over time</p></li>
+<li><p>Heatmap of communication intensity by weekday/hour</p></li>
+<li><p>Interactive visNetwork graph</p></li>
+<li><p>Filtered table of communications (sender, receiver, message, timestamp)</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="uidesign" class="level1">
+<h1><span style="color:#d496d4; background:none;">6</span> UI Design &amp; Prototype</h1>
+<section id="overall-ui-design" class="level3">
+<h3 class="anchored" data-anchor-id="overall-ui-design"><span style="color:#d496d4; background:none;">6.1.1</span> Overall UI Design</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ui1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="temporal-pattern-1" class="level3">
+<h3 class="anchored" data-anchor-id="temporal-pattern-1"><span style="color:#d496d4; background:none;">6.1.2</span> Temporal Pattern</h3>
+<p><strong>WIP</strong></p>
+</section>
+<section id="heatmap" class="level3">
+<h3 class="anchored" data-anchor-id="heatmap"><span style="color:#d496d4; background:none;">6.1.3</span> Heatmap</h3>
+<p><strong>WIP</strong></p>
+</section>
+<section id="communication-network" class="level3">
+<h3 class="anchored" data-anchor-id="communication-network"><span style="color:#d496d4; background:none;">6.1.4</span> Communication Network</h3>
+<p><strong>WIP</strong></p>
+</section>
+<section id="receipts" class="level3">
+<h3 class="anchored" data-anchor-id="receipts"><span style="color:#d496d4; background:none;">6.1.5</span> Receipts</h3>
+<p>This tab allow users to read the communication messages (or as investigators we can call them receipts).</p>
+<p><strong>WIP</strong></p>
+</section>
+<section id="prototype" class="level2">
+<h2 class="anchored" data-anchor-id="prototype"><span style="color:#d496d4; background:none;">6.2</span> Prototype</h2>
+<p><strong>Scroll down and click “Update View” to load the visualization!</strong></p>
+<section id="view-on" class="level3">
+<h3 class="anchored" data-anchor-id="view-on">View on <a href="https://vriadi.shinyapps.io/reefwhispers_proto1/" target="_blank"><img src="../../images/Posit_logo.png" height="20"></a></h3>
+<div style="width: 100%; height: 600px; padding: 0; overflow: hidden;">
+  <iframe src="https://vriadi.shinyapps.io/reefwhispers_proto1/" title="CMAP-RSI Explorer" style="width: 135%; height: 135%; transform: scale(0.75); transform-origin: top left; border: none;">
+  </iframe>
+</div>
+
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 67%">
+<col style="width: 2%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><h1 id="ui-component"><strong>UI Component</strong></h1>
+<p><code>titlePanel()</code></p></td>
+<td rowspan="2"><h1 id="use"><strong>Use</strong></h1>
+<p>App’s title</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>sidebarLayout()</code></td>
+<td>Two-column layout with input controls on the side and output in the main area</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>tabsetPanel()</code></td>
+<td>Separate tabs for the different visualization</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>selectInput()</code></td>
+<td colspan="2">Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2)</td>
+</tr>
+<tr class="even">
+<td><code>textInput()</code> or <code>selectizeInput()</code></td>
+<td>Allows one or more selection sender/receiver</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>checkboxGroupInput()</code></td>
+<td>Select multiple weeks or types</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>dateRangeInput()</code></td>
+<td colspan="2">Filter by date range |</td>
+</tr>
+<tr class="odd">
+<td><code>sliderInput()</code></td>
+<td>Filter by hour of day (0–23)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>plotOutput()</code></td>
+<td>Static ggplot visualizations (content to be defined under Server &lt;- function segment)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>dataTableOutput()</code></td>
+<td>Render data table (content to be defined under Server &lt;- function segment)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>visNetworkOutput()</code></td>
+<td>Interactive network graph (content to be defined under Server &lt;- function segment)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td colspan="3"><code>actionButton()</code> | Apply filters |</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="reference" class="level1">
+<h1><span style="color:#d496d4; background:none;">7</span> Reference</h1>
+<p>- <a href="https://vast-challenge.github.io/2025/MC3.html" target="_blank">VAST 2024 Mini Challenge 3</a><br>
+- <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a><br>
+- <a href="https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Hoa’s Take Home Exercise 2</a><br>
+- <a href="https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Summer’s Take Home Exercise 2</a><br>
+</p>
+<section id="r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="r-packages"><span style="color:#d496d4; background:none;">7.1</span> R Packages</h2>
+<ul>
+<li><a href="https://shiny.posit.co/" target="_blank"><strong>shiny</strong></a><strong>:</strong> Easy web apps for data science without the compromises.</li>
+<li><a href="https://cran.r-project.org/package=dplyr" target="_blank"><strong>dplyr</strong></a>: A grammar of data manipulation, making data wrangling concise, fast, and readable.</li>
+<li><a href="https://cran.r-project.org/package=ggplot2" target="_blank"><strong>ggplot2</strong></a>: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.</li>
+<li><a href="https://datastorm-open.github.io/visNetwork/" target="_blank"><strong>visNetwork</strong></a>: Enables interactive network visualizations in R using the vis.js JavaScript library.</li>
+</ul>
+</section>
+</section>
+<section id="appendix" class="level1">
+<h1><span style="color:#d496d4; background:none;">8</span> Appendix</h1>
+<section id="appendixa" class="level2">
+<h2 class="anchored" data-anchor-id="appendixa"><span style="color:#d496d4; background:none;">8.1</span> Appendix A</h2>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Made with Quarto in RStudio
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+      <i class="bi bi-c-circle" role="img">
+</i> 
+  Vanessa Riadi 2025
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/vanessariadi/" target="_blank">
+      <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://public.tableau.com/app/profile/vanessa.riadi/vizzes" target="_blank">
+<p><img src="../../images/tableauwhite.png" style="height:19px; vertical-align:top;"></p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -77,6 +77,8 @@ website:
             href: Take-home_Ex/Take-home_Ex01/Take-home_Ex01_phase2.html
           - text: "2 - VAST Challenge 2025 - Mini Challenge 3 Part 1"
             href: Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html
+          - text: "3 - Prototyping Modules for Visual Analytics Shiny Application"
+            href: Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html
     right:
       - icon: house-fill
         text: Home
@@ -176,10 +178,10 @@ website:
           contents:
             - text: "2 - VAST Challenge 2025 - Mini Challenge 3 Part 1"
               href: Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html
-        #- section: "Take-Home Exercise 3"
-        #  contents:
-        #    - text: "COMING SOON"
-              #href: Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html
+        - section: "Take-Home Exercise 3"
+          contents:
+            - text: "3 - Prototyping Modules for Visual Analytics Shiny Application"
+              href: Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html
             
 
   page-footer:
