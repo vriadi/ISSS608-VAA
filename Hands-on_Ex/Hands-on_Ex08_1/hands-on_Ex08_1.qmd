@@ -7,6 +7,7 @@ format:
   html:
     toc: true
     self-contained: false
+    embed-resources: false
 execute: 
   echo: true
   eval: false
