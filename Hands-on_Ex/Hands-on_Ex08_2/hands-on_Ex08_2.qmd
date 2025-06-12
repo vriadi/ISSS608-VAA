@@ -50,7 +50,6 @@ The code chunk below uses *read_csv()* function of **readr** package to import *
 ```{r}
 sgpools <- read_csv("../data/aspatial/SGPools_svy21.csv")
 ```
-
 After importing the data file into R, it is important for us to examine if the data file has been imported correctly.
 
 The code chunk below shows list() is used to do the job.
@@ -105,7 +104,7 @@ The code chunks below are used to create an interactive point symbol map.
 ```{r}
 tm_shape(sgpools_sf) + 
   tm_bubbles(fill = "red",
-           size = 1,
+           size = 0.5,
            col = "black",
            lwd = 1)
 ```

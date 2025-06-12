@@ -234,14 +234,23 @@ percentmap <- function(vnam, df, legtitle=NA, mtitle="Percentile Map"){
   tm_shape(df) +
   tm_polygons() +
   tm_shape(df) +
-     tm_polygons(vnam,
+     tm_fill(vnam,
              title=legtitle,
              breaks=bperc,
              palette="Blues",
           labels=c("< 1%", "1% - 10%", "10% - 50%", "50% - 90%", "90% - 99%", "> 99%"))  +
   tm_borders() +
   tm_layout(main.title = mtitle, 
-            title.position = c("right","bottom"))
+            main.title.position = "right",
+            legend.width = 6,       
+            legend.height = 8,       
+            legend.text.size = 0.9,     
+            legend.title.size = 1.2,
+            legend.frame = FALSE,
+            frame.col = "grey",
+            legend.outside = FALSE,
+            frame = FALSE) 
+
 }
 ```
 
@@ -361,8 +370,10 @@ boxmap <- function(vnam, df,
                      "upper outlier"))  +
   tm_borders() +
   tm_layout(main.title = mtitle, 
-            title.position = c("left",
-                               "top"))
+            main.title.position = c("left"),
+            legend.outside = FALSE,
+            frame = FALSE,
+            legend.frame = FALSE)
 }
 ```
 
