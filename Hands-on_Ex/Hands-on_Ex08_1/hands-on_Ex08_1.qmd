@@ -7,10 +7,10 @@ format:
   html:
     toc: true
 execute: 
-  echo: true
-  eval: true
+  echo: false
+  eval: false
   warning: false
-  freeze: true
+  freeze: false
 ---
 
 ## [1]{style="color:#d496d4"} Overview
