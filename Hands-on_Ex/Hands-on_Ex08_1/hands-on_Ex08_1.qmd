@@ -7,8 +7,8 @@ format:
   html:
     toc: true
 execute: 
-  echo: false
-  eval: false
+  echo: true
+  eval: true
   warning: false
   freeze: false
 ---
@@ -197,7 +197,7 @@ In the following sub-section, we will share with you tmap functions that used to
 
 #### [4.2.1]{style="color:#d496d4"} Drawing a base map
 
-The basic building block of **tmap** is *tm_shape()* followed by one or more layer elemments such as *tm_fill()* and *tm_polygons()*.
+The basic building block of **tmap** is *tm_shape()* followed by one or more layer elements such as *tm_fill()* and *tm_polygons()*.
 
 In the code chunk below, *tm_shape()* is used to define the input data (i.e *mpsz_pop2020*) and *tm_polygons()* is used to draw the planning subzone polygons
 
@@ -208,12 +208,14 @@ In the code chunk below, *tm_shape()* is used to define the input data (i.e *mps
 
 Nothing to show because no data layers defined after `tm_shape()`
 ```{r}
+#| eval: false
 tm_shape(mpsz_pop2020) 
 ```
 ## + tm_fill
 ```{r}
 tm_shape(mpsz_pop2020) + tm_fill()
 ```
+
 ```{r}
 tm_shape(mpsz_pop2020) + tm_fill("DEPENDENCY")
 ```
@@ -255,7 +257,7 @@ tm_shape(mpsz_pop2020)+
   tm_fill("DEPENDENCY")
 ```
 
-Notice that the planning subzones are shared according to the respective dependecy values
+Notice that the planning subzones are shared according to the respective dependency values
 
 To add the boundary of the planning subzones, tm_borders will be used as shown in the code chunk below.
 
@@ -458,7 +460,7 @@ tm20
 tmap_arrange(tm2, tm6, tm10, tm20, ncol = 2)
 ```
 
-#### [4.3.2]{style="color:#d496d4"} Plotting choropleth map with custome break
+#### [4.3.2]{style="color:#d496d4"} Plotting choropleth map with custom break
 
 For all the built-in styles, the category breaks are computed internally. In order to override these defaults, the breakpoints can be set explicitly by means of the *breaks* argument to the *tm_fill()*. It is important to note that, in **tmap** the breaks include a minimum and maximum. As a result, in order to end up with n categories, n+1 elements must be specified in the *breaks* option (the values must be in increasing order).
 
@@ -547,7 +549,7 @@ tm_shape(mpsz_pop2020)+
 
 ### [4.5]{style="color:#d496d4"} Map Layouts
 
-Map layout refers to the combination of all map elements into a cohensive map. Map elements include among others the objects to be mapped, the title, the scale bar, the compass, margins and aspects ratios. Colour settings and data classification methods covered in the previous section relate to the palette and break-points are used to affect how the map looks.
+Map layout refers to the combination of all map elements into a cohesive map. Map elements include among others the objects to be mapped, the title, the scale bar, the compass, margins and aspects ratios. Colour settings and data classification methods covered in the previous section relate to the palette and break-points are used to affect how the map looks.
 
 #### [4.5.1]{style="color:#d496d4"} Map Legend
 
@@ -799,7 +801,6 @@ tm_shape(mpsz_pop2020[mpsz_pop2020$REGION_N=="CENTRAL REGION", ])+
             frame = FALSE) +
   tm_borders(alpha = 0.5)
 ```
-
 :::
 
 ## [5]{style="color:#d496d4"} Reference
