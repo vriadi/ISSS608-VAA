@@ -9,7 +9,7 @@ format:
     self-contained: false
 execute: 
   echo: true
-  eval: true
+  eval: false
   warning: false
   freeze: false
 ---
@@ -354,8 +354,6 @@ tm_pretty <- tm_shape(mpsz_pop2020) +
           fill.scale = tm_scale_intervals("pretty", n = 6, values = "brewer.greens")) +
   tm_borders(fill_alpha = 0.3)+
   tm_title("Pretty")
-
-tm_pretty
 ```
 
 ## quantile
@@ -366,8 +364,6 @@ tm_quantile <- tm_shape(mpsz_pop2020) +
           fill.scale = tm_scale_intervals("quantile", n = 6, values = "brewer.greens")) +
   tm_borders(fill_alpha = 0.3)+
   tm_title("Quantile")
-
-tm_quantile
 ```
 
 ## equal
@@ -378,8 +374,6 @@ tm_equal <- tm_shape(mpsz_pop2020) +
           fill.scale = tm_scale_intervals("equal", n = 6, values = "brewer.greens")) +
   tm_borders(fill_alpha = 0.3)+
   tm_title("Equal")
-
-tm_equal
 ```
 
 ## jenks
@@ -390,8 +384,6 @@ tm_jenks <- tm_shape(mpsz_pop2020) +
           fill.scale = tm_scale_intervals("jenks", n = 6, values = "brewer.greens")) +
   tm_borders(fill_alpha = 0.3)+
   tm_title("Jenks")
-
-tm_jenks
 ```
 
 ## kmeans
@@ -402,8 +394,6 @@ tm_kmeans <- tm_shape(mpsz_pop2020) +
           fill.scale = tm_scale_intervals("kmeans", n = 6, values = "brewer.greens")) +
   tm_borders(fill_alpha = 0.3)+
   tm_title("Kmeans")
-
-tm_kmeans
 ```
 
 :::
@@ -422,8 +412,6 @@ tm2 <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 2, values = "brewer.greens")) +
   tm_borders(fill_alpha = 0.3)
-
-tm2
 ```
 
 ## 6 classes
@@ -432,8 +420,6 @@ tm6 <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 6, values = "brewer.greens")) +
   tm_borders(fill_alpha = 0.3)
-
-tm6
 ```
 
 ## 10 classes
@@ -442,8 +428,6 @@ tm10 <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 10, values = "brewer.greens")) +
   tm_borders(fill_alpha = 0.3)
-
-tm10
 ```
 
 ## 20 classes
@@ -452,8 +436,6 @@ tm20 <- tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY", 
           fill.scale = tm_scale_intervals("quantile", n = 20, values = "brewer.greens")) +
   tm_borders(fill_alpha = 0.3)
-
-tm20
 ```
 :::
 
@@ -486,6 +468,7 @@ tm_shape(mpsz_pop2020) +
 **tmap v3**:
 ```{r}
 #| eval: false
+#| code-fold: true
 tm_shape(mpsz_pop2020)+
   tm_polygons("DEPENDENCY",
           breaks = c(0, 0.60, 0.70, 0.80, 0.90, 1.00)) +
@@ -673,6 +656,7 @@ tm_shape(mpsz_pop2020) +
 ## tmap v3
 ```{r}
 #| eval: false
+#| code-fold: true
 tm_shape(mpsz_pop2020)+
   tm_fill(c("YOUNG", "AGED"),
           style = "equal", 
@@ -708,6 +692,7 @@ tm_shape(mpsz_pop2020) +
 ## tmap v3
 ```{r}
 #| eval: false
+#| code-fold: true
 tm_shape(mpsz_pop2020) +
   tm_fill("DEPENDENCY",
           style = "quantile",
@@ -746,6 +731,7 @@ tmap_arrange(youngmap, agedmap, asp = 1, ncol = 2)
 ## tmap v3
 ```{r}
 #| eval: false
+#| code-fold: true
 youngmap <- tm_shape(mpsz_pop2020)+ 
   tm_polygons("YOUNG", 
               style = "quantile", 
@@ -787,6 +773,7 @@ tm_shape(mpsz_pop2020[mpsz_pop2020$REGION_N=="CENTRAL REGION", ])+
 ## tmap v3
 ```{r}
 #| eval: false
+#| code-fold: true
 tmap_mode("plot") +
 tm_shape(mpsz_pop2020[mpsz_pop2020$REGION_N=="CENTRAL REGION", ])+
   tm_fill("DEPENDENCY", 
