@@ -346,8 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span style="color:#d496d4; background:none;">1</span> Overview</a></li>
   <li><a href="#objective" id="toc-objective" class="nav-link" data-scroll-target="#objective"><span style="color:#d496d4; background:none;">2</span> Objective</a></li>
-  <li><a href="#storyboard" id="toc-storyboard" class="nav-link" data-scroll-target="#storyboard"><span style="color:#d496d4; background:none;">2.1</span> Storyboard</a></li>
-  <li><a href="#r-packages-needed-for-shiny-application" id="toc-r-packages-needed-for-shiny-application" class="nav-link" data-scroll-target="#r-packages-needed-for-shiny-application"><span style="color:#d496d4; background:none;">3</span> R packages needed for Shiny application</a></li>
+  <li><a href="#rpkg" id="toc-rpkg" class="nav-link" data-scroll-target="#rpkg"><span style="color:#d496d4; background:none;">3</span> R packages needed for Shiny application</a></li>
   <li><a href="#test-the-specific-r-codes-can-be-run" id="toc-test-the-specific-r-codes-can-be-run" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run"><span style="color:#d496d4; background:none;">4</span> Test the specific R codes can be run</a>
   <ul class="collapse">
   <li><a href="#temporal-pattern" id="toc-temporal-pattern" class="nav-link" data-scroll-target="#temporal-pattern"><span style="color:#d496d4; background:none;">4.1</span> Temporal Pattern</a></li>
@@ -355,27 +354,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#communication-network-graph" id="toc-communication-network-graph" class="nav-link" data-scroll-target="#communication-network-graph"><span style="color:#d496d4; background:none;">4.3</span> Communication Network Graph</a></li>
   </ul></li>
   <li><a href="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" id="toc-parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" class="nav-link" data-scroll-target="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications"><span style="color:#d496d4; background:none;">5</span> Parameters and outputs that will be exposed on the Shiny applications</a></li>
-  <li><a href="#uidesign" id="toc-uidesign" class="nav-link" data-scroll-target="#uidesign"><span style="color:#d496d4; background:none;">6</span> UI Design &amp; Prototype</a>
+  <li><a href="#storyboard" id="toc-storyboard" class="nav-link" data-scroll-target="#storyboard"><span style="color:#d496d4; background:none;">6</span> Storyboard</a></li>
+  <li><a href="#uidesign" id="toc-uidesign" class="nav-link" data-scroll-target="#uidesign"><span style="color:#d496d4; background:none;">7</span> UI Design</a>
   <ul class="collapse">
-  <li><a href="#overall-ui-design" id="toc-overall-ui-design" class="nav-link" data-scroll-target="#overall-ui-design"><span style="color:#d496d4; background:none;">6.1</span> Overall UI Design</a>
+  <li><a href="#app1" id="toc-app1" class="nav-link" data-scroll-target="#app1"><span style="color:#d496d4; background:none;">7.1</span> App 1: Temporal Pattern and Communication Network Graph App</a>
   <ul class="collapse">
-  <li><a href="#temporal-pattern-1" id="toc-temporal-pattern-1" class="nav-link" data-scroll-target="#temporal-pattern-1"><span style="color:#d496d4; background:none;">6.1.2</span> Temporal Pattern</a></li>
-  <li><a href="#heatmap" id="toc-heatmap" class="nav-link" data-scroll-target="#heatmap"><span style="color:#d496d4; background:none;">6.1.3</span> Heatmap</a></li>
-  <li><a href="#communication-network" id="toc-communication-network" class="nav-link" data-scroll-target="#communication-network"><span style="color:#d496d4; background:none;">6.1.4</span> Communication Network</a></li>
-  <li><a href="#receipts" id="toc-receipts" class="nav-link" data-scroll-target="#receipts"><span style="color:#d496d4; background:none;">6.1.5</span> Receipts</a></li>
+  <li><a href="#ui-design-goals" id="toc-ui-design-goals" class="nav-link" data-scroll-target="#ui-design-goals"><span style="color:#d496d4; background:none;">7.1.1</span> UI Design Goals</a></li>
+  <li><a href="#ui-objects-used" id="toc-ui-objects-used" class="nav-link" data-scroll-target="#ui-objects-used"><span style="color:#d496d4; background:none;">7.1.2</span> UI objects used</a></li>
+  <li><a href="#panel-tabs" id="toc-panel-tabs" class="nav-link" data-scroll-target="#panel-tabs"><span style="color:#d496d4; background:none;">7.1.3</span> Panel Tabs</a></li>
   </ul></li>
-  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span style="color:#d496d4; background:none;">6.2</span> Prototype</a>
+  <li><a href="#app2" id="toc-app2" class="nav-link" data-scroll-target="#app2"><span style="color:#d496d4; background:none;">7.2</span> App 2: Relationship Clusters and Pseudonyms</a>
+  <ul class="collapse">
+  <li><a href="#ui-design-goals-1" id="toc-ui-design-goals-1" class="nav-link" data-scroll-target="#ui-design-goals-1"><span style="color:#d496d4; background:none;">7.2.1</span> UI Design Goals</a></li>
+  <li><a href="#ui-objects-used-1" id="toc-ui-objects-used-1" class="nav-link" data-scroll-target="#ui-objects-used-1"><span style="color:#d496d4; background:none;">7.2.2</span> UI objects used</a></li>
+  <li><a href="#panel-tabs-1" id="toc-panel-tabs-1" class="nav-link" data-scroll-target="#panel-tabs-1"><span style="color:#d496d4; background:none;">7.2.3</span> Panel Tabs</a></li>
+  </ul></li>
+  <li><a href="#app3" id="toc-app3" class="nav-link" data-scroll-target="#app3"><span style="color:#d496d4; background:none;">7.3</span> App 3: Time Series Analysis and Social Network Graph</a>
+  <ul class="collapse">
+  <li><a href="#ui-design-goals-2" id="toc-ui-design-goals-2" class="nav-link" data-scroll-target="#ui-design-goals-2"><span style="color:#d496d4; background:none;">7.3.1</span> UI Design Goals</a></li>
+  <li><a href="#ui-objects-used-2" id="toc-ui-objects-used-2" class="nav-link" data-scroll-target="#ui-objects-used-2"><span style="color:#d496d4; background:none;">7.3.2</span> UI objects used</a></li>
+  <li><a href="#panel-tabs-2" id="toc-panel-tabs-2" class="nav-link" data-scroll-target="#panel-tabs-2"><span style="color:#d496d4; background:none;">7.3.3</span> Panel Tabs</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span style="color:#d496d4; background:none;">8</span> Prototype</a>
   <ul class="collapse">
   <li><a href="#view-on" id="toc-view-on" class="nav-link" data-scroll-target="#view-on">View on <img src="../../images/Posit_logo.png" height="20"></a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span style="color:#d496d4; background:none;">7</span> Reference</a>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span style="color:#d496d4; background:none;">8</span> Reference</a>
   <ul class="collapse">
-  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages"><span style="color:#d496d4; background:none;">7.1</span> R Packages</a></li>
-  </ul></li>
-  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix"><span style="color:#d496d4; background:none;">8</span> Appendix</a>
-  <ul class="collapse">
-  <li><a href="#appendixa" id="toc-appendixa" class="nav-link" data-scroll-target="#appendixa"><span style="color:#d496d4; background:none;">8.1</span> Appendix A</a></li>
+  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages"><span style="color:#d496d4; background:none;">8.1</span> R Packages</a></li>
+  <li><a href="#shiny-fuctional-specs-and-tutorials" id="toc-shiny-fuctional-specs-and-tutorials" class="nav-link" data-scroll-target="#shiny-fuctional-specs-and-tutorials"><span style="color:#d496d4; background:none;">8.2</span> Shiny Fuctional Specs and Tutorials</a></li>
+  <li><a href="#lesson-slides" id="toc-lesson-slides" class="nav-link" data-scroll-target="#lesson-slides"><span style="color:#d496d4; background:none;">8.3</span> Lesson Slides</a></li>
+  <li><a href="#shiny-fuctional-specs-and-tutorials-1" id="toc-shiny-fuctional-specs-and-tutorials-1" class="nav-link" data-scroll-target="#shiny-fuctional-specs-and-tutorials-1"><span style="color:#d496d4; background:none;">8.4</span> Shiny Fuctional Specs and Tutorials</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -409,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 13, 2025</p>
+      <p class="date-modified">June 14, 2025</p>
     </div>
   </div>
     
@@ -423,34 +433,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="overview" class="level1">
 <h1><span style="color:#d496d4; background:none;">1</span> Overview</h1>
 <p>Still in the same storyline with the previous <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a>, Clepper Jessen, an investigative journalist, is uncovering possible corruption in Oceanus linked to the closure of Nemo Reef and the arrival of pop star Sailor Shift. Using intercepted radio communications, a knowledge graph was created to map out interactions between people, vessels, and organizations. This Mini Challenge aims to support Clepper’s investigation through data-driven visual analytics, uncovering patterns, pseudonym usage, social groupings, and suspicious behavior—especially concerning Nadia Conti, a previously implicated figure in illegal fishing.</p>
-<p>This is part 1 of the entire Mini Challenge 3 where we will be working as a group to create different approaces to uncover these whispers!</p>
 </section>
 <section id="objective" class="level1">
 <h1><span style="color:#d496d4; background:none;">2</span> Objective</h1>
-<p>Base on the previous <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a>, this take home exercise 3 objective is to:</p>
+<p>To support this investigation, a series of three Shiny applications under the ReefWhispers project will be developed to transform this data into actionable insights through visual analytics. Details will be covered in <span id="storyboard">Chapter 6: Storyboard</span> and <span id="uidesign">Chapter 7: UI Design</span>.</p>
+<p>This take home exercise 3 objective is to:</p>
 <ul>
 <li>Evaluate and determine the necessary R packages needed for your Shiny application are supported in R CRAN</li>
-<li>Prepare and test the specific R codes can be run and returned the correct output as expected</li>
+<li>Prepare and test the specific R codes can be run and return the correct output as expected</li>
 <li>Determine the parameters and outputs that will be exposed on the Shiny applications, and</li>
 <li>Select the appropriate Shiny UI components for exposing the parameters determine above.</li>
 </ul>
 </section>
-<section id="storyboard" class="level1">
-<h1><span style="color:#d496d4; background:none;">2.1</span> Storyboard</h1>
-<p>For this part 1 we will be focusing on:</p>
-<ul>
-<li><p>Identify temporal patterns in communications.</p></li>
-<li><p>Reveal relationships and influence among entities (people, vessels, groups).</p></li>
-<li><p>Expose pseudonym usage and investigate Nadia Conti’s activity for potential misconduct.</p></li>
-</ul>
-<p>Hence, we will be looking at a Shiny web app that allows user to explore the temporal interpolation and heatmap of the communication pattern, as well as the communication network graph to see the relationships and influence among the entities. Through this, user is able to uncover the above agendas. We will be splitting this app into 4 main section that will be further detailed in <a href="#uidesign">Chapter 6</a>.</p>
-<div class="nursebox nurse">
-<p>Other than the first part, we will also be uncovering other parts separately. Check them out!</p>
-<p>Part 2 - Relationship Cluster and Pseudonym: <a href="https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Hoa’s Take Home Exercise 2</a></p>
-<p>Part 3 - Time Series Analysis and Social Network graph: <a href="https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Summer’s Take Home Exercise 2</a></p>
-</div>
-</section>
-<section id="r-packages-needed-for-shiny-application" class="level1">
+<section id="rpkg" class="level1">
 <h1><span style="color:#d496d4; background:none;">3</span> R packages needed for Shiny application</h1>
 <p>As we will be adapting our Take Home Exercise 2 graphs to Shiny Application, we need to ensure that we have all the necessary R packages needed for this conversion such as:</p>
 <ul>
@@ -463,8 +458,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="test-the-specific-r-codes-can-be-run" class="level1">
 <h1><span style="color:#d496d4; background:none;">4</span> Test the specific R codes can be run</h1>
 <p>Most preparation have been done in <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a>.</p>
-<p>In this section we will prepare and test the specific R codes can be run and returned the correct output as expected.</p>
-<p>First we load the requred R packages:</p>
+<p>In this section we will prepare and test the specific R codes can be run and return the correct output as expected.</p>
+<p>First we load the requred R packages</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -477,44 +472,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>comm_full <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/communications_full.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(comm_full)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_full,<span class="at">n=</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>       sender              message_id type.x             receiver   type.y
-1         Sam Event_Communication_370   sent                Kelly received
-2       Kelly   Event_Communication_3   sent                  Sam received
-3       Kelly Event_Communication_443   sent                  Sam received
-4 Nadia Conti Event_Communication_331   sent      Haacklee Harbor received
-5 Nadia Conti Event_Communication_334   sent Oceanus City Council received
-6 Nadia Conti Event_Communication_529   sent          Liam Thorne received
-             timestamp
-1 2040-10-05T10:48:00Z
-2 2040-10-01T08:13:00Z
-3 2040-10-07T08:11:00Z
-4 2040-10-05T09:45:00Z
-5 2040-10-05T09:49:00Z
-6 2040-10-08T08:18:00Z
-                                                                                                                                                                                                                                                                                     content
-1                                                              Hey Kelly, it's Sam. This permit approval seems fishy. Could you get details on who signed off on it while you're at the harbor? I need to understand these 'special access corridors' before my meeting with Elise tomorrow.
-2                                                                                  Sam, it's Kelly! Let's meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I've heard there might be some rare shorebirds passing through this weekend. Can't wait!
-3                                         Hey Sam, it's Kelly! Got some photos of those crates - definitely marked 'fragile' and 'handle with care.' Neptune's crew is being super secretive. They're using special loading equipment I've never seen before. See you at 7 for birdwatching!
-4 Haacklee Harbor, this is Nadia Conti. I need to cancel the special access corridor arrangements for Nemo Reef immediately. Plans have changed due to unforeseen circumstances. Destroy all related documentation. I'll contact you when we're ready to proceed with alternative locations.
-5                                          This is Nadia Conti. My cancellation was due to scheduling conflicts with our tourism development initiatives. I wasn't aware of any permit approvals. I'll submit revised documentation for alternative sustainable tourism proposals next week.
-6                                                        Liam, Nadia here. Need your services urgently. Investigation brewing around Nemo Reef permits. Double your usual fee if you can ensure Harbor Master remains cooperative through next week. Meet at the usual place tomorrow, 10PM.
-  sender_label sender_type       receiver_label receiver_type weekday hour week
-1          Sam      Person                Kelly        Person  Friday   10   40
-2        Kelly      Person                  Sam        Person  Monday    8   40
-3        Kelly      Person                  Sam        Person  Sunday    8   40
-4  Nadia Conti      Person      Haacklee Harbor      Location  Friday    9   40
-5  Nadia Conti      Person Oceanus City Council  Organization  Friday    9   40
-6  Nadia Conti      Person          Liam Thorne        Person  Monday    8   41
-  week_label       date
-1     Week 1 2040-10-05
-2     Week 1 2040-10-01
-3     Week 1 2040-10-07
-4     Week 1 2040-10-05
-5     Week 1 2040-10-05
-6     Week 2 2040-10-08</code></pre>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 1%">
+<col style="width: 5%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 5%">
+<col style="width: 58%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sender</th>
+<th style="text-align: left;">message_id</th>
+<th style="text-align: left;">type.x</th>
+<th style="text-align: left;">receiver</th>
+<th style="text-align: left;">type.y</th>
+<th style="text-align: left;">timestamp</th>
+<th style="text-align: left;">content</th>
+<th style="text-align: left;">sender_label</th>
+<th style="text-align: left;">sender_type</th>
+<th style="text-align: left;">receiver_label</th>
+<th style="text-align: left;">receiver_type</th>
+<th style="text-align: left;">weekday</th>
+<th style="text-align: right;">hour</th>
+<th style="text-align: right;">week</th>
+<th style="text-align: left;">week_label</th>
+<th style="text-align: left;">date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Event_Communication_370</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-05T10:48:00Z</td>
+<td style="text-align: left;">Hey Kelly, it’s Sam. This permit approval seems fishy. Could you get details on who signed off on it while you’re at the harbor? I need to understand these ‘special access corridors’ before my meeting with Elise tomorrow.</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Friday</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">Week 1</td>
+<td style="text-align: left;">2040-10-05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_3</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-01T08:13:00Z</td>
+<td style="text-align: left;">Sam, it’s Kelly! Let’s meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I’ve heard there might be some rare shorebirds passing through this weekend. Can’t wait!</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Monday</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">Week 1</td>
+<td style="text-align: left;">2040-10-01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Event_Communication_443</td>
+<td style="text-align: left;">sent</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">received</td>
+<td style="text-align: left;">2040-10-07T08:11:00Z</td>
+<td style="text-align: left;">Hey Sam, it’s Kelly! Got some photos of those crates - definitely marked ‘fragile’ and ‘handle with care.’ Neptune’s crew is being super secretive. They’re using special loading equipment I’ve never seen before. See you at 7 for birdwatching!</td>
+<td style="text-align: left;">Kelly</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Sam</td>
+<td style="text-align: left;">Person</td>
+<td style="text-align: left;">Sunday</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: left;">Week 1</td>
+<td style="text-align: left;">2040-10-07</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <section id="temporal-pattern" class="level2">
@@ -522,16 +578,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>comm_full <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(week_label, date) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> n, <span class="at">group =</span> week_label)) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> week_label, <span class="at">scales =</span> <span class="st">"free_x"</span>, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">labeller =</span> label_value) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Daily Communication Volume Per Week"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Number of Messages"</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>comm_full <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(week_label, date) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> n, <span class="at">group =</span> week_label)) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> week_label, <span class="at">scales =</span> <span class="st">"free_x"</span>, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">labeller =</span> label_value) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Daily Communication Volume Per Week"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Number of Messages"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -547,16 +603,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>comm_hourly_weekly <span class="ot">&lt;-</span> comm_full <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(week_label, weekday, hour)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(comm_hourly_weekly, <span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> weekday, <span class="at">fill =</span> n)) <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">name =</span> <span class="st">"Message Count"</span>) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Communication Intensity by Hour and Weekday"</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Hour of Day"</span>, <span class="at">y =</span> <span class="st">"Day of Week"</span>) <span class="sc">+</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> week_label, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>comm_hourly_weekly <span class="ot">&lt;-</span> comm_full <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(week_label, weekday, hour)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(comm_hourly_weekly, <span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> weekday, <span class="at">fill =</span> n)) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"plasma"</span>, <span class="at">name =</span> <span class="st">"Message Count"</span>) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Communication Intensity by Hour and Weekday"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Hour of Day"</span>, <span class="at">y =</span> <span class="st">"Day of Week"</span>) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> week_label, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -572,28 +628,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create edge list</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>graph_edges <span class="ot">&lt;-</span> comm_full <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sender_label, receiver_label) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sender_label), <span class="sc">!</span><span class="fu">is.na</span>(receiver_label)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">from =</span> sender_label, <span class="at">to =</span> receiver_label, <span class="at">value =</span> n)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create node list from edges</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>graph_nodes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">unique</span>(<span class="fu">c</span>(graph_edges<span class="sc">$</span>from, graph_edges<span class="sc">$</span>to))) <span class="sc">%&gt;%</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> name, <span class="at">label =</span> name, <span class="at">group =</span> name)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># visNetwork expects numeric node IDs, but we can use labels for both</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">visNetwork</span>(<span class="at">nodes =</span> graph_nodes, <span class="at">edges =</span> graph_edges) <span class="sc">%&gt;%</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visEdges</span>(<span class="at">arrows =</span> <span class="st">"to"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visOptions</span>(<span class="at">highlightNearest =</span> <span class="cn">TRUE</span>, <span class="at">nodesIdSelection =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visLayout</span>(<span class="at">randomSeed =</span> <span class="dv">123</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visPhysics</span>(<span class="at">stabilization =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visInteraction</span>(<span class="at">navigationButtons =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create edge list</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>graph_edges <span class="ot">&lt;-</span> comm_full <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sender_label, receiver_label) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sender_label), <span class="sc">!</span><span class="fu">is.na</span>(receiver_label)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">from =</span> sender_label, <span class="at">to =</span> receiver_label, <span class="at">value =</span> n)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create node list from edges</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>graph_nodes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">unique</span>(<span class="fu">c</span>(graph_edges<span class="sc">$</span>from, graph_edges<span class="sc">$</span>to))) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> name, <span class="at">label =</span> name, <span class="at">group =</span> name)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># visNetwork expects numeric node IDs, but we can use labels for both</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">visNetwork</span>(<span class="at">nodes =</span> graph_nodes, <span class="at">edges =</span> graph_edges) <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visEdges</span>(<span class="at">arrows =</span> <span class="st">"to"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visOptions</span>(<span class="at">highlightNearest =</span> <span class="cn">TRUE</span>, <span class="at">nodesIdSelection =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visLayout</span>(<span class="at">randomSeed =</span> <span class="dv">123</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visPhysics</span>(<span class="at">stabilization =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visInteraction</span>(<span class="at">navigationButtons =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-d66f3d37b4477e5ea408" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-d66f3d37b4477e5ea408">{"x":{"nodes":{"name":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"id":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"label":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"group":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"]},"edges":{"from":["Boss","Boss","Boss","Boss","Clepper Jensen","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Defender","Defender","Defender","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","Elise","Elise","Elise","Glitters Team","Glitters Team","Glitters Team","Glitters Team","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Kelly","Knowles","Knowles","Knowles","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Marlin","Marlin","Marlin","Marlin","Marlin","Miranda Jordan","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Northern Light","Northern Light","Northern Light","Northern Light","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Osprey","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Sailor Shifts Team","Sailor Shifts Team","Sam","Samantha Blake","Samantha Blake","Samantha Blake","Seawatch","Seawatch","Seawatch","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Serenity","Serenity","Serenity","Serenity","Small Fry","Small Fry","Small Fry","The Accountant","The Accountant","The Intern","The Intern","The Intern","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Middleman","The Middleman","The Middleman","The Middleman","The Middleman","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping"],"to":["Mako","Mrs. Money","The Middleman","V. Miesel Shipping","Miranda Jordan","Boss","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Remora","V. Miesel Shipping","Mako","Reef Guardian","Seawatch","EcoVigil","Horizon","Liam Thorne","Oceanus City Council","Reef Guardian","Sentinel","Liam Thorne","Nadia Conti","V. Miesel Shipping","Boss","Northern Light","Remora","Samantha Blake","EcoVigil","Green Guardians","Horizon","Mako","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Sentinel","EcoVigil","Knowles","Mako","Nadia Conti","Oceanus City Council","Osprey","Mako","Marlin","Neptune","Northern Light","Oceanus City Council","Remora","Seawatch","Serenity","EcoVigil","Green Guardians","Mako","Oceanus City Council","Reef Guardian","Seawatch","Sentinel","Sam","Davis","Haacklee Harbor","Mako","Boss","EcoVigil","Elise","Nadia Conti","Oceanus City Council","Boss","Davis","Elise","Himark Harbor","Marlin","Neptune","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Sailor Shifts Team","Samantha Blake","Sentinel","Serenity","V. Miesel Shipping","Himark Harbor","Mako","Oceanus City Council","Reef Guardian","Remora","Clepper Jensen","Boss","Mako","Neptune","Remora","The Intern","The Middleman","V. Miesel Shipping","Haacklee Harbor","Liam Thorne","Marlin","Neptune","Oceanus City Council","V. Miesel Shipping","City Officials","Davis","Elise","Himark Harbor","Mako","Nadia Conti","Reef Guardian","Remora","Serenity","V. Miesel Shipping","Green Guardians","Himark Harbor","Oceanus City Council","Sailor Shifts Team","EcoVigil","Green Guardians","Himark Harbor","Liam Thorne","Mako","Marlin","Nadia Conti","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Samantha Blake","Sentinel","Mako","Liam Thorne","Mako","Oceanus City Council","Reef Guardian","Remora","Sentinel","Defender","EcoVigil","Horizon","Mako","Marlin","Neptune","Oceanus City Council","Paackland Harbor","Port Security","Reef Guardian","Seawatch","Sentinel","Serenity","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Paackland Harbor","Rodriguez","Sailor Shifts Team","V. Miesel Shipping","Boss","Davis","Mrs. Money","Nadia Conti","Remora","Rodriguez","Sailor Shifts Team","Nadia Conti","Remora","Kelly","Mako","Oceanus City Council","Sailor Shifts Team","Green Guardians","Himark Harbor","Reef Guardian","Green Guardians","Horizon","Mako","Nadia Conti","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Himark Harbor","Mako","Neptune","Reef Guardian","Davis","Mako","Remora","Boss","The Middleman","Mrs. Money","The Intern","The Lookout","Green Guardians","Horizon","Reef Guardian","Sam","Sentinel","The Intern","Boss","Liam Thorne","Mrs. Money","Paackland Harbor","The Accountant","Boss","Davis","Elise","Mako","Mrs. Money","Nadia Conti","Neptune","Remora","Rodriguez","V. Miesel Shipping"],"value":[1,4,3,1,20,1,6,1,5,5,1,4,2,1,3,1,2,5,2,1,2,2,1,3,1,1,1,1,1,3,12,4,2,1,12,1,6,2,1,1,1,1,1,2,1,3,2,5,1,7,3,3,3,3,2,1,1,1,2,4,2,2,1,1,1,1,1,2,6,2,1,1,4,1,3,1,2,2,2,5,1,4,4,1,1,2,1,1,1,2,18,6,1,2,1,5,3,1,1,2,1,2,1,1,1,2,3,1,7,1,1,9,1,8,1,1,1,1,1,6,5,8,2,1,1,1,1,6,2,2,1,6,1,3,2,2,4,4,2,4,3,2,3,1,4,2,1,3,3,3,3,1,1,9,1,6,3,1,2,1,3,3,1,1,1,4,1,1,1,1,3,3,3,1,1,1,2,5,5,1,2,1,1,1,2,2,2,2,2,1,4,2,1,15,1,8,3,5,1,8,4,12,4,2,3,1,3,1,1,1,1,1,1,4,2,1,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to"},"layout":{"randomSeed":123},"physics":{"stabilization":true},"interaction":{"navigationButtons":true,"zoomSpeed":1}},"groups":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","legend":{"width":0.2,"useGroups":true,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true}},"evals":[],"jsHooks":[]}</script>
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-f9ce420f703ab61ae1b8" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f9ce420f703ab61ae1b8">{"x":{"nodes":{"name":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"id":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"label":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"group":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"]},"edges":{"from":["Boss","Boss","Boss","Boss","Clepper Jensen","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Defender","Defender","Defender","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","Elise","Elise","Elise","Glitters Team","Glitters Team","Glitters Team","Glitters Team","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Kelly","Knowles","Knowles","Knowles","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Marlin","Marlin","Marlin","Marlin","Marlin","Miranda Jordan","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Northern Light","Northern Light","Northern Light","Northern Light","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Osprey","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Sailor Shifts Team","Sailor Shifts Team","Sam","Samantha Blake","Samantha Blake","Samantha Blake","Seawatch","Seawatch","Seawatch","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Serenity","Serenity","Serenity","Serenity","Small Fry","Small Fry","Small Fry","The Accountant","The Accountant","The Intern","The Intern","The Intern","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Middleman","The Middleman","The Middleman","The Middleman","The Middleman","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping"],"to":["Mako","Mrs. Money","The Middleman","V. Miesel Shipping","Miranda Jordan","Boss","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Remora","V. Miesel Shipping","Mako","Reef Guardian","Seawatch","EcoVigil","Horizon","Liam Thorne","Oceanus City Council","Reef Guardian","Sentinel","Liam Thorne","Nadia Conti","V. Miesel Shipping","Boss","Northern Light","Remora","Samantha Blake","EcoVigil","Green Guardians","Horizon","Mako","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Sentinel","EcoVigil","Knowles","Mako","Nadia Conti","Oceanus City Council","Osprey","Mako","Marlin","Neptune","Northern Light","Oceanus City Council","Remora","Seawatch","Serenity","EcoVigil","Green Guardians","Mako","Oceanus City Council","Reef Guardian","Seawatch","Sentinel","Sam","Davis","Haacklee Harbor","Mako","Boss","EcoVigil","Elise","Nadia Conti","Oceanus City Council","Boss","Davis","Elise","Himark Harbor","Marlin","Neptune","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Sailor Shifts Team","Samantha Blake","Sentinel","Serenity","V. Miesel Shipping","Himark Harbor","Mako","Oceanus City Council","Reef Guardian","Remora","Clepper Jensen","Boss","Mako","Neptune","Remora","The Intern","The Middleman","V. Miesel Shipping","Haacklee Harbor","Liam Thorne","Marlin","Neptune","Oceanus City Council","V. Miesel Shipping","City Officials","Davis","Elise","Himark Harbor","Mako","Nadia Conti","Reef Guardian","Remora","Serenity","V. Miesel Shipping","Green Guardians","Himark Harbor","Oceanus City Council","Sailor Shifts Team","EcoVigil","Green Guardians","Himark Harbor","Liam Thorne","Mako","Marlin","Nadia Conti","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Samantha Blake","Sentinel","Mako","Liam Thorne","Mako","Oceanus City Council","Reef Guardian","Remora","Sentinel","Defender","EcoVigil","Horizon","Mako","Marlin","Neptune","Oceanus City Council","Paackland Harbor","Port Security","Reef Guardian","Seawatch","Sentinel","Serenity","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Paackland Harbor","Rodriguez","Sailor Shifts Team","V. Miesel Shipping","Boss","Davis","Mrs. Money","Nadia Conti","Remora","Rodriguez","Sailor Shifts Team","Nadia Conti","Remora","Kelly","Mako","Oceanus City Council","Sailor Shifts Team","Green Guardians","Himark Harbor","Reef Guardian","Green Guardians","Horizon","Mako","Nadia Conti","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Himark Harbor","Mako","Neptune","Reef Guardian","Davis","Mako","Remora","Boss","The Middleman","Mrs. Money","The Intern","The Lookout","Green Guardians","Horizon","Reef Guardian","Sam","Sentinel","The Intern","Boss","Liam Thorne","Mrs. Money","Paackland Harbor","The Accountant","Boss","Davis","Elise","Mako","Mrs. Money","Nadia Conti","Neptune","Remora","Rodriguez","V. Miesel Shipping"],"value":[1,4,3,1,20,1,6,1,5,5,1,4,2,1,3,1,2,5,2,1,2,2,1,3,1,1,1,1,1,3,12,4,2,1,12,1,6,2,1,1,1,1,1,2,1,3,2,5,1,7,3,3,3,3,2,1,1,1,2,4,2,2,1,1,1,1,1,2,6,2,1,1,4,1,3,1,2,2,2,5,1,4,4,1,1,2,1,1,1,2,18,6,1,2,1,5,3,1,1,2,1,2,1,1,1,2,3,1,7,1,1,9,1,8,1,1,1,1,1,6,5,8,2,1,1,1,1,6,2,2,1,6,1,3,2,2,4,4,2,4,3,2,3,1,4,2,1,3,3,3,3,1,1,9,1,6,3,1,2,1,3,3,1,1,1,4,1,1,1,1,3,3,3,1,1,1,2,5,5,1,2,1,1,1,2,2,2,2,2,1,4,2,1,15,1,8,3,5,1,8,4,12,4,2,3,1,3,1,1,1,1,1,1,4,2,1,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to"},"layout":{"randomSeed":123},"physics":{"stabilization":true},"interaction":{"navigationButtons":true,"zoomSpeed":1}},"groups":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","legend":{"width":0.2,"useGroups":true,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -631,58 +687,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
+<section id="storyboard" class="level1">
+<h1><span style="color:#d496d4; background:none;">6</span> Storyboard</h1>
+<p><strong>The first app</strong>, <a href="#app1">Temporal Pattern and Communication Network</a>, focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section that will be further detailed in <a href="#app1">Chapter 7.1</a>. It will be focusing on:</p>
+<ul>
+<li><p>Identifying temporal patterns in communications.</p></li>
+<li><p>Revealing relationships and influence among entities (people, vessels, groups).</p></li>
+</ul>
+<p><strong>The second app</strong>, <a href="#app2">Relationship Clusters and Pseudonyms</a>, will be based on Part 2 - Relationship Cluster and Pseudonym: <a href="https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Hoa’s Take Home Exercise 2</a>. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web, and will be further detailed in <a href="#app2">Chapter 7.2</a>. It will be focusing on:</p>
+<ul>
+<li><p>Uncovering interactions and relationships between vessels and individuals in the network.</p></li>
+<li><p>Identifying tightly knit groups and inferring the dominant topics of their discussions.</p></li>
+<li><p>Detecting the use of pseudonyms and linking them back to real identities.</p></li>
+<li><p>Exploring how visual analytics can help expose common identities disguised under multiple aliases.</p></li>
+</ul>
+<p><strong>The third app</strong>, <a href="#app3">Time Series Analysis and Social Network Graph</a>, will be based on Part 3 - Time Series Analysis and Social Network graph: <a href="https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Summer’s Take Home Exercise 2</a>. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:</p>
+<ul>
+<li><p>Determining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.</p></li>
+<li><p>Summarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.</p></li>
+</ul>
+<p>This app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network, and will be elaborated in <a href="#app3">Chapter 7.3</a>.</p>
+</section>
 <section id="uidesign" class="level1">
-<h1><span style="color:#d496d4; background:none;">6</span> UI Design &amp; Prototype</h1>
-<section id="overall-ui-design" class="level2">
-<h2 class="anchored" data-anchor-id="overall-ui-design"><span style="color:#d496d4; background:none;">6.1</span> Overall UI Design</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ui1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-<section id="temporal-pattern-1" class="level3">
-<h3 class="anchored" data-anchor-id="temporal-pattern-1"><span style="color:#d496d4; background:none;">6.1.2</span> Temporal Pattern</h3>
-<p><strong>WIP</strong></p>
+<h1><span style="color:#d496d4; background:none;">7</span> UI Design</h1>
+<p>According to <a href="https://www.uxdesigninstitute.com/blog/guide-to-the-ui-design-process/">uxdesigninstitute</a> “designing beautiful, functional user interfaces is a (sometimes lengthy) process”. And <a href="https://designlab.com/blog/what-is-the-ux-design-process">designlab</a> break down the UX design process into easy-to-follow steps. First two is to <strong>Define</strong> and <strong>Research</strong> which we have covered in <a href="#objective">Chapter 2</a>. Third is <strong>Analysis &amp; Planning</strong> which we have covered in <a href="#rpkg">Chapter 3 and 4</a>. In this chapter we will cover the <strong>Design</strong> stage where we will work on layout and navigation for each of the app.</p>
+<section id="app1" class="level2">
+<h2 class="anchored" data-anchor-id="app1"><span style="color:#d496d4; background:none;">7.1</span> App 1: Temporal Pattern and Communication Network Graph App</h2>
+<section id="ui-design-goals" class="level3">
+<h3 class="anchored" data-anchor-id="ui-design-goals"><span style="color:#d496d4; background:none;">7.1.1</span> UI Design Goals</h3>
+<ul>
+<li><p>Break down complexity into modular tabs for Temporal Trends, Heatmap Views, Network Graphs, and Receipts.</p></li>
+<li><p>Emphasize investigative usability—allowing Clepper to spot patterns, isolate pseudonymous actors, and visually correlate suspicious behaviors.</p></li>
+<li><p>Use interactive and expressive visuals tailored for social communication analysis.</p></li>
+</ul>
 </section>
-<section id="heatmap" class="level3">
-<h3 class="anchored" data-anchor-id="heatmap"><span style="color:#d496d4; background:none;">6.1.3</span> Heatmap</h3>
-<p><strong>WIP</strong></p>
-</section>
-<section id="communication-network" class="level3">
-<h3 class="anchored" data-anchor-id="communication-network"><span style="color:#d496d4; background:none;">6.1.4</span> Communication Network</h3>
-<p><strong>WIP</strong></p>
-</section>
-<section id="receipts" class="level3">
-<h3 class="anchored" data-anchor-id="receipts"><span style="color:#d496d4; background:none;">6.1.5</span> Receipts</h3>
-<p>This tab allow users to read the communication messages (or as investigators we can call them receipts).</p>
-<p><strong>WIP</strong></p>
-</section>
-</section>
-<section id="prototype" class="level2">
-<h2 class="anchored" data-anchor-id="prototype"><span style="color:#d496d4; background:none;">6.2</span> Prototype</h2>
-<p><strong>Scroll down and click “Update View” to load the visualization!</strong></p>
-<section id="view-on" class="level3">
-<h3 class="anchored" data-anchor-id="view-on">View on <a href="https://vriadi.shinyapps.io/reefwhispers_proto1/" target="_blank"><img src="../../images/Posit_logo.png" height="20"></a></h3>
-<div style="width: 100%; height: 600px; padding: 0; overflow: hidden;">
-  <iframe src="https://vriadi.shinyapps.io/reefwhispers_proto1/" title="CMAP-RSI Explorer" style="width: 135%; height: 135%; transform: scale(0.75); transform-origin: top left; border: none;">
-  </iframe>
-</div>
-
+<section id="ui-objects-used" class="level3">
+<h3 class="anchored" data-anchor-id="ui-objects-used"><span style="color:#d496d4; background:none;">7.1.2</span> UI objects used</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 29%">
-<col style="width: 67%">
-<col style="width: 2%">
+<col style="width: 25%">
+<col style="width: 64%">
+<col style="width: 8%">
 </colgroup>
 <tbody>
 <tr class="odd">
-<td rowspan="2"><h1 id="ui-component"><strong>UI Component</strong></h1>
-<p><code>titlePanel()</code></p></td>
-<td rowspan="2"><h1 id="use"><strong>Use</strong></h1>
-<p>App’s title</p></td>
+<td><h1 id="ui-component"><strong>UI Component</strong></h1></td>
+<td><h1 id="purpose">Purpose</h1></td>
 <td></td>
 </tr>
 <tr class="even">
+<td><code>titlePanel()</code></td>
+<td>App’s title</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -697,7 +752,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><code>selectInput()</code></td>
-<td colspan="2">Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2)</td>
+<td colspan="2">Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2) | |</td>
 </tr>
 <tr class="even">
 <td><code>textInput()</code> or <code>selectizeInput()</code></td>
@@ -711,7 +766,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td><code>dateRangeInput()</code></td>
-<td colspan="2">Filter by date range |</td>
+<td>Filter by date range</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td><code>sliderInput()</code></td>
@@ -720,48 +776,173 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td><code>plotOutput()</code></td>
-<td>Static ggplot visualizations (content to be defined under Server &lt;- function segment)</td>
+<td>Static ggplot visualizations (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td><code>dataTableOutput()</code></td>
-<td>Render data table (content to be defined under Server &lt;- function segment)</td>
+<td>Render data table (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
 <td></td>
 </tr>
 <tr class="even">
 <td><code>visNetworkOutput()</code></td>
-<td>Interactive network graph (content to be defined under Server &lt;- function segment)</td>
+<td>Interactive network graph (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td colspan="3"><code>actionButton()</code> | Apply filters |</td>
+<td><code>actionButton()</code></td>
+<td>Apply filters</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="panel-tabs" class="level3">
+<h3 class="anchored" data-anchor-id="panel-tabs"><span style="color:#d496d4; background:none;">7.1.3</span> Panel Tabs</h3>
+<section id="temporal-pattern-1" class="level4">
+<h4 class="anchored" data-anchor-id="temporal-pattern-1"><span style="color:#d496d4; background:none;">7.1.3.1</span> Temporal Pattern</h4>
+<p>Purpose: Reveal day-to-day communication rhythms.</p>
+<p>Design Elements:</p>
+<ul>
+<li><p>Line Graph: Daily message volumes per week.</p></li>
+<li><p>Interactive Controls: Week selection, date range slider, hour-of-day filter.</p></li>
+<li><p>Dropdowns: Filter by sender/receiver entity type (e.g., person, vessel, organization).</p></li>
+</ul>
+<p>This helps Clepper pinpoint temporal spikes, such as bursts of chatter before critical events (e.g., Sailor Shift’s arrival or Nemo Reef closure).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/temporalpattern.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="heatmap" class="level4">
+<h4 class="anchored" data-anchor-id="heatmap"><span style="color:#d496d4; background:none;">7.1.3.2</span> Heatmap</h4>
+<p>Purpose: Explore patterns by time-of-day and communication density.</p>
+<p>Design Elements:</p>
+<ul>
+<li><p>Heatmap Matrix: Color-coded intensity based on message count by hour and date.</p></li>
+<li><p>Color Scale: Darker hues represent higher volume.</p></li>
+</ul>
+<p>Effective for isolating habitual communicators or unusual off-hour messages (potential signs of covert coordination).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/heatmap.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="communication-network" class="level4">
+<h4 class="anchored" data-anchor-id="communication-network"><span style="color:#d496d4; background:none;">7.1.3.3</span> Communication Network</h4>
+<p>Purpose: Visualize the social graph of communication.</p>
+<p>Design Elements:</p>
+<ul>
+<li><p>Force-Directed Graph: Nodes for people/vessels/organizations, edges for interactions.</p></li>
+<li><p>Node Filtering: Allows selection by ID to isolate individuals.</p></li>
+</ul>
+<p>This is key for identifying influence hubs, peripheral actors, and communication silos—crucial for mapping Nadia Conti’s hidden relationships.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/commsnetwork.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="receipts" class="level4">
+<h4 class="anchored" data-anchor-id="receipts"><span style="color:#d496d4; background:none;">7.1.3.4</span> Receipts</h4>
+<p>This tab allow users to read the communication messages (or as investigators we can call them receipts).</p>
+<p>Purpose: Provide a full-text view of communication logs.</p>
+<p>Design Elements:</p>
+<ul>
+<li><p>Data Table: Shows message sender, receiver, timestamp, type, and raw message content.</p></li>
+<li><p>Pseudonym Tracking: Enables Clepper to connect aliases across threads.</p></li>
+</ul>
+<p>Useful for identifying suspicious message contents and linking disguised personas (e.g., Nadia Conti under a pseudonym) to known actors.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/receipts.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="app2" class="level2">
+<h2 class="anchored" data-anchor-id="app2"><span style="color:#d496d4; background:none;">7.2</span> App 2: Relationship Clusters and Pseudonyms</h2>
+<section id="ui-design-goals-1" class="level3">
+<h3 class="anchored" data-anchor-id="ui-design-goals-1"><span style="color:#d496d4; background:none;">7.2.1</span> UI Design Goals</h3>
+</section>
+<section id="ui-objects-used-1" class="level3">
+<h3 class="anchored" data-anchor-id="ui-objects-used-1"><span style="color:#d496d4; background:none;">7.2.2</span> UI objects used</h3>
+</section>
+<section id="panel-tabs-1" class="level3">
+<h3 class="anchored" data-anchor-id="panel-tabs-1"><span style="color:#d496d4; background:none;">7.2.3</span> Panel Tabs</h3>
+<section id="xx" class="level4">
+<h4 class="anchored" data-anchor-id="xx"><span style="color:#d496d4; background:none;">7.2.3.1</span> XX</h4>
+</section>
+</section>
+</section>
+<section id="app3" class="level2">
+<h2 class="anchored" data-anchor-id="app3"><span style="color:#d496d4; background:none;">7.3</span> App 3: Time Series Analysis and Social Network Graph</h2>
+<section id="ui-design-goals-2" class="level3">
+<h3 class="anchored" data-anchor-id="ui-design-goals-2"><span style="color:#d496d4; background:none;">7.3.1</span> UI Design Goals</h3>
+</section>
+<section id="ui-objects-used-2" class="level3">
+<h3 class="anchored" data-anchor-id="ui-objects-used-2"><span style="color:#d496d4; background:none;">7.3.2</span> UI objects used</h3>
+</section>
+<section id="panel-tabs-2" class="level3">
+<h3 class="anchored" data-anchor-id="panel-tabs-2"><span style="color:#d496d4; background:none;">7.3.3</span> Panel Tabs</h3>
+<section id="xx-1" class="level4">
+<h4 class="anchored" data-anchor-id="xx-1"><span style="color:#d496d4; background:none;">7.3.3.1</span> XX</h4>
+</section>
+</section>
+</section>
+</section>
+<section id="prototype" class="level1">
+<h1><span style="color:#d496d4; background:none;">8</span> Prototype</h1>
+<p><strong>Scroll down and click “Update View” to load the visualization!</strong></p>
+<section id="view-on" class="level3">
+<h3 class="anchored" data-anchor-id="view-on">View on <a href="https://vriadi.shinyapps.io/reefwhispers_proto1/" target="_blank"><img src="../../images/Posit_logo.png" height="20"></a></h3>
+<div style="width: 100%; height: 600px; padding: 0; overflow: hidden;">
+  <iframe src="https://vriadi.shinyapps.io/reefwhispers_proto1/" title="CMAP-RSI Explorer" style="width: 135%; height: 135%; transform: scale(0.75); transform-origin: top left; border: none;">
+  </iframe>
+</div>
+<p><em>Interactive prototype currently only available for App 1.</em></p>
 </section>
 </section>
 <section id="reference" class="level1">
-<h1><span style="color:#d496d4; background:none;">7</span> Reference</h1>
-<p>- <a href="https://vast-challenge.github.io/2025/MC3.html" target="_blank">VAST 2024 Mini Challenge 3</a><br>
-- <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a><br>
-- <a href="https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Hoa’s Take Home Exercise 2</a><br>
-- <a href="https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Summer’s Take Home Exercise 2</a><br>
-</p>
-<section id="r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="r-packages"><span style="color:#d496d4; background:none;">7.1</span> R Packages</h2>
+<h1><span style="color:#d496d4; background:none;">8</span> Reference</h1>
 <ul>
-<li><a href="https://shiny.posit.co/" target="_blank"><strong>shiny</strong></a><strong>:</strong> Easy web apps for data science without the compromises.</li>
-<li><a href="https://cran.r-project.org/package=dplyr" target="_blank"><strong>dplyr</strong></a>: A grammar of data manipulation, making data wrangling concise, fast, and readable.</li>
-<li><a href="https://cran.r-project.org/package=ggplot2" target="_blank"><strong>ggplot2</strong></a>: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.</li>
-<li><a href="https://datastorm-open.github.io/visNetwork/" target="_blank"><strong>visNetwork</strong></a>: Enables interactive network visualizations in R using the vis.js JavaScript library.</li>
+<li><p><a href="https://vast-challenge.github.io/2025/MC3.html" target="_blank">VAST 2024 Mini Challenge 3</a></p></li>
+<li><p><a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a></p></li>
+<li><p><a href="https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Hoa’s Take Home Exercise 2</a></p></li>
+<li><p><a href="https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Summer’s Take Home Exercise 2</a><br>
+</p></li>
+</ul>
+<section id="r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="r-packages"><span style="color:#d496d4; background:none;">8.1</span> R Packages</h2>
+<ul>
+<li><a href="https://shiny.posit.co/" target="_blank">shiny</a>: Easy web apps for data science without the compromises.</li>
+<li><a href="https://cran.r-project.org/package=dplyr" target="_blank">dplyr</a>: A grammar of data manipulation, making data wrangling concise, fast, and readable.</li>
+<li><a href="https://cran.r-project.org/package=ggplot2" target="_blank">ggplot2</a>: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.</li>
+<li><a href="https://datastorm-open.github.io/visNetwork/" target="_blank">visNetwork</a>: Enables interactive network visualizations in R using the vis.js JavaScript library.</li>
 </ul>
 </section>
+<section id="shiny-fuctional-specs-and-tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="shiny-fuctional-specs-and-tutorials"><span style="color:#d496d4; background:none;">8.2</span> Shiny Fuctional Specs and Tutorials</h2>
 </section>
-<section id="appendix" class="level1">
-<h1><span style="color:#d496d4; background:none;">8</span> Appendix</h1>
-<section id="appendixa" class="level2">
-<h2 class="anchored" data-anchor-id="appendixa"><span style="color:#d496d4; background:none;">8.1</span> Appendix A</h2>
+<section id="lesson-slides" class="level2">
+<h2 class="anchored" data-anchor-id="lesson-slides"><span style="color:#d496d4; background:none;">8.3</span> Lesson Slides</h2>
+<ul>
+<li><a href="../lesson/Lesson06/Shiny1/Shiny1.html">Lesson 6a: Shiny Basic</a></li>
+<li><a href="../lesson/Lesson06/Shiny2/Shiny2.html">Lesson 6b: Shiny Reactivity</a></li>
+<li><a href="../lesson/Lesson06/Shiny3/Shiny3.html">Lesson 6c: Beyond Basic Basic</a></li>
+</ul>
+</section>
+<section id="shiny-fuctional-specs-and-tutorials-1" class="level2">
+<h2 class="anchored" data-anchor-id="shiny-fuctional-specs-and-tutorials-1"><span style="color:#d496d4; background:none;">8.4</span> Shiny Fuctional Specs and Tutorials</h2>
+<ul>
+<li><a href="https://shiny.rstudio.com/">Shiny from R Studio</a></li>
+<li><a href="https://shiny.rstudio.com/tutorial/">Learn Shiny</a></li>
+<li><a href="http://shiny.rstudio.com/reference/shiny/latest/">Function reference</a></li>
+<li><a href="https://shiny.rstudio.com/images/shiny-cheatsheet.pdf">The Shiny Cheat sheet</a></li>
+</ul>
 
 
 </section>
