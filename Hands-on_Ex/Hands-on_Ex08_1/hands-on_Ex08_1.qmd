@@ -175,13 +175,13 @@ Things to learn from the code chunk above:
 -   *fill* argument is used to map the attribute (i.e. DEPENDENCY)
 
 ### 🎀 [**PRACTICE**]{style="color:#d496d4"}
+
 ```{r}
 #| eval: true
 tmap_mode("view")
 qtm(mpsz_pop2020, 
     fill = "DEPENDENCY")
 ```
-
 
 ### [4.2]{style="color:#d496d4"} Creating a choropleth map by using *tmap*'s elements
 
@@ -211,7 +211,6 @@ In the following sub-section, we will share with you tmap functions that used to
 #### [4.2.1]{style="color:#d496d4"} Drawing a base map
 
 The basic building block of **tmap** is *tm_shape()* followed by one or more layer elements such as *tm_fill()* and *tm_polygons()*.
-
 
 #### [4.2.2]{style="color:#d496d4"} Drawing a choropleth map using *tm_polygons()*
 
@@ -305,11 +304,10 @@ Notice that the distribution of quantile data classification method are **more e
 #### 🎀 **DO YOU KNOW** {.no-top-padding}
 
 [Latest tmap v4](https://nickbearman.github.io/blog/2025-02-tmap-v4/) has been released in Feb 2025, introduces some major API changes compared to v3. [Read more on the author's blog](https://nickbearman.github.io/blog/2025-02-tmap-v4/)
-
 :::
 
-Example:
-**tmap v4**:
+Example: **tmap v4**:
+
 ```{r}
 #| eval: false
 tmap_mode("plot")
@@ -320,6 +318,7 @@ tm_shape(mpsz_pop2020) +
 ```
 
 **tmap v3**:
+
 ```{r}
 #| eval: false
 tmap_mode("plot")
@@ -335,6 +334,7 @@ tm_shape(mpsz_pop2020)+
 
 ::: panel-tabset
 ## pretty
+
 "pretty" – pretty breaks
 
 ```{r}
@@ -348,7 +348,9 @@ tm_pretty <- tm_shape(mpsz_pop2020) +
 ```
 
 ## quantile
+
 "quantile" – equal number of observations per class
+
 ```{r}
 #| eval: true
 tmap_mode("plot")
@@ -360,7 +362,9 @@ tm_quantile <- tm_shape(mpsz_pop2020) +
 ```
 
 ## jenks
+
 "jenks" - natural breaks (minimizes intra-class variance)
+
 ```{r}
 #| eval: true
 tmap_mode("plot")
@@ -372,7 +376,9 @@ tm_jenks <- tm_shape(mpsz_pop2020) +
 ```
 
 ## kmeans
+
 "kmeans" – k-means clustering
+
 ```{r}
 #| eval: true
 tmap_mode("plot")
@@ -382,7 +388,6 @@ tm_kmeans <- tm_shape(mpsz_pop2020) +
   tm_borders(fill_alpha = 0.3)+
   tm_title("Kmeans")
 ```
-
 :::
 
 ```{r}
@@ -393,8 +398,8 @@ tmap_arrange(tm_pretty, tm_quantile, tm_jenks, tm_kmeans, ncol = 2)
 > DIY: Preparing choropleth maps by using similar classification method but with different numbers of classes (i.e. 2, 6, 10, 20). Compare the output maps, what observation can you draw?
 
 ::: panel-tabset
-
 ## 2 classes
+
 ```{r}
 #| eval: true
 tmap_mode("plot")
@@ -405,6 +410,7 @@ tm2 <- tm_shape(mpsz_pop2020) +
 ```
 
 ## 6 classes
+
 ```{r}
 #| eval: true
 tmap_mode("plot")
@@ -415,6 +421,7 @@ tm6 <- tm_shape(mpsz_pop2020) +
 ```
 
 ## 10 classes
+
 ```{r}
 #| eval: true
 tmap_mode("plot")
@@ -425,6 +432,7 @@ tm10 <- tm_shape(mpsz_pop2020) +
 ```
 
 ## 20 classes
+
 ```{r}
 #| eval: true
 tmap_mode("plot")
@@ -457,6 +465,7 @@ With reference to the results above, we set break point at 0.60, 0.70, 0.80, and
 Now, we will plot the choropleth map by using the code chunk below.
 
 **tmap v4**:
+
 ```{r}
 #| eval: true
 tm_shape(mpsz_pop2020) +
@@ -466,6 +475,7 @@ tm_shape(mpsz_pop2020) +
 ```
 
 **tmap v3**:
+
 ```{r}
 #| eval: false
 #| code-fold: true
@@ -484,7 +494,20 @@ tm_shape(mpsz_pop2020)+
 To change the colour, we assign the preferred colour to *values* argument of *tm_scale_intervals()* as shown in the code chunk below.
 
 ::: panel-tabset
+## Orange
+```{r}
+#| eval: true
+tm_shape(mpsz_pop2020)+
+  tm_polygons("DEPENDENCY",
+      fill.scale = tm_scale_intervals(
+        style = "quantile",
+        n = 5,
+        values = "brewer.oranges")) +
+  tm_borders(fill_alpha = 0.5)
+```
+
 ## Pastel1
+Funky color, though might not suitable for this type of data!
 ```{r}
 #| eval: true
 tm_shape(mpsz_pop2020)+
@@ -497,6 +520,7 @@ tm_shape(mpsz_pop2020)+
 ```
 
 ## Green
+
 ```{r}
 #| eval: true
 tm_shape(mpsz_pop2020)+
@@ -509,7 +533,9 @@ tm_shape(mpsz_pop2020)+
 ```
 
 ## Green reverse
+
 Notice that the colour scheme has been reversed.
+
 ```{r}
 #| eval: true
 tm_shape(mpsz_pop2020)+
@@ -520,9 +546,7 @@ tm_shape(mpsz_pop2020)+
         values = "-brewer.greens")) +
   tm_borders(fill_alpha = 0.5)
 ```
-
 :::
-
 
 ### [4.5]{style="color:#d496d4"} Map Layouts
 
@@ -553,6 +577,7 @@ tm_shape(mpsz_pop2020)+
 The code chunk below shows the *classic* style is used.
 
 **tmap v4**:
+
 ```{r}
 #| eval: true
 #| code-fold: true
@@ -565,6 +590,7 @@ tm_shape(mpsz_pop2020) +
 ```
 
 **tmap v3**:
+
 ```{r}
 #| eval: false
 #| code-fold: true
@@ -574,7 +600,7 @@ tm_shape(mpsz_pop2020)+
           palette = "-greens") +
   tm_borders(alpha = 0.5) +
   tmap_style("classic")
-```  
+```
 
 #### [4.5.3]{style="color:#d496d4"} Cartographic Furniture
 
@@ -610,8 +636,8 @@ To reset the default style, refer to the code chunk below.
 #| eval: false
 tmap_style("white")
 ```
-> other available styles are: "gray", "natural", "cobalt", "albatross", "beaver", "bw", "classic", "watercolor". 
-tmap v3 styles: "v3" (tmap v3 default), "gray_v3", "natural_v3", "cobalt_v3", "albatross_v3", "beaver_v3", "bw_v3", "classic_v3", "watercolor_v3"
+
+> other available styles are: "gray", "natural", "cobalt", "albatross", "beaver", "bw", "classic", "watercolor". tmap v3 styles: "v3" (tmap v3 default), "gray_v3", "natural_v3", "cobalt_v3", "albatross_v3", "beaver_v3", "bw_v3", "classic_v3", "watercolor_v3"
 
 ### [4.6]{style="color:#d496d4"} Drawing Small Multiple Choropleth Maps
 
@@ -627,14 +653,13 @@ In **tmap**, small multiple maps can be plotted in three ways:
 
 In this example, small multiple choropleth maps are created by defining ***ncols*** in **tm_fill()**
 
-::: panel-tabset
+**tmap v4**:
 
-## tmap v4 - carto.pastel
 ```{r}
 #| eval: true
 tm_shape(mpsz_pop2020) +
   tm_fill(c("YOUNG", "AGED"),
-          fill.scale = tm_scale_intervals("equal", n = 5, values = "carto.pastel")) +
+          fill.scale = tm_scale_intervals("equal", n = 5, values = "brewer.blues")) +
   tm_borders(fill_alpha = 0.5) +
   tm_layout(
     legend.position = c("right", "bottom"),
@@ -642,24 +667,9 @@ tm_shape(mpsz_pop2020) +
   ) +
   tmap_style("white")
 ```
-
-## tmap v4 - brewer.pastel
-```{r}
-#| eval: true
-tm_shape(mpsz_pop2020) +
-  tm_fill(c("YOUNG", "AGED"),
-          fill.scale = tm_scale_intervals(style = "equal", n = 5, values = "brewer.pastel1")) +
-  tm_borders(fill_alpha = 0.5) +
-  tm_layout(
-    legend.position = c("right", "bottom"),
-    panel.labels = c("Young Population", "Aged Population")
-  ) +
-  tmap_style("white")
-```
-
-:::
 
 **tmap v3**:
+
 ```{r}
 #| eval: false
 #| code-fold: true
@@ -672,12 +682,12 @@ tm_shape(mpsz_pop2020)+
   tmap_style("white")
 ```
 
-
 #### [4.6.2]{style="color:#d496d4"} By defining a group-by variable in *tm_facets()*
 
 In this example, multiple small choropleth maps are created by using `tm_facets()`.
 
 **tmap v4**:
+
 ```{r}
 #| eval: true
 tm_shape(mpsz_pop2020) +
@@ -693,6 +703,7 @@ tm_shape(mpsz_pop2020) +
 ```
 
 **tmap v3**:
+
 ```{r}
 #| eval: false
 #| code-fold: true
@@ -709,12 +720,12 @@ tm_shape(mpsz_pop2020) +
   tm_borders(alpha = 0.5)
 ```
 
-
 #### [4.6.3]{style="color:#d496d4"} By creating multiple stand-alone maps with `tmap_arrange()`
 
 In this example, multiple small choropleth maps are created by creating multiple stand-alone maps with `tmap_arrange()`.
 
 **tmap v4**:
+
 ```{r}
 #| eval: true
 youngmap <- tm_shape(mpsz_pop2020) + 
@@ -728,8 +739,8 @@ agedmap <- tm_shape(mpsz_pop2020) +
 tmap_arrange(youngmap, agedmap, asp = 1, ncol = 2)
 ```
 
-
 **tmap v3**:
+
 ```{r}
 #| eval: false
 #| code-fold: true
@@ -746,13 +757,12 @@ agedmap <- tm_shape(mpsz_pop2020)+
 tmap_arrange(youngmap, agedmap, asp=1, ncol=2)
 ```
 
-
 ### [4.7]{style="color:#d496d4"} Mappping Spatial Object Meeting a Selection Criterion
 
 Instead of creating small multiple choropleth map, you can also use selection funtion to map spatial objects meeting the selection criterion.
 
-**tmap v4**:
-You can use extra.ggplot2 in v4 to adjust, more here: [Legend charts](https://r-tmap.github.io/tmap/reference/tm_chart.html?q=histogram#arguments)
+**tmap v4**: You can use extra.ggplot2 in v4 to adjust, more here: [Legend charts](https://r-tmap.github.io/tmap/reference/tm_chart.html?q=histogram#arguments)
+
 ```{r}
 #| eval: true
 tmap_mode("plot") +
@@ -770,6 +780,7 @@ tm_shape(mpsz_pop2020[mpsz_pop2020$REGION_N=="CENTRAL REGION", ])+
 ```
 
 **tmap v3**:
+
 ```{r}
 #| eval: false
 #| code-fold: true
@@ -788,7 +799,6 @@ tm_shape(mpsz_pop2020[mpsz_pop2020$REGION_N=="CENTRAL REGION", ])+
             frame = FALSE) +
   tm_borders(alpha = 0.5)
 ```
-
 
 ## [5]{style="color:#d496d4"} Reference
 

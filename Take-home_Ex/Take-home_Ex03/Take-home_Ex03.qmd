@@ -157,7 +157,7 @@ visNetwork(nodes = graph_nodes, edges = graph_edges) %>%
 
 # [6]{style="color:#d496d4; background:none;"} UI Design & Prototype {#uidesign}
 
-### [6.1.1]{style="color:#d496d4; background:none;"} Overall UI Design
+## [6.1]{style="color:#d496d4; background:none;"} Overall UI Design
 
 ![](images/ui1.jpg){fig-align="center"}
 
