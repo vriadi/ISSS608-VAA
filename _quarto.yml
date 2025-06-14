@@ -7,7 +7,7 @@ website:
   title: ""
   
   announcement: 
-    content: "**NEW (12/06)** - [**Hands-on Exercise 8**](https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex08_1/hands-on_ex08_1) is published!"
+    content: "**NEW (14/06)** - [**In-class Exercise 8**](https://isss608-vriadi.netlify.app/In-class_Ex/In-class_Ex08_1) is published!"
     position: below-navbar
     icon: info-circle
     type: info
@@ -69,6 +69,10 @@ website:
             href: In-class_Ex/In-class_Ex06.html
           - text: "Session 7 - Pupils Exam Results Dashboard"
             href: In-class_Ex/In-class_Ex07.html
+          - text: "Session 8 - Number of Wins by Singapore Pools’ Outlets"
+            href: In-class_Ex/In-class_Ex08_1.html
+          - text: "Session 8 - Distribution of Resale Units of Condominium Sold in 2019"
+            href: In-class_Ex/In-class_Ex08_2.html
       - text: "Take-home Exercise"
         menu:
           - text: "1.1 - Demographic structures and distribution of Singapore in 2024"
@@ -163,6 +167,10 @@ website:
               href: In-class_Ex/In-class_Ex06.html
             - text: "Session 7 - Pupils Exam Results Dashboard"
               href: In-class_Ex/In-class_Ex07.html
+            - text: "Session 8 - Number of Wins by Singapore Pools’ Outlets"
+              href: In-class_Ex/In-class_Ex08_1.html
+            - text: "Session 8 - Distribution of Resale Units of Condominium Sold in 2019"
+              href: In-class_Ex/In-class_Ex08_2.html
     - title: "Take-Home Exercise"
       style: "floating"
       collapse-level: 2

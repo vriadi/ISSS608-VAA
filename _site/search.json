@@ -1,5 +1,16 @@
 [
   {
+    "objectID": "In-class_Ex/In-class_Ex08_1.html",
+    "href": "In-class_Ex/In-class_Ex08_1.html",
+    "title": "Number of Wins by Singapore Pools’ Outlets",
+    "section": "",
+    "text": "View on",
+    "crumbs": [
+      "In-Class Excercise",
+      "Session 8 - Number of Wins by Singapore Pools’ Outlets"
+    ]
+  },
+  {
     "objectID": "In-class_Ex/In-class_Ex07.html",
     "href": "In-class_Ex/In-class_Ex07.html",
     "title": "Pupils Exam Results Dashboard",
@@ -187,44 +198,22 @@
     ]
   },
   {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#temporal-pattern",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#temporal-pattern",
+    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app1",
+    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app1",
     "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "4.1 Temporal Pattern",
-    "text": "4.1 Temporal Pattern\n\n\nCode\ncomm_full %&gt;%\n  count(week_label, date) %&gt;%\n  ggplot(aes(x = date, y = n, group = week_label)) +\n  geom_line(color = \"steelblue\", size = 1.2) +\n  facet_wrap(~ week_label, scales = \"free_x\", ncol = 1, labeller = label_value) +\n  labs(\n    title = \"Daily Communication Volume Per Week\",\n    x = \"Date\", y = \"Number of Messages\"\n  ) +\n  theme_minimal()",
+    "section": "4.1 App 1: Temporal Pattern and Communication Network Graph App",
+    "text": "4.1 App 1: Temporal Pattern and Communication Network Graph App\n\n4.1.1 UI Design Goals\n\nBreak down complexity into modular tabs for Temporal Trends, Heatmap Views, Network Graphs, and Receipts.\nEmphasize investigative usability—allowing Clepper to spot patterns, isolate pseudonymous actors, and visually correlate suspicious behaviors.\nUse interactive and expressive visuals tailored for social communication analysis.\n\n\n\n4.1.2 Parameters and outputs that will be exposed on the Shiny applications\n\n\n\n\n\n\n\nParameters (UI Inputs)\nOutputs (UI Outputs)\n\n\n\n\n\nEntity filter (e.g., person, vessel, pseudonym, organization)\nWeek selection: Week 1 / Week 2\nDate range input (subset communication dates)\nHour range input (to analyze time-of-day patterns)\nSender / Receiver entity selection\nGraph type: Full vs. person-to-person communication\n\n\nLine plot of communication volume over time\nHeatmap of communication intensity by weekday/hour\nInteractive visNetwork graph\nFiltered table of communications (sender, receiver, message, timestamp)\n\n\n\n\n\n\n4.1.3 Shiny App Panel Tabs UI Design\n\n4.1.3.1 Temporal Pattern\nPurpose: Reveal day-to-day communication rhythms.\nDesign Elements:\n\nLine Graph: Daily message volumes per week.\nInteractive Controls: Week selection, date range slider, hour-of-day filter.\nDropdowns: Filter by sender/receiver entity type (e.g., person, vessel, organization).\n\nThis helps Clepper pinpoint temporal spikes, such as bursts of chatter before critical events (e.g., Sailor Shift’s arrival or Nemo Reef closure).\n\n\n\n\n\n\n\n4.1.3.2 Heatmap\nPurpose: Explore patterns by time-of-day and communication density.\nDesign Elements:\n\nHeatmap Matrix: Color-coded intensity based on message count by hour and date.\nColor Scale: Darker hues represent higher volume.\n\nEffective for isolating habitual communicators or unusual off-hour messages (potential signs of covert coordination).\n\n\n\n\n\n\n\n4.1.3.3 Communication Network\nPurpose: Visualize the social graph of communication.\nDesign Elements:\n\nForce-Directed Graph: Nodes for people/vessels/organizations, edges for interactions.\nNode Filtering: Allows selection by ID to isolate individuals.\n\nThis is key for identifying influence hubs, peripheral actors, and communication silos—crucial for mapping Nadia Conti’s hidden relationships.\n\n\n\n\n\n\n\n4.1.3.4 Receipts\nThis tab allow users to read the communication messages (or as investigators we can call them receipts).\nPurpose: Provide a full-text view of communication logs.\nDesign Elements:\n\nData Table: Shows message sender, receiver, timestamp, type, and raw message content.\nPseudonym Tracking: Enables Clepper to connect aliases across threads.\n\nUseful for identifying suspicious message contents and linking disguised personas (e.g., Nadia Conti under a pseudonym) to known actors.\n\n\n\n\n\n\n\n\n4.1.4 UI objects used\n\n\n\n\n\n\n\nUI Component\nPurpose\n\n\ntitlePanel()\nApp’s title\n\n\nsidebarLayout()\nTwo-column layout with input controls on the side and output in the main area\n\n\ntabsetPanel()\nSeparate tabs for the different visualization\n\n\nselectInput()\nSelect an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2)\n\n\ntextInput() or selectizeInput()\nAllows one or more selection sender/receiver\n\n\ncheckboxGroupInput()\nSelect multiple weeks or types\n\n\ndateRangeInput()\nFilter by date range\n\n\nsliderInput()\nFilter by hour of day (0–23)\n\n\nplotOutput()\nStatic ggplot visualizations (content to be defined under Server \\&lt;- function segment)\n\n\ndataTableOutput()\nRender data table (content to be defined under Server \\&lt;- function segment)\n\n\nvisNetworkOutput()\nInteractive network graph (content to be defined under Server \\&lt;- function segment)\n\n\nactionButton()\nApply filters\n\n\n\n\n\n4.1.5 R packages needed for Shiny application\nAs we will be adapting our Take Home Exercise 2 graphs to Shiny Application, we need to ensure that we have all the necessary R packages needed for this conversion such as:\n\nshiny: Easy web apps for data science without the compromises.\ndplyr: A grammar of data manipulation, making data wrangling concise, fast, and readable.\nggplot2: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.\nvisNetwork: Enables interactive network visualizations in R using the vis.js JavaScript library.\n\n\n\n4.1.6 Test the specific R codes can be run\nMost preparation have been done in Take Home Exercise 2.\nIn this section we will prepare and test the specific R codes can be run in Shiny and return the correct output as expected.\nScroll down and click “Update View” to load the visualization!\n\n\nView on",
     "crumbs": [
       "Take-Home Exercise 3",
       "3 - Prototyping Modules for Visual Analytics Shiny Application"
     ]
   },
   {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#communication-heatmap",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#communication-heatmap",
+    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app2",
+    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app2",
     "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "4.2 Communication Heatmap",
-    "text": "4.2 Communication Heatmap\n\n\nCode\ncomm_hourly_weekly &lt;- comm_full %&gt;%\n  count(week_label, weekday, hour)\n\nggplot(comm_hourly_weekly, aes(x = hour, y = weekday, fill = n)) +\n  geom_tile(color = \"white\") +\n  scale_fill_viridis_c(option = \"plasma\", name = \"Message Count\") +\n  labs(title = \"Communication Intensity by Hour and Weekday\",\n       x = \"Hour of Day\", y = \"Day of Week\") +\n  facet_wrap(~ week_label, ncol = 1) +\n  theme_minimal()",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#communication-network-graph",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#communication-network-graph",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "4.3 Communication Network Graph",
-    "text": "4.3 Communication Network Graph\n\n\nCode\n# Create edge list\ngraph_edges &lt;- comm_full %&gt;%\n  count(sender_label, receiver_label) %&gt;%\n  filter(!is.na(sender_label), !is.na(receiver_label)) %&gt;%\n  rename(from = sender_label, to = receiver_label, value = n)\n\n# Create node list from edges\ngraph_nodes &lt;- tibble(name = unique(c(graph_edges$from, graph_edges$to))) %&gt;%\n  mutate(id = name, label = name, group = name)\n\n# visNetwork expects numeric node IDs, but we can use labels for both\nvisNetwork(nodes = graph_nodes, edges = graph_edges) %&gt;%\n  visEdges(arrows = \"to\") %&gt;%\n  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %&gt;%\n  visLayout(randomSeed = 123) %&gt;%\n  visPhysics(stabilization = TRUE) %&gt;%\n  visInteraction(navigationButtons = TRUE) %&gt;%\n  visLegend()",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#prototype",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#prototype",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "6.2 Prototype",
-    "text": "6.2 Prototype\nScroll down and click “Update View” to load the visualization!\n\nView on \n\n  \n  \n\n\n\n\n\n\n\n\n\n\nUI Component\ntitlePanel()\nUse\nApp’s title\n\n\n\n\n\n\nsidebarLayout()\nTwo-column layout with input controls on the side and output in the main area\n\n\n\ntabsetPanel()\nSeparate tabs for the different visualization\n\n\n\nselectInput()\nSelect an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2)\n\n\ntextInput() or selectizeInput()\nAllows one or more selection sender/receiver\n\n\n\ncheckboxGroupInput()\nSelect multiple weeks or types\n\n\n\ndateRangeInput()\nFilter by date range |\n\n\nsliderInput()\nFilter by hour of day (0–23)\n\n\n\nplotOutput()\nStatic ggplot visualizations (content to be defined under Server &lt;- function segment)\n\n\n\ndataTableOutput()\nRender data table (content to be defined under Server &lt;- function segment)\n\n\n\nvisNetworkOutput()\nInteractive network graph (content to be defined under Server &lt;- function segment)\n\n\n\nactionButton() | Apply filters |",
+    "section": "4.2 App 2: Relationship Clusters and Pseudonyms",
+    "text": "4.2 App 2: Relationship Clusters and Pseudonyms\n\n4.2.1 UI Design Goals\n\n\n4.2.2 Parameters and outputs that will be exposed on the Shiny applications\n\n\n4.2.3 Shiny App Panel Tabs UI Design\n\n4.2.3.1 Module 1\n\n\n4.2.3.2 Module 2\n\n\n\n4.2.4 UI objects used\n\n\n4.2.5 R packages needed for Shiny application\n\n\n4.2.6 Test the specific R codes can be run",
     "crumbs": [
       "Take-Home Exercise 3",
       "3 - Prototyping Modules for Visual Analytics Shiny Application"
@@ -234,19 +223,41 @@
     "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#r-packages",
     "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#r-packages",
     "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "6.1 R Packages",
-    "text": "6.1 R Packages\n\nshiny: Easy web apps for data science without the compromises.\ndplyr: A grammar of data manipulation, making data wrangling concise, fast, and readable.\nggplot2: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.\nvisNetwork: Enables interactive network visualizations in R using the vis.js JavaScript library.",
+    "section": "5.1 R Packages",
+    "text": "5.1 R Packages\n\nshiny: Easy web apps for data science without the compromises.\ndplyr: A grammar of data manipulation, making data wrangling concise, fast, and readable.\nggplot2: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.\nvisNetwork: Enables interactive network visualizations in R using the vis.js JavaScript library.",
     "crumbs": [
       "Take-Home Exercise 3",
       "3 - Prototyping Modules for Visual Analytics Shiny Application"
     ]
   },
   {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#appendixa",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#appendixa",
+    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#shiny-fuctional-specs-and-tutorials",
+    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#shiny-fuctional-specs-and-tutorials",
     "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "9.1 Appendix A",
-    "text": "9.1 Appendix A",
+    "section": "5.2 Shiny Fuctional Specs and Tutorials",
+    "text": "5.2 Shiny Fuctional Specs and Tutorials",
+    "crumbs": [
+      "Take-Home Exercise 3",
+      "3 - Prototyping Modules for Visual Analytics Shiny Application"
+    ]
+  },
+  {
+    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#lesson-slides",
+    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#lesson-slides",
+    "title": "Prototyping Modules for Visual Analytics Shiny Application",
+    "section": "5.3 Lesson Slides",
+    "text": "5.3 Lesson Slides\n\nLesson 6a: Shiny Basic\nLesson 6b: Shiny Reactivity\nLesson 6c: Beyond Basic Basic",
+    "crumbs": [
+      "Take-Home Exercise 3",
+      "3 - Prototyping Modules for Visual Analytics Shiny Application"
+    ]
+  },
+  {
+    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#shiny-fuctional-specs-and-tutorials-1",
+    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#shiny-fuctional-specs-and-tutorials-1",
+    "title": "Prototyping Modules for Visual Analytics Shiny Application",
+    "section": "5.4 Shiny Fuctional Specs and Tutorials",
+    "text": "5.4 Shiny Fuctional Specs and Tutorials\n\nShiny from R Studio\nLearn Shiny\nFunction reference\nThe Shiny Cheat sheet",
     "crumbs": [
       "Take-Home Exercise 3",
       "3 - Prototyping Modules for Visual Analytics Shiny Application"
@@ -2040,124 +2051,14 @@
     ]
   },
   {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#overall-ui-design",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#overall-ui-design",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "6.1 Overall UI Design",
-    "text": "6.1 Overall UI Design\n\n\n\n\n\n\n6.1.2 Temporal Pattern\nWIP\n\n\n6.1.3 Heatmap\nWIP\n\n\n6.1.4 Communication Network\nWIP\n\n\n6.1.5 Receipts\nThis tab allow users to read the communication messages (or as investigators we can call them receipts).\nWIP",
+    "objectID": "In-class_Ex/In-class_Ex08_2.html",
+    "href": "In-class_Ex/In-class_Ex08_2.html",
+    "title": "Distribution of Resale Units of Condominium Sold in 2019",
+    "section": "",
+    "text": "View on",
     "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#storyboard",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#storyboard",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "2.1 Storyboard",
-    "text": "2.1 Storyboard\nFollowing revelations from Take Home Exercise 2, Clepper Jessen—a determined investigative journalist—continues probing into the suspicious closure of Nemo Reef and potential corruption tied to pop star Sailor Shift. This latest phase leverages intercepted radio communication logs to visualize and understand hidden networks, aliases, and behavior anomalies among key individuals and vessels.\nThe ReefWhisper Shiny-based dashboard supports visual exploration of the intercepted communication metadata—focusing on temporal communication patterns, heatmaps, network interactions, and individual message receipts. Tools like these enable Clepper or investigators to uncover communication traces of suspicious actors possibly involved in illegal fishing and obfuscation via pseudonyms.\nFor this part 1 we will be focusing on:\n\nIdentify temporal patterns in communications.\nReveal relationships and influence among entities (people, vessels, groups).\nExpose pseudonym usage and investigate Nadia Conti’s activity for potential misconduct.\n\nHence, we will be looking at a Shiny web app that allows user to explore the temporal interpolation and heatmap of the communication pattern, as well as the communication network graph to see the relationships and influence among the entities. Through this, user is able to uncover the above agendas. We will be splitting this app into 4 main section that will be further detailed in Chapter 6.\n\nOther than the first part, we will also be uncovering other parts separately. Check them out!\nPart 2 - Relationship Cluster and Pseudonym: Hoa’s Take Home Exercise 2\nPart 3 - Time Series Analysis and Social Network graph: Summer’s Take Home Exercise 2",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app-1-temporal-pattern-and-communication-network-graph-app",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app-1-temporal-pattern-and-communication-network-graph-app",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "6.1 App 1: Temporal Pattern and Communication Network Graph App",
-    "text": "6.1 App 1: Temporal Pattern and Communication Network Graph App\n\n6.1.1 UI Design Goals\n\nBreak down complexity into modular tabs for Temporal Trends, Heatmap Views, Network Graphs, and Receipts.\nEmphasize investigative usability—allowing Clepper to spot patterns, isolate pseudonymous actors, and visually correlate suspicious behaviors.\nUse interactive and expressive visuals tailored for social communication analysis.\n\n\n\n6.1.2 UI objects used\n\n\n\n\n\n\n\n\nUI Component\ntitlePanel()\nPurpose ========================================================================================+ App’s title |\n\n\n\nsidebarLayout()\nTwo-column layout with input controls on the side and output in the main area\n\n\n\ntabsetPanel()\nSeparate tabs for the different visualization\n\n\n\nselectInput()\nSelect an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2)|\n\n\n\ntextInput() or selectizeInput()\nAllows one or more selection sender/receiver\n\n\n\ncheckboxGroupInput()\nSelect multiple weeks or types\n\n\n\ndateRangeInput()\nFilter by date range\n\n\n\nsliderInput()\nFilter by hour of day (0–23)\n\n\n\nplotOutput()\nStatic ggplot visualizations (content to be defined under Server \\&lt;- function segment) |\n\n\n\ndataTableOutput()\nRender data table (content to be defined under Server \\&lt;- function segment) |\n\n\n\nvisNetworkOutput()\nInteractive network graph (content to be defined under Server \\&lt;- function segment) |\n\n\n\nactionButton()\nApply filters\n\n\n\n\n\n\n6.1.3 Panel Tabs\n\n6.1.3.1 Temporal Pattern\nPurpose: Reveal day-to-day communication rhythms.\nDesign Elements:\n\nLine Graph: Daily message volumes per week.\nInteractive Controls: Week selection, date range slider, hour-of-day filter.\nDropdowns: Filter by sender/receiver entity type (e.g., person, vessel, organization).\n\nThis helps Clepper pinpoint temporal spikes, such as bursts of chatter before critical events (e.g., Sailor Shift’s arrival or Nemo Reef closure).\n\n\n\n\n\n\n\n6.1.3.2 Heatmap\nPurpose: Explore patterns by time-of-day and communication density.\nDesign Elements:\n\nHeatmap Matrix: Color-coded intensity based on message count by hour and date.\nColor Scale: Darker hues represent higher volume.\n\nEffective for isolating habitual communicators or unusual off-hour messages (potential signs of covert coordination).\n\n\n\n\n\n\n\n6.1.3.3 Communication Network\nPurpose: Visualize the social graph of communication.\nDesign Elements:\n\nForce-Directed Graph: Nodes for people/vessels/organizations, edges for interactions.\nNode Filtering: Allows selection by ID to isolate individuals.\n\nThis is key for identifying influence hubs, peripheral actors, and communication silos—crucial for mapping Nadia Conti’s hidden relationships.\n\n\n\n\n\n\n\n6.1.3.4 Receipts\nThis tab allow users to read the communication messages (or as investigators we can call them receipts).\nPurpose: Provide a full-text view of communication logs.\nDesign Elements:\n\nData Table: Shows message sender, receiver, timestamp, type, and raw message content.\nPseudonym Tracking: Enables Clepper to connect aliases across threads.\n\nUseful for identifying suspicious message contents and linking disguised personas (e.g., Nadia Conti under a pseudonym) to known actors.",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app-2-relationship-clusters-and-pseudonyms",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app-2-relationship-clusters-and-pseudonyms",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "4.3 App 2: Relationship Clusters and Pseudonyms",
-    "text": "4.3 App 2: Relationship Clusters and Pseudonyms\n\n4.3.1 UI Design Goals\n\n\n4.3.2 Parameters and outputs that will be exposed on the Shiny applications\n\n\n4.3.3 UI objects used\n\n\n4.3.4 R packages needed for Shiny application\n\n\n4.3.5 Test the specific R codes can be run\n\n4.3.5.1 Module 1\n\n\n4.3.5.2 Module 2\n\n\n4.3.5.3 Module 3\n\n\n4.3.5.4 Module 4\n\n\n4.3.5.5 Module 5\n\n\n4.3.5.6 Module 6\n\n\n\n4.3.6 Shiny App Panel Tabs UI Design\n\n4.3.6.1 Module 1\n\n\n4.3.6.2 Module 2\n\n\n4.3.6.3 Module 3\n\n\n4.3.6.4 Module 4\n\n\n4.3.6.5 Module 5\n\n\n4.3.6.6 Module 6",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app-3-time-series-analysis-and-social-network-graph",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app-3-time-series-analysis-and-social-network-graph",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "6.3 App 3: Time Series Analysis and Social Network Graph",
-    "text": "6.3 App 3: Time Series Analysis and Social Network Graph\n\n6.3.1 UI Design Goals\n\n\n6.3.2 UI objects used\n\n\n6.3.3 Panel Tabs\n\n6.3.3.1 XX",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#lesson-slides",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#lesson-slides",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "6.3 Lesson Slides",
-    "text": "6.3 Lesson Slides\n\nLesson 6a: Shiny Basic\nLesson 6b: Shiny Reactivity\nLesson 6c: Beyond Basic Basic",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#shiny-fuctional-specs-and-tutorials",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#shiny-fuctional-specs-and-tutorials",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "6.2 Shiny Fuctional Specs and Tutorials",
-    "text": "6.2 Shiny Fuctional Specs and Tutorials",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app1",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app1",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "4.1 App 1: Temporal Pattern and Communication Network Graph App",
-    "text": "4.1 App 1: Temporal Pattern and Communication Network Graph App\n\n4.1.1 UI Design Goals\n\nBreak down complexity into modular tabs for Temporal Trends, Heatmap Views, Network Graphs, and Receipts.\nEmphasize investigative usability—allowing Clepper to spot patterns, isolate pseudonymous actors, and visually correlate suspicious behaviors.\nUse interactive and expressive visuals tailored for social communication analysis.\n\n\n\n4.1.2 Parameters and outputs that will be exposed on the Shiny applications\n\n\n\n\n\n\n\nParameters (UI Inputs)\nOutputs (UI Outputs)\n\n\n\n\n\nEntity filter (e.g., person, vessel, pseudonym, organization)\nWeek selection: Week 1 / Week 2\nDate range input (subset communication dates)\nHour range input (to analyze time-of-day patterns)\nSender / Receiver entity selection\nGraph type: Full vs. person-to-person communication\n\n\nLine plot of communication volume over time\nHeatmap of communication intensity by weekday/hour\nInteractive visNetwork graph\nFiltered table of communications (sender, receiver, message, timestamp)\n\n\n\n\n\n\n4.1.3 UI objects used\n\n\n\n\n\n\n\nUI Component\nPurpose\n\n\ntitlePanel()\nApp’s title\n\n\nsidebarLayout()\nTwo-column layout with input controls on the side and output in the main area\n\n\ntabsetPanel()\nSeparate tabs for the different visualization\n\n\nselectInput()\nSelect an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2)\n\n\ntextInput() or selectizeInput()\nAllows one or more selection sender/receiver\n\n\ncheckboxGroupInput()\nSelect multiple weeks or types\n\n\ndateRangeInput()\nFilter by date range\n\n\nsliderInput()\nFilter by hour of day (0–23)\n\n\nplotOutput()\nStatic ggplot visualizations (content to be defined under Server \\&lt;- function segment)\n\n\ndataTableOutput()\nRender data table (content to be defined under Server \\&lt;- function segment)\n\n\nvisNetworkOutput()\nInteractive network graph (content to be defined under Server \\&lt;- function segment)\n\n\nactionButton()\nApply filters\n\n\n\n\n\n4.1.4 R packages needed for Shiny application\nAs we will be adapting our Take Home Exercise 2 graphs to Shiny Application, we need to ensure that we have all the necessary R packages needed for this conversion such as:\n\nshiny: Easy web apps for data science without the compromises.\ndplyr: A grammar of data manipulation, making data wrangling concise, fast, and readable.\nggplot2: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.\nvisNetwork: Enables interactive network visualizations in R using the vis.js JavaScript library.\n\n\n\n4.1.5 Test the specific R codes can be run\nMost preparation have been done in Take Home Exercise 2.\nIn this section we will prepare and test the specific R codes can be run and return the correct output as expected.\nFirst we load the requred R packages\n\n\nCode\npacman::p_load(tidyverse, tidygraph, ggraph, jsonlite, ggplot2,\n               SmartEDA, lubridate, ggthemes, readr, readxl, knitr, dplyr, visNetwork)\n\n\nNext we load the data in\n\n\nCode\ncomm_full &lt;- read.csv(\"data/communications_full.csv\")\n\n\n\n4.1.5.1 Temporal Pattern\n\n\nCode\ncomm_full %&gt;%\n  count(week_label, date) %&gt;%\n  ggplot(aes(x = date, y = n, group = week_label)) +\n  geom_line(color = \"steelblue\", size = 1.2) +\n  facet_wrap(~ week_label, scales = \"free_x\", ncol = 1, labeller = label_value) +\n  labs(\n    title = \"Daily Communication Volume Per Week\",\n    x = \"Date\", y = \"Number of Messages\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n4.1.5.2 Communication Heatmap\n\n\nCode\ncomm_hourly_weekly &lt;- comm_full %&gt;%\n  count(week_label, weekday, hour)\n\nggplot(comm_hourly_weekly, aes(x = hour, y = weekday, fill = n)) +\n  geom_tile(color = \"white\") +\n  scale_fill_viridis_c(option = \"plasma\", name = \"Message Count\") +\n  labs(title = \"Communication Intensity by Hour and Weekday\",\n       x = \"Hour of Day\", y = \"Day of Week\") +\n  facet_wrap(~ week_label, ncol = 1) +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n4.1.5.3 Communication Network Graph\n\n\nCode\n# Create edge list\ngraph_edges &lt;- comm_full %&gt;%\n  count(sender_label, receiver_label) %&gt;%\n  filter(!is.na(sender_label), !is.na(receiver_label)) %&gt;%\n  rename(from = sender_label, to = receiver_label, value = n)\n\n# Create node list from edges\ngraph_nodes &lt;- tibble(name = unique(c(graph_edges$from, graph_edges$to))) %&gt;%\n  mutate(id = name, label = name, group = name)\n\n# visNetwork expects numeric node IDs, but we can use labels for both\nvisNetwork(nodes = graph_nodes, edges = graph_edges) %&gt;%\n  visEdges(arrows = \"to\") %&gt;%\n  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %&gt;%\n  visLayout(randomSeed = 123) %&gt;%\n  visPhysics(stabilization = TRUE) %&gt;%\n  visInteraction(navigationButtons = TRUE) %&gt;%\n  visLegend()\n\n\n\n\n\n\n\n\n\n4.1.6 Shiny App Panel Tabs UI Design\n\n4.1.6.1 Temporal Pattern\nPurpose: Reveal day-to-day communication rhythms.\nDesign Elements:\n\nLine Graph: Daily message volumes per week.\nInteractive Controls: Week selection, date range slider, hour-of-day filter.\nDropdowns: Filter by sender/receiver entity type (e.g., person, vessel, organization).\n\nThis helps Clepper pinpoint temporal spikes, such as bursts of chatter before critical events (e.g., Sailor Shift’s arrival or Nemo Reef closure).\n\n\n\n\n\n\n\n4.1.6.2 Heatmap\nPurpose: Explore patterns by time-of-day and communication density.\nDesign Elements:\n\nHeatmap Matrix: Color-coded intensity based on message count by hour and date.\nColor Scale: Darker hues represent higher volume.\n\nEffective for isolating habitual communicators or unusual off-hour messages (potential signs of covert coordination).\n\n\n\n\n\n\n\n4.1.6.3 Communication Network\nPurpose: Visualize the social graph of communication.\nDesign Elements:\n\nForce-Directed Graph: Nodes for people/vessels/organizations, edges for interactions.\nNode Filtering: Allows selection by ID to isolate individuals.\n\nThis is key for identifying influence hubs, peripheral actors, and communication silos—crucial for mapping Nadia Conti’s hidden relationships.\n\n\n\n\n\n\n\n4.1.6.4 Receipts\nThis tab allow users to read the communication messages (or as investigators we can call them receipts).\nPurpose: Provide a full-text view of communication logs.\nDesign Elements:\n\nData Table: Shows message sender, receiver, timestamp, type, and raw message content.\nPseudonym Tracking: Enables Clepper to connect aliases across threads.\n\nUseful for identifying suspicious message contents and linking disguised personas (e.g., Nadia Conti under a pseudonym) to known actors.",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app2",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app2",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "4.2 App 2: Relationship Clusters and Pseudonyms",
-    "text": "4.2 App 2: Relationship Clusters and Pseudonyms\n\n4.2.1 UI Design Goals\n\n\n4.2.2 Parameters and outputs that will be exposed on the Shiny applications\n\n\n4.2.3 UI objects used\n\n\n4.2.4 R packages needed for Shiny application\n\n\n4.2.5 Test the specific R codes can be run\n\n4.2.5.1 Module 1\n\n\n4.2.5.2 Module 2\n\n\n\n4.2.6 Shiny App Panel Tabs UI Design\n\n4.2.6.1 Module 1\n\n\n4.2.6.2 Module 2",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app3",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#app3",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "6.3 App 3: Time Series Analysis and Social Network Graph",
-    "text": "6.3 App 3: Time Series Analysis and Social Network Graph\n\n6.3.1 UI Design Goals\n\n\n6.3.2 UI objects used\n\n\n6.3.3 Panel Tabs\n\n6.3.3.1 XX",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
-    ]
-  },
-  {
-    "objectID": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#shiny-fuctional-specs-and-tutorials-1",
-    "href": "Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html#shiny-fuctional-specs-and-tutorials-1",
-    "title": "Prototyping Modules for Visual Analytics Shiny Application",
-    "section": "6.4 Shiny Fuctional Specs and Tutorials",
-    "text": "6.4 Shiny Fuctional Specs and Tutorials\n\nShiny from R Studio\nLearn Shiny\nFunction reference\nThe Shiny Cheat sheet",
-    "crumbs": [
-      "Take-Home Exercise 3",
-      "3 - Prototyping Modules for Visual Analytics Shiny Application"
+      "In-Class Excercise",
+      "Session 8 - Distribution of Resale Units of Condominium Sold in 2019"
     ]
   }
 ]
