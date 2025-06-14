@@ -206,7 +206,7 @@ visNetwork(nodes = graph_nodes, edges = graph_edges) %>%
   visLegend()
 ```
 
-### [4.1.6]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs
+### [4.1.6]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs UI Design
 
 #### [4.1.6.1]{style="color:#d496d4; background:none;"} Temporal Pattern
 
