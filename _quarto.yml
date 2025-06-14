@@ -46,16 +46,16 @@ website:
             href: Hands-on_Ex/Hands-on_Ex08_2/hands-on_Ex08_2.html
           - text: "8.3 - Analytical Mapping"
             href: Hands-on_Ex/Hands-on_Ex08_3/hands-on_Ex08_3.html
-          #- text: "9.1 - Creating Ternary Plot with R"
-          #  href: Hands-on_Ex/Hands-on_Ex09_1/hands-on_Ex09_1.html
-          #- text: "9.2 - Visual Correlation Analysis"
-          #  href: Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html
-          #- text: "9.3 - Visual Multivariate Analysis with Heatmap"
-          #  href: Hands-on_Ex/Hands-on_Ex09_3/hands-on_Ex09_3.html
-          #- text: "9.4 - Visual Multivariate Analysis with Parallel Coordinates Plot"
-          #  href: Hands-on_Ex/Hands-on_Ex09_4/hands-on_Ex09_4.html
-          #- text: "9.5 - Treemap Visualisation with R"
-          #  href: Hands-on_Ex/Hands-on_Ex09_5/hands-on_Ex09_5.html
+          - text: "9.1 - Creating Ternary Plot with R"
+            href: Hands-on_Ex/Hands-on_Ex09_1/hands-on_Ex09_1.html
+          - text: "9.2 - Visual Correlation Analysis"
+            href: Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html
+          - text: "9.3 - Visual Multivariate Analysis with Heatmap"
+            href: Hands-on_Ex/Hands-on_Ex09_3/hands-on_Ex09_3.html
+          - text: "9.4 - Visual Multivariate Analysis with Parallel Coordinates Plot"
+            href: Hands-on_Ex/Hands-on_Ex09_4/hands-on_Ex09_4.html
+          - text: "9.5 - Treemap Visualisation with R"
+            href: Hands-on_Ex/Hands-on_Ex09_5/hands-on_Ex09_5.html
 
       - text: "In-class Exercise"
         menu:
@@ -138,18 +138,18 @@ website:
               href: Hands-on_Ex/Hands-on_Ex08_2/hands-on_Ex08_2.html
             - text: "8.3 - Analytical Mapping"
               href: Hands-on_Ex/Hands-on_Ex08_3/hands-on_Ex08_3.html
-        #- section: "Hands-On Exercise 9"
-        #  contents:
-            #- text: "9.1 - Creating Ternary Plot with R"
-            #  href: Hands-on_Ex/Hands-on_Ex09_1/hands-on_Ex09_1.html
-            #- text: "9.2 - Visual Correlation Analysis"
-            #  href: Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html
-            #- text: "9.3 - Visual Multivariate Analysis with Heatmap"
-            #  href: Hands-on_Ex/Hands-on_Ex09_3/hands-on_Ex09_3.html
-            #- text: "9.4 - Visual Multivariate Analysis with Parallel Coordinates Plot"
-            #  href: Hands-on_Ex/Hands-on_Ex09_4/hands-on_Ex09_4.html
-            #- text: "9.5 - Treemap Visualisation with R"
-            #  href: Hands-on_Ex/Hands-on_Ex09_5/hands-on_Ex09_5.html
+        - section: "Hands-On Exercise 9"
+          contents:
+            - text: "9.1 - Creating Ternary Plot with R"
+              href: Hands-on_Ex/Hands-on_Ex09_1/hands-on_Ex09_1.html
+            - text: "9.2 - Visual Correlation Analysis"
+              href: Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html
+            - text: "9.3 - Visual Multivariate Analysis with Heatmap"
+              href: Hands-on_Ex/Hands-on_Ex09_3/hands-on_Ex09_3.html
+            - text: "9.4 - Visual Multivariate Analysis with Parallel Coordinates Plot"
+              href: Hands-on_Ex/Hands-on_Ex09_4/hands-on_Ex09_4.html
+            - text: "9.5 - Treemap Visualisation with R"
+              href: Hands-on_Ex/Hands-on_Ex09_5/hands-on_Ex09_5.html
     - title: "In-Class Exercise"
       style: "floating"
       collapse-level: 2

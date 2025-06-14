@@ -375,3 +375,39 @@ tm <- treemap(realis2018_summarised,
 ```{r echo=TRUE, eval=TRUE}
 d3tree(tm,rootname = "Singapore" )
 ```
+
+## References
+## Readings
+
+### Core Readings
+
+-   Shneiderman, Ben (2008) [Treemaps for space-constrained visualization of hierarchies](http://www.cs.umd.edu/hcil/treemap-history/)
+-   [Extending the Utility of Treemaps with Flexible Hierarchy](http://www.cs.umd.edu/hcil/treemap/FLEXIBLE-HIERARCHY-FINAL.pdf)
+
+### Optional Readings
+
+-   [Treemaps](http://eagereyes.org/Techniques/Treemaps.html)
+-   [Discovering Business Intelligence Using Treemap Visualization](http://www.b-eye-network.com/view/2673)
+-   [10 Lessons in Treemap Design](http://www.juiceanalytics.com/writing/10-lessons-treemap-design/)
+-   Bederson, Benjamin B.; Shneiderman, Ben; Wattenberg, Martin (2002). [*Ordered and quantum treemaps: Making effective use of 2D space to display hierarchies*](http://delivery.acm.org.libproxy.smu.edu.sg/10.1145/580000/571649/p833-b_bederson.pdf?ip=202.161.43.77&id=571649&acc=ACTIVE%20SERVICE&key=FF6731C4D3E3CFFF%2E39D185EE56A58666%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&__acm__=1538033167_4a6787aed9b15196b9e585b3af4b7031). **ACM Transactions on Graphics**. 21 (4): 833.
+-   Bruls, Mark; Huizing, Kees; van Wijk, Jarke J. (2000). [*Squarified treemaps*](http://www.win.tue.nl/~vanwijk/stm.pdf). In de Leeuw, W.; van Liere, R. **Data Visualization 2000: Proc.** Joint Eurographics and IEEE TCVG Symp. on Visualization\]
+-   [US Economic Census Treemap](http://www.juiceanalytics.com/writing/us-economic-census-treemap/)
+-   [TreeCovery: Coordinated dual treemap visualization for exploring the Recovery Act](https://ac-els-cdn-com.libproxy.smu.edu.sg/S0740624X11001055/1-s2.0-S0740624X11001055-main.pdf?_tid=5f3e825d-c9d0-414f-b1d2-3ffbe8e115d1&acdnat=1538033558_64b0c1431092fec2ea12cc5e7ba8e77b)
+-   [Juice's Stimulus Bill Explorer](http://www.juiceanalytics.com/writing/juices-stimulus-bill-explorer/)
+-   [Fundexplorer](http://www.cc.gatech.edu/gvu/ii/fundexplorer/)
+-   [Map of the Market](http://www.smartmoney.com/map-of-the-market/)
+-   [The HIVE Group](http://www.hivegroup.com/gallery/index.html)
+-   [Truck Sales Slip, Tripping Up Chrysler](http://www.nytimes.com/imagepages/2007/02/25/business/20070225_CHRYSLER_GRAPHIC.html)
+-   [Newsmap](http://newsmap.jp/)
+-   [Obama's 2011 Budget Proposal: How It's Spent](http://www.nytimes.com/interactive/2010/02/01/us/budget.html)
+
+## R Packages
+
+-   [Treemap](https://cran.r-project.org/web/packages/treemap/) package.
+    -   [Creating a Treemap in R](https://rpubs.com/brandonkopp/creating-a-treemap-in-r)
+    -   [treemap: mapping to color palettes](https://cran.r-project.org/web/packages/treemap/vignettes/treemap-color_mapping.html)
+    -   [Simple Steps to Create Treemap in R](https://r-posts.com/simple-steps-to-create-treemap-in-r/)
+-   [treemapify: Draw Treemaps in 'ggplot2'](https://cran.r-project.org/web/packages/treemapify/index.html)
+    -   [Introduction to treemapify](https://cran.r-project.org/web/packages/treemapify/vignettes/introduction-to-treemapify.html)
+    -   [Interactive visualization with R-Shiny versus with Tableau: Treemaps](https://datascience-enthusiast.com/R/R_shiny_Tableau_treemap.html)
+

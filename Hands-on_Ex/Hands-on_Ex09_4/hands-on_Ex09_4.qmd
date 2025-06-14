@@ -203,8 +203,13 @@ parallelPlot(wh,
 
 ## References
 
--   [*ggparcoord()*](http://ggobi.github.io/ggally/reference/ggparcoord.html) of [**GGally**](http://ggobi.github.io/ggally/index.html) package
+-   [ggparcoord()](http://ggobi.github.io/ggally/reference/ggparcoord.html) of [GGally](http://ggobi.github.io/ggally/index.html) package
 
--   [**parcoords** user guide](https://cran.r-project.org/web/packages/parcoords/parcoords.pdf)
+-   [parcoords user guide](https://cran.r-project.org/web/packages/parcoords/parcoords.pdf)
 
--   [**parallelPlot**](https://cran.r-project.org/web/packages/parallelPlot/parallelPlot.pdf)
+-   [parallelPlot](https://cran.r-project.org/web/packages/parallelPlot/parallelPlot.pdf)
+
+-   [Parallel Coordinates](https://link-springer-com.libproxy.smu.edu.sg/content/pdf/10.1007%2F978-3-540-33037-0_25.pdf)
+-   [Parallel Coordinates](https://eagereyes.org/techniques/parallel-coordinates)
+-   [Multivariate Analysis Using Parallel Coordinates](http://www.perceptualedge.com/articles/b-eye/parallel_coordinates.pdf)
+
