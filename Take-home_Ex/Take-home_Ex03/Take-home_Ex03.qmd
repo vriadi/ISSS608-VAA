@@ -72,7 +72,7 @@ According to [uxdesigninstitute](https://www.uxdesigninstitute.com/blog/guide-to
 ### [4.1.2]{style="color:#d496d4; background:none;"} Parameters and outputs that will be exposed on the Shiny applications
 
 +-------------------------------------------------------------------+-----------------------------------------------------------------------------+
-| **Parameters (UI Inputs):**                                       | **Outputs (UI Outputs):**                                                   |
+| **Parameters (UI Inputs)**                                        | **Outputs (UI Outputs)**                                                    |
 +===================================================================+=============================================================================+
 | -   Entity filter (e.g., person, vessel, pseudonym, organization) | -   Line plot of communication volume over time                             |
 |                                                                   |                                                                             |
@@ -87,36 +87,35 @@ According to [uxdesigninstitute](https://www.uxdesigninstitute.com/blog/guide-to
 | -   Graph type: Full vs. person-to-person communication           |                                                                             |
 +-------------------------------------------------------------------+-----------------------------------------------------------------------------+
 
-
 ### [4.1.3]{style="color:#d496d4; background:none;"} UI objects used
 
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| # **UI Component**                  | # Purpose                                                                                    |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `titlePanel()`                      | App's title                                                                                  |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `sidebarLayout()`                   | Two-column layout with input controls on the side and output in the main area                |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `tabsetPanel()`                     | Separate tabs for the different visualization                                                |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `selectInput()`                     | Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2) |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `textInput()` or `selectizeInput()` | Allows one or more selection sender/receiver                                                 |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `checkboxGroupInput()`              | Select multiple weeks or types                                                               |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `dateRangeInput()`                  | Filter by date range                                                                         |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `sliderInput()`                     | Filter by hour of day (0–23)                                                                 |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `plotOutput()`                      | Static ggplot visualizations (content to be defined under `Server \<- function segment`) \|  |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `dataTableOutput()`                 | Render data table (content to be defined under `Server \<- function segment`) \|             |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `visNetworkOutput()`                | Interactive network graph (content to be defined under `Server \<- function segment`) \|     |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
-| `actionButton()`                    | Apply filters                                                                                |            |
-+-------------------------------------+----------------------------------------------------------------------------------------------+------------+
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| **UI Component**                    | **Purpose**                                                                                 |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `titlePanel()`                      | App's title                                                                                 |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `sidebarLayout()`                   | Two-column layout with input controls on the side and output in the main area               |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `tabsetPanel()`                     | Separate tabs for the different visualization                                               |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `selectInput()`                     | Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2)  |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `textInput()` or `selectizeInput()` | Allows one or more selection sender/receiver                                                |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `checkboxGroupInput()`              | Select multiple weeks or types                                                              |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `dateRangeInput()`                  | Filter by date range                                                                        |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `sliderInput()`                     | Filter by hour of day (0–23)                                                                |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `plotOutput()`                      | Static ggplot visualizations (content to be defined under `Server \<- function segment`)    |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `dataTableOutput()`                 | Render data table (content to be defined under `Server \<- function segment`)               |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `visNetworkOutput()`                | Interactive network graph (content to be defined under `Server \<- function segment`)       |
++-------------------------------------+---------------------------------------------------------------------------------------------+
+| `actionButton()`                    | Apply filters                                                                               |
++-------------------------------------+---------------------------------------------------------------------------------------------+
 
 ### [4.1.4]{style="color:#d496d4; background:none;"} R packages needed for Shiny application {#rpkg}
 
@@ -146,10 +145,9 @@ Next we load the data in
 ```{r}
 #| code-fold: true
 comm_full <- read.csv("data/communications_full.csv")
-kable(head(comm_full,n=3))
 ```
 
-#### [4.1.5.1]{style="color:#d496d4; background:none;"} Temporal Pattern
+#### [4.1.5.1]{style="color:#d496d4; background:none;"} **Temporal Pattern**
 
 ```{r}
 #| code-fold: true
@@ -165,7 +163,7 @@ comm_full %>%
   theme_minimal()
 ```
 
-#### [4.1.5.2]{style="color:#d496d4; background:none;"} Communication Heatmap
+#### [4.1.5.2]{style="color:#d496d4; background:none;"} **Communication Heatmap**
 
 ```{r}
 #| code-fold: true
@@ -182,7 +180,7 @@ ggplot(comm_hourly_weekly, aes(x = hour, y = weekday, fill = n)) +
 
 ```
 
-#### [4.1.5.3]{style="color:#d496d4; background:none;"} Communication Network Graph
+#### [4.1.5.3]{style="color:#d496d4; background:none;"} **Communication Network Graph**
 
 ```{r}
 #| code-fold: true
@@ -208,7 +206,7 @@ visNetwork(nodes = graph_nodes, edges = graph_edges) %>%
 
 ### [4.1.6]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs UI Design
 
-#### [4.1.6.1]{style="color:#d496d4; background:none;"} Temporal Pattern
+#### [4.1.6.1]{style="color:#d496d4; background:none;"} **Temporal Pattern**
 
 Purpose: Reveal day-to-day communication rhythms.
 
@@ -224,7 +222,7 @@ This helps Clepper pinpoint temporal spikes, such as bursts of chatter before cr
 
 ![](images/temporalpattern.jpg){fig-align="center"}
 
-#### [4.1.6.2]{style="color:#d496d4; background:none;"} Heatmap
+#### [4.1.6.2]{style="color:#d496d4; background:none;"} **Heatmap**
 
 Purpose: Explore patterns by time-of-day and communication density.
 
@@ -238,7 +236,7 @@ Effective for isolating habitual communicators or unusual off-hour messages (pot
 
 ![](images/heatmap.jpg){fig-align="center"}
 
-#### [4.1.6.3]{style="color:#d496d4; background:none;"} Communication Network
+#### [4.1.6.3]{style="color:#d496d4; background:none;"} **Communication Network**
 
 Purpose: Visualize the social graph of communication.
 
@@ -252,7 +250,7 @@ This is key for identifying influence hubs, peripheral actors, and communication
 
 ![](images/commsnetwork.jpg){fig-align="center"}
 
-#### [4.1.6.4]{style="color:#d496d4; background:none;"} Receipts
+#### [4.1.6.4]{style="color:#d496d4; background:none;"} **Receipts**
 
 This tab allow users to read the communication messages (or as investigators we can call them receipts).
 
@@ -268,7 +266,6 @@ Useful for identifying suspicious message contents and linking disguised persona
 
 ![](images/receipts.jpg){fig-align="center"}
 
-
 ## [4.2]{style="color:#d496d4; background:none;"} App 2: Relationship Clusters and Pseudonyms {#app2}
 
 ### [4.2.1]{style="color:#d496d4; background:none;"} UI Design Goals
@@ -277,27 +274,21 @@ Useful for identifying suspicious message contents and linking disguised persona
 
 ### [4.2.3]{style="color:#d496d4; background:none;"} UI objects used
 
-### [4.2.4]{style="color:#d496d4; background:none;"} R packages needed for Shiny application {#rpkg}
+### [4.2.4]{style="color:#d496d4; background:none;"} R packages needed for Shiny application
 
 ### [4.2.5]{style="color:#d496d4; background:none;"} Test the specific R codes can be run
 
-#### [4.2.5.1]{style="color:#d496d4; background:none;"} Module 1
+#### [4.2.5.1]{style="color:#d496d4; background:none;"} **Module 1**
 
-#### [4.2.5.2]{style="color:#d496d4; background:none;"} Module 2
+#### [4.2.5.2]{style="color:#d496d4; background:none;"} **Module 2**
 
-#### [4.2.5.3]{style="color:#d496d4; background:none;"} Module 3
+### [4.2.6]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs UI Design
 
-### [4.2.6]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs
+#### [4.2.6.1]{style="color:#d496d4; background:none;"} **Module 1**
 
-#### [4.2.6.1]{style="color:#d496d4; background:none;"} Module 1
+#### [4.2.6.2]{style="color:#d496d4; background:none;"} **Module 2**
 
-#### [4.2.6.2]{style="color:#d496d4; background:none;"} Module 2
-
-#### [4.2.6.3]{style="color:#d496d4; background:none;"} Module 3
-
-#### [4.2.6.4]{style="color:#d496d4; background:none;"} Module 4
-
-## [4.3]{style="color:#d496d4; background:none;"} App 2: Relationship Clusters and Pseudonyms {#app2}
+## [4.3]{style="color:#d496d4; background:none;"} App 2: Relationship Clusters and Pseudonyms
 
 ### [4.3.1]{style="color:#d496d4; background:none;"} UI Design Goals
 
@@ -305,25 +296,35 @@ Useful for identifying suspicious message contents and linking disguised persona
 
 ### [4.3.3]{style="color:#d496d4; background:none;"} UI objects used
 
-### [4.3.4]{style="color:#d496d4; background:none;"} R packages needed for Shiny application {#rpkg}
+### [4.3.4]{style="color:#d496d4; background:none;"} R packages needed for Shiny application
 
 ### [4.3.5]{style="color:#d496d4; background:none;"} Test the specific R codes can be run
 
-#### [4.3.5.1]{style="color:#d496d4; background:none;"} Module 1
+#### [4.3.5.1]{style="color:#d496d4; background:none;"} **Module 1**
 
-#### [4.3.5.2]{style="color:#d496d4; background:none;"} Module 2
+#### [4.3.5.2]{style="color:#d496d4; background:none;"} **Module 2**
 
-#### [4.3.5.3]{style="color:#d496d4; background:none;"} Module 3
+#### [4.3.5.3]{style="color:#d496d4; background:none;"} **Module 3**
 
-### [4.3.6]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs
+#### [4.3.5.4]{style="color:#d496d4; background:none;"} **Module 4**
 
-#### [4.3.6.1]{style="color:#d496d4; background:none;"} Module 1
+#### [4.3.5.5]{style="color:#d496d4; background:none;"} **Module 5**
 
-#### [4.3.6.2]{style="color:#d496d4; background:none;"} Module 2
+#### [4.3.5.6]{style="color:#d496d4; background:none;"} **Module 6**
 
-#### [4.3.6.3]{style="color:#d496d4; background:none;"} Module 3
+### [4.3.6]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs UI Design
 
-#### [4.3.6.4]{style="color:#d496d4; background:none;"} Module 4
+#### [4.3.6.1]{style="color:#d496d4; background:none;"} **Module 1**
+
+#### [4.3.6.2]{style="color:#d496d4; background:none;"} **Module 2**
+
+#### [4.3.6.3]{style="color:#d496d4; background:none;"} **Module 3**
+
+#### [4.3.6.4]{style="color:#d496d4; background:none;"} **Module 4**
+
+#### [4.3.6.5]{style="color:#d496d4; background:none;"} **Module 5**
+
+#### [4.3.6.6]{style="color:#d496d4; background:none;"} **Module 6**
 
 # [5]{style="color:#d496d4; background:none;"} Prototype
 

@@ -363,18 +363,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ui-design-goals-1" id="toc-ui-design-goals-1" class="nav-link" data-scroll-target="#ui-design-goals-1"><span style="color:#d496d4; background:none;">4.2.1</span> UI Design Goals</a></li>
   <li><a href="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1" id="toc-parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1" class="nav-link" data-scroll-target="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1"><span style="color:#d496d4; background:none;">4.2.2</span> Parameters and outputs that will be exposed on the Shiny applications</a></li>
   <li><a href="#ui-objects-used-1" id="toc-ui-objects-used-1" class="nav-link" data-scroll-target="#ui-objects-used-1"><span style="color:#d496d4; background:none;">4.2.3</span> UI objects used</a></li>
-  <li><a href="#rpkg" id="toc-rpkg" class="nav-link" data-scroll-target="#rpkg"><span style="color:#d496d4; background:none;">4.2.4</span> R packages needed for Shiny application</a></li>
+  <li><a href="#r-packages-needed-for-shiny-application" id="toc-r-packages-needed-for-shiny-application" class="nav-link" data-scroll-target="#r-packages-needed-for-shiny-application"><span style="color:#d496d4; background:none;">4.2.4</span> R packages needed for Shiny application</a></li>
   <li><a href="#test-the-specific-r-codes-can-be-run-1" id="toc-test-the-specific-r-codes-can-be-run-1" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run-1"><span style="color:#d496d4; background:none;">4.2.5</span> Test the specific R codes can be run</a></li>
-  <li><a href="#shiny-app-panel-tabs" id="toc-shiny-app-panel-tabs" class="nav-link" data-scroll-target="#shiny-app-panel-tabs"><span style="color:#d496d4; background:none;">4.2.6</span> Shiny App Panel Tabs</a></li>
+  <li><a href="#shiny-app-panel-tabs-ui-design-1" id="toc-shiny-app-panel-tabs-ui-design-1" class="nav-link" data-scroll-target="#shiny-app-panel-tabs-ui-design-1"><span style="color:#d496d4; background:none;">4.2.6</span> Shiny App Panel Tabs UI Design</a></li>
   </ul></li>
-  <li><a href="#app2" id="toc-app2" class="nav-link" data-scroll-target="#app2"><span style="color:#d496d4; background:none;">4.3</span> App 2: Relationship Clusters and Pseudonyms</a>
+  <li><a href="#app-2-relationship-clusters-and-pseudonyms" id="toc-app-2-relationship-clusters-and-pseudonyms" class="nav-link" data-scroll-target="#app-2-relationship-clusters-and-pseudonyms"><span style="color:#d496d4; background:none;">4.3</span> App 2: Relationship Clusters and Pseudonyms</a>
   <ul class="collapse">
   <li><a href="#ui-design-goals-2" id="toc-ui-design-goals-2" class="nav-link" data-scroll-target="#ui-design-goals-2"><span style="color:#d496d4; background:none;">4.3.1</span> UI Design Goals</a></li>
   <li><a href="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2" id="toc-parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2" class="nav-link" data-scroll-target="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2"><span style="color:#d496d4; background:none;">4.3.2</span> Parameters and outputs that will be exposed on the Shiny applications</a></li>
   <li><a href="#ui-objects-used-2" id="toc-ui-objects-used-2" class="nav-link" data-scroll-target="#ui-objects-used-2"><span style="color:#d496d4; background:none;">4.3.3</span> UI objects used</a></li>
-  <li><a href="#rpkg" id="toc-rpkg" class="nav-link" data-scroll-target="#rpkg"><span style="color:#d496d4; background:none;">4.3.4</span> R packages needed for Shiny application</a></li>
+  <li><a href="#r-packages-needed-for-shiny-application-1" id="toc-r-packages-needed-for-shiny-application-1" class="nav-link" data-scroll-target="#r-packages-needed-for-shiny-application-1"><span style="color:#d496d4; background:none;">4.3.4</span> R packages needed for Shiny application</a></li>
   <li><a href="#test-the-specific-r-codes-can-be-run-2" id="toc-test-the-specific-r-codes-can-be-run-2" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run-2"><span style="color:#d496d4; background:none;">4.3.5</span> Test the specific R codes can be run</a></li>
-  <li><a href="#shiny-app-panel-tabs-1" id="toc-shiny-app-panel-tabs-1" class="nav-link" data-scroll-target="#shiny-app-panel-tabs-1"><span style="color:#d496d4; background:none;">4.3.6</span> Shiny App Panel Tabs</a></li>
+  <li><a href="#shiny-app-panel-tabs-ui-design-2" id="toc-shiny-app-panel-tabs-ui-design-2" class="nav-link" data-scroll-target="#shiny-app-panel-tabs-ui-design-2"><span style="color:#d496d4; background:none;">4.3.6</span> Shiny App Panel Tabs UI Design</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span style="color:#d496d4; background:none;">5</span> Prototype</a>
@@ -489,8 +489,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th><strong>Parameters (UI Inputs):</strong></th>
-<th><strong>Outputs (UI Outputs):</strong></th>
+<th><strong>Parameters (UI Inputs)</strong></th>
+<th><strong>Outputs (UI Outputs)</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -517,74 +517,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="ui-objects-used"><span style="color:#d496d4; background:none;">4.1.3</span> UI objects used</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 64%">
-<col style="width: 8%">
+<col style="width: 28%">
+<col style="width: 71%">
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><h1 id="ui-component"><strong>UI Component</strong></h1></td>
-<td><h1 id="purpose">Purpose</h1></td>
-<td></td>
+<td><strong>UI Component</strong></td>
+<td><strong>Purpose</strong></td>
 </tr>
 <tr class="even">
 <td><code>titlePanel()</code></td>
 <td>App’s title</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>sidebarLayout()</code></td>
 <td>Two-column layout with input controls on the side and output in the main area</td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>tabsetPanel()</code></td>
 <td>Separate tabs for the different visualization</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>selectInput()</code></td>
-<td colspan="2">Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2) | |</td>
+<td>Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2)</td>
 </tr>
 <tr class="even">
 <td><code>textInput()</code> or <code>selectizeInput()</code></td>
 <td>Allows one or more selection sender/receiver</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>checkboxGroupInput()</code></td>
 <td>Select multiple weeks or types</td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>dateRangeInput()</code></td>
 <td>Filter by date range</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td><code>sliderInput()</code></td>
 <td>Filter by hour of day (0–23)</td>
-<td></td>
 </tr>
 <tr class="even">
 <td><code>plotOutput()</code></td>
-<td>Static ggplot visualizations (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
-<td></td>
+<td>Static ggplot visualizations (content to be defined under <code>Server \&lt;- function segment</code>)</td>
 </tr>
 <tr class="odd">
 <td><code>dataTableOutput()</code></td>
-<td>Render data table (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
-<td></td>
+<td>Render data table (content to be defined under <code>Server \&lt;- function segment</code>)</td>
 </tr>
 <tr class="even">
 <td><code>visNetworkOutput()</code></td>
-<td>Interactive network graph (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
-<td></td>
+<td>Interactive network graph (content to be defined under <code>Server \&lt;- function segment</code>)</td>
 </tr>
 <tr class="odd">
 <td><code>actionButton()</code></td>
 <td>Apply filters</td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -615,110 +602,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>comm_full <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/communications_full.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(comm_full,<span class="at">n=</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>comm_full <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/communications_full.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 1%">
-<col style="width: 5%">
-<col style="width: 1%">
-<col style="width: 2%">
-<col style="width: 2%">
-<col style="width: 5%">
-<col style="width: 58%">
-<col style="width: 3%">
-<col style="width: 2%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 1%">
-<col style="width: 1%">
-<col style="width: 1%">
-<col style="width: 2%">
-<col style="width: 2%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">sender</th>
-<th style="text-align: left;">message_id</th>
-<th style="text-align: left;">type.x</th>
-<th style="text-align: left;">receiver</th>
-<th style="text-align: left;">type.y</th>
-<th style="text-align: left;">timestamp</th>
-<th style="text-align: left;">content</th>
-<th style="text-align: left;">sender_label</th>
-<th style="text-align: left;">sender_type</th>
-<th style="text-align: left;">receiver_label</th>
-<th style="text-align: left;">receiver_type</th>
-<th style="text-align: left;">weekday</th>
-<th style="text-align: right;">hour</th>
-<th style="text-align: right;">week</th>
-<th style="text-align: left;">week_label</th>
-<th style="text-align: left;">date</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Sam</td>
-<td style="text-align: left;">Event_Communication_370</td>
-<td style="text-align: left;">sent</td>
-<td style="text-align: left;">Kelly</td>
-<td style="text-align: left;">received</td>
-<td style="text-align: left;">2040-10-05T10:48:00Z</td>
-<td style="text-align: left;">Hey Kelly, it’s Sam. This permit approval seems fishy. Could you get details on who signed off on it while you’re at the harbor? I need to understand these ‘special access corridors’ before my meeting with Elise tomorrow.</td>
-<td style="text-align: left;">Sam</td>
-<td style="text-align: left;">Person</td>
-<td style="text-align: left;">Kelly</td>
-<td style="text-align: left;">Person</td>
-<td style="text-align: left;">Friday</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: left;">Week 1</td>
-<td style="text-align: left;">2040-10-05</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Kelly</td>
-<td style="text-align: left;">Event_Communication_3</td>
-<td style="text-align: left;">sent</td>
-<td style="text-align: left;">Sam</td>
-<td style="text-align: left;">received</td>
-<td style="text-align: left;">2040-10-01T08:13:00Z</td>
-<td style="text-align: left;">Sam, it’s Kelly! Let’s meet at Sunrise Point at 7 AM for birdwatching. Bring your new binoculars and some water. I’ve heard there might be some rare shorebirds passing through this weekend. Can’t wait!</td>
-<td style="text-align: left;">Kelly</td>
-<td style="text-align: left;">Person</td>
-<td style="text-align: left;">Sam</td>
-<td style="text-align: left;">Person</td>
-<td style="text-align: left;">Monday</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: left;">Week 1</td>
-<td style="text-align: left;">2040-10-01</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Kelly</td>
-<td style="text-align: left;">Event_Communication_443</td>
-<td style="text-align: left;">sent</td>
-<td style="text-align: left;">Sam</td>
-<td style="text-align: left;">received</td>
-<td style="text-align: left;">2040-10-07T08:11:00Z</td>
-<td style="text-align: left;">Hey Sam, it’s Kelly! Got some photos of those crates - definitely marked ‘fragile’ and ‘handle with care.’ Neptune’s crew is being super secretive. They’re using special loading equipment I’ve never seen before. See you at 7 for birdwatching!</td>
-<td style="text-align: left;">Kelly</td>
-<td style="text-align: left;">Person</td>
-<td style="text-align: left;">Sam</td>
-<td style="text-align: left;">Person</td>
-<td style="text-align: left;">Sunday</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: left;">Week 1</td>
-<td style="text-align: left;">2040-10-07</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 <section id="temporal-pattern" class="level4">
-<h4 class="anchored" data-anchor-id="temporal-pattern"><span style="color:#d496d4; background:none;">4.1.5.1</span> Temporal Pattern</h4>
+<h4 class="anchored" data-anchor-id="temporal-pattern"><span style="color:#d496d4; background:none;">4.1.5.1</span> <strong>Temporal Pattern</strong></h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -743,7 +631,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="communication-heatmap" class="level4">
-<h4 class="anchored" data-anchor-id="communication-heatmap"><span style="color:#d496d4; background:none;">4.1.5.2</span> Communication Heatmap</h4>
+<h4 class="anchored" data-anchor-id="communication-heatmap"><span style="color:#d496d4; background:none;">4.1.5.2</span> <strong>Communication Heatmap</strong></h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -768,7 +656,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="communication-network-graph" class="level4">
-<h4 class="anchored" data-anchor-id="communication-network-graph"><span style="color:#d496d4; background:none;">4.1.5.3</span> Communication Network Graph</h4>
+<h4 class="anchored" data-anchor-id="communication-network-graph"><span style="color:#d496d4; background:none;">4.1.5.3</span> <strong>Communication Network Graph</strong></h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -792,8 +680,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-3be6d3f6f0e626469ef2" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-3be6d3f6f0e626469ef2">{"x":{"nodes":{"name":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"id":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"label":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"group":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"]},"edges":{"from":["Boss","Boss","Boss","Boss","Clepper Jensen","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Defender","Defender","Defender","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","Elise","Elise","Elise","Glitters Team","Glitters Team","Glitters Team","Glitters Team","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Kelly","Knowles","Knowles","Knowles","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Marlin","Marlin","Marlin","Marlin","Marlin","Miranda Jordan","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Northern Light","Northern Light","Northern Light","Northern Light","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Osprey","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Sailor Shifts Team","Sailor Shifts Team","Sam","Samantha Blake","Samantha Blake","Samantha Blake","Seawatch","Seawatch","Seawatch","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Serenity","Serenity","Serenity","Serenity","Small Fry","Small Fry","Small Fry","The Accountant","The Accountant","The Intern","The Intern","The Intern","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Middleman","The Middleman","The Middleman","The Middleman","The Middleman","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping"],"to":["Mako","Mrs. Money","The Middleman","V. Miesel Shipping","Miranda Jordan","Boss","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Remora","V. Miesel Shipping","Mako","Reef Guardian","Seawatch","EcoVigil","Horizon","Liam Thorne","Oceanus City Council","Reef Guardian","Sentinel","Liam Thorne","Nadia Conti","V. Miesel Shipping","Boss","Northern Light","Remora","Samantha Blake","EcoVigil","Green Guardians","Horizon","Mako","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Sentinel","EcoVigil","Knowles","Mako","Nadia Conti","Oceanus City Council","Osprey","Mako","Marlin","Neptune","Northern Light","Oceanus City Council","Remora","Seawatch","Serenity","EcoVigil","Green Guardians","Mako","Oceanus City Council","Reef Guardian","Seawatch","Sentinel","Sam","Davis","Haacklee Harbor","Mako","Boss","EcoVigil","Elise","Nadia Conti","Oceanus City Council","Boss","Davis","Elise","Himark Harbor","Marlin","Neptune","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Sailor Shifts Team","Samantha Blake","Sentinel","Serenity","V. Miesel Shipping","Himark Harbor","Mako","Oceanus City Council","Reef Guardian","Remora","Clepper Jensen","Boss","Mako","Neptune","Remora","The Intern","The Middleman","V. Miesel Shipping","Haacklee Harbor","Liam Thorne","Marlin","Neptune","Oceanus City Council","V. Miesel Shipping","City Officials","Davis","Elise","Himark Harbor","Mako","Nadia Conti","Reef Guardian","Remora","Serenity","V. Miesel Shipping","Green Guardians","Himark Harbor","Oceanus City Council","Sailor Shifts Team","EcoVigil","Green Guardians","Himark Harbor","Liam Thorne","Mako","Marlin","Nadia Conti","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Samantha Blake","Sentinel","Mako","Liam Thorne","Mako","Oceanus City Council","Reef Guardian","Remora","Sentinel","Defender","EcoVigil","Horizon","Mako","Marlin","Neptune","Oceanus City Council","Paackland Harbor","Port Security","Reef Guardian","Seawatch","Sentinel","Serenity","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Paackland Harbor","Rodriguez","Sailor Shifts Team","V. Miesel Shipping","Boss","Davis","Mrs. Money","Nadia Conti","Remora","Rodriguez","Sailor Shifts Team","Nadia Conti","Remora","Kelly","Mako","Oceanus City Council","Sailor Shifts Team","Green Guardians","Himark Harbor","Reef Guardian","Green Guardians","Horizon","Mako","Nadia Conti","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Himark Harbor","Mako","Neptune","Reef Guardian","Davis","Mako","Remora","Boss","The Middleman","Mrs. Money","The Intern","The Lookout","Green Guardians","Horizon","Reef Guardian","Sam","Sentinel","The Intern","Boss","Liam Thorne","Mrs. Money","Paackland Harbor","The Accountant","Boss","Davis","Elise","Mako","Mrs. Money","Nadia Conti","Neptune","Remora","Rodriguez","V. Miesel Shipping"],"value":[1,4,3,1,20,1,6,1,5,5,1,4,2,1,3,1,2,5,2,1,2,2,1,3,1,1,1,1,1,3,12,4,2,1,12,1,6,2,1,1,1,1,1,2,1,3,2,5,1,7,3,3,3,3,2,1,1,1,2,4,2,2,1,1,1,1,1,2,6,2,1,1,4,1,3,1,2,2,2,5,1,4,4,1,1,2,1,1,1,2,18,6,1,2,1,5,3,1,1,2,1,2,1,1,1,2,3,1,7,1,1,9,1,8,1,1,1,1,1,6,5,8,2,1,1,1,1,6,2,2,1,6,1,3,2,2,4,4,2,4,3,2,3,1,4,2,1,3,3,3,3,1,1,9,1,6,3,1,2,1,3,3,1,1,1,4,1,1,1,1,3,3,3,1,1,1,2,5,5,1,2,1,1,1,2,2,2,2,2,1,4,2,1,15,1,8,3,5,1,8,4,12,4,2,3,1,3,1,1,1,1,1,1,4,2,1,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to"},"layout":{"randomSeed":123},"physics":{"stabilization":true},"interaction":{"navigationButtons":true,"zoomSpeed":1}},"groups":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","legend":{"width":0.2,"useGroups":true,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true}},"evals":[],"jsHooks":[]}</script>
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-a4a3338b38423f371026" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a4a3338b38423f371026">{"x":{"nodes":{"name":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"id":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"label":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"group":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"]},"edges":{"from":["Boss","Boss","Boss","Boss","Clepper Jensen","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Defender","Defender","Defender","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","Elise","Elise","Elise","Glitters Team","Glitters Team","Glitters Team","Glitters Team","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Kelly","Knowles","Knowles","Knowles","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Marlin","Marlin","Marlin","Marlin","Marlin","Miranda Jordan","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Northern Light","Northern Light","Northern Light","Northern Light","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Osprey","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Sailor Shifts Team","Sailor Shifts Team","Sam","Samantha Blake","Samantha Blake","Samantha Blake","Seawatch","Seawatch","Seawatch","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Serenity","Serenity","Serenity","Serenity","Small Fry","Small Fry","Small Fry","The Accountant","The Accountant","The Intern","The Intern","The Intern","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Middleman","The Middleman","The Middleman","The Middleman","The Middleman","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping"],"to":["Mako","Mrs. Money","The Middleman","V. Miesel Shipping","Miranda Jordan","Boss","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Remora","V. Miesel Shipping","Mako","Reef Guardian","Seawatch","EcoVigil","Horizon","Liam Thorne","Oceanus City Council","Reef Guardian","Sentinel","Liam Thorne","Nadia Conti","V. Miesel Shipping","Boss","Northern Light","Remora","Samantha Blake","EcoVigil","Green Guardians","Horizon","Mako","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Sentinel","EcoVigil","Knowles","Mako","Nadia Conti","Oceanus City Council","Osprey","Mako","Marlin","Neptune","Northern Light","Oceanus City Council","Remora","Seawatch","Serenity","EcoVigil","Green Guardians","Mako","Oceanus City Council","Reef Guardian","Seawatch","Sentinel","Sam","Davis","Haacklee Harbor","Mako","Boss","EcoVigil","Elise","Nadia Conti","Oceanus City Council","Boss","Davis","Elise","Himark Harbor","Marlin","Neptune","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Sailor Shifts Team","Samantha Blake","Sentinel","Serenity","V. Miesel Shipping","Himark Harbor","Mako","Oceanus City Council","Reef Guardian","Remora","Clepper Jensen","Boss","Mako","Neptune","Remora","The Intern","The Middleman","V. Miesel Shipping","Haacklee Harbor","Liam Thorne","Marlin","Neptune","Oceanus City Council","V. Miesel Shipping","City Officials","Davis","Elise","Himark Harbor","Mako","Nadia Conti","Reef Guardian","Remora","Serenity","V. Miesel Shipping","Green Guardians","Himark Harbor","Oceanus City Council","Sailor Shifts Team","EcoVigil","Green Guardians","Himark Harbor","Liam Thorne","Mako","Marlin","Nadia Conti","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Samantha Blake","Sentinel","Mako","Liam Thorne","Mako","Oceanus City Council","Reef Guardian","Remora","Sentinel","Defender","EcoVigil","Horizon","Mako","Marlin","Neptune","Oceanus City Council","Paackland Harbor","Port Security","Reef Guardian","Seawatch","Sentinel","Serenity","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Paackland Harbor","Rodriguez","Sailor Shifts Team","V. Miesel Shipping","Boss","Davis","Mrs. Money","Nadia Conti","Remora","Rodriguez","Sailor Shifts Team","Nadia Conti","Remora","Kelly","Mako","Oceanus City Council","Sailor Shifts Team","Green Guardians","Himark Harbor","Reef Guardian","Green Guardians","Horizon","Mako","Nadia Conti","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Himark Harbor","Mako","Neptune","Reef Guardian","Davis","Mako","Remora","Boss","The Middleman","Mrs. Money","The Intern","The Lookout","Green Guardians","Horizon","Reef Guardian","Sam","Sentinel","The Intern","Boss","Liam Thorne","Mrs. Money","Paackland Harbor","The Accountant","Boss","Davis","Elise","Mako","Mrs. Money","Nadia Conti","Neptune","Remora","Rodriguez","V. Miesel Shipping"],"value":[1,4,3,1,20,1,6,1,5,5,1,4,2,1,3,1,2,5,2,1,2,2,1,3,1,1,1,1,1,3,12,4,2,1,12,1,6,2,1,1,1,1,1,2,1,3,2,5,1,7,3,3,3,3,2,1,1,1,2,4,2,2,1,1,1,1,1,2,6,2,1,1,4,1,3,1,2,2,2,5,1,4,4,1,1,2,1,1,1,2,18,6,1,2,1,5,3,1,1,2,1,2,1,1,1,2,3,1,7,1,1,9,1,8,1,1,1,1,1,6,5,8,2,1,1,1,1,6,2,2,1,6,1,3,2,2,4,4,2,4,3,2,3,1,4,2,1,3,3,3,3,1,1,9,1,6,3,1,2,1,3,3,1,1,1,4,1,1,1,1,3,3,3,1,1,1,2,5,5,1,2,1,1,1,2,2,2,2,2,1,4,2,1,15,1,8,3,5,1,8,4,12,4,2,3,1,3,1,1,1,1,1,1,4,2,1,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to"},"layout":{"randomSeed":123},"physics":{"stabilization":true},"interaction":{"navigationButtons":true,"zoomSpeed":1}},"groups":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","legend":{"width":0.2,"useGroups":true,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -801,7 +689,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="shiny-app-panel-tabs-ui-design" class="level3">
 <h3 class="anchored" data-anchor-id="shiny-app-panel-tabs-ui-design"><span style="color:#d496d4; background:none;">4.1.6</span> Shiny App Panel Tabs UI Design</h3>
 <section id="temporal-pattern-1" class="level4">
-<h4 class="anchored" data-anchor-id="temporal-pattern-1"><span style="color:#d496d4; background:none;">4.1.6.1</span> Temporal Pattern</h4>
+<h4 class="anchored" data-anchor-id="temporal-pattern-1"><span style="color:#d496d4; background:none;">4.1.6.1</span> <strong>Temporal Pattern</strong></h4>
 <p>Purpose: Reveal day-to-day communication rhythms.</p>
 <p>Design Elements:</p>
 <ul>
@@ -817,7 +705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="heatmap" class="level4">
-<h4 class="anchored" data-anchor-id="heatmap"><span style="color:#d496d4; background:none;">4.1.6.2</span> Heatmap</h4>
+<h4 class="anchored" data-anchor-id="heatmap"><span style="color:#d496d4; background:none;">4.1.6.2</span> <strong>Heatmap</strong></h4>
 <p>Purpose: Explore patterns by time-of-day and communication density.</p>
 <p>Design Elements:</p>
 <ul>
@@ -832,7 +720,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="communication-network" class="level4">
-<h4 class="anchored" data-anchor-id="communication-network"><span style="color:#d496d4; background:none;">4.1.6.3</span> Communication Network</h4>
+<h4 class="anchored" data-anchor-id="communication-network"><span style="color:#d496d4; background:none;">4.1.6.3</span> <strong>Communication Network</strong></h4>
 <p>Purpose: Visualize the social graph of communication.</p>
 <p>Design Elements:</p>
 <ul>
@@ -847,7 +735,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="receipts" class="level4">
-<h4 class="anchored" data-anchor-id="receipts"><span style="color:#d496d4; background:none;">4.1.6.4</span> Receipts</h4>
+<h4 class="anchored" data-anchor-id="receipts"><span style="color:#d496d4; background:none;">4.1.6.4</span> <strong>Receipts</strong></h4>
 <p>This tab allow users to read the communication messages (or as investigators we can call them receipts).</p>
 <p>Purpose: Provide a full-text view of communication logs.</p>
 <p>Design Elements:</p>
@@ -875,39 +763,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ui-objects-used-1" class="level3">
 <h3 class="anchored" data-anchor-id="ui-objects-used-1"><span style="color:#d496d4; background:none;">4.2.3</span> UI objects used</h3>
 </section>
-<section id="rpkg" class="level3">
-<h3 class="anchored" data-anchor-id="rpkg"><span style="color:#d496d4; background:none;">4.2.4</span> R packages needed for Shiny application</h3>
+<section id="r-packages-needed-for-shiny-application" class="level3">
+<h3 class="anchored" data-anchor-id="r-packages-needed-for-shiny-application"><span style="color:#d496d4; background:none;">4.2.4</span> R packages needed for Shiny application</h3>
 </section>
 <section id="test-the-specific-r-codes-can-be-run-1" class="level3">
 <h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run-1"><span style="color:#d496d4; background:none;">4.2.5</span> Test the specific R codes can be run</h3>
 <section id="module-1" class="level4">
-<h4 class="anchored" data-anchor-id="module-1"><span style="color:#d496d4; background:none;">4.2.5.1</span> Module 1</h4>
+<h4 class="anchored" data-anchor-id="module-1"><span style="color:#d496d4; background:none;">4.2.5.1</span> <strong>Module 1</strong></h4>
 </section>
 <section id="module-2" class="level4">
-<h4 class="anchored" data-anchor-id="module-2"><span style="color:#d496d4; background:none;">4.2.5.2</span> Module 2</h4>
-</section>
-<section id="module-3" class="level4">
-<h4 class="anchored" data-anchor-id="module-3"><span style="color:#d496d4; background:none;">4.2.5.3</span> Module 3</h4>
+<h4 class="anchored" data-anchor-id="module-2"><span style="color:#d496d4; background:none;">4.2.5.2</span> <strong>Module 2</strong></h4>
 </section>
 </section>
-<section id="shiny-app-panel-tabs" class="level3">
-<h3 class="anchored" data-anchor-id="shiny-app-panel-tabs"><span style="color:#d496d4; background:none;">4.2.6</span> Shiny App Panel Tabs</h3>
+<section id="shiny-app-panel-tabs-ui-design-1" class="level3">
+<h3 class="anchored" data-anchor-id="shiny-app-panel-tabs-ui-design-1"><span style="color:#d496d4; background:none;">4.2.6</span> Shiny App Panel Tabs UI Design</h3>
 <section id="module-1-1" class="level4">
-<h4 class="anchored" data-anchor-id="module-1-1"><span style="color:#d496d4; background:none;">4.2.6.1</span> Module 1</h4>
+<h4 class="anchored" data-anchor-id="module-1-1"><span style="color:#d496d4; background:none;">4.2.6.1</span> <strong>Module 1</strong></h4>
 </section>
 <section id="module-2-1" class="level4">
-<h4 class="anchored" data-anchor-id="module-2-1"><span style="color:#d496d4; background:none;">4.2.6.2</span> Module 2</h4>
-</section>
-<section id="module-3-1" class="level4">
-<h4 class="anchored" data-anchor-id="module-3-1"><span style="color:#d496d4; background:none;">4.2.6.3</span> Module 3</h4>
-</section>
-<section id="module-4" class="level4">
-<h4 class="anchored" data-anchor-id="module-4"><span style="color:#d496d4; background:none;">4.2.6.4</span> Module 4</h4>
+<h4 class="anchored" data-anchor-id="module-2-1"><span style="color:#d496d4; background:none;">4.2.6.2</span> <strong>Module 2</strong></h4>
 </section>
 </section>
 </section>
-<section id="app2" class="level2">
-<h2 class="anchored" data-anchor-id="app2"><span style="color:#d496d4; background:none;">4.3</span> App 2: Relationship Clusters and Pseudonyms</h2>
+<section id="app-2-relationship-clusters-and-pseudonyms" class="level2">
+<h2 class="anchored" data-anchor-id="app-2-relationship-clusters-and-pseudonyms"><span style="color:#d496d4; background:none;">4.3</span> App 2: Relationship Clusters and Pseudonyms</h2>
 <section id="ui-design-goals-2" class="level3">
 <h3 class="anchored" data-anchor-id="ui-design-goals-2"><span style="color:#d496d4; background:none;">4.3.1</span> UI Design Goals</h3>
 </section>
@@ -917,34 +796,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ui-objects-used-2" class="level3">
 <h3 class="anchored" data-anchor-id="ui-objects-used-2"><span style="color:#d496d4; background:none;">4.3.3</span> UI objects used</h3>
 </section>
-<section id="rpkg" class="level3">
-<h3 class="anchored" data-anchor-id="rpkg"><span style="color:#d496d4; background:none;">4.3.4</span> R packages needed for Shiny application</h3>
+<section id="r-packages-needed-for-shiny-application-1" class="level3">
+<h3 class="anchored" data-anchor-id="r-packages-needed-for-shiny-application-1"><span style="color:#d496d4; background:none;">4.3.4</span> R packages needed for Shiny application</h3>
 </section>
 <section id="test-the-specific-r-codes-can-be-run-2" class="level3">
 <h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run-2"><span style="color:#d496d4; background:none;">4.3.5</span> Test the specific R codes can be run</h3>
 <section id="module-1-2" class="level4">
-<h4 class="anchored" data-anchor-id="module-1-2"><span style="color:#d496d4; background:none;">4.3.5.1</span> Module 1</h4>
+<h4 class="anchored" data-anchor-id="module-1-2"><span style="color:#d496d4; background:none;">4.3.5.1</span> <strong>Module 1</strong></h4>
 </section>
 <section id="module-2-2" class="level4">
-<h4 class="anchored" data-anchor-id="module-2-2"><span style="color:#d496d4; background:none;">4.3.5.2</span> Module 2</h4>
+<h4 class="anchored" data-anchor-id="module-2-2"><span style="color:#d496d4; background:none;">4.3.5.2</span> <strong>Module 2</strong></h4>
 </section>
-<section id="module-3-2" class="level4">
-<h4 class="anchored" data-anchor-id="module-3-2"><span style="color:#d496d4; background:none;">4.3.5.3</span> Module 3</h4>
+<section id="module-3" class="level4">
+<h4 class="anchored" data-anchor-id="module-3"><span style="color:#d496d4; background:none;">4.3.5.3</span> <strong>Module 3</strong></h4>
+</section>
+<section id="module-4" class="level4">
+<h4 class="anchored" data-anchor-id="module-4"><span style="color:#d496d4; background:none;">4.3.5.4</span> <strong>Module 4</strong></h4>
+</section>
+<section id="module-5" class="level4">
+<h4 class="anchored" data-anchor-id="module-5"><span style="color:#d496d4; background:none;">4.3.5.5</span> <strong>Module 5</strong></h4>
+</section>
+<section id="module-6" class="level4">
+<h4 class="anchored" data-anchor-id="module-6"><span style="color:#d496d4; background:none;">4.3.5.6</span> <strong>Module 6</strong></h4>
 </section>
 </section>
-<section id="shiny-app-panel-tabs-1" class="level3">
-<h3 class="anchored" data-anchor-id="shiny-app-panel-tabs-1"><span style="color:#d496d4; background:none;">4.3.6</span> Shiny App Panel Tabs</h3>
+<section id="shiny-app-panel-tabs-ui-design-2" class="level3">
+<h3 class="anchored" data-anchor-id="shiny-app-panel-tabs-ui-design-2"><span style="color:#d496d4; background:none;">4.3.6</span> Shiny App Panel Tabs UI Design</h3>
 <section id="module-1-3" class="level4">
-<h4 class="anchored" data-anchor-id="module-1-3"><span style="color:#d496d4; background:none;">4.3.6.1</span> Module 1</h4>
+<h4 class="anchored" data-anchor-id="module-1-3"><span style="color:#d496d4; background:none;">4.3.6.1</span> <strong>Module 1</strong></h4>
 </section>
 <section id="module-2-3" class="level4">
-<h4 class="anchored" data-anchor-id="module-2-3"><span style="color:#d496d4; background:none;">4.3.6.2</span> Module 2</h4>
+<h4 class="anchored" data-anchor-id="module-2-3"><span style="color:#d496d4; background:none;">4.3.6.2</span> <strong>Module 2</strong></h4>
 </section>
-<section id="module-3-3" class="level4">
-<h4 class="anchored" data-anchor-id="module-3-3"><span style="color:#d496d4; background:none;">4.3.6.3</span> Module 3</h4>
+<section id="module-3-1" class="level4">
+<h4 class="anchored" data-anchor-id="module-3-1"><span style="color:#d496d4; background:none;">4.3.6.3</span> <strong>Module 3</strong></h4>
 </section>
 <section id="module-4-1" class="level4">
-<h4 class="anchored" data-anchor-id="module-4-1"><span style="color:#d496d4; background:none;">4.3.6.4</span> Module 4</h4>
+<h4 class="anchored" data-anchor-id="module-4-1"><span style="color:#d496d4; background:none;">4.3.6.4</span> <strong>Module 4</strong></h4>
+</section>
+<section id="module-5-1" class="level4">
+<h4 class="anchored" data-anchor-id="module-5-1"><span style="color:#d496d4; background:none;">4.3.6.5</span> <strong>Module 5</strong></h4>
+</section>
+<section id="module-6-1" class="level4">
+<h4 class="anchored" data-anchor-id="module-6-1"><span style="color:#d496d4; background:none;">4.3.6.6</span> <strong>Module 6</strong></h4>
 </section>
 </section>
 </section>
