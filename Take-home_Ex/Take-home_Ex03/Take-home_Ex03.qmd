@@ -330,12 +330,12 @@ Useful for identifying suspicious message contents and linking disguised persona
 
 **Scroll down and click "Update View" to load the visualization!**
 
-### View on [![](/images/Posit_logo.png){height="20"}](https://vriadi.shinyapps.io/reefwhispers_proto1/){target="_blank"}
+### View on [![](/images/Posit_logo.png){height="20"}](https://vriadi.shinyapps.io/reefwhispers_app1/){target="_blank"}
 
 ```{=html}
 <div style="width: 100%; height: 600px; padding: 0; overflow: hidden;">
   <iframe 
-    src="https://vriadi.shinyapps.io/reefwhispers_proto1/" 
+    src="https://vriadi.shinyapps.io/reefwhispers_app1/" 
     title="CMAP-RSI Explorer"
     style="width: 135%; height: 135%; transform: scale(0.75); transform-origin: top left; border: none;">
   </iframe>
