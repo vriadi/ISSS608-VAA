@@ -337,6 +337,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#r-packages-needed-for-shiny-application" id="toc-r-packages-needed-for-shiny-application" class="nav-link" data-scroll-target="#r-packages-needed-for-shiny-application"><span style="color:#d496d4; background:none;">4.2.5</span> R packages needed for Shiny application</a></li>
   <li><a href="#test-the-specific-r-codes-can-be-run" id="toc-test-the-specific-r-codes-can-be-run" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run"><span style="color:#d496d4; background:none;">4.2.6</span> Test the specific R codes can be run</a></li>
   </ul></li>
+  <li><a href="#app3" id="toc-app3" class="nav-link" data-scroll-target="#app3"><span style="color:#d496d4; background:none;">4.3</span> App 3: Time Series Analysis and Social Network Graph</a>
+  <ul class="collapse">
+  <li><a href="#ui-design-goals-2" id="toc-ui-design-goals-2" class="nav-link" data-scroll-target="#ui-design-goals-2"><span style="color:#d496d4; background:none;">4.3.1</span> UI Design Goals</a></li>
+  <li><a href="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2" id="toc-parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2" class="nav-link" data-scroll-target="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2"><span style="color:#d496d4; background:none;">4.3.2</span> Parameters and outputs that will be exposed on the Shiny applications</a></li>
+  <li><a href="#shiny-app-panel-tabs-ui-design-2" id="toc-shiny-app-panel-tabs-ui-design-2" class="nav-link" data-scroll-target="#shiny-app-panel-tabs-ui-design-2"><span style="color:#d496d4; background:none;">4.3.3</span> Shiny App Panel Tabs UI Design</a></li>
+  <li><a href="#ui-objects-used-2" id="toc-ui-objects-used-2" class="nav-link" data-scroll-target="#ui-objects-used-2"><span style="color:#d496d4; background:none;">4.3.4</span> UI objects used</a></li>
+  <li><a href="#r-packages-needed-for-shiny-application-1" id="toc-r-packages-needed-for-shiny-application-1" class="nav-link" data-scroll-target="#r-packages-needed-for-shiny-application-1"><span style="color:#d496d4; background:none;">4.3.5</span> R packages needed for Shiny application</a></li>
+  <li><a href="#test-the-specific-r-codes-can-be-run-1" id="toc-test-the-specific-r-codes-can-be-run-1" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run-1"><span style="color:#d496d4; background:none;">4.3.6</span> Test the specific R codes can be run</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span style="color:#d496d4; background:none;">5</span> Reference</a>
   <ul class="collapse">
@@ -426,7 +435,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="uidesign" class="level1">
 <h1><span style="color:#d496d4; background:none;">4</span> UI Design</h1>
-<p>According to <a href="https://www.uxdesigninstitute.com/blog/guide-to-the-ui-design-process/">uxdesigninstitute</a> “designing beautiful, functional user interfaces is a (sometimes lengthy) process”. And <a href="https://designlab.com/blog/what-is-the-ux-design-process">designlab</a> break down the UX design process into easy-to-follow steps. First two is to <strong>Define</strong> and <strong>Research</strong> which we have covered in <a href="#objective">Chapter 2</a>. Third is <strong>Analysis &amp; Planning</strong> which we have covered in <a href="#rpkg">Chapter 3 and 4</a>. In this chapter we will cover the <strong>Design</strong> stage where we will work on layout and navigation for each of the app.</p>
+<p>According to <a href="https://www.uxdesigninstitute.com/blog/guide-to-the-ui-design-process/">uxdesigninstitute</a> “designing beautiful, functional user interfaces is a (sometimes lengthy) process”. And <a href="https://designlab.com/blog/what-is-the-ux-design-process">designlab</a> break down the UX design process into easy-to-follow steps. First two is to <strong>Define</strong> and <strong>Research</strong> which we will covered in <a href="#objective">Chapter 2</a>. Third is <strong>Analysis &amp; Planning</strong> and fourth is the <strong>Design</strong> stage which we will be covering in this chapter.</p>
 <section id="app1" class="level2">
 <h2 class="anchored" data-anchor-id="app1"><span style="color:#d496d4; background:none;">4.1</span> App 1: Temporal Pattern and Communication Network Graph App</h2>
 <section id="ui-design-goals" class="level3">
@@ -647,6 +656,364 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="test-the-specific-r-codes-can-be-run" class="level3">
 <h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run"><span style="color:#d496d4; background:none;">4.2.6</span> Test the specific R codes can be run</h3>
+</section>
+</section>
+<section id="app3" class="level2">
+<h2 class="anchored" data-anchor-id="app3"><span style="color:#d496d4; background:none;">4.3</span> App 3: Time Series Analysis and Social Network Graph</h2>
+<section id="ui-design-goals-2" class="level3">
+<h3 class="anchored" data-anchor-id="ui-design-goals-2"><span style="color:#d496d4; background:none;">4.3.1</span> UI Design Goals</h3>
+<p><strong>1. Clarity and Visual Hierarchy: Ensure users can easily understand the content and navigation</strong></p>
+<ul>
+<li>Consistent layout and side navigation menu</li>
+<li>Tabs (“Temporal Pattern,” “Direct Relationship Network,” etc.) clearly segment tasks</li>
+<li>Color-coded charts and graphs (e.g., pie chart, bar chart, network nodes) allow users to distinguish entities and event types at a glance.</li>
+</ul>
+<p><strong>2. Interactive Exploration: Enable users to dynamically filter, explore, and uncover patterns or relationships</strong></p>
+<ul>
+<li>Filters by week, date, hour, sender/receiver type and ID.</li>
+<li>Interactive graphs (e.g., relationship graph, timeline of evidence events)</li>
+<li>Tooltips and hover-over interactivity provide contextual information without cluttering the interface.</li>
+</ul>
+<p><strong>3. Temporal and Contextual Insight: Help users identify when and how Nadia Conti was involved in activities</strong></p>
+<ul>
+<li>Temporal bar charts showing frequency and patterns by hour/day.</li>
+<li>Timeline views mapping keywords, operational focus, and evidence events to specific dates.</li>
+<li>Consistent use of timeline metaphors (e.g., “Oct 8–12” axis)</li>
+</ul>
+</section>
+<section id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2" class="level3">
+<h3 class="anchored" data-anchor-id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2"><span style="color:#d496d4; background:none;">4.3.2</span> Parameters and outputs that will be exposed on the Shiny applications</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 49%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Parameters (UI Inputs)</strong></th>
+<th><strong>Outputs (UI Outputs)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Entity Filter</strong> (person, vessel, location, organization, pseudonym)</td>
+<td>- Interactive network graph (direct and inferred connections via visNetwork)</td>
+</tr>
+<tr class="even">
+<td><strong>Week Selection</strong> (Week 1 / Week 2 toggle)</td>
+<td>- Pie chart: Sent vs.&nbsp;received messages</td>
+</tr>
+<tr class="odd">
+<td><strong>Date Range Input</strong> (subset time range: e.g., 2040-10-01 to 2040-10-14)</td>
+<td>- Bar chart of message frequency by hour/day</td>
+</tr>
+<tr class="even">
+<td><strong>Hour Range Input</strong> (slider to subset by hour of day)</td>
+<td>- Temporal pattern plot of messages mentioning selected entities</td>
+</tr>
+<tr class="odd">
+<td><strong>Sender Entity Type &amp; Input</strong> (free text or dropdown)</td>
+<td>- Timeline of operational focuses and evidence events</td>
+</tr>
+<tr class="even">
+<td><strong>Receiver Entity Type &amp; Input</strong> (free text or dropdown)</td>
+<td>- Keyword frequency bar chart by selected date</td>
+</tr>
+<tr class="odd">
+<td><strong>Graph Type Selection</strong> (toggle: full network vs.&nbsp;person-to-person view)</td>
+<td>- Evidence timeline chart with hover-to-view conversations</td>
+</tr>
+<tr class="even">
+<td><strong>Message Filter by ID</strong> (dropdown/select box to inspect conversation thread)</td>
+<td>- Filtered table or tooltip displaying sender, receiver, message, and timestamp</td>
+</tr>
+<tr class="odd">
+<td><strong>Tab Selection</strong> (Temporal Pattern, Direct Relationship, Relationship Network, etc.)</td>
+<td>- Dynamic tab-specific visualizations based on focus (e.g., events, keywords, timelines)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="shiny-app-panel-tabs-ui-design-2" class="level3">
+<h3 class="anchored" data-anchor-id="shiny-app-panel-tabs-ui-design-2"><span style="color:#d496d4; background:none;">4.3.3</span> Shiny App Panel Tabs UI Design</h3>
+<section id="overview-and-temporal-of-nadia-contis-activity" class="level4">
+<h4 class="anchored" data-anchor-id="overview-and-temporal-of-nadia-contis-activity"><span style="color:#d496d4; background:none;">4.3.3.1</span> <strong>Overview and Temporal of Nadia Conti’s activity</strong></h4>
+<p><strong>Purpose:</strong><br>
+Reveal Nadia Conti’s communication rhythm by analyzing message volume, frequency, and time-of-day patterns.</p>
+<p><strong>Design Elements:</strong></p>
+<ul>
+<li><strong>Pie Chart:</strong> Shows the proportion of messages sent vs.&nbsp;received by Nadia.</li>
+<li><strong>Bar Charts:</strong>
+<ul>
+<li>Communication frequency by hour and day across the selected time window.<br>
+</li>
+<li>Temporal pattern of messages that mention Nadia.</li>
+</ul></li>
+<li><strong>Interactive Controls:</strong>
+<ul>
+<li>Week selection (<code>checkboxGroupInput</code>: Week 1 / Week 2).<br>
+</li>
+<li>Date range input (<code>dateRangeInput</code>: subset to Oct 1–14, 2040).<br>
+</li>
+<li>Hour-of-day filter (<code>sliderInput</code>).</li>
+</ul></li>
+<li><strong>Text Fields &amp; Filters:</strong>
+<ul>
+<li><code>selectInput</code> for sender/receiver entity type (e.g., person, vessel, organization).</li>
+</ul></li>
+</ul>
+<p><strong>Insight:</strong><br>
+This tab helps Clepper detect <strong>temporal anomalies</strong> or bursts of communication involving Nadia — such as sharp increases in messages during suspicious hours, or leading up to events like <strong>Reef access cancellations</strong> or <strong>unexpected ship movements</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="direct-relationship-network-tab" class="level4">
+<h4 class="anchored" data-anchor-id="direct-relationship-network-tab"><span style="color:#d496d4; background:none;">4.3.3.2</span> <strong>Direct Relationship Network Tab</strong></h4>
+<p><strong>Purpose:</strong><br>
+Visualize Nadia Conti’s direct connections with individuals, organizations, vessels, and locations to understand communication flow and interaction strength.</p>
+<p><strong>Design Elements:</strong></p>
+<ul>
+<li><strong>Interactive Network Graph (<code>visNetworkOutput</code>)</strong>:
+<ul>
+<li>Displays directional links between Nadia and other entities.<br>
+</li>
+<li>Node colors differentiate entity types (e.g., person, vessel, organization, location).<br>
+</li>
+<li>Edge thickness reflects communication frequency.</li>
+</ul></li>
+<li><strong>Select by ID Dropdown (<code>selectInput</code>)</strong>:
+<ul>
+<li>Allows users to isolate and explore Nadia’s direct communication with a specific entity.</li>
+</ul></li>
+<li><strong>Filters on the Left Sidebar:</strong>
+<ul>
+<li>Date range and hour-of-day filters to refine the timeline window.<br>
+</li>
+<li>Sender and receiver type filters (e.g., vessel, city council, individual).</li>
+</ul></li>
+</ul>
+<p><strong>Insight:</strong><br>
+This view helps analysts pinpoint Nadia’s <strong>most active communication partners</strong>, detect <strong>asymmetrical message exchanges</strong> (e.g., one-way reports or commands), and highlight clusters of influence. For instance, frequent interactions with <strong>Sailor Shifts Team</strong>, <strong>Neptune</strong>, and <strong>V. Miesel Shipping</strong> may indicate operational dependencies or hidden hierarchies.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="relationship-network-tab" class="level4">
+<h4 class="anchored" data-anchor-id="relationship-network-tab"><span style="color:#d496d4; background:none;">4.3.3.3</span> <strong>Relationship Network Tab</strong></h4>
+<p><strong>Purpose:</strong><br>
+Uncover Nadia Conti’s extended network structure, including both direct and indirect communication events, to trace relationships and evidence paths.</p>
+<p><strong>Design Elements:</strong></p>
+<ul>
+<li><strong>Interactive Network Graph (<code>visNetworkOutput</code>)</strong>:
+<ul>
+<li>Visualizes full interaction web with Nadia at the center.<br>
+</li>
+<li>Shows links not only between Nadia and entities, but also among events and inferred connections.<br>
+</li>
+<li>Arrows indicate communication direction; node size and color reflect event type or role (e.g., communication logs, colleagues, vessels).</li>
+</ul></li>
+<li><strong>Select by ID Dropdown (<code>selectInput</code>)</strong>:
+<ul>
+<li>Enables investigators to filter and isolate a specific communication node or trace its related paths.</li>
+</ul></li>
+<li><strong>Entity Legend on Sidebar:</strong>
+<ul>
+<li>Helps users decode node categories: Person, Vessel, Organization, Location, Event, etc.</li>
+</ul></li>
+<li><strong>Time Filters:</strong>
+<ul>
+<li>Date and hour-of-day sliders to narrow the communication window for clarity.</li>
+</ul></li>
+</ul>
+<p><strong>Insight:</strong><br>
+This view allows analysts to trace <strong>complex interactions</strong>, uncover <strong>hidden intermediaries</strong>, and build narratives across <strong>multiple touchpoints</strong>. It’s particularly useful when linking Nadia’s communications to suspicious events like covert meetings, unusual routing, or unauthorized access involving others like <strong>Colleagues</strong>, <strong>Sailor Shifts Team</strong>, or <strong>Event_Communication_537</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/3.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="keyword-timeline-tab" class="level4">
+<h4 class="anchored" data-anchor-id="keyword-timeline-tab"><span style="color:#d496d4; background:none;">4.3.3.4</span> <strong>Keyword Timeline Tab</strong></h4>
+<p><strong>Purpose:</strong><br>
+Identify shifts in the focus of communication by analyzing frequently used keywords in Nadia-related messages, broken down by day.</p>
+<p><strong>Design Elements:</strong></p>
+<ul>
+<li><strong>Bar Chart (<code>plotOutput</code>)</strong>:
+<ul>
+<li>Displays top keywords in Nadia’s messages per selected date.<br>
+</li>
+<li>Helps highlight topic spikes or recurring themes (e.g., “reef,” “payment,” “equipment”).</li>
+</ul></li>
+<li><strong>Date Tabs (October 8–12)</strong>:
+<ul>
+<li>Allow users to navigate across individual days to track changes in message content.</li>
+</ul></li>
+<li><strong>Interactive Controls on Sidebar:</strong>
+<ul>
+<li>Week and date range selectors (<code>checkboxGroupInput</code>, <code>dateRangeInput</code>).<br>
+</li>
+<li>Hour-of-day filter (<code>sliderInput</code>) to narrow keyword search to specific communication windows.</li>
+</ul></li>
+</ul>
+<p><strong>Insight:</strong><br>
+This tab enables Clepper to <strong>detect emerging concerns</strong> or <strong>investigative leads</strong>. For example, a surge in keywords like <em>“tomorrow,” “finalize,” “reef,”</em> or <em>“mako”</em> on October 8 may indicate a prelude to operational actions such as site closures, hidden meetings, or shipment planning.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/4.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="operational-focus-tab" class="level4">
+<h4 class="anchored" data-anchor-id="operational-focus-tab"><span style="color:#d496d4; background:none;">4.3.3.5</span> <strong>Operational Focus Tab</strong></h4>
+<p><strong>Purpose:</strong><br>
+Map the progression of Nadia’s involvement in operational activities over time, categorized by event type and strategic focus.</p>
+<p><strong>Design Elements:</strong></p>
+<ul>
+<li><strong>Timeline of Operational Focus (<code>plotOutput</code>)</strong>:
+<ul>
+<li>Displays day-by-day breakdown of Nadia’s involvement in major categories such as <em>Execution Planning</em>, <em>Escalation Response</em>, <em>Surveillance</em>, and more (Oct 8–12, 2040).</li>
+</ul></li>
+<li><strong>Stacked Bar Chart (Event Types Over Time)</strong>:
+<ul>
+<li>Shows Nadia’s message volume classified by primary event types (e.g., General, Patrol, Permit, Coordination).</li>
+</ul></li>
+<li><strong>Heatmap of Actor Involvement (<code>plotOutput</code>)</strong>:
+<ul>
+<li>Reveals which individuals or groups were most frequently associated with specific event types.</li>
+</ul></li>
+<li><strong>Interactive Filters on Sidebar:</strong>
+<ul>
+<li>Week, date, and hour range filters to narrow scope.<br>
+</li>
+<li>Sender/receiver type inputs for customizing actor focus.</li>
+</ul></li>
+</ul>
+<p><strong>Insight:</strong><br>
+This view helps investigators understand Nadia’s <strong>daily roles in the broader operation</strong>, revealing potential leadership, coordination, or compliance patterns. For example, a spike in “Permit”-related activity involving <strong>V. Miesel Shipping</strong> and <strong>Nadia Conti</strong> suggests her critical role in legal maneuvering or document approvals around October 12.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/5.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="evidence-events-tab" class="level4">
+<h4 class="anchored" data-anchor-id="evidence-events-tab"><span style="color:#d496d4; background:none;">4.3.3.6</span> <strong>Evidence Events Tab</strong></h4>
+<p><strong>Purpose:</strong><br>
+Visualize and trace specific pieces of evidence involving Nadia over time, categorized by type and associated actors.</p>
+<p><strong>Design Elements:</strong></p>
+<ul>
+<li><strong>Scatter Plot Timeline (<code>plotOutput</code>)</strong>:
+<ul>
+<li>Plots individual evidence events by type (e.g., Assessment, Movement, Patrol, Administrative).<br>
+</li>
+<li>Y-axis shows event type; X-axis shows exact date/timestamp.<br>
+</li>
+<li>Each dot is interactive—hovering reveals the full conversation or description, and the actors involved.</li>
+</ul></li>
+<li><strong>Color Legend:</strong>
+<ul>
+<li>Distinguishes which parties are linked to each piece of evidence (e.g., Davis &amp; Rodriguez, Elise &amp; Nadia, Sentinel &amp; Nadia).</li>
+</ul></li>
+<li><strong>Sidebar Filters:</strong>
+<ul>
+<li>Week, date, and hour range controls help isolate specific time frames.<br>
+</li>
+<li>Sender/receiver filters narrow focus to targeted communications.</li>
+</ul></li>
+</ul>
+<p><strong>Insight:</strong><br>
+This tab helps investigators <strong>reconstruct key moments</strong> using concrete communication evidence. For instance, the blue-labeled <em>“Access_Cancellation”</em> event shows that <strong>Nadia revoked access to Nemo Reef</strong>, while pink and red markers around October 4–5 indicate possible surveillance and traffic anomalies—signaling hidden activity or pre-event coordination.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/6.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="ui-objects-used-2" class="level3">
+<h3 class="anchored" data-anchor-id="ui-objects-used-2"><span style="color:#d496d4; background:none;">4.3.4</span> UI objects used</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 77%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>UI Component</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>titlePanel()</code></td>
+<td>App’s title</td>
+</tr>
+<tr class="even">
+<td><code>sidebarLayout()</code></td>
+<td>Two-column layout with input controls on the side and output in the main area</td>
+</tr>
+<tr class="odd">
+<td><code>tabsetPanel()</code></td>
+<td>Separate tabs for different visualizations</td>
+</tr>
+<tr class="even">
+<td><code>selectInput()</code></td>
+<td>Select an entity or type (e.g., person, vessel), or filter by week (Week 1 / 2)</td>
+</tr>
+<tr class="odd">
+<td><code>textInput()</code> or <code>selectizeInput()</code></td>
+<td>Input for sender or receiver (supports free-text or multiple selection)</td>
+</tr>
+<tr class="even">
+<td><code>checkboxGroupInput()</code></td>
+<td>Select multiple weeks or entity types</td>
+</tr>
+<tr class="odd">
+<td><code>dateRangeInput()</code></td>
+<td>Filter messages by date range</td>
+</tr>
+<tr class="even">
+<td><code>sliderInput()</code></td>
+<td>Filter by hour of day (0–23)</td>
+</tr>
+<tr class="odd">
+<td><code>plotOutput()</code></td>
+<td>Display <code>ggplot2</code> visualizations (defined in the <code>server</code> function)</td>
+</tr>
+<tr class="even">
+<td><code>dataTableOutput()</code></td>
+<td>Render filtered communication tables (defined in the <code>server</code> function)</td>
+</tr>
+<tr class="odd">
+<td><code>visNetworkOutput()</code></td>
+<td>Display the interactive relationship graph (defined in the <code>server</code> function)</td>
+</tr>
+<tr class="even">
+<td><code>actionButton()</code></td>
+<td>Apply or refresh filters</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="r-packages-needed-for-shiny-application-1" class="level3">
+<h3 class="anchored" data-anchor-id="r-packages-needed-for-shiny-application-1"><span style="color:#d496d4; background:none;">4.3.5</span> R packages needed for Shiny application</h3>
+<p>To support the interactive features and visualizations in the Shiny application, the following R packages are required:</p>
+<ul>
+<li><code>shiny</code>: Builds interactive web applications directly from R.</li>
+<li><code>dplyr</code>: Provides fast, concise data wrangling using a consistent grammar.</li>
+<li>`ggplot2: Enables elegant and flexible data visualizations using the Grammar of Graphics.</li>
+<li><code>visNetwork</code>: Creates interactive network visualizations using the vis.js JavaScript library in R.</li>
+</ul>
+</section>
+<section id="test-the-specific-r-codes-can-be-run-1" class="level3">
+<h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run-1"><span style="color:#d496d4; background:none;">4.3.6</span> Test the specific R codes can be run</h3>
+<p><strong>WIP</strong></p>
 </section>
 </section>
 </section>
