@@ -20,7 +20,7 @@ Still in the same storyline with the previous [Take Home Exercise 2](https://iss
 
 # [2]{style="color:#d496d4; background:none;"} Objective {#objective}
 
-To support this investigation, a series of three Shiny applications under the ReefWhispers project will be developed to transform this data into actionable insights through visual analytics. Details will be covered in [Chapter 6: Storyboard](#storyboard) and [Chapter 7: UI Design](#uidesign).
+To support this investigation, a series of three Shiny applications under the ReefWhispers project will be developed to transform this data into actionable insights through visual analytics. Details will be covered in [Chapter 3: Storyboard](#storyboard) and [Chapter 4: UI Design](#uidesign).
 
 This take home exercise 3 objective is to:
 
