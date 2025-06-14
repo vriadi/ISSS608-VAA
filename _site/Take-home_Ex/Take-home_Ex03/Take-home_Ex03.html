@@ -346,46 +346,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview"><span style="color:#d496d4; background:none;">1</span> Overview</a></li>
   <li><a href="#objective" id="toc-objective" class="nav-link" data-scroll-target="#objective"><span style="color:#d496d4; background:none;">2</span> Objective</a></li>
-  <li><a href="#rpkg" id="toc-rpkg" class="nav-link" data-scroll-target="#rpkg"><span style="color:#d496d4; background:none;">3</span> R packages needed for Shiny application</a></li>
-  <li><a href="#test-the-specific-r-codes-can-be-run" id="toc-test-the-specific-r-codes-can-be-run" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run"><span style="color:#d496d4; background:none;">4</span> Test the specific R codes can be run</a>
+  <li><a href="#storyboard" id="toc-storyboard" class="nav-link" data-scroll-target="#storyboard"><span style="color:#d496d4; background:none;">3</span> Storyboard</a></li>
+  <li><a href="#uidesign" id="toc-uidesign" class="nav-link" data-scroll-target="#uidesign"><span style="color:#d496d4; background:none;">4</span> UI Design</a>
   <ul class="collapse">
-  <li><a href="#temporal-pattern" id="toc-temporal-pattern" class="nav-link" data-scroll-target="#temporal-pattern"><span style="color:#d496d4; background:none;">4.1</span> Temporal Pattern</a></li>
-  <li><a href="#communication-heatmap" id="toc-communication-heatmap" class="nav-link" data-scroll-target="#communication-heatmap"><span style="color:#d496d4; background:none;">4.2</span> Communication Heatmap</a></li>
-  <li><a href="#communication-network-graph" id="toc-communication-network-graph" class="nav-link" data-scroll-target="#communication-network-graph"><span style="color:#d496d4; background:none;">4.3</span> Communication Network Graph</a></li>
-  </ul></li>
-  <li><a href="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" id="toc-parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" class="nav-link" data-scroll-target="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications"><span style="color:#d496d4; background:none;">5</span> Parameters and outputs that will be exposed on the Shiny applications</a></li>
-  <li><a href="#storyboard" id="toc-storyboard" class="nav-link" data-scroll-target="#storyboard"><span style="color:#d496d4; background:none;">6</span> Storyboard</a></li>
-  <li><a href="#uidesign" id="toc-uidesign" class="nav-link" data-scroll-target="#uidesign"><span style="color:#d496d4; background:none;">7</span> UI Design</a>
+  <li><a href="#app1" id="toc-app1" class="nav-link" data-scroll-target="#app1"><span style="color:#d496d4; background:none;">4.1</span> App 1: Temporal Pattern and Communication Network Graph App</a>
   <ul class="collapse">
-  <li><a href="#app1" id="toc-app1" class="nav-link" data-scroll-target="#app1"><span style="color:#d496d4; background:none;">7.1</span> App 1: Temporal Pattern and Communication Network Graph App</a>
+  <li><a href="#ui-design-goals" id="toc-ui-design-goals" class="nav-link" data-scroll-target="#ui-design-goals"><span style="color:#d496d4; background:none;">4.1.1</span> UI Design Goals</a></li>
+  <li><a href="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" id="toc-parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" class="nav-link" data-scroll-target="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications"><span style="color:#d496d4; background:none;">4.1.2</span> Parameters and outputs that will be exposed on the Shiny applications</a></li>
+  <li><a href="#ui-objects-used" id="toc-ui-objects-used" class="nav-link" data-scroll-target="#ui-objects-used"><span style="color:#d496d4; background:none;">4.1.3</span> UI objects used</a></li>
+  <li><a href="#rpkg" id="toc-rpkg" class="nav-link" data-scroll-target="#rpkg"><span style="color:#d496d4; background:none;">4.1.4</span> R packages needed for Shiny application</a></li>
+  <li><a href="#test-the-specific-r-codes-can-be-run" id="toc-test-the-specific-r-codes-can-be-run" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run"><span style="color:#d496d4; background:none;">4.1.5</span> Test the specific R codes can be run</a></li>
+  <li><a href="#shiny-app-panel-tabs" id="toc-shiny-app-panel-tabs" class="nav-link" data-scroll-target="#shiny-app-panel-tabs"><span style="color:#d496d4; background:none;">4.1.6</span> Shiny App Panel Tabs</a></li>
+  </ul></li>
+  <li><a href="#app2" id="toc-app2" class="nav-link" data-scroll-target="#app2"><span style="color:#d496d4; background:none;">4.2</span> App 2: Relationship Clusters and Pseudonyms</a>
   <ul class="collapse">
-  <li><a href="#ui-design-goals" id="toc-ui-design-goals" class="nav-link" data-scroll-target="#ui-design-goals"><span style="color:#d496d4; background:none;">7.1.1</span> UI Design Goals</a></li>
-  <li><a href="#ui-objects-used" id="toc-ui-objects-used" class="nav-link" data-scroll-target="#ui-objects-used"><span style="color:#d496d4; background:none;">7.1.2</span> UI objects used</a></li>
-  <li><a href="#panel-tabs" id="toc-panel-tabs" class="nav-link" data-scroll-target="#panel-tabs"><span style="color:#d496d4; background:none;">7.1.3</span> Panel Tabs</a></li>
+  <li><a href="#ui-design-goals-1" id="toc-ui-design-goals-1" class="nav-link" data-scroll-target="#ui-design-goals-1"><span style="color:#d496d4; background:none;">4.2.1</span> UI Design Goals</a></li>
+  <li><a href="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1" id="toc-parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1" class="nav-link" data-scroll-target="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1"><span style="color:#d496d4; background:none;">4.2.2</span> Parameters and outputs that will be exposed on the Shiny applications</a></li>
+  <li><a href="#ui-objects-used-1" id="toc-ui-objects-used-1" class="nav-link" data-scroll-target="#ui-objects-used-1"><span style="color:#d496d4; background:none;">4.2.3</span> UI objects used</a></li>
+  <li><a href="#rpkg" id="toc-rpkg" class="nav-link" data-scroll-target="#rpkg"><span style="color:#d496d4; background:none;">4.2.4</span> R packages needed for Shiny application</a></li>
+  <li><a href="#test-the-specific-r-codes-can-be-run-1" id="toc-test-the-specific-r-codes-can-be-run-1" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run-1"><span style="color:#d496d4; background:none;">4.2.5</span> Test the specific R codes can be run</a></li>
+  <li><a href="#shiny-app-panel-tabs-1" id="toc-shiny-app-panel-tabs-1" class="nav-link" data-scroll-target="#shiny-app-panel-tabs-1"><span style="color:#d496d4; background:none;">4.2.6</span> Shiny App Panel Tabs</a></li>
   </ul></li>
-  <li><a href="#app2" id="toc-app2" class="nav-link" data-scroll-target="#app2"><span style="color:#d496d4; background:none;">7.2</span> App 2: Relationship Clusters and Pseudonyms</a>
+  <li><a href="#app2" id="toc-app2" class="nav-link" data-scroll-target="#app2"><span style="color:#d496d4; background:none;">4.3</span> App 2: Relationship Clusters and Pseudonyms</a>
   <ul class="collapse">
-  <li><a href="#ui-design-goals-1" id="toc-ui-design-goals-1" class="nav-link" data-scroll-target="#ui-design-goals-1"><span style="color:#d496d4; background:none;">7.2.1</span> UI Design Goals</a></li>
-  <li><a href="#ui-objects-used-1" id="toc-ui-objects-used-1" class="nav-link" data-scroll-target="#ui-objects-used-1"><span style="color:#d496d4; background:none;">7.2.2</span> UI objects used</a></li>
-  <li><a href="#panel-tabs-1" id="toc-panel-tabs-1" class="nav-link" data-scroll-target="#panel-tabs-1"><span style="color:#d496d4; background:none;">7.2.3</span> Panel Tabs</a></li>
-  </ul></li>
-  <li><a href="#app3" id="toc-app3" class="nav-link" data-scroll-target="#app3"><span style="color:#d496d4; background:none;">7.3</span> App 3: Time Series Analysis and Social Network Graph</a>
-  <ul class="collapse">
-  <li><a href="#ui-design-goals-2" id="toc-ui-design-goals-2" class="nav-link" data-scroll-target="#ui-design-goals-2"><span style="color:#d496d4; background:none;">7.3.1</span> UI Design Goals</a></li>
-  <li><a href="#ui-objects-used-2" id="toc-ui-objects-used-2" class="nav-link" data-scroll-target="#ui-objects-used-2"><span style="color:#d496d4; background:none;">7.3.2</span> UI objects used</a></li>
-  <li><a href="#panel-tabs-2" id="toc-panel-tabs-2" class="nav-link" data-scroll-target="#panel-tabs-2"><span style="color:#d496d4; background:none;">7.3.3</span> Panel Tabs</a></li>
+  <li><a href="#ui-design-goals-2" id="toc-ui-design-goals-2" class="nav-link" data-scroll-target="#ui-design-goals-2"><span style="color:#d496d4; background:none;">4.3.1</span> UI Design Goals</a></li>
+  <li><a href="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2" id="toc-parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2" class="nav-link" data-scroll-target="#parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2"><span style="color:#d496d4; background:none;">4.3.2</span> Parameters and outputs that will be exposed on the Shiny applications</a></li>
+  <li><a href="#ui-objects-used-2" id="toc-ui-objects-used-2" class="nav-link" data-scroll-target="#ui-objects-used-2"><span style="color:#d496d4; background:none;">4.3.3</span> UI objects used</a></li>
+  <li><a href="#rpkg" id="toc-rpkg" class="nav-link" data-scroll-target="#rpkg"><span style="color:#d496d4; background:none;">4.3.4</span> R packages needed for Shiny application</a></li>
+  <li><a href="#test-the-specific-r-codes-can-be-run-2" id="toc-test-the-specific-r-codes-can-be-run-2" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run-2"><span style="color:#d496d4; background:none;">4.3.5</span> Test the specific R codes can be run</a></li>
+  <li><a href="#shiny-app-panel-tabs-2" id="toc-shiny-app-panel-tabs-2" class="nav-link" data-scroll-target="#shiny-app-panel-tabs-2"><span style="color:#d496d4; background:none;">4.3.6</span> Shiny App Panel Tabs</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span style="color:#d496d4; background:none;">8</span> Prototype</a>
+  <li><a href="#prototype" id="toc-prototype" class="nav-link" data-scroll-target="#prototype"><span style="color:#d496d4; background:none;">5</span> Prototype</a>
   <ul class="collapse">
   <li><a href="#view-on" id="toc-view-on" class="nav-link" data-scroll-target="#view-on">View on <img src="../../images/Posit_logo.png" height="20"></a></li>
   </ul></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span style="color:#d496d4; background:none;">8</span> Reference</a>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span style="color:#d496d4; background:none;">6</span> Reference</a>
   <ul class="collapse">
-  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages"><span style="color:#d496d4; background:none;">8.1</span> R Packages</a></li>
-  <li><a href="#shiny-fuctional-specs-and-tutorials" id="toc-shiny-fuctional-specs-and-tutorials" class="nav-link" data-scroll-target="#shiny-fuctional-specs-and-tutorials"><span style="color:#d496d4; background:none;">8.2</span> Shiny Fuctional Specs and Tutorials</a></li>
-  <li><a href="#lesson-slides" id="toc-lesson-slides" class="nav-link" data-scroll-target="#lesson-slides"><span style="color:#d496d4; background:none;">8.3</span> Lesson Slides</a></li>
-  <li><a href="#shiny-fuctional-specs-and-tutorials-1" id="toc-shiny-fuctional-specs-and-tutorials-1" class="nav-link" data-scroll-target="#shiny-fuctional-specs-and-tutorials-1"><span style="color:#d496d4; background:none;">8.4</span> Shiny Fuctional Specs and Tutorials</a></li>
+  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages"><span style="color:#d496d4; background:none;">6.1</span> R Packages</a></li>
+  <li><a href="#shiny-fuctional-specs-and-tutorials" id="toc-shiny-fuctional-specs-and-tutorials" class="nav-link" data-scroll-target="#shiny-fuctional-specs-and-tutorials"><span style="color:#d496d4; background:none;">6.2</span> Shiny Fuctional Specs and Tutorials</a></li>
+  <li><a href="#lesson-slides" id="toc-lesson-slides" class="nav-link" data-scroll-target="#lesson-slides"><span style="color:#d496d4; background:none;">6.3</span> Lesson Slides</a></li>
+  <li><a href="#shiny-fuctional-specs-and-tutorials-1" id="toc-shiny-fuctional-specs-and-tutorials-1" class="nav-link" data-scroll-target="#shiny-fuctional-specs-and-tutorials-1"><span style="color:#d496d4; background:none;">6.4</span> Shiny Fuctional Specs and Tutorials</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -436,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="objective" class="level1">
 <h1><span style="color:#d496d4; background:none;">2</span> Objective</h1>
-<p>To support this investigation, a series of three Shiny applications under the ReefWhispers project will be developed to transform this data into actionable insights through visual analytics. Details will be covered in <span id="storyboard">Chapter 6: Storyboard</span> and <span id="uidesign">Chapter 7: UI Design</span>.</p>
+<p>To support this investigation, a series of three Shiny applications under the ReefWhispers project will be developed to transform this data into actionable insights through visual analytics. Details will be covered in <a href="#storyboard">Chapter 6: Storyboard</a> and <a href="#uidesign">Chapter 7: UI Design</a>.</p>
 <p>This take home exercise 3 objective is to:</p>
 <ul>
 <li>Evaluate and determine the necessary R packages needed for your Shiny application are supported in R CRAN</li>
@@ -445,8 +446,151 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Select the appropriate Shiny UI components for exposing the parameters determine above.</li>
 </ul>
 </section>
-<section id="rpkg" class="level1">
-<h1><span style="color:#d496d4; background:none;">3</span> R packages needed for Shiny application</h1>
+<section id="storyboard" class="level1">
+<h1><span style="color:#d496d4; background:none;">3</span> Storyboard</h1>
+<p><strong>The first app</strong>, <a href="#app1">Temporal Pattern and Communication Network</a>, focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section that will be further detailed in <a href="#app1">Chapter 7.1</a>. It will be focusing on:</p>
+<ul>
+<li><p>Identifying temporal patterns in communications.</p></li>
+<li><p>Revealing relationships and influence among entities (people, vessels, groups).</p></li>
+</ul>
+<p><strong>The second app</strong>, <a href="#app2">Relationship Clusters and Pseudonyms</a>, will be based on Part 2 - Relationship Cluster and Pseudonym: <a href="https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Hoa’s Take Home Exercise 2</a>. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web, and will be further detailed in <a href="#app2">Chapter 7.2</a>. It will be focusing on:</p>
+<ul>
+<li><p>Uncovering interactions and relationships between vessels and individuals in the network.</p></li>
+<li><p>Identifying tightly knit groups and inferring the dominant topics of their discussions.</p></li>
+<li><p>Detecting the use of pseudonyms and linking them back to real identities.</p></li>
+<li><p>Exploring how visual analytics can help expose common identities disguised under multiple aliases.</p></li>
+</ul>
+<p><strong>The third app</strong>, <a href="#app3">Time Series Analysis and Social Network Graph</a>, will be based on Part 3 - Time Series Analysis and Social Network graph: <a href="https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Summer’s Take Home Exercise 2</a>. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:</p>
+<ul>
+<li><p>Determining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.</p></li>
+<li><p>Summarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.</p></li>
+</ul>
+<p>This app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network, and will be elaborated in <a href="#app3">Chapter 7.3</a>.</p>
+</section>
+<section id="uidesign" class="level1">
+<h1><span style="color:#d496d4; background:none;">4</span> UI Design</h1>
+<p>According to <a href="https://www.uxdesigninstitute.com/blog/guide-to-the-ui-design-process/">uxdesigninstitute</a> “designing beautiful, functional user interfaces is a (sometimes lengthy) process”. And <a href="https://designlab.com/blog/what-is-the-ux-design-process">designlab</a> break down the UX design process into easy-to-follow steps. First two is to <strong>Define</strong> and <strong>Research</strong> which we have covered in <a href="#objective">Chapter 2</a>. Third is <strong>Analysis &amp; Planning</strong> which we have covered in <a href="#rpkg">Chapter 3 and 4</a>. In this chapter we will cover the <strong>Design</strong> stage where we will work on layout and navigation for each of the app.</p>
+<section id="app1" class="level2">
+<h2 class="anchored" data-anchor-id="app1"><span style="color:#d496d4; background:none;">4.1</span> App 1: Temporal Pattern and Communication Network Graph App</h2>
+<section id="ui-design-goals" class="level3">
+<h3 class="anchored" data-anchor-id="ui-design-goals"><span style="color:#d496d4; background:none;">4.1.1</span> UI Design Goals</h3>
+<ul>
+<li><p>Break down complexity into modular tabs for Temporal Trends, Heatmap Views, Network Graphs, and Receipts.</p></li>
+<li><p>Emphasize investigative usability—allowing Clepper to spot patterns, isolate pseudonymous actors, and visually correlate suspicious behaviors.</p></li>
+<li><p>Use interactive and expressive visuals tailored for social communication analysis.</p></li>
+</ul>
+</section>
+<section id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" class="level3">
+<h3 class="anchored" data-anchor-id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications"><span style="color:#d496d4; background:none;">4.1.2</span> Parameters and outputs that will be exposed on the Shiny applications</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 46%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Parameters (UI Inputs):</strong></th>
+<th><strong>Outputs (UI Outputs):</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ul>
+<li><p>Entity filter (e.g., person, vessel, pseudonym, organization)</p></li>
+<li><p>Week selection: Week 1 / Week 2</p></li>
+<li><p>Date range input (subset communication dates)</p></li>
+<li><p>Hour range input (to analyze time-of-day patterns)</p></li>
+<li><p>Sender / Receiver entity selection</p></li>
+<li><p>Graph type: Full vs.&nbsp;person-to-person communication</p></li>
+</ul></td>
+<td><ul>
+<li><p>Line plot of communication volume over time</p></li>
+<li><p>Heatmap of communication intensity by weekday/hour</p></li>
+<li><p>Interactive visNetwork graph</p></li>
+<li><p>Filtered table of communications (sender, receiver, message, timestamp)</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ui-objects-used" class="level3">
+<h3 class="anchored" data-anchor-id="ui-objects-used"><span style="color:#d496d4; background:none;">4.1.3</span> UI objects used</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 64%">
+<col style="width: 8%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><h1 id="ui-component"><strong>UI Component</strong></h1></td>
+<td><h1 id="purpose">Purpose</h1></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>titlePanel()</code></td>
+<td>App’s title</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>sidebarLayout()</code></td>
+<td>Two-column layout with input controls on the side and output in the main area</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>tabsetPanel()</code></td>
+<td>Separate tabs for the different visualization</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>selectInput()</code></td>
+<td colspan="2">Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2) | |</td>
+</tr>
+<tr class="even">
+<td><code>textInput()</code> or <code>selectizeInput()</code></td>
+<td>Allows one or more selection sender/receiver</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>checkboxGroupInput()</code></td>
+<td>Select multiple weeks or types</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>dateRangeInput()</code></td>
+<td>Filter by date range</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>sliderInput()</code></td>
+<td>Filter by hour of day (0–23)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>plotOutput()</code></td>
+<td>Static ggplot visualizations (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>dataTableOutput()</code></td>
+<td>Render data table (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>visNetworkOutput()</code></td>
+<td>Interactive network graph (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>actionButton()</code></td>
+<td>Apply filters</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rpkg" class="level3">
+<h3 class="anchored" data-anchor-id="rpkg"><span style="color:#d496d4; background:none;">4.1.4</span> R packages needed for Shiny application</h3>
 <p>As we will be adapting our Take Home Exercise 2 graphs to Shiny Application, we need to ensure that we have all the necessary R packages needed for this conversion such as:</p>
 <ul>
 <li><a href="https://shiny.posit.co/" target="_blank"><strong>shiny</strong></a><strong>:</strong> Easy web apps for data science without the compromises.</li>
@@ -455,8 +599,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://datastorm-open.github.io/visNetwork/" target="_blank"><strong>visNetwork</strong></a>: Enables interactive network visualizations in R using the vis.js JavaScript library.</li>
 </ul>
 </section>
-<section id="test-the-specific-r-codes-can-be-run" class="level1">
-<h1><span style="color:#d496d4; background:none;">4</span> Test the specific R codes can be run</h1>
+<section id="test-the-specific-r-codes-can-be-run" class="level3">
+<h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run"><span style="color:#d496d4; background:none;">4.1.5</span> Test the specific R codes can be run</h3>
 <p>Most preparation have been done in <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a>.</p>
 <p>In this section we will prepare and test the specific R codes can be run and return the correct output as expected.</p>
 <p>First we load the requred R packages</p>
@@ -573,8 +717,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<section id="temporal-pattern" class="level2">
-<h2 class="anchored" data-anchor-id="temporal-pattern"><span style="color:#d496d4; background:none;">4.1</span> Temporal Pattern</h2>
+<section id="temporal-pattern" class="level4">
+<h4 class="anchored" data-anchor-id="temporal-pattern"><span style="color:#d496d4; background:none;">4.1.5.1</span> Temporal Pattern</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -598,8 +742,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="communication-heatmap" class="level2">
-<h2 class="anchored" data-anchor-id="communication-heatmap"><span style="color:#d496d4; background:none;">4.2</span> Communication Heatmap</h2>
+<section id="communication-heatmap" class="level4">
+<h4 class="anchored" data-anchor-id="communication-heatmap"><span style="color:#d496d4; background:none;">4.1.5.2</span> Communication Heatmap</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -623,8 +767,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="communication-network-graph" class="level2">
-<h2 class="anchored" data-anchor-id="communication-network-graph"><span style="color:#d496d4; background:none;">4.3</span> Communication Network Graph</h2>
+<section id="communication-network-graph" class="level4">
+<h4 class="anchored" data-anchor-id="communication-network-graph"><span style="color:#d496d4; background:none;">4.1.5.3</span> Communication Network Graph</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -648,159 +792,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">visLegend</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="visNetwork html-widget html-fill-item" id="htmlwidget-f9ce420f703ab61ae1b8" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f9ce420f703ab61ae1b8">{"x":{"nodes":{"name":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"id":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"label":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"group":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"]},"edges":{"from":["Boss","Boss","Boss","Boss","Clepper Jensen","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Defender","Defender","Defender","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","Elise","Elise","Elise","Glitters Team","Glitters Team","Glitters Team","Glitters Team","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Kelly","Knowles","Knowles","Knowles","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Marlin","Marlin","Marlin","Marlin","Marlin","Miranda Jordan","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Northern Light","Northern Light","Northern Light","Northern Light","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Osprey","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Sailor Shifts Team","Sailor Shifts Team","Sam","Samantha Blake","Samantha Blake","Samantha Blake","Seawatch","Seawatch","Seawatch","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Serenity","Serenity","Serenity","Serenity","Small Fry","Small Fry","Small Fry","The Accountant","The Accountant","The Intern","The Intern","The Intern","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Middleman","The Middleman","The Middleman","The Middleman","The Middleman","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping"],"to":["Mako","Mrs. Money","The Middleman","V. Miesel Shipping","Miranda Jordan","Boss","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Remora","V. Miesel Shipping","Mako","Reef Guardian","Seawatch","EcoVigil","Horizon","Liam Thorne","Oceanus City Council","Reef Guardian","Sentinel","Liam Thorne","Nadia Conti","V. Miesel Shipping","Boss","Northern Light","Remora","Samantha Blake","EcoVigil","Green Guardians","Horizon","Mako","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Sentinel","EcoVigil","Knowles","Mako","Nadia Conti","Oceanus City Council","Osprey","Mako","Marlin","Neptune","Northern Light","Oceanus City Council","Remora","Seawatch","Serenity","EcoVigil","Green Guardians","Mako","Oceanus City Council","Reef Guardian","Seawatch","Sentinel","Sam","Davis","Haacklee Harbor","Mako","Boss","EcoVigil","Elise","Nadia Conti","Oceanus City Council","Boss","Davis","Elise","Himark Harbor","Marlin","Neptune","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Sailor Shifts Team","Samantha Blake","Sentinel","Serenity","V. Miesel Shipping","Himark Harbor","Mako","Oceanus City Council","Reef Guardian","Remora","Clepper Jensen","Boss","Mako","Neptune","Remora","The Intern","The Middleman","V. Miesel Shipping","Haacklee Harbor","Liam Thorne","Marlin","Neptune","Oceanus City Council","V. Miesel Shipping","City Officials","Davis","Elise","Himark Harbor","Mako","Nadia Conti","Reef Guardian","Remora","Serenity","V. Miesel Shipping","Green Guardians","Himark Harbor","Oceanus City Council","Sailor Shifts Team","EcoVigil","Green Guardians","Himark Harbor","Liam Thorne","Mako","Marlin","Nadia Conti","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Samantha Blake","Sentinel","Mako","Liam Thorne","Mako","Oceanus City Council","Reef Guardian","Remora","Sentinel","Defender","EcoVigil","Horizon","Mako","Marlin","Neptune","Oceanus City Council","Paackland Harbor","Port Security","Reef Guardian","Seawatch","Sentinel","Serenity","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Paackland Harbor","Rodriguez","Sailor Shifts Team","V. Miesel Shipping","Boss","Davis","Mrs. Money","Nadia Conti","Remora","Rodriguez","Sailor Shifts Team","Nadia Conti","Remora","Kelly","Mako","Oceanus City Council","Sailor Shifts Team","Green Guardians","Himark Harbor","Reef Guardian","Green Guardians","Horizon","Mako","Nadia Conti","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Himark Harbor","Mako","Neptune","Reef Guardian","Davis","Mako","Remora","Boss","The Middleman","Mrs. Money","The Intern","The Lookout","Green Guardians","Horizon","Reef Guardian","Sam","Sentinel","The Intern","Boss","Liam Thorne","Mrs. Money","Paackland Harbor","The Accountant","Boss","Davis","Elise","Mako","Mrs. Money","Nadia Conti","Neptune","Remora","Rodriguez","V. Miesel Shipping"],"value":[1,4,3,1,20,1,6,1,5,5,1,4,2,1,3,1,2,5,2,1,2,2,1,3,1,1,1,1,1,3,12,4,2,1,12,1,6,2,1,1,1,1,1,2,1,3,2,5,1,7,3,3,3,3,2,1,1,1,2,4,2,2,1,1,1,1,1,2,6,2,1,1,4,1,3,1,2,2,2,5,1,4,4,1,1,2,1,1,1,2,18,6,1,2,1,5,3,1,1,2,1,2,1,1,1,2,3,1,7,1,1,9,1,8,1,1,1,1,1,6,5,8,2,1,1,1,1,6,2,2,1,6,1,3,2,2,4,4,2,4,3,2,3,1,4,2,1,3,3,3,3,1,1,9,1,6,3,1,2,1,3,3,1,1,1,4,1,1,1,1,3,3,3,1,1,1,2,5,5,1,2,1,1,1,2,2,2,2,2,1,4,2,1,15,1,8,3,5,1,8,4,12,4,2,3,1,3,1,1,1,1,1,1,4,2,1,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to"},"layout":{"randomSeed":123},"physics":{"stabilization":true},"interaction":{"navigationButtons":true,"zoomSpeed":1}},"groups":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","legend":{"width":0.2,"useGroups":true,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true}},"evals":[],"jsHooks":[]}</script>
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-38e7a48082708be23c48" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-38e7a48082708be23c48">{"x":{"nodes":{"name":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"id":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"label":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"group":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"]},"edges":{"from":["Boss","Boss","Boss","Boss","Clepper Jensen","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Davis","Defender","Defender","Defender","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","EcoVigil","Elise","Elise","Elise","Glitters Team","Glitters Team","Glitters Team","Glitters Team","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Green Guardians","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Haacklee Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Himark Harbor","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Horizon","Kelly","Knowles","Knowles","Knowles","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Liam Thorne","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Mako","Marlin","Marlin","Marlin","Marlin","Marlin","Miranda Jordan","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Mrs. Money","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Nadia Conti","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Neptune","Northern Light","Northern Light","Northern Light","Northern Light","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Oceanus City Council","Osprey","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Paackland Harbor","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Reef Guardian","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Remora","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Rodriguez","Sailor Shifts Team","Sailor Shifts Team","Sam","Samantha Blake","Samantha Blake","Samantha Blake","Seawatch","Seawatch","Seawatch","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Sentinel","Serenity","Serenity","Serenity","Serenity","Small Fry","Small Fry","Small Fry","The Accountant","The Accountant","The Intern","The Intern","The Intern","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Lookout","The Middleman","The Middleman","The Middleman","The Middleman","The Middleman","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping","V. Miesel Shipping"],"to":["Mako","Mrs. Money","The Middleman","V. Miesel Shipping","Miranda Jordan","Boss","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Remora","V. Miesel Shipping","Mako","Reef Guardian","Seawatch","EcoVigil","Horizon","Liam Thorne","Oceanus City Council","Reef Guardian","Sentinel","Liam Thorne","Nadia Conti","V. Miesel Shipping","Boss","Northern Light","Remora","Samantha Blake","EcoVigil","Green Guardians","Horizon","Mako","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Sentinel","EcoVigil","Knowles","Mako","Nadia Conti","Oceanus City Council","Osprey","Mako","Marlin","Neptune","Northern Light","Oceanus City Council","Remora","Seawatch","Serenity","EcoVigil","Green Guardians","Mako","Oceanus City Council","Reef Guardian","Seawatch","Sentinel","Sam","Davis","Haacklee Harbor","Mako","Boss","EcoVigil","Elise","Nadia Conti","Oceanus City Council","Boss","Davis","Elise","Himark Harbor","Marlin","Neptune","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Sailor Shifts Team","Samantha Blake","Sentinel","Serenity","V. Miesel Shipping","Himark Harbor","Mako","Oceanus City Council","Reef Guardian","Remora","Clepper Jensen","Boss","Mako","Neptune","Remora","The Intern","The Middleman","V. Miesel Shipping","Haacklee Harbor","Liam Thorne","Marlin","Neptune","Oceanus City Council","V. Miesel Shipping","City Officials","Davis","Elise","Himark Harbor","Mako","Nadia Conti","Reef Guardian","Remora","Serenity","V. Miesel Shipping","Green Guardians","Himark Harbor","Oceanus City Council","Sailor Shifts Team","EcoVigil","Green Guardians","Himark Harbor","Liam Thorne","Mako","Marlin","Nadia Conti","Northern Light","Oceanus City Council","Paackland Harbor","Reef Guardian","Samantha Blake","Sentinel","Mako","Liam Thorne","Mako","Oceanus City Council","Reef Guardian","Remora","Sentinel","Defender","EcoVigil","Horizon","Mako","Marlin","Neptune","Oceanus City Council","Paackland Harbor","Port Security","Reef Guardian","Seawatch","Sentinel","Serenity","Davis","Himark Harbor","Mako","Nadia Conti","Neptune","Paackland Harbor","Rodriguez","Sailor Shifts Team","V. Miesel Shipping","Boss","Davis","Mrs. Money","Nadia Conti","Remora","Rodriguez","Sailor Shifts Team","Nadia Conti","Remora","Kelly","Mako","Oceanus City Council","Sailor Shifts Team","Green Guardians","Himark Harbor","Reef Guardian","Green Guardians","Horizon","Mako","Nadia Conti","Oceanus City Council","Paackland Harbor","Reef Guardian","Seawatch","Himark Harbor","Mako","Neptune","Reef Guardian","Davis","Mako","Remora","Boss","The Middleman","Mrs. Money","The Intern","The Lookout","Green Guardians","Horizon","Reef Guardian","Sam","Sentinel","The Intern","Boss","Liam Thorne","Mrs. Money","Paackland Harbor","The Accountant","Boss","Davis","Elise","Mako","Mrs. Money","Nadia Conti","Neptune","Remora","Rodriguez","V. Miesel Shipping"],"value":[1,4,3,1,20,1,6,1,5,5,1,4,2,1,3,1,2,5,2,1,2,2,1,3,1,1,1,1,1,3,12,4,2,1,12,1,6,2,1,1,1,1,1,2,1,3,2,5,1,7,3,3,3,3,2,1,1,1,2,4,2,2,1,1,1,1,1,2,6,2,1,1,4,1,3,1,2,2,2,5,1,4,4,1,1,2,1,1,1,2,18,6,1,2,1,5,3,1,1,2,1,2,1,1,1,2,3,1,7,1,1,9,1,8,1,1,1,1,1,6,5,8,2,1,1,1,1,6,2,2,1,6,1,3,2,2,4,4,2,4,3,2,3,1,4,2,1,3,3,3,3,1,1,9,1,6,3,1,2,1,3,3,1,1,1,4,1,1,1,1,3,3,3,1,1,1,2,5,5,1,2,1,1,1,2,2,2,2,2,1,4,2,1,15,1,8,3,5,1,8,4,12,4,2,3,1,3,1,1,1,1,1,1,4,2,1,2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot"},"manipulation":{"enabled":false},"edges":{"arrows":"to"},"layout":{"randomSeed":123},"physics":{"stabilization":true},"interaction":{"navigationButtons":true,"zoomSpeed":1}},"groups":["Boss","Clepper Jensen","Davis","Defender","EcoVigil","Elise","Glitters Team","Green Guardians","Haacklee Harbor","Himark Harbor","Horizon","Kelly","Knowles","Liam Thorne","Mako","Marlin","Miranda Jordan","Mrs. Money","Nadia Conti","Neptune","Northern Light","Oceanus City Council","Osprey","Paackland Harbor","Reef Guardian","Remora","Rodriguez","Sailor Shifts Team","Sam","Samantha Blake","Seawatch","Sentinel","Serenity","Small Fry","The Accountant","The Intern","The Lookout","The Middleman","V. Miesel Shipping","City Officials","Port Security"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","legend":{"width":0.2,"useGroups":true,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 </section>
-<section id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications" class="level1">
-<h1><span style="color:#d496d4; background:none;">5</span> Parameters and outputs that will be exposed on the Shiny applications</h1>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 46%">
-<col style="width: 53%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Parameters (UI Inputs):</strong></th>
-<th><strong>Outputs (UI Outputs):</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><ul>
-<li><p>Entity filter (e.g., person, vessel, pseudonym, organization)</p></li>
-<li><p>Week selection: Week 1 / Week 2</p></li>
-<li><p>Date range input (subset communication dates)</p></li>
-<li><p>Hour range input (to analyze time-of-day patterns)</p></li>
-<li><p>Sender / Receiver entity selection</p></li>
-<li><p>Graph type: Full vs.&nbsp;person-to-person communication</p></li>
-</ul></td>
-<td><ul>
-<li><p>Line plot of communication volume over time</p></li>
-<li><p>Heatmap of communication intensity by weekday/hour</p></li>
-<li><p>Interactive visNetwork graph</p></li>
-<li><p>Filtered table of communications (sender, receiver, message, timestamp)</p></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="storyboard" class="level1">
-<h1><span style="color:#d496d4; background:none;">6</span> Storyboard</h1>
-<p><strong>The first app</strong>, <a href="#app1">Temporal Pattern and Communication Network</a>, focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section that will be further detailed in <a href="#app1">Chapter 7.1</a>. It will be focusing on:</p>
-<ul>
-<li><p>Identifying temporal patterns in communications.</p></li>
-<li><p>Revealing relationships and influence among entities (people, vessels, groups).</p></li>
-</ul>
-<p><strong>The second app</strong>, <a href="#app2">Relationship Clusters and Pseudonyms</a>, will be based on Part 2 - Relationship Cluster and Pseudonym: <a href="https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Hoa’s Take Home Exercise 2</a>. It aims to deepen the analysis of communication networks by identifying patterns of association and hidden identities through an interactive platform for revealing the structure and semantics behind the communication web, and will be further detailed in <a href="#app2">Chapter 7.2</a>. It will be focusing on:</p>
-<ul>
-<li><p>Uncovering interactions and relationships between vessels and individuals in the network.</p></li>
-<li><p>Identifying tightly knit groups and inferring the dominant topics of their discussions.</p></li>
-<li><p>Detecting the use of pseudonyms and linking them back to real identities.</p></li>
-<li><p>Exploring how visual analytics can help expose common identities disguised under multiple aliases.</p></li>
-</ul>
-<p><strong>The third app</strong>, <a href="#app3">Time Series Analysis and Social Network Graph</a>, will be based on Part 3 - Time Series Analysis and Social Network graph: <a href="https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Summer’s Take Home Exercise 2</a>. It is centered around Clepper’s primary concern—whether Nadia Conti remains involved in illegal activity. It will be focusing on:</p>
-<ul>
-<li><p>Determining whether Nadia Conti is currently engaging in any unlawful behavior based on communication patterns and interactions.</p></li>
-<li><p>Summarizing her activities over time through temporal and network-based visualizations to support or refute Clepper’s suspicions.</p></li>
-</ul>
-<p>This app combines time series trends and social network dynamics to track Nadia’s role and influence within the broader network, and will be elaborated in <a href="#app3">Chapter 7.3</a>.</p>
-</section>
-<section id="uidesign" class="level1">
-<h1><span style="color:#d496d4; background:none;">7</span> UI Design</h1>
-<p>According to <a href="https://www.uxdesigninstitute.com/blog/guide-to-the-ui-design-process/">uxdesigninstitute</a> “designing beautiful, functional user interfaces is a (sometimes lengthy) process”. And <a href="https://designlab.com/blog/what-is-the-ux-design-process">designlab</a> break down the UX design process into easy-to-follow steps. First two is to <strong>Define</strong> and <strong>Research</strong> which we have covered in <a href="#objective">Chapter 2</a>. Third is <strong>Analysis &amp; Planning</strong> which we have covered in <a href="#rpkg">Chapter 3 and 4</a>. In this chapter we will cover the <strong>Design</strong> stage where we will work on layout and navigation for each of the app.</p>
-<section id="app1" class="level2">
-<h2 class="anchored" data-anchor-id="app1"><span style="color:#d496d4; background:none;">7.1</span> App 1: Temporal Pattern and Communication Network Graph App</h2>
-<section id="ui-design-goals" class="level3">
-<h3 class="anchored" data-anchor-id="ui-design-goals"><span style="color:#d496d4; background:none;">7.1.1</span> UI Design Goals</h3>
-<ul>
-<li><p>Break down complexity into modular tabs for Temporal Trends, Heatmap Views, Network Graphs, and Receipts.</p></li>
-<li><p>Emphasize investigative usability—allowing Clepper to spot patterns, isolate pseudonymous actors, and visually correlate suspicious behaviors.</p></li>
-<li><p>Use interactive and expressive visuals tailored for social communication analysis.</p></li>
-</ul>
-</section>
-<section id="ui-objects-used" class="level3">
-<h3 class="anchored" data-anchor-id="ui-objects-used"><span style="color:#d496d4; background:none;">7.1.2</span> UI objects used</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 64%">
-<col style="width: 8%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><h1 id="ui-component"><strong>UI Component</strong></h1></td>
-<td><h1 id="purpose">Purpose</h1></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>titlePanel()</code></td>
-<td>App’s title</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>sidebarLayout()</code></td>
-<td>Two-column layout with input controls on the side and output in the main area</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>tabsetPanel()</code></td>
-<td>Separate tabs for the different visualization</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>selectInput()</code></td>
-<td colspan="2">Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2) | |</td>
-</tr>
-<tr class="even">
-<td><code>textInput()</code> or <code>selectizeInput()</code></td>
-<td>Allows one or more selection sender/receiver</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>checkboxGroupInput()</code></td>
-<td>Select multiple weeks or types</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>dateRangeInput()</code></td>
-<td>Filter by date range</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>sliderInput()</code></td>
-<td>Filter by hour of day (0–23)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>plotOutput()</code></td>
-<td>Static ggplot visualizations (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>dataTableOutput()</code></td>
-<td>Render data table (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>visNetworkOutput()</code></td>
-<td>Interactive network graph (content to be defined under <code>Server \&lt;- function segment</code>) |</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>actionButton()</code></td>
-<td>Apply filters</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="panel-tabs" class="level3">
-<h3 class="anchored" data-anchor-id="panel-tabs"><span style="color:#d496d4; background:none;">7.1.3</span> Panel Tabs</h3>
+<section id="shiny-app-panel-tabs" class="level3">
+<h3 class="anchored" data-anchor-id="shiny-app-panel-tabs"><span style="color:#d496d4; background:none;">4.1.6</span> Shiny App Panel Tabs</h3>
 <section id="temporal-pattern-1" class="level4">
-<h4 class="anchored" data-anchor-id="temporal-pattern-1"><span style="color:#d496d4; background:none;">7.1.3.1</span> Temporal Pattern</h4>
+<h4 class="anchored" data-anchor-id="temporal-pattern-1"><span style="color:#d496d4; background:none;">4.1.6.1</span> Temporal Pattern</h4>
 <p>Purpose: Reveal day-to-day communication rhythms.</p>
 <p>Design Elements:</p>
 <ul>
@@ -816,7 +817,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="heatmap" class="level4">
-<h4 class="anchored" data-anchor-id="heatmap"><span style="color:#d496d4; background:none;">7.1.3.2</span> Heatmap</h4>
+<h4 class="anchored" data-anchor-id="heatmap"><span style="color:#d496d4; background:none;">4.1.6.2</span> Heatmap</h4>
 <p>Purpose: Explore patterns by time-of-day and communication density.</p>
 <p>Design Elements:</p>
 <ul>
@@ -831,7 +832,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="communication-network" class="level4">
-<h4 class="anchored" data-anchor-id="communication-network"><span style="color:#d496d4; background:none;">7.1.3.3</span> Communication Network</h4>
+<h4 class="anchored" data-anchor-id="communication-network"><span style="color:#d496d4; background:none;">4.1.6.3</span> Communication Network</h4>
 <p>Purpose: Visualize the social graph of communication.</p>
 <p>Design Elements:</p>
 <ul>
@@ -846,7 +847,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="receipts" class="level4">
-<h4 class="anchored" data-anchor-id="receipts"><span style="color:#d496d4; background:none;">7.1.3.4</span> Receipts</h4>
+<h4 class="anchored" data-anchor-id="receipts"><span style="color:#d496d4; background:none;">4.1.6.4</span> Receipts</h4>
 <p>This tab allow users to read the communication messages (or as investigators we can call them receipts).</p>
 <p>Purpose: Provide a full-text view of communication logs.</p>
 <p>Design Elements:</p>
@@ -864,38 +865,92 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="app2" class="level2">
-<h2 class="anchored" data-anchor-id="app2"><span style="color:#d496d4; background:none;">7.2</span> App 2: Relationship Clusters and Pseudonyms</h2>
+<h2 class="anchored" data-anchor-id="app2"><span style="color:#d496d4; background:none;">4.2</span> App 2: Relationship Clusters and Pseudonyms</h2>
 <section id="ui-design-goals-1" class="level3">
-<h3 class="anchored" data-anchor-id="ui-design-goals-1"><span style="color:#d496d4; background:none;">7.2.1</span> UI Design Goals</h3>
+<h3 class="anchored" data-anchor-id="ui-design-goals-1"><span style="color:#d496d4; background:none;">4.2.1</span> UI Design Goals</h3>
+</section>
+<section id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1" class="level3">
+<h3 class="anchored" data-anchor-id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1"><span style="color:#d496d4; background:none;">4.2.2</span> Parameters and outputs that will be exposed on the Shiny applications</h3>
 </section>
 <section id="ui-objects-used-1" class="level3">
-<h3 class="anchored" data-anchor-id="ui-objects-used-1"><span style="color:#d496d4; background:none;">7.2.2</span> UI objects used</h3>
+<h3 class="anchored" data-anchor-id="ui-objects-used-1"><span style="color:#d496d4; background:none;">4.2.3</span> UI objects used</h3>
 </section>
-<section id="panel-tabs-1" class="level3">
-<h3 class="anchored" data-anchor-id="panel-tabs-1"><span style="color:#d496d4; background:none;">7.2.3</span> Panel Tabs</h3>
-<section id="xx" class="level4">
-<h4 class="anchored" data-anchor-id="xx"><span style="color:#d496d4; background:none;">7.2.3.1</span> XX</h4>
+<section id="rpkg" class="level3">
+<h3 class="anchored" data-anchor-id="rpkg"><span style="color:#d496d4; background:none;">4.2.4</span> R packages needed for Shiny application</h3>
+</section>
+<section id="test-the-specific-r-codes-can-be-run-1" class="level3">
+<h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run-1"><span style="color:#d496d4; background:none;">4.2.5</span> Test the specific R codes can be run</h3>
+<section id="module-1" class="level4">
+<h4 class="anchored" data-anchor-id="module-1"><span style="color:#d496d4; background:none;">4.2.5.1</span> Module 1</h4>
+</section>
+<section id="module-2" class="level4">
+<h4 class="anchored" data-anchor-id="module-2"><span style="color:#d496d4; background:none;">4.2.5.2</span> Module 2</h4>
+</section>
+<section id="module-3" class="level4">
+<h4 class="anchored" data-anchor-id="module-3"><span style="color:#d496d4; background:none;">4.2.5.3</span> Module 3</h4>
+</section>
+</section>
+<section id="shiny-app-panel-tabs-1" class="level3">
+<h3 class="anchored" data-anchor-id="shiny-app-panel-tabs-1"><span style="color:#d496d4; background:none;">4.2.6</span> Shiny App Panel Tabs</h3>
+<section id="module-1-1" class="level4">
+<h4 class="anchored" data-anchor-id="module-1-1"><span style="color:#d496d4; background:none;">4.2.6.1</span> Module 1</h4>
+</section>
+<section id="module-2-1" class="level4">
+<h4 class="anchored" data-anchor-id="module-2-1"><span style="color:#d496d4; background:none;">4.2.6.2</span> Module 2</h4>
+</section>
+<section id="module-3-1" class="level4">
+<h4 class="anchored" data-anchor-id="module-3-1"><span style="color:#d496d4; background:none;">4.2.6.3</span> Module 3</h4>
+</section>
+<section id="module-4" class="level4">
+<h4 class="anchored" data-anchor-id="module-4"><span style="color:#d496d4; background:none;">4.2.6.4</span> Module 4</h4>
 </section>
 </section>
 </section>
-<section id="app3" class="level2">
-<h2 class="anchored" data-anchor-id="app3"><span style="color:#d496d4; background:none;">7.3</span> App 3: Time Series Analysis and Social Network Graph</h2>
+<section id="app2" class="level2">
+<h2 class="anchored" data-anchor-id="app2"><span style="color:#d496d4; background:none;">4.3</span> App 2: Relationship Clusters and Pseudonyms</h2>
 <section id="ui-design-goals-2" class="level3">
-<h3 class="anchored" data-anchor-id="ui-design-goals-2"><span style="color:#d496d4; background:none;">7.3.1</span> UI Design Goals</h3>
+<h3 class="anchored" data-anchor-id="ui-design-goals-2"><span style="color:#d496d4; background:none;">4.3.1</span> UI Design Goals</h3>
+</section>
+<section id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2" class="level3">
+<h3 class="anchored" data-anchor-id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-2"><span style="color:#d496d4; background:none;">4.3.2</span> Parameters and outputs that will be exposed on the Shiny applications</h3>
 </section>
 <section id="ui-objects-used-2" class="level3">
-<h3 class="anchored" data-anchor-id="ui-objects-used-2"><span style="color:#d496d4; background:none;">7.3.2</span> UI objects used</h3>
+<h3 class="anchored" data-anchor-id="ui-objects-used-2"><span style="color:#d496d4; background:none;">4.3.3</span> UI objects used</h3>
 </section>
-<section id="panel-tabs-2" class="level3">
-<h3 class="anchored" data-anchor-id="panel-tabs-2"><span style="color:#d496d4; background:none;">7.3.3</span> Panel Tabs</h3>
-<section id="xx-1" class="level4">
-<h4 class="anchored" data-anchor-id="xx-1"><span style="color:#d496d4; background:none;">7.3.3.1</span> XX</h4>
+<section id="rpkg" class="level3">
+<h3 class="anchored" data-anchor-id="rpkg"><span style="color:#d496d4; background:none;">4.3.4</span> R packages needed for Shiny application</h3>
+</section>
+<section id="test-the-specific-r-codes-can-be-run-2" class="level3">
+<h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run-2"><span style="color:#d496d4; background:none;">4.3.5</span> Test the specific R codes can be run</h3>
+<section id="module-1-2" class="level4">
+<h4 class="anchored" data-anchor-id="module-1-2"><span style="color:#d496d4; background:none;">4.3.5.1</span> Module 1</h4>
+</section>
+<section id="module-2-2" class="level4">
+<h4 class="anchored" data-anchor-id="module-2-2"><span style="color:#d496d4; background:none;">4.3.5.2</span> Module 2</h4>
+</section>
+<section id="module-3-2" class="level4">
+<h4 class="anchored" data-anchor-id="module-3-2"><span style="color:#d496d4; background:none;">4.3.5.3</span> Module 3</h4>
+</section>
+</section>
+<section id="shiny-app-panel-tabs-2" class="level3">
+<h3 class="anchored" data-anchor-id="shiny-app-panel-tabs-2"><span style="color:#d496d4; background:none;">4.3.6</span> Shiny App Panel Tabs</h3>
+<section id="module-1-3" class="level4">
+<h4 class="anchored" data-anchor-id="module-1-3"><span style="color:#d496d4; background:none;">4.3.6.1</span> Module 1</h4>
+</section>
+<section id="module-2-3" class="level4">
+<h4 class="anchored" data-anchor-id="module-2-3"><span style="color:#d496d4; background:none;">4.3.6.2</span> Module 2</h4>
+</section>
+<section id="module-3-3" class="level4">
+<h4 class="anchored" data-anchor-id="module-3-3"><span style="color:#d496d4; background:none;">4.3.6.3</span> Module 3</h4>
+</section>
+<section id="module-4-1" class="level4">
+<h4 class="anchored" data-anchor-id="module-4-1"><span style="color:#d496d4; background:none;">4.3.6.4</span> Module 4</h4>
 </section>
 </section>
 </section>
 </section>
 <section id="prototype" class="level1">
-<h1><span style="color:#d496d4; background:none;">8</span> Prototype</h1>
+<h1><span style="color:#d496d4; background:none;">5</span> Prototype</h1>
 <p><strong>Scroll down and click “Update View” to load the visualization!</strong></p>
 <section id="view-on" class="level3">
 <h3 class="anchored" data-anchor-id="view-on">View on <a href="https://vriadi.shinyapps.io/reefwhispers_proto1/" target="_blank"><img src="../../images/Posit_logo.png" height="20"></a></h3>
@@ -907,7 +962,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="reference" class="level1">
-<h1><span style="color:#d496d4; background:none;">8</span> Reference</h1>
+<h1><span style="color:#d496d4; background:none;">6</span> Reference</h1>
 <ul>
 <li><p><a href="https://vast-challenge.github.io/2025/MC3.html" target="_blank">VAST 2024 Mini Challenge 3</a></p></li>
 <li><p><a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Take Home Exercise 2</a></p></li>
@@ -916,7 +971,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p></li>
 </ul>
 <section id="r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="r-packages"><span style="color:#d496d4; background:none;">8.1</span> R Packages</h2>
+<h2 class="anchored" data-anchor-id="r-packages"><span style="color:#d496d4; background:none;">6.1</span> R Packages</h2>
 <ul>
 <li><a href="https://shiny.posit.co/" target="_blank">shiny</a>: Easy web apps for data science without the compromises.</li>
 <li><a href="https://cran.r-project.org/package=dplyr" target="_blank">dplyr</a>: A grammar of data manipulation, making data wrangling concise, fast, and readable.</li>
@@ -925,10 +980,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="shiny-fuctional-specs-and-tutorials" class="level2">
-<h2 class="anchored" data-anchor-id="shiny-fuctional-specs-and-tutorials"><span style="color:#d496d4; background:none;">8.2</span> Shiny Fuctional Specs and Tutorials</h2>
+<h2 class="anchored" data-anchor-id="shiny-fuctional-specs-and-tutorials"><span style="color:#d496d4; background:none;">6.2</span> Shiny Fuctional Specs and Tutorials</h2>
 </section>
 <section id="lesson-slides" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-slides"><span style="color:#d496d4; background:none;">8.3</span> Lesson Slides</h2>
+<h2 class="anchored" data-anchor-id="lesson-slides"><span style="color:#d496d4; background:none;">6.3</span> Lesson Slides</h2>
 <ul>
 <li><a href="../lesson/Lesson06/Shiny1/Shiny1.html">Lesson 6a: Shiny Basic</a></li>
 <li><a href="../lesson/Lesson06/Shiny2/Shiny2.html">Lesson 6b: Shiny Reactivity</a></li>
@@ -936,7 +991,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="shiny-fuctional-specs-and-tutorials-1" class="level2">
-<h2 class="anchored" data-anchor-id="shiny-fuctional-specs-and-tutorials-1"><span style="color:#d496d4; background:none;">8.4</span> Shiny Fuctional Specs and Tutorials</h2>
+<h2 class="anchored" data-anchor-id="shiny-fuctional-specs-and-tutorials-1"><span style="color:#d496d4; background:none;">6.4</span> Shiny Fuctional Specs and Tutorials</h2>
 <ul>
 <li><a href="https://shiny.rstudio.com/">Shiny from R Studio</a></li>
 <li><a href="https://shiny.rstudio.com/tutorial/">Learn Shiny</a></li>
