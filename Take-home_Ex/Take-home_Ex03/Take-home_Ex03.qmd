@@ -151,33 +151,21 @@ Useful for identifying suspicious message contents and linking disguised persona
 
 ### [4.1.4]{style="color:#d496d4; background:none;"} UI objects used
 
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| **UI Component**                    | **Purpose**                                                                                |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `titlePanel()`                      | App's title                                                                                |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `sidebarLayout()`                   | Two-column layout with input controls on the side and output in the main area              |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `tabsetPanel()`                     | Separate tabs for the different visualization                                              |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `selectInput()`                     | Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2) |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `textInput()` or `selectizeInput()` | Allows one or more selection sender/receiver                                               |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `checkboxGroupInput()`              | Select multiple weeks or types                                                             |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `dateRangeInput()`                  | Filter by date range                                                                       |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `sliderInput()`                     | Filter by hour of day (0–23)                                                               |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `plotOutput()`                      | Static ggplot visualizations (content to be defined under `Server \<- function segment`)   |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `dataTableOutput()`                 | Render data table (content to be defined under `Server \<- function segment`)              |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `visNetworkOutput()`                | Interactive network graph (content to be defined under `Server \<- function segment`)      |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
-| `actionButton()`                    | Apply filters                                                                              |
-+-------------------------------------+--------------------------------------------------------------------------------------------+
+|  |  |
+|----|----|
+| **UI Component** | **Purpose** |
+| `titlePanel()` | App's title |
+| `sidebarLayout()` | Two-column layout with input controls on the side and output in the main area |
+| `tabsetPanel()` | Separate tabs for the different visualization |
+| `selectInput()` | Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2) |
+| `textInput()` or `selectizeInput()` | Allows one or more selection sender/receiver |
+| `checkboxGroupInput()` | Select multiple weeks or types |
+| `dateRangeInput()` | Filter by date range |
+| `sliderInput()` | Filter by hour of day (0–23) |
+| `plotOutput()` | Static ggplot visualizations (content to be defined under `Server \<- function segment`) |
+| `dataTableOutput()` | Render data table (content to be defined under `Server \<- function segment`) |
+| `visNetworkOutput()` | Interactive network graph (content to be defined under `Server \<- function segment`) |
+| `actionButton()` | Apply filters |
 
 ### [4.1.5]{style="color:#d496d4; background:none;"} R packages needed for Shiny application {#rpkg}
 
@@ -250,27 +238,17 @@ In this section we will prepare and test the specific R codes can be run in Shin
 
 ### [4.3.2]{style="color:#d496d4; background:none;"} Parameters and outputs that will be exposed on the Shiny applications
 
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| **Parameters (UI Inputs)**                                                            | **Outputs (UI Outputs)**                                                                  |
-+=======================================================================================+===========================================================================================+
-| **Entity Filter** (person, vessel, location, organization, pseudonym)                 | \- Interactive network graph (direct and inferred connections via visNetwork)             |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| **Week Selection** (Week 1 / Week 2 toggle)                                           | \- Pie chart: Sent vs. received messages                                                  |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| **Date Range Input** (subset time range: e.g., 2040-10-01 to 2040-10-14)              | \- Bar chart of message frequency by hour/day                                             |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| **Hour Range Input** (slider to subset by hour of day)                                | \- Temporal pattern plot of messages mentioning selected entities                         |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| **Sender Entity Type & Input** (free text or dropdown)                                | \- Timeline of operational focuses and evidence events                                    |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| **Receiver Entity Type & Input** (free text or dropdown)                              | \- Keyword frequency bar chart by selected date                                           |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| **Graph Type Selection** (toggle: full network vs. person-to-person view)             | \- Evidence timeline chart with hover-to-view conversations                               |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-| **Message Filter by ID** (dropdown/select box to inspect conversation thread)         | \- Filtered table or tooltip displaying sender, receiver, message, and timestamp          |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| **Parameters (UI Inputs)** | **Outputs (UI Outputs)** |
+|----|----|
+| **Entity Filter** (person, vessel, location, organization, pseudonym) | \- Interactive network graph (direct and inferred connections via visNetwork) |
+| **Week Selection** (Week 1 / Week 2 toggle) | \- Pie chart: Sent vs. received messages |
+| **Date Range Input** (subset time range: e.g., 2040-10-01 to 2040-10-14) | \- Bar chart of message frequency by hour/day |
+| **Hour Range Input** (slider to subset by hour of day) | \- Temporal pattern plot of messages mentioning selected entities |
+| **Sender Entity Type & Input** (free text or dropdown) | \- Timeline of operational focuses and evidence events |
+| **Receiver Entity Type & Input** (free text or dropdown) | \- Keyword frequency bar chart by selected date |
+| **Graph Type Selection** (toggle: full network vs. person-to-person view) | \- Evidence timeline chart with hover-to-view conversations |
+| **Message Filter by ID** (dropdown/select box to inspect conversation thread) | \- Filtered table or tooltip displaying sender, receiver, message, and timestamp |
 | **Tab Selection** (Temporal Pattern, Direct Relationship, Relationship Network, etc.) | \- Dynamic tab-specific visualizations based on focus (e.g., events, keywords, timelines) |
-+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 
 ### [4.3.3]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs UI Design
 
@@ -409,33 +387,20 @@ This tab helps investigators **reconstruct key moments** using concrete communic
 
 ### [4.3.4]{style="color:#d496d4; background:none;"} UI objects used
 
-+-------------------------------------+---------------------------------------------------------------------------------+
-| **UI Component**                    | **Purpose**                                                                     |
-+=====================================+=================================================================================+
-| `titlePanel()`                      | App’s title                                                                     |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `sidebarLayout()`                   | Two-column layout with input controls on the side and output in the main area   |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `tabsetPanel()`                     | Separate tabs for different visualizations                                      |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `selectInput()`                     | Select an entity or type (e.g., person, vessel), or filter by week (Week 1 / 2) |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `textInput()` or `selectizeInput()` | Input for sender or receiver (supports free-text or multiple selection)         |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `checkboxGroupInput()`              | Select multiple weeks or entity types                                           |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `dateRangeInput()`                  | Filter messages by date range                                                   |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `sliderInput()`                     | Filter by hour of day (0–23)                                                    |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `plotOutput()`                      | Display `ggplot2` visualizations (defined in the `server` function)             |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `dataTableOutput()`                 | Render filtered communication tables (defined in the `server` function)         |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `visNetworkOutput()`                | Display the interactive relationship graph (defined in the `server` function)   |
-+-------------------------------------+---------------------------------------------------------------------------------+
-| `actionButton()`                    | Apply or refresh filters                                                        |
-+-------------------------------------+---------------------------------------------------------------------------------+
+| **UI Component** | **Purpose** |
+|----|----|
+| `titlePanel()` | App’s title |
+| `sidebarLayout()` | Two-column layout with input controls on the side and output in the main area |
+| `tabsetPanel()` | Separate tabs for different visualizations |
+| `selectInput()` | Select an entity or type (e.g., person, vessel), or filter by week (Week 1 / 2) |
+| `textInput()` or `selectizeInput()` | Input for sender or receiver (supports free-text or multiple selection) |
+| `checkboxGroupInput()` | Select multiple weeks or entity types |
+| `dateRangeInput()` | Filter messages by date range |
+| `sliderInput()` | Filter by hour of day (0–23) |
+| `plotOutput()` | Display `ggplot2` visualizations (defined in the `server` function) |
+| `dataTableOutput()` | Render filtered communication tables (defined in the `server` function) |
+| `visNetworkOutput()` | Display the interactive relationship graph (defined in the `server` function) |
+| `actionButton()` | Apply or refresh filters |
 
 ### [4.3.5]{style="color:#d496d4; background:none;"} R packages needed for Shiny application
 
