@@ -1,7 +1,7 @@
 ---
 title: "Creating Ternary Plot with R"
 author: "Vanessa Riadi"
-date: "May 8, 2025"
+date: "Jun 15, 2025"
 date-modified: "last-modified"
 format:
   html:
@@ -36,7 +36,7 @@ Two main R packages will be used:
 We will also need to ensure that selected **tidyverse** family packages namely: **readr**, **dplyr** and **tidyr** are also installed and loaded.
 
 ::: {.nursebox .nurse data-latex="nurse"}
-The new version of [**ggtern 	3.5.0**](https://cran.r-project.org/web/packages/ggtern/index.html) package is compatible to the **ggplot2 version 3.5.0 and above**.
+The new version of [**ggtern 3.5.0**](https://cran.r-project.org/web/packages/ggtern/index.html) package is compatible to the **ggplot2 version 3.5.0 and above**.
 :::
 
 The code chunks below will accomplish the task.
@@ -83,9 +83,9 @@ agpop_mutated <- pop_data %>%
 [Ternary Plot Lesson Slide](https://isss608-ay2024-25apr.netlify.app/lesson/lesson05/lesson05-vma#/ternary-plot)
 
 ::: {.nursebox .nurse data-latex="nurse"}
-ggtern themes have been designed to mimic the default themes available within ggplot2. 
+ggtern themes have been designed to mimic the default themes available within ggplot2.
 
-Themes available such as ggtern, rgbg, rgbw, darker, gray, bw, classic, minimal, linedraw, light, void and dark. 
+Themes available such as ggtern, rgbg, rgbw, darker, gray, bw, classic, minimal, linedraw, light, void and dark.
 :::
 
 ## [4.1]{style="color:#d496d4; background:none;"} Plotting a static ternary diagram
@@ -114,6 +114,7 @@ The code below create an interactive ternary plot using ***plot_ly()*** function
 
 ::: panel-tabset
 ## 🎀 [PRACTICE]{style="color:#d496d4"}
+
 ```{r}
 #| echo: false
 
@@ -173,6 +174,7 @@ plot_ly(
 
 
 ```
+
 ```{r}
 #| eval: false
 
@@ -232,7 +234,9 @@ plot_ly(
 
 
 ```
+
 ## Given Code
+
 ```{r}
 #| echo: false
 
@@ -345,4 +349,3 @@ plot_ly(
 
 -   [**ggtern**](http://www.ggtern.com/), a ggplot extension specially designed to plot ternary diagrams. The package will be used to plot static ternary plots.
 -   [**Plotly R**](https://plot.ly/r/), an R package for creating interactive web-based graphs via plotly's JavaScript graphing library, plotly.js . The **plotly R** libary contains the *ggplotly* function, which will convert **ggplot2** figures into a Plotly object.
-
