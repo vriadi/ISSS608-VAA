@@ -1870,8 +1870,8 @@
     "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#installing-and-launching-r-packages",
     "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#installing-and-launching-r-packages",
     "title": "Visual Correlation Analysis",
-    "section": "Installing and Launching R Packages",
-    "text": "Installing and Launching R Packages\nBefore you get started, you are required to open a new Quarto document. Keep the default html authoring format.\nNext, you will use the code chunk below to install and launch corrplot, ggpubr, plotly and tidyverse in RStudio.\n\npacman::p_load(corrplot, ggstatsplot, tidyverse)",
+    "section": "2.1 Installing and Launching R Packages",
+    "text": "2.1 Installing and Launching R Packages\nWe will install and launch corrplot, ggpubr, plotly and tidyverse in RStudio.\n\n\nCode\npacman::p_load(corrplot, ggstatsplot, tidyverse)",
     "crumbs": [
       "Hands-On Exercise 9",
       "9.2 - Visual Correlation Analysis"
@@ -2306,6 +2306,127 @@
     "crumbs": [
       "In-Class Excercise",
       "Session 8 - Distribution of Resale Units of Condominium Sold in 2019"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#importing-the-data-set",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#importing-the-data-set",
+    "title": "Visual Correlation Analysis",
+    "section": "2.2 Importing The Data Set",
+    "text": "2.2 Importing The Data Set\nWe will use Wine Quality Data Set from UCI Machine Learning Repository will be used. The data set consists of 13 variables and 6497 observations. For the purpose of this exercise, a given file called wine_quality and is in csv file format have been provided which consist of combined the red wine and white wine data.\nWe import the data using read_csv() of readr package.\n\n\nCode\nwine &lt;- read_csv(\"../data/wine_quality.csv\")\n\n\nNotice that beside quality and type, the rest of the variables are numerical and continuous data type.",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#building-a-basic-correlation-matrix",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#building-a-basic-correlation-matrix",
+    "title": "Visual Correlation Analysis",
+    "section": "3.1 Building a basic correlation matrix",
+    "text": "3.1 Building a basic correlation matrix\nFigure below shows the scatter plot matrix of Wine Quality Data. It is a 11 by 11 matrix.\n\npairs(wine[,1:11])\n\n\n\n\n\n\n\n\nThe required input of pairs() can be a matrix or data frame. The code chunk used to create the scatterplot matrix is relatively simple. It uses the default pairs function. Columns 2 to 12 of wine dataframe is used to build the scatterplot matrix. The variables are: fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates and alcohol.\n\npairs(wine[,2:12])\n\n\n\n\n\n\n\n\n\n🎀 PRACTICE\n\npar(bg = \"#f1f4f5\")\n\npairs(wine[, c(\"total sulfur dioxide\", \"density\", \"pH\", \"sulphates\", \"alcohol\")],\n      main = \"Correlation Matrix with Selected Variables\")",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#drawing-only-lower-or-upper-corner",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#drawing-only-lower-or-upper-corner",
+    "title": "Visual Correlation Analysis",
+    "section": "3.2 Drawing only lower or upper corner",
+    "text": "3.2 Drawing only lower or upper corner\npairs function of R Graphics provided many customisation arguments. For example, it is a common practice to show either the upper half or lower half of the correlation matrix instead of both. This is because a correlation matrix is symmetric.\n\nlower panelupper panel\n\n\nTo show the lower half of the correlation matrix, the upper.panel argument will be used as shown in the code chunk below.\n\npairs(wine[,2:12], upper.panel = NULL)\n\n\n\n\n\n\n\n\n\n\nSimilarly, you can display the upper half of the correlation matrix by using the code chun below.\n\npairs(wine[,2:12], lower.panel = NULL)",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#including-with-correlation-coefficients",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#including-with-correlation-coefficients",
+    "title": "Visual Correlation Analysis",
+    "section": "3.3 Including with correlation coefficients",
+    "text": "3.3 Including with correlation coefficients\nTo show the correlation coefficient of each pair of variables instead of a scatter plot, panel.cor function will be used. This will also show higher correlations in a larger font.\nDon’t worry about the details for now-just type this code into your R session or script. Let’s have more fun way to display the correlation matrix.\n\npanel.cor &lt;- function(x, y, digits=2, prefix=\"\", cex.cor, ...) {\nusr &lt;- par(\"usr\")\non.exit(par(usr))\npar(usr = c(0, 1, 0, 1))\nr &lt;- abs(cor(x, y, use=\"complete.obs\"))\ntxt &lt;- format(c(r, 0.123456789), digits=digits)[1]\ntxt &lt;- paste(prefix, txt, sep=\"\")\nif(missing(cex.cor)) cex.cor &lt;- 0.8/strwidth(txt)\ntext(0.5, 0.5, txt, cex = cex.cor * (1 + r) / 2)\n}\n\npairs(wine[,2:12], \n      upper.panel = panel.cor)",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#getting-started-with-corrplot",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#getting-started-with-corrplot",
+    "title": "Visual Correlation Analysis",
+    "section": "6.1 Getting started with corrplot",
+    "text": "6.1 Getting started with corrplot\nBefore we can plot a corrgram using corrplot(), we need to compute the correlation matrix of wine data frame.\nIn the code chunk below, cor() of R Stats is used to compute the correlation matrix of wine data frame.\n\nwine.cor &lt;- cor(wine[, 1:11])\n\nNext, corrplot() is used to plot the corrgram by using all the default setting as shown in the code chunk below.\n\ncorrplot(wine.cor)\n\n\n\n\n\n\n\n\nNotice that the default visual object used to plot the corrgram is circle. The default layout of the corrgram is a symmetric matrix. The default colour scheme is diverging blue-red. Blue colours are used to represent pair variables with positive correlation coefficients and red colours are used to represent pair variables with negative correlation coefficients. The intensity of the colour or also know as saturation is used to represent the strength of the correlation coefficient. Darker colours indicate relatively stronger linear relationship between the paired variables. On the other hand, lighter colours indicates relatively weaker linear relationship.",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#working-with-visual-geometrics",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#working-with-visual-geometrics",
+    "title": "Visual Correlation Analysis",
+    "section": "6.2 Working with visual geometrics",
+    "text": "6.2 Working with visual geometrics\nIn corrplot package, there are seven visual geometrics (parameter method) can be used to encode the attribute values. They are: circle, square, ellipse, number, shade, color and pie. The default is circle. As shown in the previous section, the default visual geometric of corrplot matrix is circle. However, this default setting can be changed by using the method argument as shown in the code chunk below.\n\n🎀 PRACTICE\n\nellipsesquarenumbershadecolorpieaddrect\n\n\n\n\nShow the code\npar(bg = \"#f1f4f5\")\ncorrplot(wine.cor,\n         method = \"ellipse\",\n         tl.srt = 45,\n         bg = \"#f1f4f5\",\n         title = \"\\nCorrelation Plot with Ellipse\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the code\npar(bg = \"#f1f4f5\")\ncorrplot(wine.cor,\n         method = \"square\",\n         tl.srt = 45,\n         title = \"\\nSquare Correlation Plot\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the code\npar(bg = \"#f1f4f5\")\ncorrplot(wine.cor,\n         method = \"number\",\n         number.cex = 0.65,\n         tl.srt = 45,\n         bg = \"#f1f4f5\",\n         title = \"\\nCorrelation Plot with Number\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the code\npar(bg = \"#f1f4f5\")\ncorrplot(wine.cor,\n         method = \"shade\",\n         tl.srt = 45,\n         bg = \"#f1f4f5\",\n         title = \"\\nCorrelation Plot with Shade\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the code\npar(bg = \"#f1f4f5\")\ncorrplot(wine.cor,\n         method = \"color\",\n         tl.srt = 45,\n         bg = \"#f1f4f5\",\n         title = \"\\nCorrelation Plot with Color\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the code\npar(bg = \"#f1f4f5\")\ncorrplot(wine.cor,\n         method = \"pie\",\n         tl.srt = 45,\n         bg = \"#f1f4f5\",\n         title = \"\\nCorrelation Plot with Pie\")\n\n\n\n\n\n\n\n\n\n\n\naddrect argument sets the value in numbers representing the number of clusters.\n\n\nShow the code\npar(bg = \"#f1f4f5\")\n\ncorrplot(wine.cor,\n         method = \"ellipse\",\n         outline = T,\n         addgrid.col = \"darkgray\",\n         order=\"hclust\",\n         addrect = 4,   \n         rect.col = \"black\",\n         rect.lwd = 5,\n         cl.pos = \"b\",\n         tl.col = \"indianred4\",\n         tl.cex = 0.6,\n         tl.srt = 45,\n         bg = \"#f1f4f5\",\n         #addCoef.col = \"white\",\n         #number.digits = 2,\n         #number.cex = 0.75,\n         title=\"\\nCorrelation Plot with Ellipses and Clusters\")",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#working-with-layout",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#working-with-layout",
+    "title": "Visual Correlation Analysis",
+    "section": "6.3 Working with layout",
+    "text": "6.3 Working with layout\ncorrplor() supports three layout types, namely: “full”, “upper” or “lower”. The default is “full” which display full matrix. The default setting can be changed by using the type argument of corrplot().\n\ncorrplot(wine.cor, \n         method = \"ellipse\", \n         type=\"lower\")\n\n\n\n\n\n\n\n\nThe default layout of the corrgram can be further customised. For example, arguments diag and tl.col are used to turn off the diagonal cells and to change the axis text label colour to black colour respectively as shown in the code chunk and figure below.\n\ncorrplot(wine.cor, \n         method = \"ellipse\", \n         type = \"lower\",\n         diag = FALSE,\n         tl.srt = 45,\n         tl.col = \"black\")\n\n# Add title and subtitle using base R title()\ntitle(main = \"Correlation Plot - Lower Type\")\n\n\n\n\n\n\n\n\nPlease feel free to experiment with other layout design argument such as tl.pos, tl.cex, tl.offset, cl.pos, cl.cex and cl.offset, just to mention a few of them.",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#working-with-mixed-layout",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#working-with-mixed-layout",
+    "title": "Visual Correlation Analysis",
+    "section": "6.4 Working with mixed layout",
+    "text": "6.4 Working with mixed layout\nWith corrplot package, it is possible to design corrgram with mixed visual matrix of one half and numerical matrix on the other half. In order to create a coorgram with mixed layout, the corrplot.mixed(), a wrapped function for mixed visualisation style will be used.\nFigure below shows a mixed layout corrgram plotted using wine quality data.\n\ncorrplot.mixed(wine.cor, \n               lower = \"ellipse\", \n               upper = \"number\",\n               tl.pos = \"lt\",\n               diag = \"l\",\n               tl.col = \"black\",\n               tl.cex = 0.6,\n               tl.srt = 45)\n\n# Add title and subtitle using base R title()\ntitle(main = \"Correlation Plot Wine Quality Data\")\n\n\n\n\n\n\n\n\nNotice that argument lower and upper are used to define the visualisation method used. In this case ellipse is used to map the lower half of the corrgram and numerical matrix (i.e. number) is used to map the upper half of the corrgram. The argument tl.pos, on the other, is used to specify the placement of the axis label. Lastly, the diag argument is used to specify the glyph on the principal diagonal of the corrgram.",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#combining-corrgram-with-the-significant-test",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#combining-corrgram-with-the-significant-test",
+    "title": "Visual Correlation Analysis",
+    "section": "6.5 Combining corrgram with the significant test",
+    "text": "6.5 Combining corrgram with the significant test\nIn statistical analysis, we are also interested to know which pair of variables their correlation coefficients are statistically significant.\nWith corrplot package, we can use the cor.mtest() to compute the p-values and confidence interval for each pair of variables.\n\nwine.sig = cor.mtest(wine.cor, conf.level= .95)\n\nWe can then use the p.mat argument of corrplot function as shown in the code chunk below.\n\ncorrplot(wine.cor,\n         method = \"number\",\n         type = \"lower\",\n         diag = FALSE,\n         tl.col = \"black\",\n         tl.srt = 45,\n         p.mat = wine.sig$p,\n         sig.level = .05)\n\n\n\n\n\n\n\n\nFigure below shows a corrgram combined with the significant test. The corrgram reveals that not all correlation pairs are statistically significant. For example the correlation between total sulfur dioxide and free surfur dioxide is statistically significant at significant level of 0.1 but not the pair between total sulfur dioxide and citric acid.",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#reorder-a-corrgram",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#reorder-a-corrgram",
+    "title": "Visual Correlation Analysis",
+    "section": "6.6 Reorder a corrgram",
+    "text": "6.6 Reorder a corrgram\nMatrix reorder is very important for mining the hiden structure and pattern in a corrgram. By default, the order of attributes of a corrgram is sorted according to the correlation matrix (i.e. “original”). The default setting can be over-write by using the order argument of corrplot(). Currently, corrplot package support four sorting methods, they are:\n\n“AOE” is for the angular order of the eigenvectors. See Michael Friendly (2002) for details.\n“FPC” for the first principal component order.\n“hclust” for hierarchical clustering order, and “hclust.method” for the agglomeration method to be used.\n\n“hclust.method” should be one of “ward”, “single”, “complete”, “average”, “mcquitty”, “median” or “centroid”.\n\n“alphabet” for alphabetical order.\n\n“AOE”, “FPC”, “hclust”, “alphabet”. More algorithms can be found in seriation package.\n\ncorrplot.mixed(wine.cor, \n               lower = \"ellipse\", \n               upper = \"number\",\n               tl.pos = \"lt\",\n               diag = \"l\",\n               order=\"AOE\",\n               tl.col = \"black\",\n               tl.srt = 45,\n               tl.cex = 0.6)\n\ntitle(main = \"Correlation Plot Wine Quality Data\")",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
+    ]
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#reordering-a-correlation-matrix-using-hclust",
+    "href": "Hands-on_Ex/Hands-on_Ex09_2/hands-on_Ex09_2.html#reordering-a-correlation-matrix-using-hclust",
+    "title": "Visual Correlation Analysis",
+    "section": "6.7 Reordering a correlation matrix using hclust",
+    "text": "6.7 Reordering a correlation matrix using hclust\nIf using hclust, corrplot() can draw rectangles around the corrgram based on the results of hierarchical clustering.\n\ncorrplot(wine.cor, \n         method = \"ellipse\", \n         tl.pos = \"lt\",\n         tl.col = \"black\",\n         order=\"hclust\",\n         hclust.method = \"ward.D\",\n         addrect = 3,\n         tl.srt = 45,\n         tl.cex = 0.6)\n\ntitle(main = \"Correlation Plot Wine Quality Data\")\n\n\n\n\n\n\n\n\n\n🎀 PRACTICE\n\npar(bg = \"#f1f4f5\")\n\n## text labels rotated 45 degrees and  wider color legend with numbers right aligned\ncorrplot(wine.cor, \n         type = 'lower', \n         order = 'hclust', \n         tl.col = 'black',\n         tl.cex = 0.5,\n         cl.ratio = 0.2, \n         tl.srt = 45, \n         col = COL2('PuOr', 10))\n\ntitle(main = \"Correlation Plot Wine Quality Data\")",
+    "crumbs": [
+      "Hands-On Exercise 9",
+      "9.2 - Visual Correlation Analysis"
     ]
   }
 ]
