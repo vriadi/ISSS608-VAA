@@ -77,6 +77,7 @@ pairs(wine[,2:12])
 ```
 
 ### 🎀 [PRACTICE]{style="color:#d496d4"}
+
 ```{r}
 par(bg = "#f1f4f5")
 
@@ -88,14 +89,17 @@ pairs(wine[, c("total sulfur dioxide", "density", "pH", "sulphates", "alcohol")]
 
 *pairs* function of R Graphics provided many customisation arguments. For example, it is a common practice to show either the upper half or lower half of the correlation matrix instead of both. This is because a correlation matrix is symmetric.
 
-::: panel-tabset 
+::: panel-tabset
 ## lower panel
+
 To show the lower half of the correlation matrix, the upper.panel argument will be used as shown in the code chunk below.
+
 ```{r}
 pairs(wine[,2:12], upper.panel = NULL)
 ```
 
 ## upper panel
+
 Similarly, you can display the upper half of the correlation matrix by using the code chun below.
 
 ```{r}
@@ -140,7 +144,7 @@ On top that, some R package like ggstatsplot package also provides functions for
 
 In this section, you will learn how to visualising correlation matrix by using [*ggcorrmat()*](https://indrajeetpatil.github.io/ggstatsplot/reference/ggcorrmat.html) of [**ggstatsplot**](https://indrajeetpatil.github.io/ggstatsplot/index.html) package.
 
-##[4.1]{style="color:#d496d4; background:none;"} The basic plot
+\##[4.1]{style="color:#d496d4; background:none;"} The basic plot
 
 On of the advantage of using *ggcorrmat()* over many other methods to visualise a correlation matrix is it's ability to provide a comprehensive and yet professional statistical report as shown in the figure below.
 
@@ -244,6 +248,7 @@ Notice that the default visual object used to plot the corrgram is circle. The d
 In **corrplot** package, there are seven visual geometrics (parameter method) can be used to encode the attribute values. They are: circle, square, ellipse, number, shade, color and pie. The default is circle. As shown in the previous section, the default visual geometric of corrplot matrix is circle. However, this default setting can be changed by using the *method* argument as shown in the code chunk below.
 
 ### 🎀 [PRACTICE]{style="color:#d496d4"}
+
 ::: panel-tabset
 ## ellipse
 
@@ -464,6 +469,7 @@ corrplot(wine.cor,
 title(main = "Correlation Plot Wine Quality Data",
       sub = "Marking non-significant pairs at p < 0.05", )
 ```
+
 ## [6.6]{style="color:#d496d4; background:none;"} Reorder a corrgram
 
 Matrix reorder is very important for mining the hiden structure and pattern in a corrgram. By default, the order of attributes of a corrgram is sorted according to the correlation matrix (i.e. "original"). The default setting can be over-write by using the `order` argument of *corrplot()*. Currently, **corrplot** package support four sorting methods, they are:
@@ -540,31 +546,23 @@ Michael Friendly (2002). "Corrgrams: Exploratory displays for correlation matric
 
 D.J. Murdoch, E.D. Chow (1996). "A graphical display of large correlation matrices". *The American Statistician*, 50, 178--180.
 
-## R packages
+## [7.1]{style="color:#d496d4; background:none;"}  R packages
 
 -   [`ggcormat()`](https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/ggcorrmat.html) of [**ggstatsplot**](https://indrajeetpatil.github.io/ggstatsplot/index.html) package
 -   [`ggscatmat`](https://ggobi.github.io/ggally/reference/ggscatmat.html) and [`ggpairs`](https://ggobi.github.io/ggally/reference/ggpairs.html) of [**GGally**](https://ggobi.github.io/ggally/index.html).
 -   [**corrplot**](https://cran.r-project.org/web/packages/corrplot/index.html). A graphical display of a correlation matrix or general matrix. It also contains some algorithms to do matrix reordering. In addition, corrplot is good at details, including choosing color, text labels, color labels, layout, etc.
 -   [**corrgram**](https://cran.r-project.org/web/packages/corrgram/index.html) calculates correlation of variables and displays the results graphically. Included panel functions can display points, shading, ellipses, and correlation values with confidence intervals.
 
-# [5]{style="color:#d496d4; background:none;"} References
+## [7.2]{style="color:#d496d4; background:none;"} Readings
 
-## [5.1]{style="color:#d496d4; background:none;"} Readings
-
-### [5.1.1]{style="color:#d496d4; background:none;"} Core Readings
+### [7.2.1]{style="color:#d496d4; background:none;"} Core Readings
 
 -   [An Introduction to Visual Multivariate Analysis](http://www.perceptualedge.com/articles/b-eye/visual_multivariate_analysis.pdf)
 -   [Corrgrams: Exploratory Displays for Correlation Matrices](https://search-proquest-com.libproxy.smu.edu.sg/docview/228501277?rfr_id=info%3Axri%2Fsid%3Aprimo)
 
-### [5.1.2]{style="color:#d496d4; background:none;"} Optional Readings
+### [7.2.2]{style="color:#d496d4; background:none;"} Optional Readings
 
 -   [The scatter-plot matrix: a great tool](http://junkcharts.typepad.com/junk_charts/2010/06/the-scatterplot-matrix-a-great-tool.html)
 -   [A Graphical Display of Large Correlation Matrices](https://search-proquest-com.libproxy.smu.edu.sg/docview/1750838449?rfr_id=info%3Axri%2Fsid%3Aprimo)
 -   [Multidimensional Detective](http://www.ifs.tuwien.ac.at/~silvia/wien/vu-infovis/articles/Inselberg-InfoVis97.pdf)
-
-## [5.2]{style="color:#d496d4; background:none;"} R Packages
-
--   [ggscatmat](https://ggobi.github.io/ggally/#ggallyggscatmat) and [ggpairs](https://ggobi.github.io/ggally/#ggallyggpairs) of [GGally](https://ggobi.github.io/ggally/index.html).
--   [corrplot](https://cran.r-project.org/web/packages/corrplot/index.html). A graphical display of a correlation matrix or general matrix. It also contains some algorithms to do matrix reordering. In addition, corrplot is good at details, including choosing color, text labels, color labels, layout, etc.
--   [corrgram](https://cran.r-project.org/web/packages/corrgram/index.html) calculates correlation of variables and displays the results graphically. Included panel functions can display points, shading, ellipses, and correlation values with confidence intervals.
 
