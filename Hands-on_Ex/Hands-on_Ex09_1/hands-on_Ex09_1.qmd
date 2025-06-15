@@ -112,7 +112,129 @@ ggtern(data=agpop_mutated, aes(x=YOUNG,y=ACTIVE, z=OLD)) +
 
 The code below create an interactive ternary plot using ***plot_ly()*** function of **Plotly R**.
 
+::: panel-tabset
+## 🎀 [PRACTICE]{style="color:#d496d4"}
 ```{r}
+#| echo: false
+
+# ---------- helper functions ----------
+
+label <- function(txt) {
+  list(
+    text = txt, x = 0.1, y = 1, ax = 0, ay = 0,
+    xref = "paper", yref = "paper", align = "center",
+    font       = list(family = "serif", size = 15, color = "white"),
+    bgcolor    = "#b3b3b3",
+    bordercolor = "black",
+    borderwidth = 2
+  )
+}
+
+axis <- function(txt, col) {
+  list(
+    title    = list(text = txt, font = list(color = col)),
+    tickformat = ".0%",
+    tickfont = list(size = 10, color = col),
+    linecolor = col                 # axis line
+  )
+}
+
+ternaryAxes <- list(
+  aaxis = axis("Young" , "#0033A0"),   # red
+  baxis = axis("Active", "#86110D"),   # green
+  caxis = axis("Old"   , "#1C6B17")    # blue
+)
+
+# ---------- interactive plot ----------
+
+plot_ly(
+  agpop_mutated,
+  a    = ~YOUNG,
+  b    = ~ACTIVE,
+  c    = ~OLD,
+  type = "scatterternary",
+  mode = "markers",
+  color = I("black"),
+
+  # nice, readable tooltip
+  hovertemplate = paste(
+    "Young:  %{a:.0%}",
+    "<br>Active: %{b:.0%}",
+    "<br>Old:    %{c:.0%}",
+    "<extra></extra>"
+  )
+) %>%
+  layout(
+    title       = list(text = "Population structure, 2015"),
+    annotations = label("Ternary Markers"),
+    ternary     = ternaryAxes,
+    margin      = list(t = 90)
+  )
+
+
+```
+```{r}
+#| eval: false
+
+# ---------- helper functions ----------
+
+label <- function(txt) {
+  list(
+    text = txt, x = 0.1, y = 1, ax = 0, ay = 0,
+    xref = "paper", yref = "paper", align = "center",
+    font       = list(family = "serif", size = 15, color = "white"),
+    bgcolor    = "#b3b3b3",
+    bordercolor = "black",
+    borderwidth = 2
+  )
+}
+
+axis <- function(txt, col) {
+  list(
+    title    = list(text = txt, font = list(color = col)),
+    tickformat = ".0%",
+    tickfont = list(size = 10, color = col),
+    linecolor = col                 # axis line
+  )
+}
+
+ternaryAxes <- list(
+  aaxis = axis("Young" , "#0033A0"),   # red
+  baxis = axis("Active", "#86110D"),   # green
+  caxis = axis("Old"   , "#1C6B17")    # blue
+)
+
+# ---------- interactive plot ----------
+
+plot_ly(
+  agpop_mutated,
+  a    = ~YOUNG,
+  b    = ~ACTIVE,
+  c    = ~OLD,
+  type = "scatterternary",
+  mode = "markers",
+  color = I("black"),
+
+  # nice, readable tooltip
+  hovertemplate = paste(
+    "Young:  %{a:.0%}",
+    "<br>Active: %{b:.0%}",
+    "<br>Old:    %{c:.0%}",
+    "<extra></extra>"
+  )
+) %>%
+  layout(
+    title       = list(text = "Population structure, 2015"),
+    annotations = label("Ternary Markers"),
+    ternary     = ternaryAxes,
+    margin      = list(t = 90)
+  )
+
+
+```
+## Given Code
+```{r}
+#| echo: false
 
 # reusable function for creating annotation object
 label <- function(txt) {
@@ -147,13 +269,60 @@ plot_ly(
   b = ~ACTIVE, 
   c = ~OLD, 
   color = I("black"), 
-  type = "scatterternary"
+  type = "scatterternary",
+  mode = "markers"
 ) %>%
   layout(
     annotations = label("Ternary Markers"), 
     ternary = ternaryAxes
-  )
+  ) 
 ```
+
+```{r}
+#| eval: false
+
+# reusable function for creating annotation object
+label <- function(txt) {
+  list(
+    text = txt, 
+    x = 0.1, y = 1,
+    ax = 0, ay = 0,
+    xref = "paper", yref = "paper", 
+    align = "center",
+    font = list(family = "serif", size = 15, color = "white"),
+    bgcolor = "#b3b3b3", bordercolor = "black", borderwidth = 2
+  )
+}
+
+# reusable function for axis formatting
+axis <- function(txt) {
+  list(
+    title = txt, tickformat = ".0%", tickfont = list(size = 10)
+  )
+}
+
+ternaryAxes <- list(
+  aaxis = axis("Young"), 
+  baxis = axis("Active"), 
+  caxis = axis("Old")
+)
+
+# Initiating a plotly visualization 
+plot_ly(
+  agpop_mutated, 
+  a = ~YOUNG, 
+  b = ~ACTIVE, 
+  c = ~OLD, 
+  color = I("black"), 
+  type = "scatterternary",
+  mode = "markers"
+) %>%
+  layout(
+    annotations = label("Ternary Markers"), 
+    ternary = ternaryAxes
+  ) 
+```
+:::
 
 # [5]{style="color:#d496d4; background:none;"} References
 
