@@ -8,13 +8,13 @@ about:
       text: LinkedIn
       href: https://www.linkedin.com/in/vanessariadi/
       target: _blank
+    - icon: github
+      text: Github
+      href: https://github.com/vriadi
+      target: _blank
     - text: "<img src='/images/tableaubw.png' style='height:18.5px; vertical-align:top;'>  Tableau Public"
       href: https://public.tableau.com/app/profile/vanessa.riadi/vizzes
       target: _blank
-    #- icon: github
-      #text: Github
-      #href: https://github.com/vriadi
-      #target: _blank
 execute: 
   echo: true
   eval: true

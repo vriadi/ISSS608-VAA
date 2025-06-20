@@ -168,6 +168,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex09_5/hands-on_Ex09_5.html">
  <span class="dropdown-text">9.5 - Treemap Visualisation with R</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex10/hands-on_Ex10.html">
+ <span class="dropdown-text">10 - Information Dashboard Design: R methods</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -256,8 +260,8 @@ ul.task-list li input[type="checkbox"] {
         </a>
     </div>
   </nav>
-  <div id="quarto-announcement" data-announcement-id="999e21d40d56cffd2e6106eca77849ef" class="alert alert-info hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>NEW (14/06)</strong> - <a href="https://isss608-vriadi.netlify.app/In-class_Ex/In-class_Ex08_1"><strong>In-class Exercise 8</strong></a> is published!</p>
+  <div id="quarto-announcement" data-announcement-id="c912e34d40c0c961185722589d18e067" class="alert alert-info hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>NEW (20/06)</strong> - <a href="https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex03/take-home_ex03"><strong>Take-home Exercise 3</strong></a> is updated and <a href="https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex09_1/hands-on_ex09_1"><strong>Hands-on Exercise 9</strong></a> and <a href="https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex10/hands-on_ex10"><strong>Hands-on Exercise 10</strong></a> are published!</p>
 </div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
@@ -406,7 +410,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 14, 2025</p>
+      <p class="date-modified">June 20, 2025</p>
     </div>
   </div>
     
@@ -655,27 +659,204 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="app2"><span style="color:#d496d4; background:none;">4.2</span> App 2: Relationship Clusters and Pseudonyms</h2>
 <section id="ui-design-goals-1" class="level3">
 <h3 class="anchored" data-anchor-id="ui-design-goals-1"><span style="color:#d496d4; background:none;">4.2.1</span> UI Design Goals</h3>
+<ul>
+<li><p>Break down the interface into focused tabs for People &amp; Vessels Communication Network And Cluster Detection, Predominant Topic Discovery, and Pseudonym Usage &amp; Exploration.</p></li>
+<li><p>Use expressive and interactive visuals (e.g., multi-cluster &amp; force-directed relationship graph, filterable tables, searchable bar chart &amp; heatmap) to highlight communicative interaction &amp; clusters and pseudonymous insights in the people and vessels network.</p></li>
+<li><p>Support investigative usability by enabling Clepper to uncover hidden communication tendency, closely associated groups, and individuals hidden under multiple aliases in the people and vessels network.</p></li>
+</ul>
 </section>
 <section id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1" class="level3">
 <h3 class="anchored" data-anchor-id="parameters-and-outputs-that-will-be-exposed-on-the-shiny-applications-1"><span style="color:#d496d4; background:none;">4.2.2</span> Parameters and outputs that will be exposed on the Shiny applications</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Parameters (UI Inputs)</strong></th>
+<th><strong>Outputs (UI Outputs)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Week Selection</strong> (select box)</td>
+<td><strong>All charts:</strong> Charts filtered by the selected week(s)</td>
+</tr>
+<tr class="even">
+<td><strong>Date Range Input</strong> (free-text boxes)</td>
+<td><strong>All charts:</strong> Charts filtered by the specific selected date range</td>
+</tr>
+<tr class="odd">
+<td><strong>Individual ID Selection</strong> (dropdown)</td>
+<td><strong>Chart 1:</strong> Force-directed network graph that highlights the selected ID and all directly connected nodes</td>
+</tr>
+<tr class="even">
+<td><strong>Cluster Selection</strong> (dropdown)</td>
+<td><strong>Chart 1:</strong> Force-directed network graph that highlights the selected cluster with all belonged nodes</td>
+</tr>
+<tr class="odd">
+<td><strong>Cluster Selection</strong> (dropdown)</td>
+<td><strong>Chart 2:</strong> Table that displays top keywords mentioned in the messages of nodes belonging to the selected cluster</td>
+</tr>
+<tr class="even">
+<td><strong>Number of Top Keywords Input</strong> (free-text box)</td>
+<td><strong>Chart 2:</strong> Table that shows top <em>k</em> keywords mentioned in the messages of nodes (belonging to the selected cluster)</td>
+</tr>
+<tr class="odd">
+<td><strong>Threshold for Pseudonym Frequency Input</strong> (slider)</td>
+<td><strong>Chart 3:</strong> Bar chart of pseudonyms whose frequency ≥ threshold</td>
+</tr>
+<tr class="even">
+<td><strong>Threshold for Pseudonym Mentions</strong> (slider)</td>
+<td><strong>Chart 4:</strong> Heatmap of pseudonym mentions with frequency ≥ threshold</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="shiny-app-panel-tabs-ui-design-1" class="level3">
 <h3 class="anchored" data-anchor-id="shiny-app-panel-tabs-ui-design-1"><span style="color:#d496d4; background:none;">4.2.3</span> Shiny App Panel Tabs UI Design</h3>
-<section id="module-1" class="level4">
-<h4 class="anchored" data-anchor-id="module-1"><span style="color:#d496d4; background:none;">4.2.3.1</span> <strong>Module 1</strong></h4>
+<section id="communication-clusters" class="level4">
+<h4 class="anchored" data-anchor-id="communication-clusters"><span style="color:#d496d4; background:none;">4.2.3.1</span> <strong>Communication Clusters</strong></h4>
+<p>Purpose: Reveal the interactions &amp; relationships among people and vessels as well as the tightly knit groups.</p>
+<p>Design Elements:</p>
+<ul>
+<li><p>Force-directed network graph: Visualizes entities (people &amp; vessels) and their interactions, with distinct color-coded clusters.</p></li>
+<li><p>Interactive Controls: Week selection and date range slider.</p></li>
+<li><p>Dropdowns to filter by individual ID (where selecting an ID highlights that node and its directly-related nodes only) or communication cluster (where selecting a cluster highlights the nodes belonging to that cluster only).</p></li>
+</ul>
+<p>This helps Clepper better understand the interactions &amp; relationships among people and vessels in the knowledge graph, detect central &amp; supporting actors, identify hidden groupings, and see how communication flows within clusters.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/2_1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
-<section id="module-2" class="level4">
-<h4 class="anchored" data-anchor-id="module-2"><span style="color:#d496d4; background:none;">4.2.3.2</span> <strong>Module 2</strong></h4>
+<section id="predominant-topics" class="level4">
+<h4 class="anchored" data-anchor-id="predominant-topics"><span style="color:#d496d4; background:none;">4.2.3.2</span> <strong>Predominant Topics</strong></h4>
+<p>Purpose: Reveal the predominant topics discussed within each communication cluster.</p>
+<p>Design Elements:</p>
+<ul>
+<li><p>Keyword frequency table: Displays the most common words used by members of each cluster and their frequency.</p></li>
+<li><p>Interactive Controls: Week selection and date range slider.</p></li>
+<li><p>Dropdown to filter by communication cluster, where selecting a cluster filters the keywords to those used only by that group.</p></li>
+<li><p>Free-text box to enter the number of top used keywords that the user wants to be displayed.</p></li>
+</ul>
+<p>This helps Clepper see what each group is talking about, understand their interests and operations, and identify their predominant topics. It also offers context to uncover entities hidden behind the pseudonyms used in each cluster.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/2_2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="pseudonyms-general-usage" class="level4">
+<h4 class="anchored" data-anchor-id="pseudonyms-general-usage"><span style="color:#d496d4; background:none;">4.2.3.3</span> <strong>Pseudonyms General Usage</strong></h4>
+<p>Purpose: Quantify how frequently identified and suspected pseudonyms appear in communications.</p>
+<p>Design Elements:</p>
+<ul>
+<li><p>Bar chart: Displays total mention counts of selected pseudonyms across all messages of people and vessels in the network, ranked from highest to lowest frequency to aid visual comparison.</p></li>
+<li><p>Interactive Controls: Week selection and date range slider.</p></li>
+<li><p>Slider to set pseudonym frequency threshold: Users can filter for the only pseudonyms whose frequency satisfies a certain minimum threshold to reduce noise.</p></li>
+</ul>
+<p>This helps Clepper prioritize which ‘names’ has higher potential of being pseudonyms and which pseudonyms warrant further investigation based on communication volume.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/2_3.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="pseudonyms-specific-mentions" class="level4">
+<h4 class="anchored" data-anchor-id="pseudonyms-specific-mentions"><span style="color:#d496d4; background:none;">4.2.3.4</span> <strong>Pseudonyms Specific Mentions</strong></h4>
+<p>Purpose: Show which entities mention which pseudonyms, and how frequently, to uncover possible hidden identities.</p>
+<p>Design Elements:</p>
+<ul>
+<li><p>Heatmap matrix: Displays senders (rows) and pseudonyms mentioned (columns), with fill intensity based on frequency.</p></li>
+<li><p>Labelled counts: Cells display the number of times a sender referenced a particular pseudonym.</p></li>
+<li><p>Interactive Controls: Week selection and date range slider.</p></li>
+<li><p>Slider to set pseudonym mention frequency threshold: Users can filter for the only number of mentions that satisfy a certain minimum threshold to reduce noise.</p></li>
+</ul>
+<p>This helps Clepper better uncover identities hidden behind pseudonyms.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/2_4.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
 </section>
 <section id="ui-objects-used-1" class="level3">
 <h3 class="anchored" data-anchor-id="ui-objects-used-1"><span style="color:#d496d4; background:none;">4.2.4</span> UI objects used</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 80%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>UI Component</strong></td>
+<td><strong>Purpose</strong></td>
+</tr>
+<tr class="even">
+<td><strong>titlePanel()</strong></td>
+<td>App’s title</td>
+</tr>
+<tr class="odd">
+<td><strong>sidebarLayout()</strong></td>
+<td>Two-column layout with input controls on the side and visual output in the main panel</td>
+</tr>
+<tr class="even">
+<td><strong>tabsetPanel()</strong></td>
+<td>Switch between the 4 modules: Communication Clusters, Predominant Topics, Pseudonym Usage, and Mentions</td>
+</tr>
+<tr class="odd">
+<td><strong>selectInput()</strong></td>
+<td>Select by ID, select by cluster, or filter pseudonym-related terms</td>
+</tr>
+<tr class="even">
+<td><strong>textInput()</strong></td>
+<td>Free-text input to define number of top keywords to display</td>
+</tr>
+<tr class="odd">
+<td><strong>sliderInput()</strong></td>
+<td>Filter by hour of day or set pseudonym frequency threshold</td>
+</tr>
+<tr class="even">
+<td><strong>dateRangeInput()</strong></td>
+<td>Filter communications by selected date range</td>
+</tr>
+<tr class="odd">
+<td><strong>plotOutput()</strong></td>
+<td>Render static ggplot visualizations (bar chart or heatmap)</td>
+</tr>
+<tr class="even">
+<td><strong>dataTableOutput()</strong></td>
+<td>Display top keyword frequency table for selected cluster</td>
+</tr>
+<tr class="odd">
+<td><strong>visNetworkOutput()</strong></td>
+<td>Show interactive communication cluster graph</td>
+</tr>
+<tr class="even">
+<td><strong>actionButton()</strong></td>
+<td>Apply filters or refresh views</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="r-packages-needed-for-shiny-application" class="level3">
 <h3 class="anchored" data-anchor-id="r-packages-needed-for-shiny-application"><span style="color:#d496d4; background:none;">4.2.5</span> R packages needed for Shiny application</h3>
+<p>As we will be adapting the visual analytics from Take-home Exercise 2 into a Shiny application, we need to ensure all required R packages are available and supported. The following packages are essential for building and rendering this application:</p>
+<ul>
+<li><a href="https://shiny.posit.co/" target="_blank"><strong>shiny</strong></a><strong>:</strong> Easy web apps for data science without the compromises.</li>
+<li><a href="https://cran.r-project.org/package=dplyr" target="_blank"><strong>dplyr</strong></a>: A grammar of data manipulation, making data wrangling concise, fast, and readable.</li>
+<li><a href="https://cran.r-project.org/package=ggplot2" target="_blank"><strong>ggplot2</strong></a>: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.</li>
+<li><a href="https://datastorm-open.github.io/visNetwork/" target="_blank"><strong>visNetwork</strong></a>: Enables interactive network visualizations in R using the vis.js JavaScript library. tidyr: Helps reshape data for plotting and joins, especially useful for keyword tables and pseudonym mentions.</li>
+<li><a href="https://stringr.tidyverse.org/"><strong>stringr</strong></a>: Provides a cohesive set of functions designed to make string manipulation easier and more consistent (used for detecting pseudonym references).</li>
+<li><a href="https://forcats.tidyverse.org/"><strong>forcats</strong></a>: Tools for working with categorical/factor variables — particularly useful in heatmap axis ordering.</li>
+</ul>
 </section>
 <section id="test-the-specific-r-codes-can-be-run" class="level3">
 <h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run"><span style="color:#d496d4; background:none;">4.2.6</span> Test the specific R codes can be run</h3>
+<p><strong>WIP</strong></p>
 </section>
 </section>
 <section id="app3" class="level2">
@@ -1524,6 +1705,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/vanessariadi/" target="_blank">
       <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vriadi" target="_blank">
+      <i class="bi bi-github" role="img" aria-label="Github">
 </i> 
     </a>
   </li>  

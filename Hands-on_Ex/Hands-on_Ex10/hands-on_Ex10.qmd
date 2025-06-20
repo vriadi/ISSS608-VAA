@@ -1,7 +1,7 @@
 ---
-title: "Visualising and Analysing Time-oriented Data"
+title: "Information Dashboard Design: R methods"
 author: "Vanessa Riadi"
-date: "May 19, 2025"
+date: "Jun 20, 2025"
 date-modified: "last-modified"
 format:
   html:
@@ -13,510 +13,573 @@ execute:
   freeze: true
 ---
 
-## [6.1]{style="color:#d496d4"} Learning Outcome
+## [1]{style="color:#d496d4; background:none;"} Overview
 
-We will learn how to create the followings using R visualisation in this hands-on exercise:
+By the end of this hands-on exercise, you will be able to:
 
--   plotting a calender heatmap by using ggplot2 functions,
+-   create bullet chart by using ggplot2,
+-   create sparklines by using ggplot2 ,
+-   build industry standard dashboard by using R Shiny.
 
--   plotting a cycle plot by using ggplot2 function,
+## [2]{style="color:#d496d4; background:none;"} Getting started
 
--   plotting a slopegraph
+R packages used in this chapter:
 
--   plotting a horizon chart
+-   [tidyverse](https://www.tidyverse.org/) provides a collection of functions for performing data science task such as importing, tidying, wrangling data and visualising data. It is not a single package but a collection of modern R packages including but not limited to [readr](https://readr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/), [dplyr](https://dplyr.tidyverse.org/), [ggplot](https://ggplot2.tidyverse.org/), [tibble](https://tibble.tidyverse.org/), [stringr](https://stringr.tidyverse.org/), [forcats](https://forcats.tidyverse.org/) and [purrr](https://purrr.tidyverse.org/).
+-   [lubridate]() provides functions to work with dates and times more efficiently.
+-   [ggthemes]() is an extension of ggplot2. It provides additional [themes](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) beyond the basic themes of ggplot2.
+-   [gtExtras](https://jthomasmock.github.io/gtExtras/index.html) provides some additional helper functions to assist in creating beautiful tables with [gt](https://gt.rstudio.com/), an R package specially designed for anyone to make wonderful-looking tables using the R programming language.
+-   [reactable](https://glin.github.io/reactable/index.html) provides functions to create interactive data tables for R, based on the [React Table](https://github.com/tanstack/table/tree/v7) library and made with [reactR](https://github.com/react-R/reactR).
+-   [reactablefmtr](https://kcuilla.github.io/reactablefmtr/index.html) provides various features to streamline and enhance the styling of interactive reactable tables with easy-to-use and highly-customizable functions and themes.
 
-## [6.2]{style="color:#d496d4"} Getting Started
-
-### [6.2.1]{style="color:#d496d4"} Installing and launching R packages
-
-We will install and launch the following R packages: scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table and tidyverse.
-
+Load the R Packages
 ```{r}
-pacman::p_load(scales, viridis, lubridate, ggthemes,
-               gridExtra, readxl, knitr, data.table,
-               CGPfunctions, ggHoriPlot, tidyverse)
+#| code-fold: true
+pacman::p_load(lubridate, ggthemes, reactable,
+reactablefmtr, gt, gtExtras, tidyverse,odbc,svglite,ggplot2,knitr)
 ```
 
-## [6.3]{style="color:#d496d4"} Plotting Calendar Heatmap
+## [3]{style="color:#d496d4; background:none;"} Importing Microsoft Access database
 
-In this section, you will learn how to:
+### [3.1]{style="color:#d496d4; background:none;"} The data set
 
--   plot a calender heatmap by using ggplot2 functions and extension,
--   write function using R programming,
--   derive specific date and time related field by using base R and lubridate packages
--   perform data preparation task by using tidyr and dplyr packages.
+A personal database in Microsoft Access mdb format called *Coffee Chain* will be used.
 
-Example of a calender heatmap programmatically by using ggplot2 package:
+### [3.2]{style="color:#d496d4; background:none;"} Importing database into R (Only work for R system 32 bit)
 
-![](img/image01.png)
-
-### [6.3.1]{style="color:#d496d4"} The Data
-
-For the purpose of this hands-on exercise, *eventlog.csv* file will be used. This data file consists of 199,999 rows of time-series cyber attack records by country.
-
-First we import *eventlog.csv* file into R environment and called the data frame as *attacks*.
+In the code chunk below, `odbcConnectAccess()` of [**RODBC**](https://cran.r-project.org/web/packages/RODBC/index.html) package is used used to import a database query table into R.
 
 ```{r}
-attacks <- read_csv("../data/eventlog.csv")
+#| eval: false
+con <- odbcConnectAccess2007('../data/Coffee Chain.mdb')
+coffeechain <- sqlFetch(con, 'CoffeeChain Query')
+write_rds(coffeechain, "../data/CoffeeChain.rds")
+odbcClose(con)
 ```
-
-### [6.3.2]{style="color:#d496d4"} Examining the data structure
-
-It is always a good practice to examine the imported data frame before further analysis is performed.
-
-For example, *kable()* can be used to review the structure of the imported data frame.
-
-```{r}
-kable(head(attacks))
-```
-
-There are three columns, namely *timestamp*, *source_country* and *tz*.
-
--   *timestamp* field stores date-time values in POSIXct format.
--   *source_country* field stores the source of the attack. It is in *ISO 3166-1 alpha-2* country code.\
--   *tz* field stores time zone of the source IP address.
-
-### [6.3.3]{style="color:#d496d4"} Data Preparation
-
-Step 1: Deriving *weekday* and *hour of day* fields
-
-Before we can plot the calender heatmap, two new fields namely *weekday* and *hour* need to be derived. In this step, we will write a function to perform the task.
-
-```{r}
-make_hr_wkday <- function(ts, sc, tz) {
-  real_times <- ymd_hms(ts, 
-                        tz = tz[1], 
-                        quiet = TRUE)
-  dt <- data.table(source_country = sc,
-                   weekday = weekdays(real_times),
-                   hour = hour(real_times))
-  return(dt)
-  }
-```
-
-::: callout-note
--   [`ymd_hms()`](https://lubridate.tidyverse.org/reference/ymd_hms.html) and [`hour()`](https://lubridate.tidyverse.org/reference/hour.html) are from [**lubridate**](https://lubridate.tidyverse.org/) package, and
--   [`weekdays()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/weekdays) is a **base** R function.
-:::
-
-::: callout-tip
-# Cheatsheet for lubridate [here](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf)
-
-![](img/lubridate.pdf){fig-align="center" width="700" height="350"}
-:::
-
-Step 2: Deriving the attacks tibble data frame
-
-```{r}
-weekday_levels <- c('Saturday', 'Friday', 
-                  'Thursday', 'Wednesday', 
-                  'Tuesday', 'Monday', 
-                  'Sunday')
-
-attacks <- attacks %>%
-  group_by(tz) %>%
-  do(make_hr_wkday(.$timestamp, 
-                   .$source_country, 
-                   .$tz)) %>% 
-  ungroup() %>% 
-  mutate(weekday = factor(
-    weekday, levels = weekday_levels),
-    hour  = factor(
-      hour, levels = 0:23))
-```
-
-::: callout-note
-Beside extracting the necessary data into *attacks* data frame, `mutate()` of **dplyr** package is used to convert *weekday* and *hour* fields into **factor** so they'll be ordered when plotting
-:::
-
-Table below shows the tidy tibble table after processing.
-
-```{r}
-kable(head(attacks))
-```
-
-### [6.3.4]{style="color:#d496d4"} Building the Calendar Heatmaps
-
 ::: {.nursebox .nurse data-latex="nurse"}
-**NOTE:** Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0. So we will use use `linewidth` instead.
+Before running the code chunk, you need to change the R system to 32bit version. This is because the `odbcConnectAccess()` is based on 32bit and not 64bit. However, macOS the latest version no longer support 32-bit. We wil skip running this code, and directly use the dataset provided in E-Learn by Prof Kam.
 :::
 
+### [3.3]{style="color:#d496d4; background:none;"} Data Preparation
+
+The code chunk below is used to import *CoffeeChain.rds* into R.
+
 ```{r}
-grouped <- attacks %>% 
-  count(weekday, hour) %>% 
+coffeechain <- read_rds("../data/rds/CoffeeChain.rds")
+```
+
+```{r}
+kable(head(coffeechain, n=5))
+```
+The code chunk below is used to aggregate Sales and Budgeted Sales at the Product level.
+
+```{r}
+#| code-fold: true
+product <- coffeechain %>%
+  group_by(`Product`) %>%
+  summarise(`target` = sum(`Budget Sales`),
+            `current` = sum(`Sales`)) %>%
+  ungroup()
+```
+
+### [3.4]{style="color:#d496d4; background:none;"} Bullet chart in ggplot2
+
+The code chunk below is used to plot the bullet charts using ggplot2 functions.
+
+```{r}
+#| code-fold: true
+bulletcharts <- ggplot(product, aes(Product, current)) + 
+  geom_col(aes(Product, max(target) * 1.01),
+           fill="grey85", width=0.85) +
+  geom_col(aes(Product, target * 0.75),
+           fill="grey60", width=0.85) +
+  geom_col(aes(Product, target * 0.5),
+           fill="grey50", width=0.85) +
+  geom_col(aes(Product, current), 
+           width=0.35,
+           fill = "black") + 
+  geom_errorbar(aes(y = target,
+                    x = Product, 
+                    ymin = target,
+                    ymax= target), 
+                width = .4,
+                colour = "red",
+                linewidth = 1) +
+  coord_flip()
+
+bulletcharts
+```
+
+## [4]{style="color:#d496d4; background:none;"} Plotting sparklines using ggplot2
+
+In this section, you will learn how to plot sparklines by using ggplot2.
+
+### [4.1]{style="color:#d496d4; background:none;"} Preparing the data
+
+```{r}
+#| eval: false
+#| code-fold: true
+sales_report <- coffeechain %>%
+  filter(Date >= "2013-01-01") %>%
+  mutate(Month = month(Date)) %>%
+  group_by(Month, Product) %>%
+  summarise(Sales = sum(Sales)) %>%
   ungroup() %>%
-  na.omit()
-
-ggplot(grouped, 
-       aes(hour, 
-           weekday, 
-           fill = n)) + 
-geom_tile(color = "white", 
-          #size = 0.1) +  USE LINEWIDTH INSTEAD!!!
-          linewidth = 0.1) +
-theme_tufte(base_family = "Helvetica") + 
-coord_equal() +
-scale_fill_gradient(name = "# of attacks",
-                    low = "sky blue", 
-                    high = "dark blue") +
-labs(x = NULL, 
-     y = NULL, 
-     title = "Attacks by weekday and time of day") +
-theme(axis.ticks = element_blank(),
-      plot.title = element_text(hjust = 0.5),
-      legend.title = element_text(size = 8),
-      legend.text = element_text(size = 6) )
+  select(Month, Product, Sales)
+```
+```{r}
+sales_report <- coffeechain %>% 
+  filter(Date >= "2013-01-01") %>% 
+  mutate(Month = month(Date)) %>% 
+  group_by(Month, Product) %>% 
+  summarise(
+    Sales   = sum(Sales),
+    .groups = "drop"        # or "drop_last" if you prefer
+  ) %>% 
+  select(Month, Product, Sales)
 ```
 
-::: callout-tip
-# Things to learn from the code chunk
-
--   a tibble data table called *grouped* is derived by aggregating the attack by *weekday* and *hour* fields.
--   a new field called *n* is derived by using `group_by()` and `count()` functions.
--   `na.omit()` is used to exclude missing value.
--   `geom_tile()` is used to plot tiles (grids) at each x and y position. `color` and `linewidth` arguments are used to specify the border color and line size of the tiles.
--   [`theme_tufte()`](https://jrnold.github.io/ggthemes/reference/theme_tufte.html) of [**ggthemes**](https://jrnold.github.io/ggthemes/reference/index.html) package is used to remove unnecessary chart junk. To learn which visual components of default ggplot2 have been excluded, you are encouraged to comment out this line to examine the default plot.
--   `coord_equal()` is used to ensure the plot will have an aspect ratio of 1:1.
--   `scale_fill_gradient()` function is used to creates a two colour gradient (low-high).
-:::
-
-Then we can simply group the count by hour and weekday and plot it, since we know that we have values for every combination there's no need to further preprocess the data.
-
-### [6.3.5]{style="color:#d496d4"} Building Multiple Calendar Heatmaps
-
-**Challenge:** Building multiple heatmaps for the top four countries with the highest number of attacks.
-
-**EXAMPLE:** ![](img/image02.png)
-
-### [6.3.6]{style="color:#d496d4"} Plotting Multiple Calendar Heatmaps
-
-Step 1: Deriving attack by country object
-
-In order to identify the top 4 countries with the highest number of attacks, you are required to do the followings:
-
--   count the number of attacks by country,
--   calculate the percent of attackes by country, and
--   save the results in a tibble data frame.
+The code chunk below is used to compute the minimum, maximum and end othe the month sales.
 
 ```{r}
-attacks_by_country <- count(
-  attacks, source_country) %>%
-  mutate(percent = percent(n/sum(n))) %>%
-  arrange(desc(n))
+#| code-fold: true
+mins <- group_by(sales_report, Product) %>% 
+  slice(which.min(Sales))
+maxs <- group_by(sales_report, Product) %>% 
+  slice(which.max(Sales))
+ends <- group_by(sales_report, Product) %>% 
+  filter(Month == max(Month))
+
 ```
 
-Step 2: Preparing the tidy data frame
-
-In this step, you are required to extract the attack records of the top 4 countries from *attacks* data frame and save the data in a new tibble data frame (i.e. *top4_attacks*).
+The code chunk below is used to compute the 25 and 75 quantiles.
 
 ```{r}
-top4 <- attacks_by_country$source_country[1:4]
-top4_attacks <- attacks %>%
-  filter(source_country %in% top4) %>%
-  count(source_country, weekday, hour) %>%
-  ungroup() %>%
-  mutate(source_country = factor(
-    source_country, levels = top4)) %>%
-  na.omit()
+#| code-fold: true
+quarts <- sales_report %>%
+  group_by(Product) %>%
+  summarise(quart1 = quantile(Sales, 
+                              0.25),
+            quart2 = quantile(Sales, 
+                              0.75)) %>%
+  right_join(sales_report)
+
 ```
 
-### [6.3.7]{style="color:#d496d4"} Plotting Multiple Calendar Heatmaps
+### [4.2]{style="color:#d496d4; background:none;"} sparklines in ggplot2
 
-Step 3: Plotting the Multiple Calender Heatmap by using ggplot2 package.
-
-```{r fig.width = 12}
-ggplot(top4_attacks, 
-       aes(hour, 
-           weekday, 
-           fill = n)) + 
-  geom_tile(color = "white", 
-          size = 0.1) + 
-  theme_tufte(base_family = "Helvetica") + 
-  coord_equal() +
-  scale_fill_gradient(name = "# of attacks",
-                    low = "sky blue", 
-                    high = "dark blue") +
-  facet_wrap(~source_country, ncol = 2) +
-  labs(x = NULL, y = NULL, 
-     title = "Attacks on top 4 countries by weekday and time of day") +
-  theme(axis.ticks = element_blank(),
-        axis.text.x = element_text(size = 7),
-        plot.title = element_text(hjust = 0.5),
-        legend.title = element_text(size = 8),
-        legend.text = element_text(size = 6) )
-```
-
-## [6.4]{style="color:#d496d4"} Plotting Cycle Plot
-
-In this section, you will learn how to plot a cycle plot showing the time-series patterns and trend of visitor arrivals from Vietnam programmatically by using ggplot2 functions.
-
-**EXAMPLE** ![](img/image03.png)
-
-### [6.4.1]{style="color:#d496d4"} Step 1: Data Import
-
-For the purpose of this hands-on exercise, *arrivals_by_air.xlsx* will be used.
-
-The code chunk below imports *arrivals_by_air.xlsx* by using `read_excel()` of **readxl** package and save it as a tibble data frame called *air*.
+The code chunk used.
 
 ```{r}
-air <- read_excel("../data/arrivals_by_air.xlsx")
+#| code-fold: true
+#| fig-width: 14
+#| fig-height: 12
+sparklines <- ggplot(sales_report, aes(x=Month, y=Sales)) + 
+  facet_grid(Product ~ ., scales = "free_y") + 
+  geom_ribbon(
+  data = quarts,
+  aes(
+    x     = Month,          # ← tell ggplot what the ribbon’s x is
+    ymin  = quart1,
+    ymax  = quart2
+  ),
+  fill = "grey90",
+  inherit.aes = FALSE        # keep this OFF so the layer gets only what we pass
+) +
+  geom_line(size=0.3) +
+  geom_point(data = mins, col = 'red') +
+  geom_point(data = maxs, col = 'blue') +
+  geom_text(data = mins, aes(label = Sales), vjust = -1) +
+  geom_text(data = maxs, aes(label = Sales), vjust = 2.5) +
+  geom_text(data = ends, aes(label = Sales), hjust = 0, nudge_x = 0.5) +
+  geom_text(data = ends, aes(label = Product), hjust = 0, nudge_x = 1.0) +
+  expand_limits(x = max(sales_report$Month) + 
+                  (0.25 * (max(sales_report$Month) - min(sales_report$Month)))) +
+  scale_x_continuous(breaks = seq(1, 12, 1)) +
+  scale_y_continuous(expand = c(0.1, 0)) +
+  theme_tufte(base_size = 3, base_family = "Helvetica") +
+  theme(axis.title=element_blank(), axis.text.y = element_blank(), 
+        axis.ticks = element_blank(), strip.text = element_blank())
+
+sparklines
 ```
 
+## [5]{style="color:#d496d4; background:none;"} Static Information Dashboard Design: gt and gtExtras methods
+
+In this section, you will learn how to create static information dashboard by using [gt](https://gt.rstudio.com/index.html) and [gtExtras](https://jthomasmock.github.io/gtExtras/index.html) packages. Before getting started, it is highly recommended for you to visit the webpage of these two packages and review all the materials provided on the webpages at least once. You done not have to understand and remember everything provided but at least have an overview of the purposes and functions provided by them.
+
+### [5.1]{style="color:#d496d4; background:none;"} Plotting a simple bullet chart
+
+In this section, you will learn how to prepare a bullet chart report by using functions of gt and gtExtras packages.
+
 ```{r}
-#| echo: false
-kable(head(air))
+#| code-fold: true
+product %>%
+  gt::gt() %>%
+  gt_plt_bullet(column = current, 
+              target = target, 
+              width = 60,
+              palette = c("lightblue", 
+                          "black")) %>%
+  gt_theme_538()
 ```
 
-### [6.4.2]{style="color:#d496d4"} Step 2: Deriving month and year fields
+## [6]{style="color:#d496d4; background:none;"} sparklines: gtExtras method
 
-Next, two new fields called *month* and *year* are derived from *Month-Year* field.
+Before we can prepare the sales report by product by using gtExtras functions, code chunk below will be used to prepare the data.
 
 ```{r}
-air$month <- factor(month(air$`Month-Year`), 
-                    levels=1:12, 
-                    labels=month.abb, 
-                    ordered=TRUE) 
-air$year <- year(ymd(air$`Month-Year`))
+#| code-fold: true
+report <- coffeechain %>%
+  mutate(Year = year(Date)) %>%
+  filter(Year == "2013") %>%
+  mutate (Month = month(Date, 
+                        label = TRUE, 
+                        abbr = TRUE)) %>%
+  group_by(Product, Month) %>%
+  summarise(Sales = sum(Sales)) %>%
+  ungroup()
+
 ```
 
-### [6.4.3]{style="color:#d496d4"} Step 4: Extracting the target country
-
-Next, the code chunk below is use to extract data for the target country (i.e. Vietnam)
+It is important to note that one of the requirement of gtExtras functions is that almost exclusively they require you to pass data.frame with list columns. In view of this, code chunk below will be used to convert the report data.frame into list columns.
 
 ```{r}
-Vietnam <- air %>% 
-  select(`Vietnam`, 
-         month, 
-         year) %>%
-  filter(year >= 2010)
+#| code-fold: true
+report %>%
+  group_by(Product) %>%
+  summarize('Monthly Sales' = list(Sales), 
+            .groups = "drop")
 ```
 
+### [6.1]{style="color:#d496d4; background:none;"} Plotting Coffechain Sales report
+
 ```{r}
-#| echo: false
-kable(head(Vietnam))
+#| code-fold: true
+report %>%
+  group_by(Product) %>%
+  summarize('Monthly Sales' = list(Sales), 
+            .groups = "drop") %>%
+   gt() %>%
+   gt_plt_sparkline('Monthly Sales',
+                    same_limit = FALSE)
 ```
 
-### [6.4.4]{style="color:#d496d4"} Step 5: Computing year average arrivals by month
+### [6.2]{style="color:#d496d4; background:none;"} Adding statistics
 
-The code chunk below uses `group_by()` and `summarise()` of **dplyr** to compute year average arrivals by month.
+First, calculate summary statistics by using the code chunk below.
 
 ```{r}
-hline.data <- Vietnam %>% 
-  group_by(month) %>%
-  summarise(avgvalue = mean(`Vietnam`))
+#| code-fold: true
+report %>% 
+  group_by(Product) %>% 
+  summarise("Min" = min(Sales, na.rm = T),
+            "Max" = max(Sales, na.rm = T),
+            "Average" = mean(Sales, na.rm = T)
+            ) %>%
+  gt() %>%
+  fmt_number(columns = 4,
+    decimals = 2)
 ```
 
+### [6.3]{style="color:#d496d4; background:none;"} Combining the data.frame
+
+Next, use the code chunk below to add the statistics on the table.
+
 ```{r}
-#| echo: false
-kable(head(hline.data))
+#| code-fold: true
+spark <- report %>%
+  group_by(Product) %>%
+  summarize('Monthly Sales' = list(Sales), 
+            .groups = "drop")
+
+sales <- report %>% 
+  group_by(Product) %>% 
+  summarise("Min" = min(Sales, na.rm = T),
+            "Max" = max(Sales, na.rm = T),
+            "Average" = mean(Sales, na.rm = T)
+            )
+
+sales_data = left_join(sales, spark)
 ```
 
-### [6.4.5]{style="color:#d496d4"} Step 6: Plotting the cycle plot
-
-The code chunk below is used to plot the cycle plot as shown in Slide 12/23.
-
-::: panel-tabset
-## 🎀 [PRACTICE]{style="color:#d496d4"}
+### [6.4]{style="color:#d496d4; background:none;"} Plotting the updated data.table
 
 ```{r}
-#| fig-width: 8
-#| fig-height: 4
-
-ggplot() + 
-  geom_line(data=Vietnam,
-            aes(x = as.factor(year), 
-                y=`Vietnam`, 
-                group=month), 
-            colour="black") +
-  geom_hline(aes(yintercept=avgvalue), 
-             data=hline.data, 
-             linetype=6, 
-             colour="red", 
-             linewidth=0.5) + 
-  facet_grid(~month) +
-  facet_wrap(~month, nrow = 2) +
-  labs(axis.text.x = element_blank(),
-       title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
-  xlab("") +
-  ylab("No. of Visitors") +
-  theme_grey(base_family = "Helvetica") +
-  theme(axis.text.x = element_text(hjust = 1, angle = 90, vjust = 0.5, size = 6),
-        axis.text.y = element_text(size = 6),) 
+#| code-fold: true
+sales_data %>%
+  gt() %>%
+  gt_plt_sparkline('Monthly Sales',
+                   same_limit = FALSE)
 ```
 
-## Plot & Code
+### [6.5]{style="color:#d496d4; background:none;"} Combining bullet chart and sparklines
+
+Similarly, we can combining the bullet chart and sparklines using the steps below.
 
 ```{r}
-ggplot() + 
-  geom_line(data=Vietnam,
-            aes(x=year, 
-                y=`Vietnam`, 
-                group=month), 
-            colour="black") +
-  geom_hline(aes(yintercept=avgvalue), 
-             data=hline.data, 
-             linetype=6, 
-             colour="red", 
-             linewidth=0.5) + 
-  facet_grid(~month) +
-  labs(axis.text.x = element_blank(),
-       title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
-  xlab("") +
-  ylab("No. of Visitors") +
-  theme_tufte(base_family = "Helvetica")
-```
-:::
+#| code-fold: true
+bullet <- coffeechain %>%
+  filter(Date >= "2013-01-01") %>%
+  group_by(`Product`) %>%
+  summarise(`Target` = sum(`Budget Sales`),
+            `Actual` = sum(`Sales`)) %>%
+  ungroup() 
 
-## [6.5]{style="color:#d496d4"} Plotting Slopegraph
+sales_data = sales_data %>%
+  left_join(bullet)
 
-In this section you will learn how to plot a [slopegraph](https://www.storytellingwithdata.com/blog/2020/7/27/what-is-a-slopegraph) by using R.
+combined_charts <- sales_data %>%
+  gt() %>%
+  gt_plt_sparkline('Monthly Sales') %>%
+  gt_plt_bullet(column = Actual, 
+                target = Target, 
+                width = 28,
+                palette = c("lightblue", 
+                          "black")) %>%
+  gt_theme_538()
 
-Before getting start, make sure that **CGPfunctions** has been installed and loaded onto R environment. Then, refer to [Using newggslopegraph](https://cran.r-project.org/web/packages/CGPfunctions/vignettes/Using-newggslopegraph.html) to learn more about the function. Lastly, read more about `newggslopegraph()` and its arguments by referring to this [link](https://www.rdocumentation.org/packages/CGPfunctions/versions/0.6.3/topics/newggslopegraph).
-
-### [6.5.1]{style="color:#d496d4"} Step 1: Data Import
-
-Import the rice data set into R environment by using the code chunk below.
-
-```{r}
-rice <- read_csv("../data/rice.csv")
+combined_charts
 ```
 
+## [7]{style="color:#d496d4; background:none;"} Interactive Information Dashboard Design: reactable and reactablefmtr methods
+
+In this section, you will learn how to create interactive information dashboard by using [reactable](https://glin.github.io/reactable/index.html) and [reactablefmtr](https://kcuilla.github.io/reactablefmtr/index.html) packages. Before getting started, it is highly recommended for you to visit the webpage of these two packages and review all the materials provided on the webpages at least once. You done not have to understand and remember everything provided but at least have an overview of the purposes and functions provided by them.
+
+In order to build an interactive sparklines, we need to install dataui R package by using the code chunk below.
+
 ```{r}
-#| echo: false
-kable(head(rice))
+#| eval: false
+remotes::install_github("timelyportfolio/dataui")
 ```
 
-### [6.5.2]{style="color:#d496d4"} Step 2: Plotting the slopegraph
-
-Next, code chunk below will be used to plot a basic slopegraph as shown below.
-
-:::: panel-tabset
-## 🎀 [PRACTICE]{style="color:#d496d4"}
+Next, you all need to load the package onto R environment by using the code chunk below.
 
 ```{r}
-#| fig-height: 6
-rice %>%
-  mutate(Year = factor(Year)) %>%
-  filter(Year %in% c(1961, 1980)) %>%
-  newggslopegraph(Year, Yield, Country,
-                  Title = "Rice Yield of Top 11 Asian Countries",
-                  SubTitle = "From 1961 to 1980 (kg/ha)",
-                  Caption = "Prepared by: Vanessa Riadi",
-                  DataLabelLineSize = 0.2,
-                  DataLabelFillColor = "#EFDCAB") +
-  theme_economist() +
-  theme(
-    plot.title = element_text(size = 15, margin = margin(b = 10)),        
-    plot.subtitle = element_text(size = 11, hjust = 0),     
-    plot.caption = element_text(size = 11),
-    legend.text = element_text(size = 8),
-    legend.title = element_text(size = 8),
-    legend.position = "right",                                
-    axis.text.y = element_text(size = 8, color = "grey70")
+library(dataui)
+```
+
+### [7.1]{style="color:#d496d4; background:none;"} Plotting interactive sparklines
+
+Similar to gtExtras, to plot an interactive sparklines by using reactablefmtr package we need to prepare the list field by using the code chunk below.
+
+```{r}
+#| code-fold: true
+report <- report %>%
+  group_by(Product) %>%
+  summarize(`Monthly Sales` = list(Sales))
+```
+
+Next, [react_sparkline](https://kcuilla.github.io/reactablefmtr/reference/react_sparkline.html) will be to plot the sparklines as shown below.
+
+```{r}
+#| code-fold: true
+reactable(
+  report,
+  columns = list(
+    Product = colDef(maxWidth = 200),
+    `Monthly Sales` = colDef(
+      cell = react_sparkline(report)
+    )
   )
+)
 ```
 
-## Given Code & Plot
+### [7.2]{style="color:#d496d4; background:none;"} Changing the pagesize
+
+By default the pagesize is 10. In the code chunk below, arguments defaultPageSize is used to change the default setting.
 
 ```{r}
-#| fig-height: 6
-rice %>% 
-  mutate(Year = factor(Year)) %>%
-  filter(Year %in% c(1961, 1980)) %>%
-  newggslopegraph(Year, Yield, Country,
-                Title = "Rice Yield of Top 11 Asian Counties",
-                SubTitle = "1961-1980",
-                Caption = "Prepared by: Dr. Kam Tin Seong")
+#| code-fold: true
+reactable(
+  report,
+  defaultPageSize = 13,
+  columns = list(
+    Product = colDef(maxWidth = 200),
+    `Monthly Sales` = colDef(
+      cell = react_sparkline(report)
+    )
+  )
+)
 ```
 
-::: callout-tip
-# Thing to learn from the code chunk above
+### [7.3]{style="color:#d496d4; background:none;"} Adding points and labels
 
-For effective data visualisation design, `factor()` is used convert the value type of *Year* field from numeric to factor.
-:::
-::::
-
-## 🎀 [PRACTICE]{style="color:#d496d4"}
-
-Let's practice using the additional dataset!
+In the code chunk below `highlight_points` argument is used to show the minimum and maximum values points and `label` argument is used to label first and last values.
 
 ```{r}
-averp <- read_csv("../data/AVERP.csv")
+#| code-fold: true
+reactable(
+  report,
+  defaultPageSize = 13,
+  columns = list(
+    Product = colDef(maxWidth = 200),
+    `Monthly Sales` = colDef(
+      cell = react_sparkline(
+        report,
+        highlight_points = highlight_points(
+          min = "red", max = "blue"),
+        labels = c("first", "last")
+        )
+    )
+  )
+)
 ```
+
+### [7.4]{style="color:#d496d4; background:none;"} Adding reference line
+
+In the code chunk below `statline` argument is used to show the mean line.
 
 ```{r}
-#| echo: false
-kable(head(averp))
+#| code-fold: true
+reactable(
+  report,
+  defaultPageSize = 13,
+  columns = list(
+    Product = colDef(maxWidth = 200),
+    `Monthly Sales` = colDef(
+      cell = react_sparkline(
+        report,
+        highlight_points = highlight_points(
+          min = "red", max = "blue"),
+        statline = "mean"
+        )
+    )
+  )
+)
 ```
+
+### [7.5]{style="color:#d496d4; background:none;"} Adding bandline
+
+Instead adding reference line, bandline can be added by using the `bandline` argument.
 
 ```{r}
-averp$month <- factor(month(averp$`Date`), 
-                    levels=1:12, 
-                    labels=month.abb, 
-                    ordered=TRUE) 
-averp$year <- year(dmy(averp$`Date`))
+#| code-fold: true
+reactable(
+  report,
+  defaultPageSize = 13,
+  columns = list(
+    Product = colDef(maxWidth = 200),
+    `Monthly Sales` = colDef(
+      cell = react_sparkline(
+        report,
+        highlight_points = highlight_points(
+          min = "red", max = "blue"),
+        line_width = 1,
+        bandline = "innerquartiles",
+        bandline_color = "green"
+        )
+    )
+  )
+)
 ```
 
-Let's check out white bread price across the months and year!
+### [7.6]{style="color:#d496d4; background:none;"} Changing from sparkline to sparkbar
+
+Instead of displaying the values as sparklines, we can display them as sparkbars as shown below.
 
 ```{r}
-whiteBread <- averp %>% 
-  select(year, 
-         month,
-         `Consumer Items`,
-         Values) %>%
-  filter(`Consumer Items` == "Ordinary White Bread (Per 400 Gram)")
+#| code-fold: true
+sparkbar <- reactable(
+  report,
+  defaultPageSize = 13,
+  columns = list(
+    Product = colDef(maxWidth = 200),
+    `Monthly Sales` = colDef(
+      cell = react_sparkbar(
+        report,
+        highlight_bars = highlight_bars(
+          min = "red", max = "blue"),
+        bandline = "innerquartiles",
+        statline = "mean")
+    )
+  )
+)
+
+sparkbar
 ```
 
+## 🎀 [PRACTICE 1]{style="color:#d496d4"}
 ```{r}
-kable(head(whiteBread))
+#| code-fold: true
+combined_charts2 <- sales_data %>%
+  gt() %>%
+  gt_plt_sparkline('Monthly Sales') %>%
+  gt_plt_bullet(column = Actual, 
+                target = Target, 
+                width = 28,
+                palette = c("lightblue", "red")) %>%
+  tab_header(
+    title = md("**Coffeechain Sales Dashboard**"),
+    subtitle = md("Monthly Sales Trends with Target Comparison")
+  ) %>%
+  gt_theme_538() %>%
+  tab_options(
+    table.border.top.color = "white",
+    table.border.bottom.color = "white",
+    table.font.size = 14,
+    heading.title.font.size = 18,
+    heading.subtitle.font.size = 14,
+    row.striping.background_color = "grey98"
+  ) 
+
+combined_charts2
+
 ```
 
+## 🎀 [PRACTICE 2]{style="color:#d496d4"}
 ```{r}
-avgline.data <- whiteBread %>% 
-  group_by(month) %>%
-  summarise(avgvalue = mean(Values, na.rm = TRUE))
+#| code-fold: true
+profit_summary <- coffeechain %>%
+  group_by(Market, `Product Type`) %>%
+  summarise(
+    Actual_Profit2 = sum(Profit),
+    Budget_Profit2  = sum(`Budget Profit`),
+    Actual_Profit  = sum(Profit),
+    Budget_Profit  = sum(`Budget Profit`),
+    Profit_Diff    = Actual_Profit - Budget_Profit,
+    .groups = "drop"
+  ) %>%
+  arrange(desc(Profit_Diff))
+
+gt_profit_dashboard <- profit_summary %>%
+  gt() %>%
+  # bar shows *direction* and *size* of gap
+  gt_plt_bullet(column = Actual_Profit, 
+                target = Budget_Profit, 
+                width = 28,
+                palette = c("lightblue", "red")) %>%
+  cols_label(
+    Market         = "Market",
+    `Product Type` = "Product Type",
+    Actual_Profit  = "Actual vs Budget Profit",
+    Actual_Profit2  = "Actual Profit",
+    Budget_Profit2  = "Budget Profit",
+    Budget_Profit  = "Budget Profit",
+    Profit_Diff    = "Δ Profit"
+  ) %>%
+  fmt_number(
+    columns = c(Actual_Profit2, Budget_Profit2, Actual_Profit, Budget_Profit, Profit_Diff),
+    decimals = 0, use_seps = TRUE
+  ) %>%
+  tab_header(
+    title    = md("Profit Performance Dashboard"),
+    subtitle = md("Actual vs Budget Profit by Market and Product Type")
+  ) %>%
+  gt_theme_538() %>%
+  tab_options(
+    table.font.size          = 14,
+    heading.title.font.size  = 18,
+    heading.subtitle.font.size = 13,
+    row.striping.background_color = "grey98"
+  )
+
+gt_profit_dashboard
+
+
 ```
 
-```{r}
-kable(head(avgline.data))
-```
 
-```{r}
-#| fig-width: 8
-#| fig-height: 4
+## [8]{style="color:#d496d4; background:none;"} Reference
 
-ggplot() + 
-  geom_line(data=whiteBread,
-            aes(x = as.factor(year), 
-                y=Values, 
-                group=month), 
-            colour="black") +
-  geom_hline(aes(yintercept=avgvalue), 
-             data=avgline.data, 
-             linetype=6, 
-             colour="red", 
-             linewidth=0.5) + 
-  facet_grid(~month) +
-  facet_wrap(~month, nrow = 2) +
-  labs(axis.text.x = element_blank(),
-       title = "Value of Ordinary White Bread, Jan 2014-Dec 2022",
-       subtitle = "(Per 400 Gram)") +
-  xlab("") +
-  ylab("Value") +
-  theme_grey(base_family = "Helvetica") +
-  theme(axis.text.x = element_text(hjust = 1, angle = 90, vjust = 0.5, size = 6),
-        axis.text.y = element_text(size = 6)) 
-```
-
-::: {.nursebox .nurse data-latex="nurse"}
-**DID YOU KNOW?**
-
-Inflation can be seen through value of bread! 😱 [read more](https://finsbury-associates.com/what-inflation-does-with-bread-price/)
-
-Current situation:
-
-Singapore Retail Prices: Ordinary White Bread (Per 400 Gram) data was reported at 2.230 SGD/400 g in Dec 2024. [source](https://www.ceicdata.com/en/singapore/average-retail-prices-2019100/retail-prices-ordinary-white-bread-per-400-gram)
-
-Just checked FairPrice site and it's ranged from \$2.05 (house brand) to \$3.20!!
-:::
+-   [Lesson Slides](https://isss608-ay2024-25apr.netlify.app/lesson/lesson10/lesson10-idd#/title-slide)

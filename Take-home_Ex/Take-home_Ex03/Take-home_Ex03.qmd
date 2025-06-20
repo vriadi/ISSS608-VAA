@@ -151,21 +151,33 @@ Useful for identifying suspicious message contents and linking disguised persona
 
 ### [4.1.4]{style="color:#d496d4; background:none;"} UI objects used
 
-|  |  |
-|----|----|
-| **UI Component** | **Purpose** |
-| `titlePanel()` | App's title |
-| `sidebarLayout()` | Two-column layout with input controls on the side and output in the main area |
-| `tabsetPanel()` | Separate tabs for the different visualization |
-| `selectInput()` | Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2) |
-| `textInput()` or `selectizeInput()` | Allows one or more selection sender/receiver |
-| `checkboxGroupInput()` | Select multiple weeks or types |
-| `dateRangeInput()` | Filter by date range |
-| `sliderInput()` | Filter by hour of day (0–23) |
-| `plotOutput()` | Static ggplot visualizations (content to be defined under `Server \<- function segment`) |
-| `dataTableOutput()` | Render data table (content to be defined under `Server \<- function segment`) |
-| `visNetworkOutput()` | Interactive network graph (content to be defined under `Server \<- function segment`) |
-| `actionButton()` | Apply filters |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| **UI Component**                    | **Purpose**                                                                                |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `titlePanel()`                      | App's title                                                                                |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `sidebarLayout()`                   | Two-column layout with input controls on the side and output in the main area              |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `tabsetPanel()`                     | Separate tabs for the different visualization                                              |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `selectInput()`                     | Select an entity or type (e.g., person, vessel), and Filter by Week Label (e.g., Week 1/2) |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `textInput()` or `selectizeInput()` | Allows one or more selection sender/receiver                                               |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `checkboxGroupInput()`              | Select multiple weeks or types                                                             |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `dateRangeInput()`                  | Filter by date range                                                                       |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `sliderInput()`                     | Filter by hour of day (0–23)                                                               |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `plotOutput()`                      | Static ggplot visualizations (content to be defined under `Server \<- function segment`)   |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `dataTableOutput()`                 | Render data table (content to be defined under `Server \<- function segment`)              |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `visNetworkOutput()`                | Interactive network graph (content to be defined under `Server \<- function segment`)      |
++-------------------------------------+--------------------------------------------------------------------------------------------+
+| `actionButton()`                    | Apply filters                                                                              |
++-------------------------------------+--------------------------------------------------------------------------------------------+
 
 ### [4.1.5]{style="color:#d496d4; background:none;"} R packages needed for Shiny application {#rpkg}
 
@@ -200,19 +212,146 @@ In this section we will prepare and test the specific R codes can be run in Shin
 
 ### [4.2.1]{style="color:#d496d4; background:none;"} UI Design Goals
 
+-   Break down the interface into focused tabs for People & Vessels Communication Network And Cluster Detection, Predominant Topic Discovery, and Pseudonym Usage & Exploration.
+
+-   Use expressive and interactive visuals (e.g., multi-cluster & force-directed relationship graph, filterable tables, searchable bar chart & heatmap) to highlight communicative interaction & clusters and pseudonymous insights in the people and vessels network.
+
+-   Support investigative usability by enabling Clepper to uncover hidden communication tendency, closely associated groups, and individuals hidden under multiple aliases in the people and vessels network.
+
 ### [4.2.2]{style="color:#d496d4; background:none;"} Parameters and outputs that will be exposed on the Shiny applications
+
++------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Parameters (UI Inputs)**                           | **Outputs (UI Outputs)**                                                                                              |
++======================================================+=======================================================================================================================+
+| **Week Selection** (select box)                      | **All charts:** Charts filtered by the selected week(s)                                                               |
++------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Date Range Input** (free-text boxes)               | **All charts:** Charts filtered by the specific selected date range                                                   |
++------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Individual ID Selection** (dropdown)               | **Chart 1:** Force-directed network graph that highlights the selected ID and all directly connected nodes            |
++------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Cluster Selection** (dropdown)                     | **Chart 1:** Force-directed network graph that highlights the selected cluster with all belonged nodes                |
++------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Cluster Selection** (dropdown)                     | **Chart 2:** Table that displays top keywords mentioned in the messages of nodes belonging to the selected cluster    |
++------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Number of Top Keywords Input** (free-text box)     | **Chart 2:** Table that shows top *k* keywords mentioned in the messages of nodes (belonging to the selected cluster) |
++------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Threshold for Pseudonym Frequency Input** (slider) | **Chart 3:** Bar chart of pseudonyms whose frequency ≥ threshold                                                      |
++------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+| **Threshold for Pseudonym Mentions** (slider)        | **Chart 4:** Heatmap of pseudonym mentions with frequency ≥ threshold                                                 |
++------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 
 ### [4.2.3]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs UI Design
 
-#### [4.2.3.1]{style="color:#d496d4; background:none;"} **Module 1**
+#### [4.2.3.1]{style="color:#d496d4; background:none;"} **Communication Clusters**
 
-#### [4.2.3.2]{style="color:#d496d4; background:none;"} **Module 2**
+Purpose: Reveal the interactions & relationships among people and vessels as well as the tightly knit groups.
+
+Design Elements:
+
+-   Force-directed network graph: Visualizes entities (people & vessels) and their interactions, with distinct color-coded clusters.
+
+-   Interactive Controls: Week selection and date range slider.
+
+-   Dropdowns to filter by individual ID (where selecting an ID highlights that node and its directly-related nodes only) or communication cluster (where selecting a cluster highlights the nodes belonging to that cluster only).
+
+This helps Clepper better understand the interactions & relationships among people and vessels in the knowledge graph, detect central & supporting actors, identify hidden groupings, and see how communication flows within clusters.
+
+![](images/2_1.jpg){fig-align="center"}
+
+#### [4.2.3.2]{style="color:#d496d4; background:none;"} **Predominant Topics**
+
+Purpose: Reveal the predominant topics discussed within each communication cluster.
+
+Design Elements:
+
+-   Keyword frequency table: Displays the most common words used by members of each cluster and their frequency.
+
+-   Interactive Controls: Week selection and date range slider.
+
+-   Dropdown to filter by communication cluster, where selecting a cluster filters the keywords to those used only by that group.
+
+-   Free-text box to enter the number of top used keywords that the user wants to be displayed.
+
+This helps Clepper see what each group is talking about, understand their interests and operations, and identify their predominant topics. It also offers context to uncover entities hidden behind the pseudonyms used in each cluster.
+
+![](images/2_2.jpg){fig-align="center"}
+
+#### [4.2.3.3]{style="color:#d496d4; background:none;"} **Pseudonyms General Usage**
+
+Purpose: Quantify how frequently identified and suspected pseudonyms appear in communications.
+
+Design Elements:
+
+-   Bar chart: Displays total mention counts of selected pseudonyms across all messages of people and vessels in the network, ranked from highest to lowest frequency to aid visual comparison.
+
+-   Interactive Controls: Week selection and date range slider.
+
+-   Slider to set pseudonym frequency threshold: Users can filter for the only pseudonyms whose frequency satisfies a certain minimum threshold to reduce noise.
+
+This helps Clepper prioritize which 'names' has higher potential of being pseudonyms and which pseudonyms warrant further investigation based on communication volume.
+
+![](images/2_3.jpg){fig-align="center"}
+
+#### [4.2.3.4]{style="color:#d496d4; background:none;"} **Pseudonyms Specific Mentions**
+
+Purpose: Show which entities mention which pseudonyms, and how frequently, to uncover possible hidden identities.
+
+Design Elements:
+
+-   Heatmap matrix: Displays senders (rows) and pseudonyms mentioned (columns), with fill intensity based on frequency.
+
+-   Labelled counts: Cells display the number of times a sender referenced a particular pseudonym.
+
+-   Interactive Controls: Week selection and date range slider.
+
+-   Slider to set pseudonym mention frequency threshold: Users can filter for the only number of mentions that satisfy a certain minimum threshold to reduce noise.
+
+This helps Clepper better uncover identities hidden behind pseudonyms.
+
+![](images/2_4.jpg){fig-align="center"}
 
 ### [4.2.4]{style="color:#d496d4; background:none;"} UI objects used
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **UI Component**       | **Purpose**                                                                                             |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **titlePanel()**       | App’s title                                                                                             |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **sidebarLayout()**    | Two-column layout with input controls on the side and visual output in the main panel                   |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **tabsetPanel()**      | Switch between the 4 modules: Communication Clusters, Predominant Topics, Pseudonym Usage, and Mentions |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **selectInput()**      | Select by ID, select by cluster, or filter pseudonym-related terms                                      |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **textInput()**        | Free-text input to define number of top keywords to display                                             |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **sliderInput()**      | Filter by hour of day or set pseudonym frequency threshold                                              |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **dateRangeInput()**   | Filter communications by selected date range                                                            |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **plotOutput()**       | Render static ggplot visualizations (bar chart or heatmap)                                              |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **dataTableOutput()**  | Display top keyword frequency table for selected cluster                                                |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **visNetworkOutput()** | Show interactive communication cluster graph                                                            |
++------------------------+---------------------------------------------------------------------------------------------------------+
+| **actionButton()**     | Apply filters or refresh views                                                                          |
++------------------------+---------------------------------------------------------------------------------------------------------+
 
 ### [4.2.5]{style="color:#d496d4; background:none;"} R packages needed for Shiny application
 
+As we will be adapting the visual analytics from Take-home Exercise 2 into a Shiny application, we need to ensure all required R packages are available and supported. The following packages are essential for building and rendering this application:
+
+-   [**shiny**](https://shiny.posit.co/){target="_blank"}**:** Easy web apps for data science without the compromises.
+-   [**dplyr**](https://cran.r-project.org/package=dplyr){target="_blank"}: A grammar of data manipulation, making data wrangling concise, fast, and readable.
+-   [**ggplot2**](https://cran.r-project.org/package=ggplot2){target="_blank"}: A versatile and widely used R package for creating elegant data visualizations based on the Grammar of Graphics.
+-   [**visNetwork**](https://datastorm-open.github.io/visNetwork/){target="_blank"}: Enables interactive network visualizations in R using the vis.js JavaScript library.
+tidyr: Helps reshape data for plotting and joins, especially useful for keyword tables and pseudonym mentions.
+-   [**stringr**](https://stringr.tidyverse.org/): Provides a cohesive set of functions designed to make string manipulation easier and more consistent (used for detecting pseudonym references).
+-   [**forcats**](https://forcats.tidyverse.org/): Tools for working with categorical/factor variables — particularly useful in heatmap axis ordering.
+
 ### [4.2.6]{style="color:#d496d4; background:none;"} Test the specific R codes can be run
+
+**WIP**
 
 ## [4.3]{style="color:#d496d4; background:none;"} App 3: Time Series Analysis and Social Network Graph {#app3}
 
@@ -238,17 +377,27 @@ In this section we will prepare and test the specific R codes can be run in Shin
 
 ### [4.3.2]{style="color:#d496d4; background:none;"} Parameters and outputs that will be exposed on the Shiny applications
 
-| **Parameters (UI Inputs)** | **Outputs (UI Outputs)** |
-|----|----|
-| **Entity Filter** (person, vessel, location, organization, pseudonym) | \- Interactive network graph (direct and inferred connections via visNetwork) |
-| **Week Selection** (Week 1 / Week 2 toggle) | \- Pie chart: Sent vs. received messages |
-| **Date Range Input** (subset time range: e.g., 2040-10-01 to 2040-10-14) | \- Bar chart of message frequency by hour/day |
-| **Hour Range Input** (slider to subset by hour of day) | \- Temporal pattern plot of messages mentioning selected entities |
-| **Sender Entity Type & Input** (free text or dropdown) | \- Timeline of operational focuses and evidence events |
-| **Receiver Entity Type & Input** (free text or dropdown) | \- Keyword frequency bar chart by selected date |
-| **Graph Type Selection** (toggle: full network vs. person-to-person view) | \- Evidence timeline chart with hover-to-view conversations |
-| **Message Filter by ID** (dropdown/select box to inspect conversation thread) | \- Filtered table or tooltip displaying sender, receiver, message, and timestamp |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| **Parameters (UI Inputs)**                                                            | **Outputs (UI Outputs)**                                                                  |
++=======================================================================================+===========================================================================================+
+| **Entity Filter** (person, vessel, location, organization, pseudonym)                 | \- Interactive network graph (direct and inferred connections via visNetwork)             |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| **Week Selection** (Week 1 / Week 2 toggle)                                           | \- Pie chart: Sent vs. received messages                                                  |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| **Date Range Input** (subset time range: e.g., 2040-10-01 to 2040-10-14)              | \- Bar chart of message frequency by hour/day                                             |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| **Hour Range Input** (slider to subset by hour of day)                                | \- Temporal pattern plot of messages mentioning selected entities                         |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| **Sender Entity Type & Input** (free text or dropdown)                                | \- Timeline of operational focuses and evidence events                                    |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| **Receiver Entity Type & Input** (free text or dropdown)                              | \- Keyword frequency bar chart by selected date                                           |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| **Graph Type Selection** (toggle: full network vs. person-to-person view)             | \- Evidence timeline chart with hover-to-view conversations                               |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+| **Message Filter by ID** (dropdown/select box to inspect conversation thread)         | \- Filtered table or tooltip displaying sender, receiver, message, and timestamp          |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 | **Tab Selection** (Temporal Pattern, Direct Relationship, Relationship Network, etc.) | \- Dynamic tab-specific visualizations based on focus (e.g., events, keywords, timelines) |
++---------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
 
 ### [4.3.3]{style="color:#d496d4; background:none;"} Shiny App Panel Tabs UI Design
 
@@ -387,20 +536,33 @@ This tab helps investigators **reconstruct key moments** using concrete communic
 
 ### [4.3.4]{style="color:#d496d4; background:none;"} UI objects used
 
-| **UI Component** | **Purpose** |
-|----|----|
-| `titlePanel()` | App’s title |
-| `sidebarLayout()` | Two-column layout with input controls on the side and output in the main area |
-| `tabsetPanel()` | Separate tabs for different visualizations |
-| `selectInput()` | Select an entity or type (e.g., person, vessel), or filter by week (Week 1 / 2) |
-| `textInput()` or `selectizeInput()` | Input for sender or receiver (supports free-text or multiple selection) |
-| `checkboxGroupInput()` | Select multiple weeks or entity types |
-| `dateRangeInput()` | Filter messages by date range |
-| `sliderInput()` | Filter by hour of day (0–23) |
-| `plotOutput()` | Display `ggplot2` visualizations (defined in the `server` function) |
-| `dataTableOutput()` | Render filtered communication tables (defined in the `server` function) |
-| `visNetworkOutput()` | Display the interactive relationship graph (defined in the `server` function) |
-| `actionButton()` | Apply or refresh filters |
++-------------------------------------+---------------------------------------------------------------------------------+
+| **UI Component**                    | **Purpose**                                                                     |
++=====================================+=================================================================================+
+| `titlePanel()`                      | App’s title                                                                     |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `sidebarLayout()`                   | Two-column layout with input controls on the side and output in the main area   |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `tabsetPanel()`                     | Separate tabs for different visualizations                                      |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `selectInput()`                     | Select an entity or type (e.g., person, vessel), or filter by week (Week 1 / 2) |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `textInput()` or `selectizeInput()` | Input for sender or receiver (supports free-text or multiple selection)         |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `checkboxGroupInput()`              | Select multiple weeks or entity types                                           |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `dateRangeInput()`                  | Filter messages by date range                                                   |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `sliderInput()`                     | Filter by hour of day (0–23)                                                    |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `plotOutput()`                      | Display `ggplot2` visualizations (defined in the `server` function)             |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `dataTableOutput()`                 | Render filtered communication tables (defined in the `server` function)         |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `visNetworkOutput()`                | Display the interactive relationship graph (defined in the `server` function)   |
++-------------------------------------+---------------------------------------------------------------------------------+
+| `actionButton()`                    | Apply or refresh filters                                                        |
++-------------------------------------+---------------------------------------------------------------------------------+
 
 ### [4.3.5]{style="color:#d496d4; background:none;"} R packages needed for Shiny application
 

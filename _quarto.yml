@@ -7,7 +7,7 @@ website:
   title: ""
   
   announcement: 
-    content: "**NEW (14/06)** - [**In-class Exercise 8**](https://isss608-vriadi.netlify.app/In-class_Ex/In-class_Ex08_1) and **(15/06)** - [**Hands-on Exercise 9**](https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex09_1/hands-on_ex09_1) is published!"
+    content: "**NEW (20/06)** - [**Take-home Exercise 3**](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex03/take-home_ex03) is updated and [**Hands-on Exercise 9**](https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex09_1/hands-on_ex09_1) and [**Hands-on Exercise 10**](https://isss608-vriadi.netlify.app/hands-on_ex/hands-on_ex10/hands-on_ex10) are published!"
     position: below-navbar
     icon: info-circle
     type: info
@@ -56,6 +56,8 @@ website:
             href: Hands-on_Ex/Hands-on_Ex09_4/hands-on_Ex09_4.html
           - text: "9.5 - Treemap Visualisation with R"
             href: Hands-on_Ex/Hands-on_Ex09_5/hands-on_Ex09_5.html
+          - text: "10 - Information Dashboard Design: R methods"
+            href: Hands-on_Ex/Hands-on_Ex10/hands-on_Ex10.html
 
       - text: "In-class Exercise"
         menu:
@@ -150,6 +152,10 @@ website:
               href: Hands-on_Ex/Hands-on_Ex09_4/hands-on_Ex09_4.html
             - text: "9.5 - Treemap Visualisation with R"
               href: Hands-on_Ex/Hands-on_Ex09_5/hands-on_Ex09_5.html
+        - section: "Hands-On Exercise 10"
+          contents:
+            - text: "10 - Information Dashboard Design: R methods"
+              href: Hands-on_Ex/Hands-on_Ex10/hands-on_Ex10.html
     - title: "In-Class Exercise"
       style: "floating"
       collapse-level: 2
@@ -205,10 +211,10 @@ website:
         aria-label: Linkedin
         href: https://www.linkedin.com/in/vanessariadi/
         target: _blank
-      #- icon: github
-        #aria-label: Github
-        #href: https://github.com/vriadi
-        #target: _blank
+      - icon: github
+        aria-label: Github
+        href: https://github.com/vriadi
+        target: _blank
       - text: "<img src='/images/tableauwhite.png' style='height:19px; vertical-align:top;'>"
         href: https://public.tableau.com/app/profile/vanessa.riadi/vizzes
         target: _blank
