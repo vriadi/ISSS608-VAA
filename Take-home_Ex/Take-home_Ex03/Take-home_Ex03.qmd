@@ -208,7 +208,7 @@ In this section we will prepare and test the specific R codes can be run in Shin
 </div>
 ```
 
-## [4.2]{style="color:#d496d4; background:none;"} App 2: Relationship Clusters and Pseudonyms {#app2}
+## [4.2]{style="color:#d496d4; background:none;"} App 2: Communication Clusters and Pseudonyms {#app2}
 
 ### [4.2.1]{style="color:#d496d4; background:none;"} UI Design Goals
 
