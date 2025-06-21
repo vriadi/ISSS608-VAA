@@ -31,7 +31,7 @@ This take home exercise 3 objective is to:
 
 # [3]{style="color:#d496d4; background:none;"} Storyboard {#storyboard}
 
-**The first app**, [Temporal Pattern and Communication Network](#app1), focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section that will be further detailed in [Chapter 4](#app1). It will be focusing on:
+**The first app**, [Temporal Pattern and Communication Network](#app1), will be based on Part 2 - [Vanessa's Take Home Exercise 2](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02). Focuses on visual exploration of the intercepted communication metadata. The app will be divided into 4 main section that will be further detailed in [Chapter 4](#app1). It will be focusing on:
 
 -   Identifying temporal patterns in communications.
 
@@ -190,7 +190,7 @@ As we will be adapting our Take Home Exercise 2 graphs to Shiny Application, we 
 
 ### [4.1.6]{style="color:#d496d4; background:none;"} Test the specific R codes can be run {#prototype}
 
-Most preparation have been done in [Take Home Exercise 2](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02).
+Most preparation have been done in [Vanessa's: Take Home Exercise 2](https://isss608-vriadi.netlify.app/take-home_ex/take-home_ex02/take-home_ex02).
 
 In this section we will prepare and test the specific R codes can be run in Shiny and return the correct output as expected.
 
@@ -351,7 +351,23 @@ tidyr: Helps reshape data for plotting and joins, especially useful for keyword 
 
 ### [4.2.6]{style="color:#d496d4; background:none;"} Test the specific R codes can be run
 
-**WIP**
+Most preparation have been done in [Hoa's: Take Home Exercise 2](https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02).
+
+In this section we will prepare and test the specific R codes can be run in Shiny and return the correct output as expected.
+
+**Scroll down and click "Update View" to load the visualization!**
+
+### View on [![](/images/Posit_logo.png){height="20"}](https://vriadi.shinyapps.io/reefwhispers_app2/){target="_blank"}
+
+```{=html}
+<div style="width: 100%; height: 600px; padding: 0; overflow: hidden;">
+  <iframe 
+    src="https://vriadi.shinyapps.io/reefwhispers_app2/" 
+    title="CMAP-RSI Explorer"
+    style="width: 135%; height: 135%; transform: scale(0.75); transform-origin: top left; border: none;">
+  </iframe>
+</div>
+```
 
 ## [4.3]{style="color:#d496d4; background:none;"} App 3: Time Series Analysis and Social Network Graph {#app3}
 
