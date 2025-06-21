@@ -1,6 +1,6 @@
 ---
 title: "Prototyping Modules for Visual Analytics Shiny Application"
-author: "Vanessa Riadi"
+author: "Reef Whisper Team - Nguyen Phuong Hoa, Nguyen Nguyen Ha (Summer), Vanessa Riadi"
 date: "Jun 12, 2025"
 date-modified: "last-modified"
 format:
@@ -355,8 +355,6 @@ Most preparation have been done in [Hoa's: Take Home Exercise 2](https://isss608
 
 In this section we will prepare and test the specific R codes can be run in Shiny and return the correct output as expected.
 
-**Scroll down and click "Update View" to load the visualization!**
-
 ### View on [![](/images/Posit_logo.png){height="20"}](https://vriadi.shinyapps.io/reefwhispers_app2/){target="_blank"}
 
 ```{=html}
@@ -584,14 +582,34 @@ This tab helps investigators **reconstruct key moments** using concrete communic
 
 To support the interactive features and visualizations in the Shiny application, the following R packages are required:
 
--   `shiny`: Builds interactive web applications directly from R.
--   `dplyr`: Provides fast, concise data wrangling using a consistent grammar.
--   \`ggplot2: Enables elegant and flexible data visualizations using the Grammar of Graphics.
--   `visNetwork`: Creates interactive network visualizations using the vis.js JavaScript library in R.
+-   **shiny**: Enables the development of interactive web applications directly within R.  
+-   **dplyr** (from ⁠ tidyverse ⁠): Provides efficient tools for data manipulation using a consistent grammar.  
+-   **ggplot2** (from ⁠ tidyverse ⁠): Facilitates elegant and customizable data visualizations based on the Grammar of Graphics.  
+-   **visNetwork**: Generates interactive network visualizations powered by the ⁠ vis.js ⁠ JavaScript library.  
+-   **plotly**: Converts static plots into interactive web-based graphics for enhanced user exploration.  
+-   **lubridate**: Simplifies the handling and manipulation of date-time data.  
+-   **stringr**: Offers a cohesive set of functions for working with strings.  
+-   **readxl**: Allows for the direct import of Excel files into R.  
+-   **janitor**: Provides convenient functions for data cleaning and preprocessing.  
+-   **tidytext** and **stopwords**: Support text mining and natural language processing tasks by tokenizing text and filtering common stopwords.
 
 ### [4.3.6]{style="color:#d496d4; background:none;"} Test the specific R codes can be run
 
-**WIP**
+Most preparation have been done in [Summer's Take Home Exercise 2](https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02).
+
+In this section we will prepare and test the specific R codes can be run in Shiny and return the correct output as expected.
+
+### View on [![](/images/Posit_logo.png){height="20"}](https://vriadi.shinyapps.io/reefwhispers_app3/){target="_blank"}
+
+```{=html}
+<div style="width: 100%; height: 600px; padding: 0; overflow: hidden;">
+  <iframe 
+    src="https://vriadi.shinyapps.io/reefwhispers_app3/" 
+    title="CMAP-RSI Explorer"
+    style="width: 135%; height: 135%; transform: scale(0.75); transform-origin: top left; border: none;">
+  </iframe>
+</div>
+```
 
 # [5]{style="color:#d496d4; background:none;"} Reference
 

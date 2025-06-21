@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Vanessa Riadi">
+<meta name="author" content="Reef Whisper Team - Nguyen Phuong Hoa, Nguyen Nguyen Ha (Summer), Vanessa Riadi">
 <meta name="dcterms.date" content="2025-06-12">
 
 <title>Prototyping Modules for Visual Analytics Shiny Application</title>
@@ -208,8 +208,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Session 8 - Distribution of Resale Units of Condominium Sold in 2019</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex09.html">
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex09_1.html">
  <span class="dropdown-text">Session 9 - Singapore Population 2024</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex09.html">
+ <span class="dropdown-text">Session 9 - Be Property Wise or Otherwise!</span></a>
   </li>  
     </ul>
   </li>
@@ -374,6 +378,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ui-objects-used-2" id="toc-ui-objects-used-2" class="nav-link" data-scroll-target="#ui-objects-used-2"><span style="color:#d496d4; background:none;">4.3.4</span> UI objects used</a></li>
   <li><a href="#r-packages-needed-for-shiny-application-1" id="toc-r-packages-needed-for-shiny-application-1" class="nav-link" data-scroll-target="#r-packages-needed-for-shiny-application-1"><span style="color:#d496d4; background:none;">4.3.5</span> R packages needed for Shiny application</a></li>
   <li><a href="#test-the-specific-r-codes-can-be-run-1" id="toc-test-the-specific-r-codes-can-be-run-1" class="nav-link" data-scroll-target="#test-the-specific-r-codes-can-be-run-1"><span style="color:#d496d4; background:none;">4.3.6</span> Test the specific R codes can be run</a></li>
+  <li><a href="#view-on-2" id="toc-view-on-2" class="nav-link" data-scroll-target="#view-on-2">View on <img src="../../images/Posit_logo.png" height="20"></a></li>
   </ul></li>
   </ul></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span style="color:#d496d4; background:none;">5</span> Reference</a>
@@ -401,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Vanessa Riadi </p>
+             <p>Reef Whisper Team - Nguyen Phuong Hoa, Nguyen Nguyen Ha (Summer), Vanessa Riadi </p>
           </div>
   </div>
     
@@ -863,7 +868,6 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run"><span style="color:#d496d4; background:none;">4.2.6</span> Test the specific R codes can be run</h3>
 <p>Most preparation have been done in <a href="https://isss608-ay2024-25t.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Hoa’s: Take Home Exercise 2</a>.</p>
 <p>In this section we will prepare and test the specific R codes can be run in Shiny and return the correct output as expected.</p>
-<p><strong>Scroll down and click “Update View” to load the visualization!</strong></p>
 </section>
 <section id="view-on-1" class="level3">
 <h3 class="anchored" data-anchor-id="view-on-1">View on <a href="https://vriadi.shinyapps.io/reefwhispers_app2/" target="_blank"><img src="../../images/Posit_logo.png" height="20"></a></h3>
@@ -1220,15 +1224,38 @@ This tab helps investigators <strong>reconstruct key moments</strong> using conc
 <h3 class="anchored" data-anchor-id="r-packages-needed-for-shiny-application-1"><span style="color:#d496d4; background:none;">4.3.5</span> R packages needed for Shiny application</h3>
 <p>To support the interactive features and visualizations in the Shiny application, the following R packages are required:</p>
 <ul>
-<li><code>shiny</code>: Builds interactive web applications directly from R.</li>
-<li><code>dplyr</code>: Provides fast, concise data wrangling using a consistent grammar.</li>
-<li>`ggplot2: Enables elegant and flexible data visualizations using the Grammar of Graphics.</li>
-<li><code>visNetwork</code>: Creates interactive network visualizations using the vis.js JavaScript library in R.</li>
+<li><strong>shiny</strong>: Enables the development of interactive web applications directly within R.<br>
+</li>
+<li><strong>dplyr</strong> (from ⁠ tidyverse ⁠): Provides efficient tools for data manipulation using a consistent grammar.<br>
+</li>
+<li><strong>ggplot2</strong> (from ⁠ tidyverse ⁠): Facilitates elegant and customizable data visualizations based on the Grammar of Graphics.<br>
+</li>
+<li><strong>visNetwork</strong>: Generates interactive network visualizations powered by the ⁠ vis.js ⁠ JavaScript library.<br>
+</li>
+<li><strong>plotly</strong>: Converts static plots into interactive web-based graphics for enhanced user exploration.<br>
+</li>
+<li><strong>lubridate</strong>: Simplifies the handling and manipulation of date-time data.<br>
+</li>
+<li><strong>stringr</strong>: Offers a cohesive set of functions for working with strings.<br>
+</li>
+<li><strong>readxl</strong>: Allows for the direct import of Excel files into R.<br>
+</li>
+<li><strong>janitor</strong>: Provides convenient functions for data cleaning and preprocessing.<br>
+</li>
+<li><strong>tidytext</strong> and <strong>stopwords</strong>: Support text mining and natural language processing tasks by tokenizing text and filtering common stopwords.</li>
 </ul>
 </section>
 <section id="test-the-specific-r-codes-can-be-run-1" class="level3">
 <h3 class="anchored" data-anchor-id="test-the-specific-r-codes-can-be-run-1"><span style="color:#d496d4; background:none;">4.3.6</span> Test the specific R codes can be run</h3>
-<p><strong>WIP</strong></p>
+<p>Most preparation have been done in <a href="https://summernguyenn.netlify.app/take-home_ex/take-home_ex02/take-home_ex02">Summer’s Take Home Exercise 2</a>.</p>
+<p>In this section we will prepare and test the specific R codes can be run in Shiny and return the correct output as expected.</p>
+</section>
+<section id="view-on-2" class="level3">
+<h3 class="anchored" data-anchor-id="view-on-2">View on <a href="https://vriadi.shinyapps.io/reefwhispers_app3/" target="_blank"><img src="../../images/Posit_logo.png" height="20"></a></h3>
+<div style="width: 100%; height: 600px; padding: 0; overflow: hidden;">
+  <iframe src="https://vriadi.shinyapps.io/reefwhispers_app3/" title="CMAP-RSI Explorer" style="width: 135%; height: 135%; transform: scale(0.75); transform-origin: top left; border: none;">
+  </iframe>
+</div>
 </section>
 </section>
 </section>

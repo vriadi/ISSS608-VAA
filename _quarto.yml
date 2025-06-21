@@ -76,6 +76,8 @@ website:
           - text: "Session 8 - Distribution of Resale Units of Condominium Sold in 2019"
             href: In-class_Ex/In-class_Ex08_2.html
           - text: "Session 9 - Singapore Population 2024"
+            href: In-class_Ex/In-class_Ex09_1.html
+          - text: "Session 9 - Be Property Wise or Otherwise!"
             href: In-class_Ex/In-class_Ex09.html
       - text: "Take-home Exercise"
         menu:
@@ -180,6 +182,8 @@ website:
             - text: "Session 8 - Distribution of Resale Units of Condominium Sold in 2019"
               href: In-class_Ex/In-class_Ex08_2.html
             - text: "Session 9 - Singapore Population 2024"
+              href: In-class_Ex/In-class_Ex09_1.html
+            - text: "Session 9 - Be Property Wise or Otherwise!"
               href: In-class_Ex/In-class_Ex09.html
     - title: "Take-Home Exercise"
       style: "floating"

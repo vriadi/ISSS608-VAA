@@ -495,6 +495,7 @@ To change the colour, we assign the preferred colour to *values* argument of *tm
 
 ::: panel-tabset
 ## Orange
+
 ```{r}
 #| eval: true
 tm_shape(mpsz_pop2020)+
@@ -507,7 +508,9 @@ tm_shape(mpsz_pop2020)+
 ```
 
 ## Pastel1
+
 Funky color, though might not suitable for this type of data!
+
 ```{r}
 #| eval: true
 tm_shape(mpsz_pop2020)+
