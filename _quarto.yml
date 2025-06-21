@@ -75,6 +75,8 @@ website:
             href: In-class_Ex/In-class_Ex08_1.html
           - text: "Session 8 - Distribution of Resale Units of Condominium Sold in 2019"
             href: In-class_Ex/In-class_Ex08_2.html
+          - text: "Session 9 - Singapore Population 2024"
+            href: In-class_Ex/In-class_Ex09.html
       - text: "Take-home Exercise"
         menu:
           - text: "1.1 - Demographic structures and distribution of Singapore in 2024"
@@ -177,6 +179,8 @@ website:
               href: In-class_Ex/In-class_Ex08_1.html
             - text: "Session 8 - Distribution of Resale Units of Condominium Sold in 2019"
               href: In-class_Ex/In-class_Ex08_2.html
+            - text: "Session 9 - Singapore Population 2024"
+              href: In-class_Ex/In-class_Ex09.html
     - title: "Take-Home Exercise"
       style: "floating"
       collapse-level: 2
