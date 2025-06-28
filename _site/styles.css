@@ -41,12 +41,3 @@ a:hover {
   padding-top: 0 !important; /* Use !important to ensure it overrides other styles if needed */
 }
 
-:root {
-  --valuebox-bg-custom: #50434f;
-  --valuebox-fg-custom: #ffffff;
-}
-
-:root {
-  --valuebox-bg-dark: #50434f;
-  --valuebox-fg-dark: #ffffff;
-}
