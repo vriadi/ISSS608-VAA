@@ -40,3 +40,4 @@ a:hover {
 .no-top-padding {
   padding-top: 0 !important; /* Use !important to ensure it overrides other styles if needed */
 }
+

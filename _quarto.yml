@@ -79,6 +79,10 @@ website:
             href: In-class_Ex/In-class_Ex09_1.html
           - text: "Session 9 - Be Property Wise or Otherwise!"
             href: In-class_Ex/In-class_Ex09.html
+          - text: "Session 10 - Coffeechain Sales Dashboard"
+            href: In-class_Ex/In-class_Ex10_1.html
+          - text: "Session 10 - Invetment Visualisation"
+            href: In-class_Ex/In-class_Ex10_2.html
       - text: "Take-home Exercise"
         menu:
           - text: "1.1 - Demographic structures and distribution of Singapore in 2024"
@@ -185,6 +189,10 @@ website:
               href: In-class_Ex/In-class_Ex09_1.html
             - text: "Session 9 - Be Property Wise or Otherwise!"
               href: In-class_Ex/In-class_Ex09.html
+            - text: "Session 10 - Coffeechain Sales Dashboard"
+              href: In-class_Ex/In-class_Ex10_1.html
+            - text: "Session 10 - Invetment Visualisation"
+              href: In-class_Ex/In-class_Ex10_2.html
     - title: "Take-Home Exercise"
       style: "floating"
       collapse-level: 2
