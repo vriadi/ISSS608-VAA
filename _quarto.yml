@@ -7,7 +7,7 @@ website:
   title: ""
   
   announcement: 
-    content: "**NEW (28/06)** - [**In-class Exercise 10**](https://isss608-vriadi.netlify.app/in-class_ex/in-class_ex10_1) is published!"
+    content: "**TERM HAS ENDED JULY 2025** - [**Visual Analytics Project**](https://isss608-vriadi.netlify.app/Take-home_Ex/VAP) is published! Thank you Prof Kam for the guidance! 🎀⭐️"
     position: below-navbar
     icon: info-circle
     type: info
@@ -93,6 +93,8 @@ website:
             href: Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html
           - text: "3 - Prototyping Modules for Visual Analytics Shiny Application"
             href: Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html
+      - text: "Visual Analytics Project"
+        href: Take-home_Ex/VAP.html
     right:
       - icon: house-fill
         text: Home
