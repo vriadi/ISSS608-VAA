@@ -19,7 +19,6 @@ pacman:: p_load(tidyverse, tidyquant,
 SGStock <- read_csv("data/SGStock.csv")
 ```
 
-
 ```{r}
 daily_prices <-SGStock %>%
   select(Symbol) %>%
@@ -32,12 +31,14 @@ daily_prices <- daily_prices %>%
 ```
 
 # DBS
+
 ```{r}
 start_date <- min(daily_prices$date)
 end_date <- max(daily_prices$date)
 ```
 
-## Row {height=20%}
+## Row {height="20%"}
+
 ```{r}
 daily_summary <- daily_prices %>%
   filter(Symbol == "D05.SI" &
@@ -78,6 +79,7 @@ list(color = "danger",
 ```
 
 ## Row
+
 ```{r}
 df <- daily_prices %>%
   filter(Name =="DBS Group")
@@ -148,12 +150,14 @@ ggplotly(p)
 ```
 
 # OCBC
+
 ```{r}
 start_date <- min(daily_prices$date)
 end_date <- max(daily_prices$date)
 ```
 
-## Row {height=20%}
+## Row {height="20%"}
+
 ```{r}
 daily_summary <- daily_prices %>%
   filter(Symbol == "O39.SI" &
@@ -193,6 +197,7 @@ list(color = "danger",
 ```
 
 ## Row
+
 ```{r}
 df <- daily_prices %>%
   filter(Name =="OCBC Bank")
@@ -262,15 +267,15 @@ p <- ggplot(data = df, aes(x = date, y = close)) +
 ggplotly(p)
 ```
 
-
-
 # UOB
+
 ```{r}
 start_date <- min(daily_prices$date)
 end_date <- max(daily_prices$date)
 ```
 
-## Row {height=20%}
+## Row {height="20%"}
+
 ```{r}
 daily_summary <- daily_prices %>%
   filter(Symbol == "U11.SI" &
@@ -310,6 +315,7 @@ list(color = "danger",
 ```
 
 ## Row
+
 ```{r}
 df <- daily_prices %>%
   filter(Name =="UOB")
@@ -379,15 +385,15 @@ p <- ggplot(data = df, aes(x = date, y = close)) +
 ggplotly(p)
 ```
 
-
-
 # Singtel
+
 ```{r}
 start_date <- min(daily_prices$date)
 end_date <- max(daily_prices$date)
 ```
 
-## Row {height=20%}
+## Row {height="20%"}
+
 ```{r}
 daily_summary <- daily_prices %>%
   filter(Symbol == "Z74.SI" &
@@ -427,6 +433,7 @@ list(color = "danger",
 ```
 
 ## Row
+
 ```{r}
 df <- daily_prices %>%
   filter(Name =="Singtel")
@@ -496,15 +503,15 @@ p <- ggplot(data = df, aes(x = date, y = close)) +
 ggplotly(p)
 ```
 
-
-
 # SIA
+
 ```{r}
 start_date <- min(daily_prices$date)
 end_date <- max(daily_prices$date)
 ```
 
-## Row {height=20%}
+## Row {height="20%"}
+
 ```{r}
 daily_summary <- daily_prices %>%
   filter(Symbol == "C6L.SI" &
@@ -544,6 +551,7 @@ list(color = "danger",
 ```
 
 ## Row
+
 ```{r}
 df <- daily_prices %>%
   filter(Name =="Singapore Airlines")
@@ -614,12 +622,14 @@ ggplotly(p)
 ```
 
 # CapitaLand
+
 ```{r}
 start_date <- min(daily_prices$date)
 end_date <- max(daily_prices$date)
 ```
 
-## Row {height=20%}
+## Row {height="20%"}
+
 ```{r}
 daily_summary <- daily_prices %>%
   filter(Symbol == "C38U.SI" &
@@ -659,6 +669,7 @@ list(color = "danger",
 ```
 
 ## Row
+
 ```{r}
 df <- daily_prices %>%
   filter(Name =="CapitaLand Mall Trust")
